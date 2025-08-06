@@ -1,149 +1,139 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Config": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
       "main": [
         [
           {
-            "node": "Get Workflows",
+            "node": "Code1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Filter": {
+    "Code1": {
       "main": [
         [
           {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Return": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch": {
-      "main": [
-        [
-          {
-            "node": "Edit existing file",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Create new file",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Return",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get File": {
-      "main": [
-        [
-          {
-            "node": "Merge Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get a file": {
-      "main": [
-        [
-          {
-            "node": "Is File too large?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge Items": {
-      "main": [
-        [
-          {
-            "node": "isDiffOrNew",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "isDiffOrNew": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Workflows": {
-      "main": [
-        [
-          {
-            "node": "Filter",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create new file": {
-      "main": [
-        [
-          {
-            "node": "Return",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [
-          {
-            "node": "Completed Notification",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get a file",
+            "node": "Get linked",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Merge Items",
+            "node": "Edit Fields",
             "type": "main",
-            "index": 1
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "bluesky1": {
+      "main": [
+        [
+          {
+            "node": "bluesky post1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Youtube video": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Feed Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n rssfeed": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -152,574 +142,898 @@
       "main": [
         [
           {
-            "node": "Starting Message",
+            "node": "huffpost rss feed",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Starting Message": {
+    "Limit": {
       "main": [
         [
           {
-            "node": "Config",
+            "node": "AI Agent1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit existing file": {
+    "bluesky post1": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
       "main": [
         [
           {
-            "node": "Return",
+            "node": "bluesky1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Is File too large?": {
+    "Limit1": {
       "main": [
         [
           {
-            "node": "Get File",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Merge Items",
+            "node": "AI Agent1",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "huffpost rss feed": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "instagram": {
+      "main": [
+        [
+          {
+            "node": "instagram1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "instagram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Limit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit2": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent3": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Delete rows or columns from sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get linked": {
+      "main": [
+        [
+          {
+            "node": "Post Linkedin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post Linkedin": {
+      "main": [
+        []
       ]
     }
   },
-  "createdAt": "2025-08-06T03:58:15.243Z",
-  "id": "SwsqK4UizaTioSiF",
+  "createdAt": "2025-07-24T06:03:01.674Z",
+  "id": "3qEaAZNHqyuHFiqe",
   "isArchived": false,
-  "meta": {
-    "templateId": "5851"
-  },
-  "name": "n8nWorkflowBackups",
+  "meta": null,
+  "name": "LinkedinPost",
   "nodes": [
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "8d513345-6484-431f-afb7-7cf045c90f4f",
-              "name": "Done",
-              "type": "boolean",
-              "value": true
-            }
-          ]
-        },
-        "options": {}
+        "promptType": "define",
+        "text": "=Your post should:\n1. Begin with a compelling hook\n2. fix up spelling and grammer \n\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\nPlane text raw outputs.\nKeep the overall length appropriate for bluesky (under 200 characters)\n\n\nNow, create a LinkedIn post based on the following prompt:{{ $json['content:encodedSnippet'] }} {{ $json.chatInput }}{{ $json.title }} {{ $json.author }}",
+        "options": {
+          "systemMessage": ""
+        }
       },
-      "id": "d5efec23-eefc-443b-9e6d-4f41ee240d88",
-      "name": "Return",
-      "type": "n8n-nodes-base.set",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
       "position": [
-        3712,
-        708
+        -912,
+        416
       ],
-      "typeVersion": 3.3
-    },
-    {
-      "parameters": {},
-      "id": "ede04e40-7152-40f8-9860-942b15fba268",
-      "name": "Merge Items",
-      "type": "n8n-nodes-base.merge",
-      "position": [
-        2832,
-        400
-      ],
-      "typeVersion": 2
+      "id": "702c02a3-2d90-4c0b-9ec5-6c82f0d1701e",
+      "name": "AI Agent"
     },
     {
       "parameters": {
-        "jsCode": "const orderJsonKeys = (jsonObj) => {\n  const ordered = {};\n  Object.keys(jsonObj).sort().forEach(key => {\n    ordered[key] = jsonObj[key];\n  });\n  return ordered;\n}\n\n// Check if file returned with content\nif (Object.keys($input.all()[0].json).includes(\"content\")) {\n  // Decode base64 content and parse JSON\n  const origWorkflow = JSON.parse(Buffer.from($input.all()[0].json.content, 'base64').toString());\n  const n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON objects\n  const orderedOriginal = orderJsonKeys(origWorkflow);\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n\n  // Determine difference\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    $input.all()[0].json.github_status = \"same\";\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n  $input.all()[0].json.content_decoded = orderedOriginal;\n// No file returned / new workflow\n} else if (Object.keys($input.all()[0].json).includes(\"data\")) {\n  const origWorkflow = JSON.parse($input.all()[0].json.data);\n  const n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON objects\n  const orderedOriginal = orderJsonKeys(origWorkflow);\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n\n  // Determine difference\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    $input.all()[0].json.github_status = \"same\";\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n  $input.all()[0].json.content_decoded = orderedOriginal;\n\n} else {\n  // Order JSON object\n  const n8nWorkflow = $input.all()[1].json;\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n  \n  // Proper formatting\n  $input.all()[0].json.github_status = \"new\";\n  $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// Return items\nreturn $input.all();\n"
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
       },
-      "id": "bbf6dea6-eee2-452d-9607-37d7fa90f3cc",
-      "name": "isDiffOrNew",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -864,
+        528
+      ],
+      "id": "59e1596a-772b-4304-8a4c-835daa052635",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  item.json.output = item.json.output\n    .replace(/\\n/g, ' ')\n    .replace(/{/g, '')\n    .replace(/}/g, '')\n    .replace(/\\s\\s+/g, ' ')\n    .replace(/\"post:\"/g, '')\n    .replace(/\"/g, '')\n    .replace(/:/g, '')\n    .trim();\n}\nreturn $input.all();\n"
+      },
       "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        3056,
-        400
+        -64,
+        -208
       ],
-      "typeVersion": 1
+      "id": "b47e9fa7-769d-493e-b6f9-95451b9a8e16",
+      "name": "Code1"
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "owner": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $('Config').item.json.repo_owner }}"
-        },
-        "repository": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $('Config').item.json.repo_name }}"
-        },
-        "filePath": "={{ $('Config').item.json.sub_path }}/{{$('Loop Over Items').item.json.name}}.json",
-        "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
-        "commitMessage": "={{$('Loop Over Items').item.json.name}} ({{$json.github_status}})"
+        "public": true,
+        "options": {}
       },
-      "id": "e72473e3-d4e5-4306-99c2-5961515060f2",
-      "name": "Create new file",
-      "type": "n8n-nodes-base.github",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
       "position": [
-        3488,
-        400
+        -1600,
+        352
       ],
-      "webhookId": "b440dead-fad0-4546-8ca7-201aa2ea2936",
-      "typeVersion": 1,
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "xbzooUXVcAxGUUX7",
-          "name": "GitHub account"
-        }
-      }
+      "id": "dccad37a-83b8-42d1-bb10-1a8c466adae7",
+      "name": "When chat message received",
+      "webhookId": "444bb64c-7f0e-4bd1-957d-a9dcfe432249"
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "operation": "edit",
-        "owner": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $('Config').item.json.repo_owner }}"
-        },
-        "repository": {
-          "__rl": true,
-          "mode": "name",
-          "value": "n8n-workflows"
-        },
-        "filePath": "={{ $('Config').item.json.sub_path }}/{{$('Loop Over Items').item.json.name}}.json",
-        "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
-        "commitMessage": "={{$('Loop Over Items').item.json.name}} ({{$json.github_status}})"
-      },
-      "id": "ce6f990e-4900-442d-9998-810dace92943",
-      "name": "Edit existing file",
-      "type": "n8n-nodes-base.github",
-      "position": [
-        3488,
-        208
-      ],
-      "webhookId": "1dfc4103-7c23-4814-a0b5-dd4f5a96d36b",
-      "typeVersion": 1,
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "xbzooUXVcAxGUUX7",
-          "name": "GitHub account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "version": 2,
-            "leftValue": "",
-            "caseSensitive": true,
-            "typeValidation": "strict"
-          },
-          "combinator": "and",
-          "conditions": [
+        "method": "POST",
+        "url": "=https://bsky.social/xrpc/com.atproto.server.createSession",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
             {
-              "id": "bb64ed2c-5193-4b8f-a9e8-55cb83ea244c",
-              "operator": {
-                "type": "dateTime",
-                "operation": "afterOrEquals"
-              },
-              "leftValue": "={{ $json.updatedAt }}",
-              "rightValue": "={{ $now.minus(1, 'days') }}"
+              "name": "=identifier",
+              "value": "={{ $json.$BLUESKY_HANDLE }}"
+            },
+            {
+              "name": "password",
+              "value": "={{ $json.$BLUESKY_APP_PASSWORD }}"
             }
           ]
         },
         "options": {}
       },
-      "id": "06d3f09c-ca08-4a4a-825b-6cb2e8ef3c39",
-      "name": "Filter",
-      "type": "n8n-nodes-base.filter",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        1728,
-        400
+        560,
+        -496
       ],
-      "typeVersion": 2.2
+      "id": "6f046609-dc60-4c77-865e-94abc23c8082",
+      "name": "bluesky1"
     },
     {
       "parameters": {
-        "content": "# Links\n- ## [Github Folder](https://github.com/AndrewBoichenko/n8n-workflows/)",
-        "height": 120,
-        "width": 400
-      },
-      "id": "3803f1ca-9296-46ce-8e35-01d8c5f9812c",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        368,
-        240
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "# How it works \nThis workflow will backup all instance workflows to GitHub every 24 hours.\n\nThe files are saved into folders using `repo_path` for the directory path and `ID.json` for the filename.\nThe Repo Owner, Repo Name and Main folder are set using the `Config` node in the subworkflow. \n\nThe workflow runs calls itself to help reduce memory usage, Once the workflow has completed it will send an optional notification to Slack.\n\nPlease check out my other items on [gumroad](https://boanse.gumroad.com/?section=k_Sn6LcT_dzJFnp5jmsM5A%3D%3D)\nYou might also like something else☺️",
-        "height": 340,
-        "width": 400
-      },
-      "id": "ea1096b7-ac85-41ef-98b9-88e2f50b9d44",
-      "name": "Sticky Note4",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        368,
-        400
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
+        "method": "POST",
+        "url": "https://bsky.social/xrpc/com.atproto.repo.createRecord",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
             {
-              "conditions": {
-                "options": {
-                  "version": 2,
-                  "leftValue": "",
-                  "caseSensitive": true,
-                  "typeValidation": "strict"
-                },
-                "combinator": "and",
-                "conditions": [
-                  {
-                    "id": "6655f56f-b447-43eb-84a2-be8b71524af7",
-                    "operator": {
-                      "name": "filter.operator.equals",
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "leftValue": "={{$json.github_status}}",
-                    "rightValue": "different"
-                  }
-                ]
-              },
-              "renameOutput": true,
-              "outputKey": "Different"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "version": 2,
-                  "leftValue": "",
-                  "caseSensitive": true,
-                  "typeValidation": "strict"
-                },
-                "combinator": "and",
-                "conditions": [
-                  {
-                    "id": "fd0fcdea-e8c0-42be-ba51-5cd2b71ed247",
-                    "operator": {
-                      "name": "filter.operator.equals",
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "leftValue": "={{$json.github_status}}",
-                    "rightValue": "new"
-                  }
-                ]
-              },
-              "renameOutput": true,
-              "outputKey": "New"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "version": 2,
-                  "leftValue": "",
-                  "caseSensitive": true,
-                  "typeValidation": "strict"
-                },
-                "combinator": "and",
-                "conditions": [
-                  {
-                    "id": "ca3b1c68-d756-4de5-b69b-147526e19e35",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "leftValue": "={{$json.github_status}}",
-                    "rightValue": "same"
-                  }
-                ]
-              },
-              "renameOutput": true,
-              "outputKey": "Same"
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.accessJwt }}"
             }
           ]
         },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"collection\": \"app.bsky.feed.post\",\n  \"repo\": \"{{ $node['bluesky1'].json['did'] }}\",\n  \"record\": {\n    \"text\": \"{{ $node[\"Code1\"].json[\"output\"] }}\",\n    \"createdAt\": \"{{ $now }}\",\n    \"$type\": \"app.bsky.feed.post\"\n  }\n}\n",
         "options": {}
       },
-      "id": "c4139649-c1fd-4c1a-b90f-92ecac409fa2",
-      "name": "Switch",
-      "type": "n8n-nodes-base.switch",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        3280,
-        400
+        784,
+        -496
       ],
-      "typeVersion": 3.2
+      "id": "a0eca327-4340-43f3-b5a0-b94adb933b1b",
+      "name": "bluesky post1"
     },
     {
       "parameters": {
-        "filters": {},
-        "requestOptions": {}
+        "pollTimes": {
+          "item": [
+            {}
+          ]
+        },
+        "feedUrl": "https://www.youtube.com/feeds/videos.xml?channel_id=UC9oRBjoo-vL4SJOvQeK6YoA"
       },
-      "id": "3ddd66d9-36a6-4aef-aa99-0a28421f0410",
-      "name": "Get Workflows",
-      "type": "n8n-nodes-base.n8n",
-      "position": [
-        1520,
-        400
-      ],
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
       "typeVersion": 1,
+      "position": [
+        -1648,
+        -192
+      ],
+      "id": "3420ab6a-0d3a-4a2c-8d8f-0f586e450309",
+      "name": "Youtube video"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {}
+          ]
+        },
+        "feedUrl": "https://www.pcmag.com/feeds/rss/latest"
+      },
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1648,
+        -624
+      ],
+      "id": "c45388e7-5f00-415e-beae-9acc05822251",
+      "name": "RSS Feed Trigger1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.title }}{{ $json.contentSnippet }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Your Tone & Style Guide\n\n    Authentic & Grounded:\n    Draw from your past — the hard work of being a massage therapist, conservationist, and park maintenance worker. Use these experiences to add real-world metaphors or lessons about resilience, discipline, and humility.\n\n    Smart, But Not Pretentious:\n    You’re a computer science grad now, but keep the tone accessible. Use tech terms when needed, but balance them with everyday analogies or real-life lessons from the field.\n\n    Wittiness & Edge:\n    Sprinkle clever humor or sharp observations (like a well-placed eyebrow raise in text form). But never forced — it should feel like the kind of wit someone naturally hears in a conversation with you.\n\n    Matching the Tone:\n\n        Positive topic? Be inspiring but grounded — no fake motivational quotes. Use anecdotes or lessons learned.\n\n        Neutral topic? Add curiosity or a questioning angle.\n\n        Negative topic? Keep a serious tone, but weave in hope, solutions, or lessons from tough experiences.\n        (Example: “Hard work isn’t always glamorous, but the blisters and sweat are proof of something real.”)\n\nEnd with a question.\n\nImportant formatting requirements:\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (somewhere around 100 - 250 characters)\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        -960,
+        -656
+      ],
+      "id": "629ac390-3dbf-4ad6-b399-b048cd20e5ba",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1008,
+        -448
+      ],
+      "id": "d2e48b27-4811-40bc-b126-0213531b3e3e",
+      "name": "OpenAI Chat Model1",
       "credentials": {
-        "n8nApi": {
-          "id": "7Wrsiiim3mlOlIY9",
-          "name": "n8n account"
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
         }
       }
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "03f51f9c-4681-4423-91d2-d32f4c18d6bc",
-              "name": "repo_owner",
-              "type": "string",
-              "value": ""
-            },
-            {
-              "id": "0c9b521a-b698-4b43-9eb0-bbf744760158",
-              "name": "repo_name",
-              "type": "string",
-              "value": "n8n-workflows"
-            },
-            {
-              "id": "91627e70-a71a-4be0-a6f6-b04d5c8469d8",
-              "name": "repo_path",
-              "type": "string",
-              "value": "n8n-workflows"
-            },
-            {
-              "id": "983a2c87-9d69-4d64-ab88-ec1b1117c6e6",
-              "name": "sub_path",
-              "type": "string",
-              "value": "folder"
-            }
-          ]
+        "promptType": "define",
+        "text": "={{ $json.author }}\n{{ $json.title }} \n{{ $json.link }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Just promoting my youtube content. The title may give a hint about what the video is about.\n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (under 200 characters)\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        -944,
+        -304
+      ],
+      "id": "32e148e5-fb57-43cf-a89d-8133be66d14d",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
         },
-        "includeOtherFields": true,
         "options": {}
       },
-      "id": "36774b8c-4e8a-411d-8d22-a58870d17152",
-      "name": "Config",
-      "type": "n8n-nodes-base.set",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
       "position": [
-        1296,
-        400
+        -960,
+        -160
       ],
-      "typeVersion": 3.4
+      "id": "ca772172-8029-4639-91a5-d4826cb8246f",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMonth"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1648,
+        -432
+      ],
+      "id": "dd3acddf-6a5c-4e21-8687-e0da7dd5131a",
+      "name": "n8n rssfeed"
     },
     {
       "parameters": {
         "rule": {
           "interval": [
-            {}
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                3
+              ],
+              "triggerAtHour": 8
+            }
           ]
         }
       },
-      "id": "ecb7924b-23f3-480d-aede-79edaa55be2a",
-      "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
       "position": [
-        848,
-        400
+        -1936,
+        -816
       ],
-      "typeVersion": 1.2
+      "id": "e562933c-99bb-4aff-8757-f9df6b9194a0",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        -816
+      ],
+      "id": "60dbf328-eb01-457c-a223-25156596bd9a",
+      "name": "Limit"
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "operation": "get",
-        "owner": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $('Config').item.json.repo_owner }}"
-        },
-        "repository": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $('Config').item.json.repo_name }}"
-        },
-        "filePath": "={{ $('Config').item.json.sub_path }}/{{$('Loop Over Items').item.json.name}}.json",
-        "asBinaryProperty": false,
-        "additionalParameters": {}
-      },
-      "id": "a58a2c07-0162-433f-93e5-9fceabec5edc",
-      "name": "Get a file",
-      "type": "n8n-nodes-base.github",
-      "position": [
-        2176,
-        208
-      ],
-      "webhookId": "c12420d3-b858-4ee4-81c4-9adc03e30865",
-      "typeVersion": 1.1,
-      "alwaysOutputData": true,
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "xbzooUXVcAxGUUX7",
-          "name": "GitHub account"
-        }
-      },
-      "onError": "continueRegularOutput"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "version": 2,
-            "leftValue": "",
-            "caseSensitive": true,
-            "typeValidation": "strict"
-          },
-          "combinator": "and",
-          "conditions": [
+        "assignments": {
+          "assignments": [
             {
-              "id": "628f6e8f-d817-4c53-89ec-b1acbb3dfef8",
-              "operator": {
-                "type": "string",
-                "operation": "empty",
-                "singleValue": true
-              },
-              "leftValue": "={{ $json.content }}",
-              "rightValue": ""
+              "id": "1ffe3823-22a6-4484-ba49-9ac9da8be2ef",
+              "name": "$BLUESKY_HANDLE",
+              "value": "codecaster.bsky.social",
+              "type": "string"
             },
             {
-              "id": "63fc68bb-63d0-40a8-92e4-2a62b5a71812",
-              "operator": {
-                "type": "string",
-                "operation": "notExists",
-                "singleValue": true
-              },
-              "leftValue": "={{ $json.error }}",
-              "rightValue": ""
+              "id": "5bc114fd-05db-42ef-b553-f9728be6aa18",
+              "name": "$BLUESKY_APP_PASSWORD",
+              "value": "sl4v-atp6-guui-5x5b",
+              "type": "string"
             }
           ]
         },
         "options": {}
       },
-      "id": "97b1e70b-a584-46af-87de-2be74333c285",
-      "name": "Is File too large?",
-      "type": "n8n-nodes-base.if",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        2400,
-        208
+        352,
+        -496
       ],
-      "typeVersion": 2.2
+      "id": "b3f8fe1d-0866-4e8b-a939-12d30b712ba6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        -624
+      ],
+      "id": "ec7d78f9-10fb-44a9-be99-8d566af181fe",
+      "name": "Limit1"
     },
     {
       "parameters": {
-        "url": "={{ $json.download_url }}",
+        "url": "https://chaski.huffpost.com/us/auto/vertical/health",
         "options": {}
       },
-      "id": "78dd800a-e7df-4834-9e38-e0d8c5aa0c34",
-      "name": "Get File",
-      "type": "n8n-nodes-base.httpRequest",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
       "position": [
-        2608,
-        208
+        -1648,
+        -816
       ],
-      "typeVersion": 4.2
+      "id": "fc6a941a-69e0-4d87-9450-3bd45c27cb59",
+      "name": "huffpost rss feed"
     },
     {
       "parameters": {
-        "select": "channel",
-        "channelId": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        352,
+        176
+      ],
+      "id": "a57ccdf7-e0ec-47f3-b5b1-f1a9c81e4036",
+      "name": "instagram"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        592,
+        176
+      ],
+      "id": "ced2f8cd-6081-47e9-8e61-41f076aaac77",
+      "name": "instagram1"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
           "__rl": true,
-          "mode": "name",
-          "value": "#notifications"
+          "mode": "list",
+          "value": ""
         },
-        "text": "=Information_source:  Starting Workflow Backup [{{ $execution.id }}]",
-        "otherOptions": {
-          "includeLinkToWorkflow": false
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        160,
+        176
+      ],
+      "id": "38240cbb-9266-4897-9701-241bf4c9844e",
+      "name": "Generate an image"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw",
+          "mode": "list",
+          "cachedResultName": "neetcode",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw/edit#gid=0"
+        },
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "detectAutomatically"
+            }
+          }
         }
       },
-      "id": "60ca8287-488e-4174-97e9-10bac6ae36e9",
-      "name": "Starting Message",
-      "type": "n8n-nodes-base.slack",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
       "position": [
-        1072,
-        400
+        -1680,
+        80
       ],
-      "webhookId": "c02eb407-5547-4aa0-9ebf-46dab67b63b6",
-      "typeVersion": 2.2,
-      "disabled": true
+      "id": "7d4101b3-d8a6-4e81-8230-8c26e12fa6a7",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
     },
     {
       "parameters": {
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "mode": "name",
-          "value": "#notifications"
-        },
-        "text": "=✅ Backup has completed - {{ $('Get Workflows').all().length }} workflows have been processed.",
-        "otherOptions": {}
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 19
+            }
+          ]
+        }
       },
-      "id": "5f35553a-4e02-4a3f-a027-1d73860489ef",
-      "name": "Completed Notification",
-      "type": "n8n-nodes-base.slack",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
       "position": [
-        2176,
+        -1920,
+        80
+      ],
+      "id": "80471515-879e-4850-8a78-a7823f09db72",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.C }}\n{{ $json.B }}\n{{ $json.E }}",
+        "options": {
+          "systemMessage": "=Explain the leetcode problem. We are given the title of the problem, the type it is, and an explanation of the solution. \n\nFormat:\nLeetCode problem: ____.\nExplain the problem.\nGive a brief funny thought about it.\n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (UNDER 200 characters)"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -928,
         0
       ],
-      "webhookId": "a0c6e8c8-5d71-40fa-b02b-63a7ed5726c4",
-      "executeOnce": true,
-      "typeVersion": 2.2,
-      "disabled": true
+      "id": "a1f5215f-3c0f-4564-90f5-97e09b84d037",
+      "name": "AI Agent3"
     },
     {
       "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {
+          "maxRetries": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -816,
+        192
+      ],
+      "id": "472c7cc9-c115-485d-b948-7b19450e9589",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -1472,
+        80
+      ],
+      "id": "e8f08e28-4b70-4166-8ffc-19d8529f2333",
+      "name": "Limit2"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw",
+          "mode": "list",
+          "cachedResultName": "neetcode",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "A": "={{ $json.A }}",
+            "B": "={{ $json.B }}",
+            "C": "={{ $json.C }}",
+            "D": "={{ $json.D }}",
+            "E": "={{ $json.E }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "A",
+              "displayName": "A",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "B",
+              "displayName": "B",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "C",
+              "displayName": "C",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "D",
+              "displayName": "D",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E",
+              "displayName": "E",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
         "options": {}
       },
-      "id": "1adaa738-6b43-403d-8ddd-6b1556c8e344",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
       "position": [
-        1952,
-        400
+        -1264,
+        192
       ],
-      "typeVersion": 3
+      "id": "36a50872-9537-4562-aeac-2332b455335f",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw",
+          "mode": "list",
+          "cachedResultName": "neetcode",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tMeRMGduwbdM7wdx1TtGb6sQDmJRp5fGSDzVoHY6hvw/edit#gid=0"
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        -1088,
+        192
+      ],
+      "id": "190ccabb-9f68-4df4-a193-015bb4ef5e68",
+      "name": "Delete rows or columns from sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.linkedin.com/v2/userinfo",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        -224
+      ],
+      "id": "3c3f56db-55ba-4611-92cf-f183a4b5ee31",
+      "name": "Get linked",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "DL4giYYLpEWoAmFx",
+          "name": "Linkedin-post"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/v2/ugcPosts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"author\": \"urn:li:person:Ha3S3vSVp6\",\n    \"lifecycleState\": \"PUBLISHED\",\n    \"specificContent\": {\n        \"com.linkedin.ugc.ShareContent\": {\n            \"shareCommentary\": {\n                \"text\": {{ JSON.stringify($('Code1').item.json.output) }}\n\n            },\n            \"shareMediaCategory\": \"NONE\"   \n        }\n    },\n    \"visibility\": {\n        \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\"\n    }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        784,
+        -224
+      ],
+      "id": "e20ac083-7f1d-4efb-b898-bc96848fa282",
+      "name": "Post Linkedin",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "DL4giYYLpEWoAmFx",
+          "name": "Linkedin-post"
+        }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Google Sheets Trigger": {
+      "documentId": "1nanuKhtBI4tb9FL9tUCYjlPGSE-ETa_PFXjJR6mBrng",
+      "sheetId": 0,
+      "lastRevision": 12,
+      "lastRevisionLink": "https://docs.google.com/spreadsheets/export?id=1nanuKhtBI4tb9FL9tUCYjlPGSE-ETa_PFXjJR6mBrng&revision=12&exportFormat=xlsx"
+    },
+    "node:RSS Feed Trigger": {
+      "lastItemDate": "2025-07-28T11:00:17.000Z"
+    },
+    "node:Youtube video": {
+      "lastItemDate": "2025-07-29T03:06:12.000Z"
+    },
+    "node:RSS Feed Trigger1": {
+      "lastItemDate": "2025-08-05T19:59:02.000Z"
+    },
+    "node:n8n rssfeed": {
+      "lastItemDate": "2025-07-24T11:25:02.000Z"
+    },
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-08-06T04:06:23.263Z",
-  "versionId": "7faa7168-9a46-4a85-911b-72804b38180d"
+  "triggerCount": 6,
+  "updatedAt": "2025-08-05T20:35:07.320Z",
+  "versionId": "0bdd29b6-de57-4c80-84bf-2f8f31bc613b"
 }
