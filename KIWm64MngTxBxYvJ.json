@@ -275,7 +275,7 @@
   },
   "createdAt": "2025-08-22T03:20:57.136Z",
   "id": "KIWm64MngTxBxYvJ",
-  "isArchived": false,
+  "isArchived": true,
   "meta": {
     "templateId": "1534"
   },
@@ -816,6 +816,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-22T03:20:57.136Z",
-  "versionId": "b6522acb-5cb4-429e-b2d7-c0147180b310"
+  "updatedAt": "2025-08-27T22:46:07.900Z",
+  "versionId": "eb4d2d5e-cd56-4489-ab5b-c9354a4a0a2a"
 }
