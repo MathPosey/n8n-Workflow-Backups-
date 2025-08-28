@@ -3,13 +3,7 @@
   "connections": {
     "When clicking ‘Execute workflow’": {
       "main": [
-        [
-          {
-            "node": "LINKEDIN",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -19,34 +13,8 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "My workflow 2",
+  "name": "Deep Research",
   "nodes": [
-    {
-      "parameters": {
-        "url": "https://api.linkedin.com/v2/userinfo",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "AQXa07UaEmUR7eOrQhklGZj0Gj-CaOkGVvt2B8uwpcLZib_ZUgY8o4_aXlLLHz_nfpl34WzGzmj-62th49f1UYmxIWRfFp3B5E7GcNjAS7bAudGVEiFzfdhgSwW3qtmX9BZFv5MYXWpwqeEFSpIcuSU5CfinjinPduEIJp923oYTGojZ3jMQzKvQa5xfbTX1CJLmuFZCpqvML3QTWRcvwAKFjOA_12kU-K2NYhCrtsAoXdn99g9e-LUruGQ6P-vMk3O1GDtxZDgPjG-xvTZRGoQJR9vV9qmTnUlMY6-mYxO1Q-AQoNn-PtGGw37EusIdpNdJqJfmO2s2q90UxZPSsLNscwBoiQ"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"post\": {\n    \"accountId\": \"{{ $('Assign Social Media IDs').item.json.linkedin_id }}\",\n    \"target\": {\n      \"targetType\": \"linkedin\"\n      \n    },\n    \"content\": {\n      \"text\": \"{{ $('Get my video').item.json.DESCRIPTION }}\",\n      \"platform\": \"linkedin\",\n      \"mediaUrls\": [\n        \"{{ $json.url }}\"\n      ]\n    }\n  }\n}\n",
-        "options": {}
-      },
-      "id": "e25aa18a-774d-4c64-bf64-ff583f831aa2",
-      "name": "LINKEDIN",
-      "type": "n8n-nodes-base.httpRequest",
-      "position": [
-        224,
-        -32
-      ],
-      "typeVersion": 4.2
-    },
     {
       "parameters": {},
       "type": "n8n-nodes-base.manualTrigger",
@@ -57,25 +25,6 @@
       ],
       "id": "069bbaeb-4a13-4b49-b4a0-099b84358fd0",
       "name": "When clicking ‘Execute workflow’"
-    },
-    {
-      "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.linkedIn",
-      "typeVersion": 1,
-      "position": [
-        528,
-        -96
-      ],
-      "id": "8322daeb-d1fb-49fa-834b-a1415f719cf7",
-      "name": "Create a post",
-      "credentials": {
-        "linkedInOAuth2Api": {
-          "id": "x9DoOByo1DK0FK7t",
-          "name": "LinkedIn account"
-        }
-      }
     }
   ],
   "origin": "n8n",
@@ -99,6 +48,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T06:00:11.553Z",
-  "versionId": "8b53e43a-dbca-4d66-8d33-bf90aab568c4"
+  "updatedAt": "2025-08-27T22:49:26.596Z",
+  "versionId": "c601906f-c759-4002-a21d-317883fe6e35"
 }
