@@ -1037,6 +1037,24 @@
       ],
       "id": "b1ddd77f-9a25-4562-bd4b-8857234efc34",
       "name": "Nextdoor post"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {}
+          ]
+        },
+        "feedUrl": "https://www.vallejosun.com/rss/"
+      },
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        192,
+        224
+      ],
+      "id": "a7120390-39a0-4fce-ad1f-5c4cb3b1f6e9",
+      "name": "RSS Feed Trigger"
     }
   ],
   "origin": "n8n",
@@ -1065,16 +1083,16 @@
       "lastRevisionLink": "https://docs.google.com/spreadsheets/export?id=1nanuKhtBI4tb9FL9tUCYjlPGSE-ETa_PFXjJR6mBrng&revision=12&exportFormat=xlsx"
     },
     "node:RSS Feed Trigger": {
-      "lastItemDate": "2025-07-28T11:00:17.000Z"
+      "lastItemDate": "2025-09-05T16:41:53.000Z"
     },
     "node:Youtube video": {
       "lastItemDate": "2025-08-20T05:43:28.000Z"
     },
     "node:RSS Feed Trigger1": {
-      "lastItemDate": "2025-09-04T17:33:38.000Z"
+      "lastItemDate": "2025-09-05T17:36:05.000Z"
     },
     "node:n8n rssfeed": {
-      "lastItemDate": "2025-08-21T10:17:35.000Z"
+      "lastItemDate": "2025-09-03T17:39:41.000Z"
     },
     "node:Schedule Trigger": {
       "recurrenceRules": []
@@ -1084,7 +1102,7 @@
     }
   },
   "tags": [],
-  "triggerCount": 6,
-  "updatedAt": "2025-08-17T01:30:58.810Z",
-  "versionId": "40b59189-68a1-466d-9fcf-fa82bdfbda46"
+  "triggerCount": 7,
+  "updatedAt": "2025-09-05T17:44:36.398Z",
+  "versionId": "56c0c790-c343-424f-a369-1cf5d6ea51d4"
 }
