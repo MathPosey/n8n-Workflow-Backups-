@@ -317,6 +317,39 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent4",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent4": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-07-24T06:03:01.674Z",
@@ -1055,6 +1088,60 @@
       ],
       "id": "a7120390-39a0-4fce-ad1f-5c4cb3b1f6e9",
       "name": "RSS Feed Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.title }}{{ $json.contentSnippet }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Your Tone & Style Guide\nProfessional promoting my business \nhttps://bayareaweb.dev/\n\n        Negative topic? Keep a serious tone, but weave in hope, solutions, or lessons from tough experiences.\n        (Example: “Hard work isn’t always glamorous, but the blisters and sweat are proof of something real.”)\n\nEnd with a question.\n\nImportant formatting requirements:\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (somewhere around 100 - 200 characters)\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        -448,
+        -912
+      ],
+      "id": "ebf6a56a-d0f2-4a36-a58e-24063bfe791e",
+      "name": "AI Agent4"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -496,
+        -704
+      ],
+      "id": "0ef5117c-87eb-4aeb-8b29-2d5de1f4d72d",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -720,
+        -848
+      ],
+      "id": "1696e089-3587-4ae7-8e70-1f3d0799efd1",
+      "name": "When clicking ‘Execute workflow’"
     }
   ],
   "origin": "n8n",
@@ -1083,26 +1170,29 @@
       "lastRevisionLink": "https://docs.google.com/spreadsheets/export?id=1nanuKhtBI4tb9FL9tUCYjlPGSE-ETa_PFXjJR6mBrng&revision=12&exportFormat=xlsx"
     },
     "node:RSS Feed Trigger": {
-      "lastItemDate": "2025-09-24T23:52:47.000Z"
+      "lastItemDate": "2025-09-26T17:31:44.000Z"
     },
     "node:Youtube video": {
       "lastItemDate": "2025-09-16T17:22:51.000Z"
     },
     "node:RSS Feed Trigger1": {
-      "lastItemDate": "2025-09-25T17:09:51.000Z"
+      "lastItemDate": "2025-09-26T17:18:48.000Z"
     },
     "node:n8n rssfeed": {
-      "lastItemDate": "2025-09-03T17:39:41.000Z"
+      "lastItemDate": "2025-09-24T16:11:54.000Z"
     },
     "node:Schedule Trigger": {
       "recurrenceRules": []
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": []
+    },
+    "node:Website promotion": {
+      "recurrenceRules": []
     }
   },
   "tags": [],
   "triggerCount": 7,
-  "updatedAt": "2025-09-08T21:25:31.324Z",
-  "versionId": "071447df-333a-4997-af5d-e3f31c16304d"
+  "updatedAt": "2025-09-26T16:51:20.075Z",
+  "versionId": "ef88b2ab-972b-4b44-834f-9e984b3855f2"
 }
