@@ -36,20 +36,14 @@
     },
     "AI Agent": {
       "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "AI Agent1": {
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -365,8 +359,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        32,
-        704
+        16,
+        896
       ],
       "id": "8f093f84-6cdf-4313-9b9f-b4d3459d6d96",
       "name": "AI Agent"
@@ -386,8 +380,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        32,
-        928
+        16,
+        1120
       ],
       "id": "0f1c6cfa-15de-4bbd-bc92-8eb555420b56",
       "name": "OpenAI Chat Model",
@@ -401,9 +395,9 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $('huffpost rss feed').item.json.content }}",
+        "text": "={{ $json.contentSnippet }}",
         "options": {
-          "systemMessage": "No tone of voice only research.\nCreate a summery of the question/problem.\nYou specialize in identifying real small business pain points, exploring potential markets, and pitching realistic solutions using automation, AI, or low-code tools. Generate smart, helpful, DATA in a LIST. identify trends, that may indicate a social tone.\n\nYOU MUST FOLLOW THE INSTRUCTIONS BELOW IF YOU DO THE OUTPUT WILL BREAK\nRespond with a clean plain-text output only. Do not include markdown, code blocks, line breaks (\\n), emojis, or special characters. Do not use asterisks, bullet points, or markdown formatting. Write in complete sentences as if you're speaking on camera."
+          "systemMessage": "You are a digital marketing professional promoting my website\nbayareaweb.dev to small businesses that that just need a simple welcome page with their contact information. It is vital that you include a link to my website bayareaweb.dev. \nUse the prompt information as a guide for the target audience of small business owners. \n\nYOU MUST FOLLOW THE INSTRUCTIONS BELOW IF YOU DO THE OUTPUT WILL BREAK\nRespond with a clean plain-text output only. Do not include markdown, code blocks, line breaks (\\n), emojis, or special characters. Do not use asterisks, bullet points, or markdown formatting. Write in complete sentences as if you're speaking on camera."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -492,7 +486,7 @@
       "parameters": {
         "resource": "video",
         "operation": "upload",
-        "title": "n8n",
+        "title": "={{ $('Limit').item.json.title }}",
         "regionCode": "US",
         "categoryId": "28",
         "binaryProperty": "=data",
@@ -546,7 +540,7 @@
     },
     {
       "parameters": {
-        "url": "https://chaski.huffpost.com/us/auto/vertical/health",
+        "url": "https://fitsmallbusiness.com/feed/",
         "options": {}
       },
       "type": "n8n-nodes-base.rssFeedRead",
@@ -586,6 +580,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-10-12T02:51:09.926Z",
-  "versionId": "89c4f4d0-030b-4e6b-a332-edae18368010"
+  "updatedAt": "2025-10-12T22:46:40.149Z",
+  "versionId": "6b1087cb-c0a0-496f-ada4-a347fc46ccfc"
 }
