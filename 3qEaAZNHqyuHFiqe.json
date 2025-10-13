@@ -83,17 +83,6 @@
         ]
       ]
     },
-    "RSS Feed Trigger1": {
-      "main": [
-        [
-          {
-            "node": "Limit1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent1": {
       "main": [
         [
@@ -127,22 +116,11 @@
         ]
       ]
     },
-    "n8n rssfeed": {
-      "main": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Schedule Trigger": {
       "main": [
         [
           {
-            "node": "huffpost rss feed",
+            "node": "fitsmallbusiness",
             "type": "main",
             "index": 0
           }
@@ -181,17 +159,6 @@
         [
           {
             "node": "AI Agent1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "huffpost rss feed": {
-      "main": [
-        [
-          {
-            "node": "Limit",
             "type": "main",
             "index": 0
           }
@@ -350,6 +317,39 @@
           }
         ]
       ]
+    },
+    "fitsmallbusiness": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PCmag": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mindMyBusinessNYC": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-07-24T06:03:01.674Z",
@@ -503,29 +503,11 @@
     },
     {
       "parameters": {
-        "pollTimes": {
-          "item": [
-            {}
-          ]
-        },
-        "feedUrl": "https://www.pcmag.com/feeds/rss/latest"
-      },
-      "type": "n8n-nodes-base.rssFeedReadTrigger",
-      "typeVersion": 1,
-      "position": [
-        -1648,
-        -624
-      ],
-      "id": "c45388e7-5f00-415e-beae-9acc05822251",
-      "name": "RSS Feed Trigger1"
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "={{ $json.title }}{{ $json.contentSnippet }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "Your Tone & Style Guide\n\n    Authentic & Grounded:\n    Draw from your past — the hard work of being a massage therapist, conservationist, and park maintenance worker. Use these experiences to add real-world metaphors or lessons about resilience, discipline, and humility.\n\n    Smart, But Not Pretentious:\n    You’re a computer science grad now, but keep the tone accessible. Use tech terms when needed, but balance them with everyday analogies or real-life lessons from the field.\n\n    Wittiness & Edge:\n    Sprinkle clever humor or sharp observations (like a well-placed eyebrow raise in text form). But never forced — it should feel like the kind of wit someone naturally hears in a conversation with you.\n\n    Matching the Tone:\n\n        Positive topic? Be inspiring but grounded — no fake motivational quotes. Use anecdotes or lessons learned.\n\n        Neutral topic? Add curiosity or a questioning angle.\n\n        Negative topic? Keep a serious tone, but weave in hope, solutions, or lessons from tough experiences.\n        (Example: “Hard work isn’t always glamorous, but the blisters and sweat are proof of something real.”)\n\nEnd with a question.\n\nImportant formatting requirements:\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (somewhere around 100 - 200 characters)\n\n"
+          "systemMessage": "You are my personal marketing adjent. \n\nThe prompts you recieve could be anything, but whats important is to bring it back to my qualities as an employee and how I can benefit the company. \nLet people know that I am working on building single page websites bayareaweb.dev\n\nImportant formatting requirements:\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (somewhere around 100 - 200 characters)\n\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -607,25 +589,6 @@
     },
     {
       "parameters": {
-        "pollTimes": {
-          "item": [
-            {
-              "mode": "everyMonth"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.rssFeedReadTrigger",
-      "typeVersion": 1,
-      "position": [
-        -1648,
-        -432
-      ],
-      "id": "dd3acddf-6a5c-4e21-8687-e0da7dd5131a",
-      "name": "n8n rssfeed"
-    },
-    {
-      "parameters": {
         "rule": {
           "interval": [
             {
@@ -697,20 +660,6 @@
       ],
       "id": "ec7d78f9-10fb-44a9-be99-8d566af181fe",
       "name": "Limit1"
-    },
-    {
-      "parameters": {
-        "url": "https://chaski.huffpost.com/us/auto/vertical/health",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.2,
-      "position": [
-        -1648,
-        -816
-      ],
-      "id": "fc6a941a-69e0-4d87-9450-3bd45c27cb59",
-      "name": "huffpost rss feed"
     },
     {
       "parameters": {
@@ -820,7 +769,7 @@
         "promptType": "define",
         "text": "={{ $json.C }}\n{{ $json.B }}\n{{ $json.E }}",
         "options": {
-          "systemMessage": "=Explain the leetcode problem. We are given the title of the problem, the type it is, and an explanation of the solution. \n\nFormat:\nLeetCode problem: ____.\nExplain the problem.\nGive a brief funny thought about it.\n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (UNDER 200 characters)"
+          "systemMessage": "=Leecode problem: {{ $json.C }}, this is a {{ $json.B }} type, {{ $json.E }}. \n\n\n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (UNDER 200 characters)"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -1142,6 +1091,58 @@
       ],
       "id": "1696e089-3587-4ae7-8e70-1f3d0799efd1",
       "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://fitsmallbusiness.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -1648,
+        -816
+      ],
+      "id": "fc6a941a-69e0-4d87-9450-3bd45c27cb59",
+      "name": "fitsmallbusiness"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {}
+          ]
+        },
+        "feedUrl": "https://www.pcmag.com/feeds/rss/latest"
+      },
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1648,
+        -624
+      ],
+      "id": "c45388e7-5f00-415e-beae-9acc05822251",
+      "name": "PCmag"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMonth"
+            }
+          ]
+        },
+        "feedUrl": "https://www.mindmybusinessnyc.com/category/small-business/feed/"
+      },
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1648,
+        -432
+      ],
+      "id": "dd3acddf-6a5c-4e21-8687-e0da7dd5131a",
+      "name": "mindMyBusinessNYC"
     }
   ],
   "origin": "n8n",
@@ -1173,10 +1174,10 @@
       "lastItemDate": "2025-10-10T17:21:42.000Z"
     },
     "node:Youtube video": {
-      "lastItemDate": "2025-09-16T17:22:51.000Z"
+      "lastItemDate": "2025-10-12T21:52:23.000Z"
     },
     "node:RSS Feed Trigger1": {
-      "lastItemDate": "2025-10-11T23:00:46.000Z"
+      "lastItemDate": "2025-10-12T20:00:00.000Z"
     },
     "node:n8n rssfeed": {
       "lastItemDate": "2025-10-09T07:49:56.000Z"
@@ -1189,10 +1190,16 @@
     },
     "node:Website promotion": {
       "recurrenceRules": []
+    },
+    "node:PCmag": {
+      "lastItemDate": "2025-10-12T20:00:00.000Z"
+    },
+    "node:mindMyBusinessNYC": {
+      "lastItemDate": "2025-10-02T13:32:06.000Z"
     }
   },
   "tags": [],
   "triggerCount": 7,
-  "updatedAt": "2025-09-26T16:51:20.075Z",
-  "versionId": "ef88b2ab-972b-4b44-834f-9e984b3855f2"
+  "updatedAt": "2025-10-12T23:03:16.738Z",
+  "versionId": "3c9b0dff-bbe0-4257-9dcb-ad391aa93eea"
 }
