@@ -1,39 +1,12 @@
 {
   "active": false,
   "connections": {
-    "Start": {
-      "main": [
-        [
-          {
-            "node": "Google Sheets",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Google Sheets (Read)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Sheets": {
       "main": [
         [
           {
             "node": "AI Agent",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -64,17 +37,6 @@
         ]
       ]
     },
-    "Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Sheets (Log)": {
       "ai_tool": [
         [
@@ -86,12 +48,23 @@
         ]
       ]
     },
-    "AI Agent": {
+    "Start": {
       "main": [
         [
           {
-            "node": "Google Sheets (Log)",
+            "node": "Google Sheets",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -107,26 +80,16 @@
     {
       "parameters": {
         "content": "## AI Job Search Agent Workflow 🤖\n\nThis workflow is designed to automate the process of calling companies from a Google Sheet to inquire about job opportunities.\n\n**1. Start Node:** Initiates the workflow.\n\n**2. Google Sheets Node (Read Data):**\n   - **Action:** Reads rows from your specified Google Sheet.\n   - **Configuration:** You *must* configure this node with your **Google Sheet ID** and **Sheet Name**.\n   - **Expected Data:** Ensure your sheet contains columns like 'Phone Number' and 'Company Name' for the AI Agent to use.\n\n**3. AI Agent Node:**\n   - **Role:** Acts as your personal job search assistant.\n   - **Instructions:** It will receive company and phone number data from Google Sheets and, *hypothetically*, use a calling tool to contact them.\n   - **Important:** The actual \"calling\" functionality is currently **MISSING**. You would need to add a custom tool (e.g., an integration with Twilio or a custom HTTP request to a calling API) that the AI Agent can utilize.\n\n**4. OpenAI Chat Model:**\n   - **Function:** Provides the intelligence for the AI Agent to understand prompts and generate responses during calls.\n   - **Configuration:** Ensure your OpenAI credentials are set up in n8n.",
-        "height": 400,
+        "height": 816,
         "width": 700
       },
       "name": "Workflow Explanation",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         192,
-        -208
+        -176
       ],
       "id": "generated-8bfaa277-231a-4bd3-82c5-bdb9af0acf6e"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.start",
-      "position": [
-        250,
-        200
-      ],
-      "name": "Start",
-      "id": "generated-237f5384-af14-4fd8-9f1a-050e78d6c773"
     },
     {
       "parameters": {
@@ -149,61 +112,16 @@
       "name": "Google Sheets",
       "type": "n8n-nodes-base.googleSheets",
       "position": [
-        500,
-        200
+        64,
+        400
       ],
-      "id": "generated-f006bec0-3047-4645-a6ab-caf7c39b53ac"
-    },
-    {
-      "parameters": {
-        "model": {
-          "value": "gpt-4o-mini",
-          "mode": "list"
-        },
-        "options": {
-          "baseURL": "https://api.openai.com/v1",
-          "frequencyPenalty": 0,
-          "maxTokens": -1,
-          "responseFormat": "text",
-          "presencePenalty": 0,
-          "temperature": 0.7,
-          "timeout": 60000,
-          "maxRetries": 2,
-          "topP": 1
+      "id": "generated-f006bec0-3047-4645-a6ab-caf7c39b53ac",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
         }
-      },
-      "position": [
-        368,
-        464
-      ],
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "name": "OpenAI Chat Model",
-      "id": "generated-f02f9501-967b-4d65-b45b-2606062e4036"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "You are a professional recruiter. Your task is to call companies from a provided list, identify the appropriate contact person for job opportunities, and politely inquire about any open positions that match the skills of the user (e.g., a software developer, data analyst, etc. - specify here). If no immediate openings, ask about future possibilities and how to stay informed. Log the outcome of each call, including contact person, job leads, or reasons for no leads.",
-        "options": {
-          "systemMessage": "You are a helpful assistant",
-          "maxIterations": 10,
-          "returnIntermediateSteps": false,
-          "passthroughBinaryImages": true,
-          "enableStreaming": true,
-          "batching": {
-            "batchSize": 1,
-            "delayBetweenBatches": 0
-          },
-          "maxTokensFromMemory": 0
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "position": [
-        736,
-        240
-      ],
-      "name": "AI Agent",
-      "id": "generated-292aad94-8e28-425e-bf9c-3d225a88c2dd"
+      }
     },
     {
       "parameters": {
@@ -224,8 +142,8 @@
       "type": "n8n-nodes-base.start",
       "name": "Start",
       "position": [
-        250,
-        200
+        -176,
+        384
       ],
       "id": "generated-ca356399-8794-46b3-8875-aa23fff8635d"
     },
@@ -249,24 +167,16 @@
       "name": "Google Sheets (Read)",
       "type": "n8n-nodes-base.googleSheetsTool",
       "position": [
-        450,
-        200
+        336,
+        720
       ],
-      "id": "generated-512b5b24-4a7f-4c4d-a5e0-9860ea0b867b"
-    },
-    {
-      "parameters": {
-        "model": "gpt-3.5-turbo",
-        "options": {},
-        "temperature": 0.7
-      },
-      "position": [
-        650,
-        400
-      ],
-      "type": "@n8n/n8n-nodes-langchain.openAiChat",
-      "name": "OpenAI Chat Model",
-      "id": "generated-cbbb9198-106e-4047-a9c5-399e317fe28d"
+      "id": "generated-512b5b24-4a7f-4c4d-a5e0-9860ea0b867b",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
     },
     {
       "parameters": {
@@ -279,40 +189,12 @@
         }
       },
       "position": [
-        1008,
-        704
+        496,
+        736
       ],
       "type": "n8n-nodes-base.twilioTool",
       "name": "Twilio Tool",
       "id": "generated-5053f959-2cea-464c-94f3-89e260ba75f1"
-    },
-    {
-      "parameters": {
-        "prompt": "You are a helpful AI assistant acting as a professional recruiter. Your task is to call potential candidates from a list, introduce yourself, inquire about job opportunities related to their skills, and gather information. Use the Twilio Tool to make calls. Log all call details and conversation outcomes using the Google Sheets (Log) tool. Be polite and professional. When you are asked to make a call, extract the phone number from the input.",
-        "llm": "OpenAI Chat Model",
-        "tools": [
-          "Twilio Tool",
-          "Google Sheets (Log)"
-        ],
-        "memory": "Chat Memory"
-      },
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.aiAgent",
-      "position": [
-        850,
-        500
-      ],
-      "id": "generated-9e17b074-4abc-49dd-a4b9-eba68841725b"
-    },
-    {
-      "parameters": {},
-      "name": "Chat Memory",
-      "type": "@n8n/n8n-nodes-langchain.chatMemory",
-      "position": [
-        650,
-        600
-      ],
-      "id": "generated-71c14d87-b47b-4f34-9ab0-ec08ff9ca1f5"
     },
     {
       "parameters": {
@@ -332,11 +214,56 @@
       },
       "name": "Google Sheets (Log)",
       "position": [
-        1200,
-        288
+        784,
+        720
       ],
       "type": "n8n-nodes-base.googleSheetsTool",
-      "id": "generated-00d3bcac-89ff-4459-b9d6-a492cc10cf16"
+      "id": "generated-00d3bcac-89ff-4459-b9d6-a492cc10cf16",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Recruiter agent on behalf of Matthew Posey",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        272,
+        400
+      ],
+      "id": "c5eaca39-64b7-4515-8ca0-18bd86932dac",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        608
+      ],
+      "id": "a283b40c-cc5e-49ad-b3e6-19936344df17",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "origin": "n8n",
@@ -360,6 +287,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-03T23:17:15.538Z",
-  "versionId": "e5a324e8-eb67-4332-a09f-2b024d2e7c74"
+  "updatedAt": "2025-11-07T05:56:53.264Z",
+  "versionId": "c9f63e35-ba42-4177-b1bd-42e26dbb4878"
 }
