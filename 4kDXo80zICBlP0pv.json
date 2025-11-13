@@ -36,7 +36,13 @@
     },
     "AI Agent": {
       "main": [
-        []
+        [
+          {
+            "node": "Execute a command",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "AI Agent1": {
@@ -138,6 +144,28 @@
           {
             "node": "AI Agent1",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Credential Checker": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -353,13 +381,13 @@
         "promptType": "define",
         "text": "={{ $json.output }}",
         "options": {
-          "systemMessage": "Catchy Headline/Opening: Begin with a strong hook that immediately grabs the reader's attention.\nDeliver on the Promise: Content should provide the value or information hinted at in the hook.\nUse Visuals: Incorporate eye-catching images or videos that complement the hook and content.\nStorytelling (Optional but Recommended): Humans connect with stories, so weaving a narrative can make the post more relatable and memorable.\nClear Call to Action (CTA): Encourage engagement by asking readers to comment, share, or take another specific action.\nTailor to the Platform: Adapt hooks and format for different social media networks (e.g., shorter and more visual hooks for TikTok, more professional hooks for LinkedIn).\nBreaks and Formatting: Use whitespace, subheadings, and shorter sentences to make content easy to read and understand.\nLeverage Trends: Incorporate trending topics or challenges to increase relevance and potential reach.\n\nYOU MUST FOLLOW THE INSTRUCTIONS BELOW IF YOU DO THE OUTPUT WILL BREAK\nRespond with a clean plain-text output only. Do not include markdown, code blocks, line breaks (\\n), emojis, or special characters. Do not use asterisks, bullet points, or markdown formatting. Write in complete sentences as if you're speaking on camera."
+          "systemMessage": "You are my workflow assistant Matt, making sure that my n8n workflow credentials are upto date and working.\n\n1. use the tool to check on this work flow. https://n8n-design-u50647.vm.elestio.app/workflow/4kDXo80zICBlP0pv/1b64f3\n\n2. click the edit button next to credentials.\n3. log into google. \n4. report back if the credntials are working or not"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        16,
+        1952,
         896
       ],
       "id": "8f093f84-6cdf-4313-9b9f-b4d3459d6d96",
@@ -380,8 +408,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        16,
-        1120
+        1792,
+        1104
       ],
       "id": "0f1c6cfa-15de-4bbd-bc92-8eb555420b56",
       "name": "OpenAI Chat Model",
@@ -505,7 +533,8 @@
           "id": "McQ9Hyczvsg3SnQ9",
           "name": "YouTube account"
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -551,6 +580,52 @@
       ],
       "id": "19aef161-7698-4124-90b7-ea5def50390f",
       "name": "huffpost rss feed"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.uploadId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1968,
+        1104
+      ],
+      "id": "1c5e1e99-3b0c-4c27-97a7-e54f2247c9bf",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to ensure my youtube credentials are working, and if not, activate my youtube credentials.",
+        "url": "https://n8n-design-u50647.vm.elestio.app/workflow/4kDXo80zICBlP0pv/1b64f3",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        2112,
+        1104
+      ],
+      "id": "8da1b723-3cd7-4310-b47b-e4f8caacb916",
+      "name": "Credential Checker"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        2304,
+        896
+      ],
+      "id": "95480edc-e136-4f70-bdcd-f9486e2b5c74",
+      "name": "Execute a command",
+      "credentials": {
+        "sshPassword": {
+          "id": "J1SXyDwO5v6E97GB",
+          "name": "SSH Password account"
+        }
+      }
     }
   ],
   "origin": "n8n",
@@ -580,6 +655,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-10-12T22:46:40.149Z",
-  "versionId": "6b1087cb-c0a0-496f-ada4-a347fc46ccfc"
+  "updatedAt": "2025-11-13T04:32:03.901Z",
+  "versionId": "24d3651e-07e6-47f2-ab74-2bfdb08264ee"
 }
