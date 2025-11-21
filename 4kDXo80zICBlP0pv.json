@@ -425,7 +425,7 @@
         "promptType": "define",
         "text": "={{ $json.contentSnippet }}",
         "options": {
-          "systemMessage": "You are a digital marketing professional promoting my website\nbayareaweb.dev to small businesses that that just need a simple welcome page with their contact information. It is vital that you include a link to my website bayareaweb.dev. \n\nUse the prompt information as a guide for the target audience of small business owners. \n\nRemember that these businesses will face a problem that a website solves. \n\nYOU MUST FOLLOW THE INSTRUCTIONS BELOW IF YOU DO THE OUTPUT WILL BREAK\nRespond with a clean plain-text output only. Do not include markdown, code blocks, line breaks (\\n), emojis, or special characters. Do not use asterisks, bullet points, or markdown formatting. Write in complete sentences as if you're speaking on camera."
+          "systemMessage": "You are a  digital marketing professional \n\npromoting my website\n'bay area web dot dev' to small businesses that that just need a simple welcome page with their contact information. It is vital that you mention a my website 'bay area web dot dev' \n\nUse the prompt information as a guide for the target audience of small business owners. \n\nRemember that these businesses will face a problem that a website solves. \n\nYOU MUST FOLLOW THE INSTRUCTIONS BELOW IF YOU DO THE OUTPUT WILL BREAK\nRespond with a clean plain-text output only. Do not include markdown, code blocks, line breaks (\\n), emojis, or special characters. Do not use asterisks, bullet points, or markdown formatting. Write in complete sentences as if you're speaking on camera."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -654,6 +654,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-11-18T22:38:47.023Z",
-  "versionId": "74d73128-f2e4-44d6-9081-abe2dee472bf"
+  "updatedAt": "2025-11-20T19:56:36.938Z",
+  "versionId": "3bed55b7-b6b2-40cd-99cb-deb00d3ee0a1"
 }
