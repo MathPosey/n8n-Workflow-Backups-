@@ -508,7 +508,8 @@
         704
       ],
       "id": "a13d0034-0054-4797-aa02-7774e54a8f88",
-      "name": "downloadfile"
+      "name": "downloadfile",
+      "retryOnFail": true
     },
     {
       "parameters": {
@@ -654,6 +655,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-11-20T19:56:36.938Z",
-  "versionId": "3bed55b7-b6b2-40cd-99cb-deb00d3ee0a1"
+  "updatedAt": "2025-11-24T20:34:09.519Z",
+  "versionId": "97172626-df98-43c3-ae6e-0d2e79e630ba"
 }
