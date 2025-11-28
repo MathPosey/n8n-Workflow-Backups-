@@ -19,7 +19,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "My workflow 2",
+  "name": "Gemini Something",
   "nodes": [
     {
       "parameters": {},
@@ -82,6 +82,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-27T02:53:05.917Z",
-  "versionId": "b6c70a4e-7feb-4576-9644-dc37a85f919f"
+  "updatedAt": "2025-11-27T14:31:45.791Z",
+  "versionId": "1846e858-6f24-437f-ad17-ae6c2ea79a42"
 }
