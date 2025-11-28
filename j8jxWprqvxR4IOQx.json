@@ -63,7 +63,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "My workflow 3",
+  "name": "Video Transformation, Shorts?",
   "nodes": [
     {
       "parameters": {},
@@ -330,6 +330,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-27T06:45:41.688Z",
-  "versionId": "eb637b5b-cabd-48a9-916e-6d9fad6405e8"
+  "updatedAt": "2025-11-27T14:31:21.778Z",
+  "versionId": "5cdf0472-b952-41f4-85de-690e5bdffc5e"
 }
