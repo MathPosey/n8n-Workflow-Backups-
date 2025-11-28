@@ -750,6 +750,7 @@
         "rule": {
           "interval": [
             {
+              "daysInterval": 2,
               "triggerAtHour": 19
             }
           ]
@@ -1022,24 +1023,6 @@
     },
     {
       "parameters": {
-        "pollTimes": {
-          "item": [
-            {}
-          ]
-        },
-        "feedUrl": "https://www.vallejosun.com/rss/"
-      },
-      "type": "n8n-nodes-base.rssFeedReadTrigger",
-      "typeVersion": 1,
-      "position": [
-        192,
-        224
-      ],
-      "id": "a7120390-39a0-4fce-ad1f-5c4cb3b1f6e9",
-      "name": "RSS Feed Trigger"
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "={{ $json.title }}{{ $json.contentSnippet }}",
         "hasOutputParser": true,
@@ -1171,7 +1154,7 @@
       "lastRevisionLink": "https://docs.google.com/spreadsheets/export?id=1nanuKhtBI4tb9FL9tUCYjlPGSE-ETa_PFXjJR6mBrng&revision=12&exportFormat=xlsx"
     },
     "node:RSS Feed Trigger": {
-      "lastItemDate": "2025-11-26T17:38:34.000Z"
+      "lastItemDate": "2025-11-26T20:35:37.000Z"
     },
     "node:Youtube video": {
       "lastItemDate": "2025-11-23T11:07:27.000Z"
@@ -1192,14 +1175,14 @@
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2025-11-26T18:48:46.000Z"
+      "lastItemDate": "2025-11-28T00:26:34.000Z"
     },
     "node:mindMyBusinessNYC": {
-      "lastItemDate": "2025-10-30T13:20:37.000Z"
+      "lastItemDate": "2025-11-23T12:39:02.000Z"
     }
   },
   "tags": [],
-  "triggerCount": 7,
-  "updatedAt": "2025-10-13T21:37:46.304Z",
-  "versionId": "67ea664a-c37b-4097-a619-eda9eaf89ba0"
+  "triggerCount": 6,
+  "updatedAt": "2025-11-28T01:20:30.071Z",
+  "versionId": "c1c830fb-a516-4072-8760-94d4fbba0ae0"
 }
