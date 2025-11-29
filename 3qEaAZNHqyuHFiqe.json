@@ -1169,13 +1169,15 @@
       "recurrenceRules": []
     },
     "node:Schedule Trigger1": {
-      "recurrenceRules": []
+      "recurrenceRules": [
+        332
+      ]
     },
     "node:Website promotion": {
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2025-11-28T00:26:34.000Z"
+      "lastItemDate": "2025-11-28T18:39:17.000Z"
     },
     "node:mindMyBusinessNYC": {
       "lastItemDate": "2025-11-23T12:39:02.000Z"
