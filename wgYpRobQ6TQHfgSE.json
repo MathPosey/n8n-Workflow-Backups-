@@ -1,0 +1,487 @@
+{
+  "active": false,
+  "connections": {
+    "Check for New Ideas": {
+      "main": [
+        [
+          {
+            "node": "Read Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Filter Pending Ideas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Pending Ideas": {
+      "main": [
+        [
+          {
+            "node": "Generate Lyrics (Claude)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Lyrics (Claude)": {
+      "main": [
+        [
+          {
+            "node": "Extract Lyrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Lyrics": {
+      "main": [
+        [
+          {
+            "node": "Generate Music (Placeholder)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate Cover Art",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate Video Background",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Music (Placeholder)": {
+      "main": [
+        [
+          {
+            "node": "Merge All Assets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Cover Art": {
+      "main": [
+        [
+          {
+            "node": "Merge All Assets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge All Assets": {
+      "main": [
+        [
+          {
+            "node": "Prepare Video Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Video Data": {
+      "main": [
+        [
+          {
+            "node": "Create Final Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Final Video": {
+      "main": [
+        [
+          {
+            "node": "Upload to Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Send to Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to Telegram": {
+      "main": [
+        [
+          {
+            "node": "Update Sheet Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-04T02:12:00.496Z",
+  "id": "wgYpRobQ6TQHfgSE",
+  "isArchived": false,
+  "meta": null,
+  "name": "AI Music Generator - Main Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "ea8e872c-2d33-414b-b1db-4959ff0745db",
+      "name": "Check for New Ideas",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Music Ideas"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "list",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "idea",
+              "displayName": "idea",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dab9ec66-a96d-4fc9-99f4-eca487e5b4ef",
+      "name": "Read Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        208,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"status\"]}}",
+              "operation": "equals",
+              "value2": "pending"
+            }
+          ]
+        }
+      },
+      "id": "2208db29-9817-4bcc-a7b5-f5323d7668fb",
+      "name": "Filter Pending Ideas",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "355d0eca-2c8f-4661-8213-72e831d955dc",
+      "name": "Generate Lyrics (Claude)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract lyrics from Claude response\nconst response = $input.item.json;\nconst lyrics = response.content[0].text;\n\nreturn {\n  json: {\n    idea: $input.item.json.idea,\n    lyrics: lyrics,\n    chatId: $input.item.json.chatId,\n    rowNumber: $input.item.json.rowNumber\n  }\n};"
+      },
+      "id": "bed56e0d-c86a-459e-8e17-d3b74df62268",
+      "name": "Extract Lyrics",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.openai.com/v1/audio/speech",
+        "authentication": "headerAuth",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "92250ac0-6804-4539-83e5-ecd79098c9ac",
+      "name": "Generate Music (Placeholder)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1104,
+        0
+      ],
+      "notes": "Replace with actual music generation API like Suno or MusicGen"
+    },
+    {
+      "parameters": {
+        "url": "https://api.openai.com/v1/images/generations",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "3363f13f-916a-4701-8a59-050738d59cc8",
+      "name": "Generate Cover Art",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1104,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.openai.com/v1/images/generations",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "36001e82-4664-4184-9ccd-60e2773d37a8",
+      "name": "Generate Video Background",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1104,
+        368
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "86d12ca8-4d77-41ee-b0cb-3fd45ccaeccc",
+      "name": "Merge All Assets",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1328,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Download and prepare assets for video creation\nconst items = $input.all();\n\nconst musicData = items[0].json;\nconst coverData = items[1].json;\nconst backgroundData = items[2].json;\n\nreturn {\n  json: {\n    idea: musicData.idea,\n    lyrics: musicData.lyrics,\n    chatId: musicData.chatId,\n    rowNumber: musicData.rowNumber,\n    musicUrl: musicData.data?.url || 'placeholder',\n    coverUrl: coverData.data?.[0]?.url || '',\n    backgroundUrl: backgroundData.data?.[0]?.url || ''\n  }\n};"
+      },
+      "id": "498e8cc6-3e6f-40bc-b021-dc7e280d3234",
+      "name": "Prepare Video Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1552,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=# This is a placeholder for FFmpeg video creation\n# You'll need FFmpeg installed on your n8n instance\n# Example command:\nffmpeg -loop 1 -i background.jpg -i audio.mp3 -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest output.mp4\n\necho \"Video creation placeholder - implement FFmpeg command here\""
+      },
+      "id": "3b9f4140-e8e6-4fc5-b319-37426742f496",
+      "name": "Create Final Video",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        128
+      ],
+      "notes": "Requires FFmpeg installed or use external video API service"
+    },
+    {
+      "parameters": {
+        "driveId": {
+          "__rl": true,
+          "value": "YOUR_DRIVE_ID",
+          "mode": "list",
+          "cachedResultName": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "YOUR_FOLDER_ID",
+          "mode": "list",
+          "cachedResultName": "AI Music Videos"
+        },
+        "options": {}
+      },
+      "id": "0271c18a-6d2d-48d3-8de9-05f2fc000f48",
+      "name": "Upload to Google Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1984,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{$json[\"chatId\"]}}",
+        "text": "=🎵 Your music video is ready!\n\nSong: {{$json[\"idea\"]}}\n\n📥 Download: {{$json[\"webViewLink\"]}}\n\nEnjoy your AI-generated music! 🎶",
+        "additionalFields": {}
+      },
+      "id": "ba5730ce-0e3c-4dba-899d-b8fc3b977977",
+      "name": "Send to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        2208,
+        128
+      ],
+      "webhookId": "b7a5ec2f-3353-4550-b74d-a8dd34cc5be5"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Music Ideas"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "list",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "completed",
+            "videoUrl": "={{$json[\"webViewLink\"]}}"
+          },
+          "matchingColumns": [
+            "rowNumber"
+          ],
+          "schema": [
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "videoUrl",
+              "displayName": "videoUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b97dda40-e6ed-4cd6-9826-b57fb5bc8516",
+      "name": "Update Sheet Status",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2432,
+        128
+      ]
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "MathPosey",
+    "name": "n8n-Workflow-Backups-"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-04T02:12:00.496Z",
+      "createdAt": "2025-12-04T02:12:00.496Z",
+      "role": "workflow:owner",
+      "workflowId": "wgYpRobQ6TQHfgSE",
+      "projectId": "VFY7knhJH9Pt1e6U"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-04T02:12:31.993Z",
+  "versionId": "4c837e8b-b743-40f6-bbfa-d3189f7cb06f"
+}
