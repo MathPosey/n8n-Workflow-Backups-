@@ -1,0 +1,2155 @@
+{
+  "active": false,
+  "connections": {
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Music Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Check Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Extend Song_1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Extend Song_2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Song 2": {
+      "main": [
+        [
+          {
+            "node": "Upload file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Song 1": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Status": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a song": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Check Status1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Check Status2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Status1": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Status2": {
+      "main": [
+        [
+          {
+            "node": "Switch4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Music Generator",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Music Generator": {
+      "main": [
+        [
+          {
+            "node": "Create a song",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "Get Song 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "Get Song 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Music Generator1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Check Status3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Get Song 3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Song ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Song ": {
+      "main": [
+        [
+          {
+            "node": "Upload file3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Song 3": {
+      "main": [
+        [
+          {
+            "node": "Upload file2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Status3": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a song1": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Music Generator1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Music Generator1": {
+      "main": [
+        [
+          {
+            "node": "Lyrics Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Music Generator",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Music Generator1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lyrics Generator": {
+      "main": [
+        [
+          {
+            "node": "Create a song1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Lyrics Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extend Song_1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extend Song_2": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Create a Song",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait4": {
+      "main": [
+        [
+          {
+            "node": "Check the status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a Song": {
+      "main": [
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check the status": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Download the song",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Download the song1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download the song": {
+      "main": [
+        [
+          {
+            "node": "Upload file4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download the song1": {
+      "main": [
+        [
+          {
+            "node": "Upload file4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-04T20:19:56.027Z",
+  "id": "6lhq6g4YS6jWNUaA",
+  "isArchived": false,
+  "meta": null,
+  "name": "Suno AI upload to google drive",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "openai/gpt-4.1",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        1472
+      ],
+      "id": "511ed9f4-754a-4e7d-8c2d-7d14818b89f5",
+      "name": "OpenRouter Chat Model"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        368,
+        1280
+      ],
+      "id": "483c27f3-575e-4153-949e-e8fdf0715494",
+      "name": "Wait",
+      "webhookId": "8698dac5-ae2b-4679-ab45-16c12fcff76b"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "df912d81-f99a-4e74-ad26-e40095ca8201"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5aa79cc9-9c8b-4cdc-a2ba-627097408fdd",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "PENDING",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9e37a7be-4332-4725-8231-3a01d5680d75",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "TEXT_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "be3f823e-6e4f-41f2-bb71-25f3a955c98d",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "FIRST_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        784,
+        1248
+      ],
+      "id": "95fc44da-23c4-4d23-8189-05dd17850524",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "name": "={{ $json.data.response.sunoData[0].sourceAudioUrl }}_v1.mp3",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_",
+          "mode": "list",
+          "cachedResultName": "Suno AI + n8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2000,
+        976
+      ],
+      "id": "464c6e66-35a3-4740-8afd-05b1432f07fb",
+      "name": "Upload file"
+    },
+    {
+      "parameters": {
+        "name": "={{ $json.data.response.sunoData[1].title }}_v2.mp3",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_",
+          "mode": "list",
+          "cachedResultName": "Suno AI + n8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1984,
+        1232
+      ],
+      "id": "b1c6a31a-cf80-41d1-9e7b-7ac44a1adb64",
+      "name": "Upload file1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.sunoData[1].sourceAudioUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1824,
+        1232
+      ],
+      "id": "604701ac-4bae-409f-b065-6025fc255669",
+      "name": "Get Song 2"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.sunoData[0].sourceAudioUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1840,
+        976
+      ],
+      "id": "b53463de-5cd8-4534-b65f-b4eb1098d134",
+      "name": "Get Song 1"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        592,
+        1280
+      ],
+      "id": "8b19be0f-70a9-4b4e-8f51-ebf1154c1742",
+      "name": "Check Status"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "prompt",
+              "value": "={{ $json.output.prompt }}"
+            },
+            {
+              "name": "style",
+              "value": "={{ $json.output.style }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $json.output.title }}"
+            },
+            {
+              "name": "customMode",
+              "value": "={{ $json.output.customMode }}"
+            },
+            {
+              "name": "instrumental",
+              "value": "={{ $json.output.instrumental }}"
+            },
+            {
+              "name": "model",
+              "value": "V5"
+            },
+            {
+              "name": "callBackUrl",
+              "value": "https://api.example.com/callback"
+            },
+            {
+              "name": "negativeTags",
+              "value": "={{ $json.output.negativeTags }}"
+            },
+            {
+              "name": "vocalGender",
+              "value": "f"
+            },
+            {
+              "name": "styleWeight",
+              "value": "={{ $json.output.styleWeight }}"
+            },
+            {
+              "name": "weirdnessConstraint",
+              "value": "={{ $json.output.weirdnessConstraint }}"
+            },
+            {
+              "name": "audioWeight",
+              "value": "={{ $json.output.audioWeight }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        160,
+        1280
+      ],
+      "id": "43a364a1-af47-4164-8dc2-bbf34ed9c6b2",
+      "name": "Create a song"
+    },
+    {
+      "parameters": {
+        "formTitle": "Suno AI Song Generator",
+        "formDescription": "Generate songs on autopilot.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What type of song to generate?",
+              "placeholder": "Jazz & Soul R&B – Warm Sax, Rhodes & Chill Grooves | Feel-Good Smooth Jazz for Relaxation "
+            },
+            {
+              "fieldLabel": "Song with lyrics?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Yes"
+                  },
+                  {
+                    "option": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -592,
+        1488
+      ],
+      "id": "4ebd1ba3-204f-41db-9342-81e829568aab",
+      "name": "On form submission",
+      "webhookId": "a28037d8-fdb5-40c2-9d07-775408eb05cf"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1264,
+        992
+      ],
+      "id": "9a1af5c8-bacc-4da5-a265-326d33e136d3",
+      "name": "Wait1",
+      "webhookId": "6b9653be-0d09-4b5d-80f2-fdff23b8d2d3"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $('Extend Song_1').item.json.data.taskId }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1456,
+        992
+      ],
+      "id": "9b37cc81-de16-44aa-a7e2-ccfa5de441b3",
+      "name": "Check Status1"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1248,
+        1248
+      ],
+      "id": "d58d2a43-b716-42e7-ab5a-b88cc58758c1",
+      "name": "Wait2",
+      "webhookId": "f129778a-dcb4-4cfe-923c-734d78e546ea"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1456,
+        1248
+      ],
+      "id": "f75379ab-673a-4a58-b47d-226fc5b9162a",
+      "name": "Check Status2"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"prompt\": \"A calm and relaxing piano track with soft melodies\",\n  \"style\": \"Classical\",\n  \"title\": \"Peaceful Piano Meditation\",\n  \"customMode\": true,\n  \"instrumental\": true,\n  \"negativeTags\": \"Heavy Metal, Upbeat Drums\",\n  \"vocalGender\": \"m\",\n  \"styleWeight\": 0.65,\n  \"weirdnessConstraint\": 0.65,\n  \"audioWeight\": 0.65\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        16,
+        1488
+      ],
+      "id": "d78f999e-5691-4c0d-a13b-9e1376f1ec1c",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json['What type of song to generate?'] }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=#Role & Goal\nYou generate a single JSON object configuring Suno.com to create a song based on the user’s request.\nYou must strictly follow the rules and return JSON only—no extra text.\n\n#Inputs (from the calling app)\n\nuser_prompt (string): what the user wants.\ncustomMode (boolean): whether to use Custom Mode.\ninstrumental (boolean): whether the track is instrumental.\nmodelVersion (enum): one of V3_5, V4, V4_5, V4_5PLUS, V5.\nOptional hints (may be absent): style, title, negativeTags, vocalGender, styleWeight, weirdnessConstraint, audioWeight, callBackUrl.\n\n#Hard Rules\nOutput format: return exactly one JSON object with keys in the order shown in Output Schema.\nMode logic\nCustom Mode (customMode: true)\nIf instrumental: true: style and title are required.\nprompt is allowed and recommended if helpful.\nIf instrumental: false: style, prompt, and title are required.\nNon-Custom Mode (customMode: false)\nOnly include customMode and prompt.\nprompt length limit is 500 characters.\nDo not include any other keys (omit them entirely).\nCharacter limits by model\ntitle ≤ 80 on all models\nIf any field exceeds the limit, compress (remove filler, redundancies) and truncate with an ellipsis if needed.\n\n#Optional parameters behavior (Custom Mode only)\n\nvocalGender: use \"m\" or \"f\" only when vocals are requested or implied; omit otherwise. This increases probability but doesn’t guarantee the voice.\nstyleWeight, weirdnessConstraint, audioWeight: range 0–1, round to 2 decimals.\nnegativeTags: include if provided or if the user says “no/avoid/without …”. Otherwise omit.\n\n##Sanitization & consistency\nRemove contradictory phrases (e.g., “quiet but extremely loud”).\nRespect explicit exclusions (e.g., “no drums,” add negativeTags accordingly).\nIf the user specifies genre/era/mood/bpm/instruments, weave them into style (concise) and prompt (descriptive).\n\n##Title policy\nShort, evocative, ≤ 80 chars, Title Case, no emojis, no trailing punctuation.\n\n##Inference defaults (when user is vague)\nstyle: infer concise genre/mood tags from user_prompt (e.g., “Lo-fi, Chillhop, Warm Tape Hiss”).\ntitle: 2–6 words from the main theme (e.g., “Midnight Harbor Lights”).\nvocalGender: omit unless explicitly requested (e.g., “male vocals”).\n\n##Numeric weights:\n\nStart from 0.65 if the user doesn’t indicate strictness/experimentation.\nIf the user wants strict fidelity (“stick closely”, “exactly like”): styleWeight 0.8–0.95, weirdnessConstraint 0.15–0.35.\nIf the user wants experimental: styleWeight 0.4–0.6, weirdnessConstraint 0.6–0.9.\nIf the user emphasizes sonic texture/production (“sound design”, “timbre”, “punchy mix”): set audioWeight 0.7–0.9; otherwise 0.5–0.7.\n\n##Compression heuristics (when over limits)\n\nPrioritize: instruments → genre → mood → tempo → structure → reference vibes.\nRemove fillers (“very”, “really”), duplicates, platform meta.\nMerge equivalent tags, e.g., “calm, soothing, relaxing” → “calm, relaxing”.\n\n##Style drafting tips\n\nKeep style compact, comma-separated tags (2–8 items max).\nPut long narrative, scene and arrangement details in prompt.\nFor instrumental requests, ensure style clearly encodes genre + mood; avoid vocal directives.\n\n##Negative tags extraction\n\nDetect phrases like “no/avoid/without/skip X”. Add them to negativeTags as a comma-separated string.\nCommon auto-exclusions for calm/ambient pieces if not contradicted: “Harsh Distortion, Screaming Vocals, Blast Beats”.\n\n##Algorithm (step-by-step)\n\nRead customMode, instrumental, and user_prompt.\n\nIf customMode is false → produce only { customMode: false, prompt }, enforce 500-char limit, stop.\nIf customMode is true:\nBuild a concise style from genre/mood/instrument tags inferred from user_prompt and any hints.\nCreate title (2–6 words, Title Case).\nSet prompt:\nIf instrumental: false → required; include narrative, role, arrangement, energy curve.\nIf instrumental: true → optional; include if it adds clarity (e.g., structure, dynamics).\nExtract negativeTags from “no/avoid/without…” phrases. Omit if none.\nSet vocalGender only if vocals requested and gender is specified.\nDetermine numeric weights per Inference defaults; round to 2 decimals; omit if truly unset.\nEnforce model-specific limits (prompt/style/title). Compress/truncate as needed.\n\n#Mini Examples\n\n## Custom, Instrumental (calm piano)\nUser says: “A calm and relaxing piano track with soft melodies. No drums.”\nOutput:\n\n{\n  \"prompt\": \"Gentle solo piano with spacious room reverb, slow evolving voicings, soft dynamics, lullaby feel, minimal pedaling, simple A–B structure.\",\n  \"style\": \"Classical, Ambient, Calm, Soft Piano\",\n  \"title\": \"Peaceful Piano Meditation\",\n  \"customMode\": true,\n  \"instrumental\": true,\n  \"styleWeight\": 0.70,\n  \"weirdnessConstraint\": 0.30,\n  \"audioWeight\": 0.60\n}\n\n\n## Custom, With Vocals (male indie folk)\nUser says: “Intimate indie-folk ballad with male vocals, fingerpicked guitar, cabin vibe. Avoid synths.”\nOutput:\n\n{\n  \"prompt\": \"Warm fingerpicked acoustic guitar, close-mic vocal, intimate cabin ambience, gentle brush percussion, subtle double-tracked chorus, verse–chorus–bridge structure.\",\n  \"style\": \"Indie Folk, Acoustic, Intimate, Warm, Lo-Fi Room\",\n  \"title\": \"Cabin Light\",\n  \"customMode\": true,\n  \"instrumental\": false,\n  \"negativeTags\": \"Synths, EDM Leads, Heavy Distortion\",\n  \"vocalGender\": \"m\",\n  \"styleWeight\": 0.75,\n  \"weirdnessConstraint\": 0.35,\n  \"audioWeight\": 0.65\n}\n\n#Notes\nOutput ONLY a single valid JSON object. Do NOT include any text, comments, or formatting before or after the JSON. Do NOT use markdown code blocks.",
+          "passthroughBinaryImages": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -160,
+        1280
+      ],
+      "id": "d5c6f732-07c5-4260-808b-9e5797801e91",
+      "name": "Music Generator"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "df912d81-f99a-4e74-ad26-e40095ca8201"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5aa79cc9-9c8b-4cdc-a2ba-627097408fdd",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "PENDING",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9e37a7be-4332-4725-8231-3a01d5680d75",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "TEXT_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "be3f823e-6e4f-41f2-bb71-25f3a955c98d",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "FIRST_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        1632,
+        960
+      ],
+      "id": "3eeb5471-82b8-444b-a549-6c140a33dedd",
+      "name": "Switch3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "df912d81-f99a-4e74-ad26-e40095ca8201"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5aa79cc9-9c8b-4cdc-a2ba-627097408fdd",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "PENDING",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9e37a7be-4332-4725-8231-3a01d5680d75",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "TEXT_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "be3f823e-6e4f-41f2-bb71-25f3a955c98d",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "FIRST_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        1632,
+        1248
+      ],
+      "id": "75654b4b-321b-4002-840c-1569e19f99e2",
+      "name": "Switch4"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-4.1",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        1888
+      ],
+      "id": "ec82e6c0-30fa-42c6-bc5a-6d2b54d3384e",
+      "name": "OpenRouter Chat Model1"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        1696
+      ],
+      "id": "aa4cf63b-e5f7-4904-ac43-fbd41d9c098a",
+      "name": "Wait3",
+      "webhookId": "b4e6173f-9a9f-4504-886c-4b8a60938b0d"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "df912d81-f99a-4e74-ad26-e40095ca8201"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5aa79cc9-9c8b-4cdc-a2ba-627097408fdd",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "PENDING",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9e37a7be-4332-4725-8231-3a01d5680d75",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "TEXT_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "be3f823e-6e4f-41f2-bb71-25f3a955c98d",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "FIRST_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "da98926e-57fd-43f4-b2bf-12fd1efcf4aa",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        1136,
+        1664
+      ],
+      "id": "3124f34e-29a1-4bd2-b589-8f026bb361f0",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "name": "={{ $json.data.response.sunoData[0].title }}_v1.mp3",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_",
+          "mode": "list",
+          "cachedResultName": "Suno AI + n8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1584,
+        1584
+      ],
+      "id": "150e6dcc-7f46-45a4-bd2a-5f32f1c4c2b7",
+      "name": "Upload file2"
+    },
+    {
+      "parameters": {
+        "name": "={{ $json.data.response.sunoData[1].title }}_v2.mp3",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_",
+          "mode": "list",
+          "cachedResultName": "Suno AI + n8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1584,
+        1776
+      ],
+      "id": "daaf86aa-6e5e-4ce7-9f53-90aa21183236",
+      "name": "Upload file3"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.sunoData[1].audioUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1424,
+        1776
+      ],
+      "id": "f7187d16-97da-4443-8746-b85d05799283",
+      "name": "Get Song "
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.sunoData[0].audioUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1424,
+        1584
+      ],
+      "id": "ac067daf-df4b-4e12-a70c-99548e0f07f2",
+      "name": "Get Song 3"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        944,
+        1696
+      ],
+      "id": "7f363094-4e60-4f80-b0e6-0cdf34f961f7",
+      "name": "Check Status3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "prompt",
+              "value": "={{ $json.output }}"
+            },
+            {
+              "name": "style",
+              "value": "={{ $('Music Generator1').item.json.output.style }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $('Music Generator1').item.json.output.title }}"
+            },
+            {
+              "name": "customMode",
+              "value": "={{ $('Music Generator1').item.json.output.customMode }}"
+            },
+            {
+              "name": "instrumental",
+              "value": "={{ $('Music Generator1').item.json.output.instrumental }}"
+            },
+            {
+              "name": "model",
+              "value": "V5"
+            },
+            {
+              "name": "callBackUrl",
+              "value": "https://api.example.com/callback"
+            },
+            {
+              "name": "negativeTags",
+              "value": "={{ $('Music Generator1').item.json.output.negativeTags }}"
+            },
+            {
+              "name": "vocalGender",
+              "value": "={{ $('Music Generator1').item.json.output.vocalGender }}"
+            },
+            {
+              "name": "styleWeight",
+              "value": "={{ $('Music Generator1').item.json.output.styleWeight }}"
+            },
+            {
+              "name": "weirdnessConstraint",
+              "value": "={{ $('Music Generator1').item.json.output.weirdnessConstraint }}"
+            },
+            {
+              "name": "audioWeight",
+              "value": "={{ $('Music Generator1').item.json.output.audioWeight }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        512,
+        1696
+      ],
+      "id": "a62d8347-bcd4-442a-b8ef-37f91e9f8273",
+      "name": "Create a song1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"prompt\": \"A calm and relaxing piano track with soft melodies\",\n  \"style\": \"Classical\",\n  \"title\": \"Peaceful Piano Meditation\",\n  \"customMode\": true,\n  \"instrumental\": true,\n  \"negativeTags\": \"Heavy Metal, Upbeat Drums\",\n  \"vocalGender\": \"m\",\n  \"styleWeight\": 0.65,\n  \"weirdnessConstraint\": 0.65,\n  \"audioWeight\": 0.65\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -16,
+        1904
+      ],
+      "id": "5a378ed8-c44e-4941-9ed9-1237eea25e77",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('On form submission').item.json['What type of song to generate?'] }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=#Role & Goal\nYou generate a single JSON object configuring Suno.com to create a song based on the user’s request.\nYou must strictly follow the rules and return JSON only—no extra text.\n\n#Inputs (from the calling app)\n\nuser_prompt (string): what the user wants.\ncustomMode (boolean): whether to use Custom Mode.\ninstrumental (boolean): whether the track is instrumental.\nvocalGender (string): \"m\" stands for male, \"f\" stands for female.\nOptional hints (may be absent): style, title, negativeTags, vocalGender, styleWeight, weirdnessConstraint, audioWeight, callBackUrl.\n\n#Hard Rules\nOutput format: return exactly one JSON object with keys in the order shown in Output Schema.\nMode logic\nCustom Mode (customMode: true)\nIf instrumental: true: style and title are required.\nprompt is allowed and recommended if helpful.\nIf instrumental: false: style, prompt, and title are required.\nNon-Custom Mode (customMode: false)\nOnly include customMode and prompt.\nprompt length limit is 500 characters.\nDo not include any other keys (omit them entirely).\nCharacter limits by model\ntitle ≤ 80 on all models\nIf any field exceeds the limit, compress (remove filler, redundancies) and truncate with an ellipsis if needed.\n\n#Optional parameters behavior (Custom Mode only)\n\nvocalGender: use \"m\" or \"f\" This increases probability but doesn’t guarantee the voice.\nstyleWeight, weirdnessConstraint, audioWeight: range 0–1, round to 2 decimals.\nnegativeTags: include if provided or if the user says “no/avoid/without …”. Otherwise omit.\n\n##Sanitization & consistency\nRemove contradictory phrases (e.g., “quiet but extremely loud”).\nRespect explicit exclusions (e.g., “no drums,” add negativeTags accordingly).\nIf the user specifies genre/era/mood/bpm/instruments, weave them into style (concise) and prompt (descriptive).\n\n##Title policy\nShort, evocative, ≤ 80 chars, Title Case, no emojis, no trailing punctuation.\n\n##Inference defaults (when user is vague)\nstyle: infer concise genre/mood tags from user_prompt (e.g., “Lo-fi, Chillhop, Warm Tape Hiss”).\ntitle: 2–6 words from the main theme (e.g., “Midnight Harbor Lights”).\nvocalGender: omit unless explicitly requested (e.g., “male vocals”).\n\n##Numeric weights:\n\nStart from 0.65 if the user doesn’t indicate strictness/experimentation.\nIf the user wants strict fidelity (“stick closely”, “exactly like”): styleWeight 0.8–0.95, weirdnessConstraint 0.15–0.35.\nIf the user wants experimental: styleWeight 0.4–0.6, weirdnessConstraint 0.6–0.9.\nIf the user emphasizes sonic texture/production (“sound design”, “timbre”, “punchy mix”): set audioWeight 0.7–0.9; otherwise 0.5–0.7.\n\n##Compression heuristics (when over limits)\n\nPrioritize: instruments → genre → mood → tempo → structure → reference vibes.\nRemove fillers (“very”, “really”), duplicates, platform meta.\nMerge equivalent tags, e.g., “calm, soothing, relaxing” → “calm, relaxing”.\n\n##Style drafting tips\n\nKeep style compact, comma-separated tags (2–8 items max).\nPut long narrative, scene and arrangement details in prompt.\nFor instrumental requests, ensure style clearly encodes genre + mood; avoid vocal directives.\n\n##Negative tags extraction\n\nDetect phrases like “no/avoid/without/skip X”. Add them to negativeTags as a comma-separated string.\nCommon auto-exclusions for calm/ambient pieces if not contradicted: “Harsh Distortion, Screaming Vocals, Blast Beats”.\n\n##Algorithm (step-by-step)\n\nRead customMode, instrumental, and user_prompt.\n\nIf customMode is false → produce only { customMode: false, prompt }, enforce 500-char limit, stop.\nIf customMode is true:\nBuild a concise style from genre/mood/instrument tags inferred from user_prompt and any hints.\nCreate title (2–6 words, Title Case).\nSet prompt:\nIf instrumental: false → required; include narrative, role, arrangement, energy curve.\nIf instrumental: true → optional; include if it adds clarity (e.g., structure, dynamics).\nExtract negativeTags from “no/avoid/without…” phrases. Omit if none.\nSet vocalGender only if vocals requested and gender is specified.\nDetermine numeric weights per Inference defaults; round to 2 decimals; omit if truly unset.\nEnforce model-specific limits (prompt/style/title). Compress/truncate as needed.\n\n#Mini Examples\n\n## Custom, Instrumental (calm piano)\nUser says: “A calm and relaxing piano track with soft melodies. No drums.”\nOutput:\n\n{\n  \"prompt\": \"Gentle solo piano with spacious room reverb, slow evolving voicings, soft dynamics, lullaby feel, minimal pedaling, simple A–B structure.\",\n  \"style\": \"Classical, Ambient, Calm, Soft Piano\",\n  \"title\": \"Peaceful Piano Meditation\",\n  \"customMode\": true,\n  \"instrumental\": true,\n  \"vocalGender\": \"f\",\n  \"styleWeight\": 0.70,\n  \"weirdnessConstraint\": 0.30,\n  \"audioWeight\": 0.60\n}\n\n\n## Custom, With Vocals (male indie folk)\nUser says: “Intimate indie-folk ballad with male vocals, fingerpicked guitar, cabin vibe. Avoid synths.”\nOutput:\n\n{\n  \"prompt\": \"Warm fingerpicked acoustic guitar, close-mic vocal, intimate cabin ambience, gentle brush percussion, subtle double-tracked chorus, verse–chorus–bridge structure.\",\n  \"style\": \"Indie Folk, Acoustic, Intimate, Warm, Lo-Fi Room\",\n  \"title\": \"Cabin Light\",\n  \"customMode\": true,\n  \"instrumental\": false,\n  \"negativeTags\": \"Synths, EDM Leads, Heavy Distortion\",\n  \"vocalGender\": \"m\",\n  \"styleWeight\": 0.75,\n  \"weirdnessConstraint\": 0.35,\n  \"audioWeight\": 0.65\n}\n\n#Notes\nOutput ONLY a single valid JSON object. Do NOT include any text, comments, or formatting before or after the JSON. Do NOT use markdown code blocks.",
+          "passthroughBinaryImages": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -176,
+        1696
+      ],
+      "id": "8d52d268-cc4e-4339-bb19-e3ac63783b43",
+      "name": "Music Generator1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b95ad2d8-dcf7-4c31-8188-cba80ea55e0f",
+              "leftValue": "={{ $json['Song with lyrics?'] }}",
+              "rightValue": "No",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -432,
+        1488
+      ],
+      "id": "77a945e6-ceeb-4eeb-b6f4-7a22736834cd",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('On form submission').item.json['What type of song to generate?'] }}",
+        "options": {
+          "systemMessage": "=#Role & Goal\nYou transform a user prompt into fully written song lyrics using a strict, and exact formatting. Your output is text only—no explanations outside the required sections.\n\n#Inputs (from the calling app)\n\nuser_prompt (string): concept, genre, mood, imagery, references, language, constraints.\nOptional hints: desired structure (e.g., add a bridge), vocal perspective (I/you/they), time period, setting, key phrases to include/avoid, language.\n\n#Hard Rules\n\nLanguage: write in the language requested by the user; if unspecified, use English.\nNo placeholders like “(Lyrics…)” in Step 4—write real lyrics. Placeholders are allowed only in Step 3.\nConsistency: maintain a single POV and tense unless the user asks for a shift. Keep imagery, mood, and narrative coherent.\nQuality: avoid clichés and filler; favor concrete imagery, metaphor, internal rhyme/alliteration where natural; hooks should be memorable.\nDefault Song Structure (adapt per genre if user is silent)\n\n[Intro] → brief scene-setting (can be instrumental)\n[Verse 1] → establish setting, character, conflict\n[Pre-Chorus] (optional) → tension lift toward chorus\n[Chorus] → central hook/theme\n[Verse 2] → development/twist/details\n[Bridge] (optional) → contrast or perspective shift\n[Chorus] (repeat verbatim unless user requests variation)\n[Outro] → resolution or thematic echo (can be instrumental)\n\n#Tagging Schema\n\n##use single bracket for section, then parentheses for a one-line cue.\nExample:\n[Verse 1]\n(Lyrics about digital loneliness)\n\n##Use double bracket line—first bracket is the section, second bracket lists 2–5 tags describing emotion + production, then write the lyrics lines below.\nExample:\n[Verse 1] [moody + brooding, minimal synth]\n<lyric lines…>\n\n#Line & Length Guidance (adapt to genre)\nVerse: 6–10 lines\nPre-Chorus: 2–4 lines\nChorus: 4–8 lines; repeat chorus identically when it returns unless asked otherwise\nBridge: 4–6 lines\nIntro/Outro: 1–4 lines or instrumental note\nKeep lines concise (typically ≤ 12–14 syllables) and singable.\n\n#Example_output\n\n[Intro] [<emotion + emotion, key instrument/texture>]\n<lyrics or \"(Instrumental …)\" if instrumental-only>\n\n[Verse 1] [<emotion + emotion, instrument/texture>]\n<6–10 lyric lines advancing the story>\n\n[Pre-Chorus] [<lift/anticipation, production note>]  <-- omit if not used\n<2–4 lyric lines tightening the hook>\n\n[Chorus] [<anthemic/soaring OR intimate/understated, hook-forward>]\n<4–8 lyric lines with the memorable hook; repeat verbatim on return>\n\n[Verse 2] [<developing, added detail/texture>]\n<6–10 lyric lines evolving narrative or imagery>\n\n[Bridge] [<contrast/shift, spatial/reverb note>]      <-- omit if not used\n<4–6 lyric lines offering a fresh angle or emotional turn>\n\n[Chorus] [<same tags as first chorus>]\n<repeat the exact chorus from above unless user asked for variation>\n\n[Outro] [<resolving, fade/echo, instrument>]\n<1–4 lyric lines or \"(Instrumental …)\">\n\n\n#Implementation Notes\n-Derive concrete images and metaphors from user_prompt (time of day, setting, weather, objects, colors, sensory details).\n-Weave any must-use phrases naturally; if user lists “avoid” items, do not include them.\n-Keep punctuation clean; no rhyming labels (AABB) or chord charts.\n-Never include the words “placeholder” or “example” in the final lyrics.\n-No extra commentary—only the four sections above."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        1696
+      ],
+      "id": "55f4dcb9-e18a-4007-95b4-bab0bf802160",
+      "name": "Lyrics Generator"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        176,
+        1872
+      ],
+      "id": "3b5660af-92eb-4847-8c11-5e14a8f83db4",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "content": "Generate song with lyrics\n",
+        "width": 278
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        1648
+      ],
+      "id": "eadc8273-eb98-468d-96ee-e8cf2b0d495e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Generate song w/o lyrics\n",
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        1232
+      ],
+      "id": "b556fbf2-d449-4719-bbb6-ee2ef3f1b8a5",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate/extend",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "defaultParamFlag",
+              "value": "false"
+            },
+            {
+              "name": "audioId",
+              "value": "={{ $json.data.response.sunoData[0].id }}"
+            },
+            {
+              "name": "model",
+              "value": "V5"
+            },
+            {
+              "name": "callBackUrl",
+              "value": "https://api.example.com/callback"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1056,
+        992
+      ],
+      "id": "38628a7b-5d8f-42b1-95a2-ad4909fb1d66",
+      "name": "Extend Song_1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate/extend",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "defaultParamFlag",
+              "value": "false"
+            },
+            {
+              "name": "audioId",
+              "value": "={{ $json.data.response.sunoData[1].id }}"
+            },
+            {
+              "name": "model",
+              "value": "V5"
+            },
+            {
+              "name": "callBackUrl",
+              "value": "https://api.example.com/callback"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1056,
+        1248
+      ],
+      "id": "6ffa9e3f-4cb3-4ef2-8126-369f72bf9ceb",
+      "name": "Extend Song_2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -352,
+        96
+      ],
+      "id": "fea3b2c5-9a78-4be2-9c94-67eb01dd4730",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "name": "New_song",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_",
+          "mode": "list",
+          "cachedResultName": "Suno AI + n8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1o3Tp2PjViKKQd14GZ8zNCDQsePPlnZ5_"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1056,
+        -64
+      ],
+      "id": "3daffdba-1dcb-48f4-b29c-609091601b96",
+      "name": "Upload file4"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        96,
+        96
+      ],
+      "id": "84c78e76-f810-4dd5-87fd-543af10f8018",
+      "name": "Wait4",
+      "webhookId": "634a0e4d-0b75-4223-ac55-c1751815098a"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "prompt",
+              "value": "A calm and relaxing piano track with soft melodies"
+            },
+            {
+              "name": "style",
+              "value": "Classical"
+            },
+            {
+              "name": "title",
+              "value": "Peaceful Piano Meditation"
+            },
+            {
+              "name": "customMode",
+              "value": "true"
+            },
+            {
+              "name": "instrumental",
+              "value": "true"
+            },
+            {
+              "name": "model",
+              "value": "V5"
+            },
+            {
+              "name": "callBackUrl",
+              "value": "https://api.example.com/callback"
+            },
+            {
+              "name": "negativeTags",
+              "value": "Heavy Metal, Upbeat Drums"
+            },
+            {
+              "name": "vocalGender",
+              "value": "m"
+            },
+            {
+              "name": "styleWeight",
+              "value": "0.65"
+            },
+            {
+              "name": "weirdnessConstraint",
+              "value": "0.65"
+            },
+            {
+              "name": "audioWeight",
+              "value": "0.65"
+            },
+            {
+              "name": "personaId",
+              "value": "persona_123"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -144,
+        96
+      ],
+      "id": "64cf54af-ec65-4876-bedc-299b288ffad9",
+      "name": "Create a Song"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [YOUR_API_KEY]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        304,
+        96
+      ],
+      "id": "661722cb-eebf-4134-ab21-27b6efff00a1",
+      "name": "Check the status"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "158729bf-c922-49b8-9cf6-27759d230a58"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fbb6e7d0-1c4b-472a-8ece-f0829e90a3e1",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "PENDING",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f20bdf30-70ab-4807-8262-8f66bc306101",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "TEXT_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2de43b90-7f71-41ca-8801-f376e5015c31",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "FIRST_SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        544,
+        64
+      ],
+      "id": "4b01030b-2126-41b7-8ecd-ad9ba896e879",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.sunoData[0].sourceAudioUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        -80
+      ],
+      "id": "a8547c6f-19de-4644-9a8f-8ef7e968b487",
+      "name": "Download the song"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.sunoData[1].sourceAudioUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        80
+      ],
+      "id": "4593c854-4cde-43a9-821d-156f47656aa5",
+      "name": "Download the song1"
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "MathPosey",
+    "name": "n8n-Workflow-Backups-"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-04T20:19:56.027Z",
+      "createdAt": "2025-12-04T20:19:56.027Z",
+      "role": "workflow:owner",
+      "workflowId": "6lhq6g4YS6jWNUaA",
+      "projectId": "VFY7knhJH9Pt1e6U"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-12-04T20:19:19.232Z",
+      "createdAt": "2025-12-04T20:19:19.232Z",
+      "id": "K7w95m5BBZfUT02S",
+      "name": "For Distribution"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-04T20:19:56.027Z",
+  "versionId": "39026b02-ce7c-4033-9698-277a3deea784"
+}
