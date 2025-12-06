@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "OpenRouter Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Music Generator",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Wait": {
       "main": [
         [
@@ -240,17 +229,6 @@
           {
             "node": "Wait2",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Music Generator1",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -534,6 +512,28 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Music Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Music Generator1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-12-04T20:19:56.027Z",
@@ -542,20 +542,6 @@
   "meta": null,
   "name": "Suno AI upload to google drive",
   "nodes": [
-    {
-      "parameters": {
-        "model": "openai/gpt-4.1",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        -208,
-        1472
-      ],
-      "id": "511ed9f4-754a-4e7d-8c2d-7d14818b89f5",
-      "name": "OpenRouter Chat Model"
-    },
     {
       "parameters": {
         "amount": 10
@@ -1247,20 +1233,6 @@
     },
     {
       "parameters": {
-        "model": "openai/gpt-4.1",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        -224,
-        1888
-      ],
-      "id": "ec82e6c0-30fa-42c6-bc5a-6d2b54d3384e",
-      "name": "OpenRouter Chat Model1"
-    },
-    {
-      "parameters": {
         "amount": 10
       },
       "type": "n8n-nodes-base.wait",
@@ -1693,7 +1665,13 @@
         1872
       ],
       "id": "3b5660af-92eb-4847-8c11-5e14a8f83db4",
-      "name": "OpenAI Chat Model"
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -2120,6 +2098,56 @@
       ],
       "id": "4593c854-4cde-43a9-821d-156f47656aa5",
       "name": "Download the song1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -224,
+        1488
+      ],
+      "id": "732f723d-ec06-481d-9435-1119b977bb31",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -240,
+        1888
+      ],
+      "id": "0586119f-5b0c-4dec-a82e-ef34b8d59814",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "origin": "n8n",
@@ -2150,6 +2178,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-12-04T20:19:56.027Z",
-  "versionId": "39026b02-ce7c-4033-9698-277a3deea784"
+  "updatedAt": "2025-12-05T19:53:28.063Z",
+  "versionId": "a8c892f7-051c-4bfd-ab6f-30bfd266d55a"
 }
