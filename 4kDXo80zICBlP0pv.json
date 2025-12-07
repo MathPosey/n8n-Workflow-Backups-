@@ -1,5 +1,636 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-11-30T01:02:17.462Z",
+    "createdAt": "2025-11-30T01:02:17.462Z",
+    "versionId": "97172626-df98-43c3-ae6e-0d2e79e630ba",
+    "workflowId": "4kDXo80zICBlP0pv",
+    "nodes": [
+      {
+        "parameters": {
+          "url": "https://api.heygen.com/v2/avatars",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "x-api-key",
+                "value": "ZjA1Zjk5YWU3YmNhNGI3MGEyZDIyN2Q4NmEyOTE2NGItMTczOTY2MjA2Mw=="
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -256,
+          432
+        ],
+        "id": "66e9db9a-20b5-4edc-8a3e-5d6dee8ae5ef",
+        "name": "HTTP Request HeyGen List All Video",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "koPhxRbE7PZTM4v9",
+            "name": "Veo 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "https://api.heygen.com/v2/voices",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "x-api-key",
+                "value": "ZjA1Zjk5YWU3YmNhNGI3MGEyZDIyN2Q4NmEyOTE2NGItMTczOTY2MjA2Mw=="
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          96,
+          448
+        ],
+        "id": "06ae1829-8f32-4e36-b150-4bae2e202bbe",
+        "name": "HTTP Request list all voice",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "koPhxRbE7PZTM4v9",
+            "name": "Veo 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "## AI Voice Generated",
+          "height": 260,
+          "width": 300,
+          "color": 4
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          16,
+          384
+        ],
+        "id": "cc80393a-04ee-4ca3-8f0c-6c817556135a",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "content": "## Avatar video Generated",
+          "height": 260,
+          "width": 300,
+          "color": 4
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -304,
+          384
+        ],
+        "id": "61b44463-7a6e-4af6-97a1-ec383227e82a",
+        "name": "Sticky Note1"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.heygen.com/v2/video/generate",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "x-api-key",
+                "value": "ZjA1Zjk5YWU3YmNhNGI3MGEyZDIyN2Q4NmEyOTE2NGItMTczOTY2MjA2Mw=="
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"avatar\",\n        \"avatar_id\": \"ea07dd02d62b4099aeea344e58db9596\",\n        \"avatar_style\": \"normal\"\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": \"{{ $json.output }}\",\n        \"voice_id\": \"acf8cbda678f4af18748a456cfeacde8\",\n        \"speed\": 1.1\n      }\n    }\n  ],\n  \"dimension\": {\n    \"width\": 1280,\n    \"height\": 720\n  }\n}\n\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          688,
+          704
+        ],
+        "id": "da915a99-622e-434c-80f8-9eaa403297c6",
+        "name": "HeyGenerate Video",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "koPhxRbE7PZTM4v9",
+            "name": "Veo 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "https://api.heygen.com/v1/video_status.get",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "video_id",
+                "value": "={{ $json.data.video_id }}"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1104,
+          704
+        ],
+        "id": "7591e5e2-2208-4cff-a9e0-880e45407270",
+        "name": "get video",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "koPhxRbE7PZTM4v9",
+            "name": "Veo 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "amount": 6,
+          "unit": "minutes"
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          912,
+          704
+        ],
+        "id": "46c3e668-ac6e-47f1-b5bf-add55a1a7b33",
+        "name": "Wait",
+        "webhookId": "a4f6493d-4dfe-4864-9ced-14feb9d5abc7"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.output }}",
+          "options": {
+            "systemMessage": "You are my workflow assistant Matt, making sure that my n8n workflow credentials are upto date and working.\n\n1. use the tool to check on this work flow. https://n8n-design-u50647.vm.elestio.app/workflow/4kDXo80zICBlP0pv/1b64f3\n\n2. click the edit button next to credentials.\n3. log into google. \n4. report back if the credntials are working or not"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          1952,
+          896
+        ],
+        "id": "8f093f84-6cdf-4313-9b9f-b4d3459d6d96",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "value": "gpt-4.1-mini",
+            "mode": "list",
+            "cachedResultName": "gpt-4.1-mini"
+          },
+          "options": {
+            "responseFormat": "text"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          1792,
+          1104
+        ],
+        "id": "0f1c6cfa-15de-4bbd-bc92-8eb555420b56",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "FCgioqL0Ukq0AAAo",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.contentSnippet }}",
+          "options": {
+            "systemMessage": "You are a  digital marketing professional \n\npromoting my website\n'bay area web dot dev' to small businesses that that just need a simple welcome page with their contact information. It is vital that you mention a my website 'bay area web dot dev' \n\nUse the prompt information as a guide for the target audience of small business owners. \n\nRemember that these businesses will face a problem that a website solves. \n\nYOU MUST FOLLOW THE INSTRUCTIONS BELOW IF YOU DO THE OUTPUT WILL BREAK\nRespond with a clean plain-text output only. Do not include markdown, code blocks, line breaks (\\n), emojis, or special characters. Do not use asterisks, bullet points, or markdown formatting. Write in complete sentences as if you're speaking on camera."
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          -432,
+          704
+        ],
+        "id": "2097be33-a262-4729-b2be-9892b5aa1b1f",
+        "name": "AI Agent1"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4.1-mini"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          -416,
+          944
+        ],
+        "id": "368a42cc-1406-4502-b911-0d08e8339569",
+        "name": "OpenAI Chat Model3",
+        "credentials": {
+          "openAiApi": {
+            "id": "FCgioqL0Ukq0AAAo",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "for (const item of $input.all()) {\nitem.json.output = item.json.output.replace(/\\n/g, '');\n}\nreturn $input.all();"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          448,
+          704
+        ],
+        "id": "2758d5fa-21aa-4ad1-866c-533446ac9b5b",
+        "name": "Code"
+      },
+      {
+        "parameters": {
+          "public": true,
+          "initialMessages": "\n",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          -704,
+          592
+        ],
+        "id": "be567c89-3a91-4475-a2bd-ad73ec942d2d",
+        "name": "When chat message received",
+        "webhookId": "f8c46d91-fee6-4eed-9887-33664da566e8"
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.data.video_url }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1296,
+          704
+        ],
+        "id": "a13d0034-0054-4797-aa02-7774e54a8f88",
+        "name": "downloadfile",
+        "retryOnFail": true
+      },
+      {
+        "parameters": {
+          "resource": "video",
+          "operation": "upload",
+          "title": "={{ $('Limit').item.json.title }}",
+          "regionCode": "US",
+          "categoryId": "28",
+          "binaryProperty": "=data",
+          "options": {}
+        },
+        "name": "YouTube",
+        "type": "n8n-nodes-base.youTube",
+        "position": [
+          1664,
+          704
+        ],
+        "typeVersion": 1,
+        "id": "1b64f30a-3d5e-4b48-b3eb-7e01946afe3f",
+        "credentials": {
+          "youTubeOAuth2Api": {
+            "id": "McQ9Hyczvsg3SnQ9",
+            "name": "YouTube account"
+          }
+        },
+        "onError": "continueErrorOutput"
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "triggerAtHour": 6
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          -1104,
+          848
+        ],
+        "id": "5a5bfe02-d54f-4d9f-a9d2-935c355af8e4",
+        "name": "Schedule Trigger"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          -704,
+          800
+        ],
+        "id": "4bd7e62f-8f42-4fa2-b562-dbdcc0ed07c6",
+        "name": "Limit"
+      },
+      {
+        "parameters": {
+          "url": "https://fitsmallbusiness.com/feed/",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          -912,
+          800
+        ],
+        "id": "19aef161-7698-4124-90b7-ea5def50390f",
+        "name": "huffpost rss feed"
+      },
+      {
+        "parameters": {
+          "sessionIdType": "customKey",
+          "sessionKey": "={{ $json.uploadId }}"
+        },
+        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+        "typeVersion": 1.3,
+        "position": [
+          1968,
+          1104
+        ],
+        "id": "1c5e1e99-3b0c-4c27-97a7-e54f2247c9bf",
+        "name": "Simple Memory"
+      },
+      {
+        "parameters": {
+          "toolDescription": "Use this tool to ensure my youtube credentials are working, and if not, activate my youtube credentials.",
+          "url": "https://n8n-design-u50647.vm.elestio.app/workflow/4kDXo80zICBlP0pv/1b64f3",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequestTool",
+        "typeVersion": 4.3,
+        "position": [
+          2112,
+          1104
+        ],
+        "id": "8da1b723-3cd7-4310-b47b-e4f8caacb916",
+        "name": "Credential Checker"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          2304,
+          896
+        ],
+        "id": "95480edc-e136-4f70-bdcd-f9486e2b5c74",
+        "name": "Execute a command",
+        "credentials": {
+          "sshPassword": {
+            "id": "J1SXyDwO5v6E97GB",
+            "name": "SSH Password account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "HeyGenerate Video": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait": {
+        "main": [
+          [
+            {
+              "node": "get video",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Execute a command",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent1": {
+        "main": [
+          [
+            {
+              "node": "Code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "get video": {
+        "main": [
+          [
+            {
+              "node": "downloadfile",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model3": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code": {
+        "main": [
+          [
+            {
+              "node": "HeyGenerate Video",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When chat message received": {
+        "main": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "downloadfile": {
+        "main": [
+          [
+            {
+              "node": "YouTube",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "YouTube": {
+        "main": [
+          []
+        ]
+      },
+      "huffpost rss feed": {
+        "main": [
+          [
+            {
+              "node": "Limit",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "huffpost rss feed",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit": {
+        "main": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Simple Memory": {
+        "ai_memory": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Credential Checker": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "97172626-df98-43c3-ae6e-0d2e79e630ba",
   "connections": {
     "HeyGenerate Video": {
       "main": [
