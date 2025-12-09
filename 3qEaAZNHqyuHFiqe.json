@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-05T20:09:13.810Z",
-    "createdAt": "2025-12-05T20:09:13.810Z",
-    "versionId": "04424d26-424f-46ca-a6d4-8a68c944c376",
+    "updatedAt": "2025-12-08T18:05:26.909Z",
+    "createdAt": "2025-12-08T18:05:26.909Z",
+    "versionId": "7a14a4df-c169-4b87-b541-663dc3607f36",
     "workflowId": "3qEaAZNHqyuHFiqe",
     "nodes": [
       {
@@ -607,7 +607,7 @@
         "parameters": {
           "url": "https://api.linkedin.com/v2/userinfo",
           "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
+          "genericAuthType": "oAuth2Api",
           "options": {}
         },
         "type": "n8n-nodes-base.httpRequest",
@@ -622,6 +622,22 @@
           "httpHeaderAuth": {
             "id": "DL4giYYLpEWoAmFx",
             "name": "Linkedin-post"
+          },
+          "linkedInOAuth2Api": {
+            "id": "x9DoOByo1DK0FK7t",
+            "name": "LinkedIn account"
+          },
+          "oAuth2Api": {
+            "id": "izOal9FqFZzJIyBd",
+            "name": "linkedin Credentials"
+          },
+          "httpBearerAuth": {
+            "id": "XyxSh9RsZy4J9e4i",
+            "name": "Bearer Auth account"
+          },
+          "linkedInCommunityManagementOAuth2Api": {
+            "id": "l1CsJN7AmXsu8Fd4",
+            "name": "LinkedIn Community Management account"
           }
         }
       },
@@ -841,11 +857,6 @@
           [
             {
               "node": "Get linked",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Edit Fields",
               "type": "main",
               "index": 0
             }
@@ -1169,7 +1180,7 @@
     "name": null,
     "description": null
   },
-  "activeVersionId": "04424d26-424f-46ca-a6d4-8a68c944c376",
+  "activeVersionId": "7a14a4df-c169-4b87-b541-663dc3607f36",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -1198,11 +1209,6 @@
         [
           {
             "node": "Get linked",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -2131,7 +2137,7 @@
       "parameters": {
         "url": "https://api.linkedin.com/v2/userinfo",
         "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "genericAuthType": "oAuth2Api",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -2146,6 +2152,22 @@
         "httpHeaderAuth": {
           "id": "DL4giYYLpEWoAmFx",
           "name": "Linkedin-post"
+        },
+        "linkedInOAuth2Api": {
+          "id": "x9DoOByo1DK0FK7t",
+          "name": "LinkedIn account"
+        },
+        "oAuth2Api": {
+          "id": "izOal9FqFZzJIyBd",
+          "name": "linkedin Credentials"
+        },
+        "httpBearerAuth": {
+          "id": "XyxSh9RsZy4J9e4i",
+          "name": "Bearer Auth account"
+        },
+        "linkedInCommunityManagementOAuth2Api": {
+          "id": "l1CsJN7AmXsu8Fd4",
+          "name": "LinkedIn Community Management account"
         }
       }
     },
@@ -2338,7 +2360,15 @@
     }
   ],
   "origin": "n8n",
-  "pinData": {},
+  "pinData": {
+    "Code1": [
+      {
+        "json": {
+          "output": "Unlock your potential with every test. Each challenge is a stepping stone to growth. Embrace the process, learn from the journey, and let success follow. #growthmindset #resilience"
+        }
+      }
+    ]
+  },
   "repo": {
     "owner": "MathPosey",
     "name": "n8n-Workflow-Backups-"
@@ -2379,14 +2409,14 @@
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": [
-        340
+        342
       ]
     },
     "node:Website promotion": {
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2025-12-07T18:42:38.000Z"
+      "lastItemDate": "2025-12-08T18:18:21.000Z"
     },
     "node:mindMyBusinessNYC": {
       "lastItemDate": "2025-12-02T13:21:58.000Z"
@@ -2394,6 +2424,6 @@
   },
   "tags": [],
   "triggerCount": 7,
-  "updatedAt": "2025-12-05T20:09:13.805Z",
-  "versionId": "04424d26-424f-46ca-a6d4-8a68c944c376"
+  "updatedAt": "2025-12-08T18:05:26.949Z",
+  "versionId": "7a14a4df-c169-4b87-b541-663dc3607f36"
 }
