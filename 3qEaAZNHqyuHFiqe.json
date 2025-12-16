@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-08T18:05:26.909Z",
-    "createdAt": "2025-12-08T18:05:26.909Z",
-    "versionId": "7a14a4df-c169-4b87-b541-663dc3607f36",
+    "updatedAt": "2025-12-16T02:48:26.354Z",
+    "createdAt": "2025-12-16T02:48:26.354Z",
+    "versionId": "1b4ac73e-2b0e-4a2f-983c-d4bb8ac679a0",
     "workflowId": "3qEaAZNHqyuHFiqe",
     "nodes": [
       {
@@ -55,8 +55,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -64,
-          -208
+          -144,
+          -224
         ],
         "id": "b47e9fa7-769d-493e-b6f9-95451b9a8e16",
         "name": "Code1"
@@ -608,6 +608,18 @@
           "url": "https://api.linkedin.com/v2/userinfo",
           "authentication": "genericCredentialType",
           "genericAuthType": "oAuth2Api",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {}
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {}
+            ]
+          },
           "options": {}
         },
         "type": "n8n-nodes-base.httpRequest",
@@ -638,6 +650,10 @@
           "linkedInCommunityManagementOAuth2Api": {
             "id": "l1CsJN7AmXsu8Fd4",
             "name": "LinkedIn Community Management account"
+          },
+          "httpBasicAuth": {
+            "id": "ZAW7raAUm5AOY7K1",
+            "name": "Unnamed credential"
           }
         }
       },
@@ -646,7 +662,7 @@
           "method": "POST",
           "url": "https://api.linkedin.com/v2/ugcPosts",
           "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
+          "genericAuthType": "oAuth2Api",
           "sendBody": true,
           "specifyBody": "json",
           "jsonBody": "={\n    \"author\": \"urn:li:person:Ha3S3vSVp6\",\n    \"lifecycleState\": \"PUBLISHED\",\n    \"specificContent\": {\n        \"com.linkedin.ugc.ShareContent\": {\n            \"shareCommentary\": {\n                \"text\": {{ JSON.stringify($('Code1').item.json.output) }}\n\n            },\n            \"shareMediaCategory\": \"NONE\"   \n        }\n    },\n    \"visibility\": {\n        \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\"\n    }\n} ",
@@ -664,6 +680,10 @@
           "httpHeaderAuth": {
             "id": "DL4giYYLpEWoAmFx",
             "name": "Linkedin-post"
+          },
+          "oAuth2Api": {
+            "id": "izOal9FqFZzJIyBd",
+            "name": "linkedin Credentials"
           }
         },
         "onError": "continueRegularOutput"
@@ -827,6 +847,26 @@
         "id": "94d01324-cc10-427e-97e3-cb4b251a67fa",
         "name": "On form submission1",
         "webhookId": "c1aad1c2-030d-48bb-b137-438eac93b03b"
+      },
+      {
+        "parameters": {
+          "person": "=86l697voblk6j0",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.linkedIn",
+        "typeVersion": 1,
+        "position": [
+          368,
+          -800
+        ],
+        "id": "2748926d-8af7-4410-bb42-b22e7a06f62f",
+        "name": "Create a post",
+        "credentials": {
+          "linkedInOAuth2Api": {
+            "id": "x9DoOByo1DK0FK7t",
+            "name": "LinkedIn account"
+          }
+        }
       }
     ],
     "connections": {
@@ -857,6 +897,11 @@
           [
             {
               "node": "Get linked",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Edit Fields",
               "type": "main",
               "index": 0
             }
@@ -1180,7 +1225,7 @@
     "name": null,
     "description": null
   },
-  "activeVersionId": "7a14a4df-c169-4b87-b541-663dc3607f36",
+  "activeVersionId": "1b4ac73e-2b0e-4a2f-983c-d4bb8ac679a0",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -1209,6 +1254,11 @@
         [
           {
             "node": "Get linked",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -1585,8 +1635,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -64,
-        -208
+        -144,
+        -224
       ],
       "id": "b47e9fa7-769d-493e-b6f9-95451b9a8e16",
       "name": "Code1"
@@ -2138,6 +2188,18 @@
         "url": "https://api.linkedin.com/v2/userinfo",
         "authentication": "genericCredentialType",
         "genericAuthType": "oAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -2168,6 +2230,10 @@
         "linkedInCommunityManagementOAuth2Api": {
           "id": "l1CsJN7AmXsu8Fd4",
           "name": "LinkedIn Community Management account"
+        },
+        "httpBasicAuth": {
+          "id": "ZAW7raAUm5AOY7K1",
+          "name": "Unnamed credential"
         }
       }
     },
@@ -2176,7 +2242,7 @@
         "method": "POST",
         "url": "https://api.linkedin.com/v2/ugcPosts",
         "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
+        "genericAuthType": "oAuth2Api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n    \"author\": \"urn:li:person:Ha3S3vSVp6\",\n    \"lifecycleState\": \"PUBLISHED\",\n    \"specificContent\": {\n        \"com.linkedin.ugc.ShareContent\": {\n            \"shareCommentary\": {\n                \"text\": {{ JSON.stringify($('Code1').item.json.output) }}\n\n            },\n            \"shareMediaCategory\": \"NONE\"   \n        }\n    },\n    \"visibility\": {\n        \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\"\n    }\n} ",
@@ -2194,6 +2260,10 @@
         "httpHeaderAuth": {
           "id": "DL4giYYLpEWoAmFx",
           "name": "Linkedin-post"
+        },
+        "oAuth2Api": {
+          "id": "izOal9FqFZzJIyBd",
+          "name": "linkedin Credentials"
         }
       },
       "onError": "continueRegularOutput"
@@ -2357,6 +2427,26 @@
       "id": "94d01324-cc10-427e-97e3-cb4b251a67fa",
       "name": "On form submission1",
       "webhookId": "c1aad1c2-030d-48bb-b137-438eac93b03b"
+    },
+    {
+      "parameters": {
+        "person": "=86l697voblk6j0",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        368,
+        -800
+      ],
+      "id": "2748926d-8af7-4410-bb42-b22e7a06f62f",
+      "name": "Create a post",
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "x9DoOByo1DK0FK7t",
+          "name": "LinkedIn account"
+        }
+      }
     }
   ],
   "origin": "n8n",
@@ -2365,6 +2455,16 @@
       {
         "json": {
           "output": "Unlock your potential with every test. Each challenge is a stepping stone to growth. Embrace the process, learn from the journey, and let success follow. #growthmindset #resilience"
+        }
+      }
+    ],
+    "AI Agent1": [
+      {
+        "json": {
+          "output": "As I develop single page websites through bayareaweb.dev, I understand the financial intricacies small businesses face. My skills can help streamline operations, addressing potential red flags and ensuring sustainable growth."
+        },
+        "pairedItem": {
+          "item": 0
         }
       }
     ]
@@ -2416,7 +2516,7 @@
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2025-12-14T17:00:00.000Z"
+      "lastItemDate": "2025-12-16T01:00:02.000Z"
     },
     "node:mindMyBusinessNYC": {
       "lastItemDate": "2025-12-11T14:12:51.000Z"
@@ -2424,6 +2524,6 @@
   },
   "tags": [],
   "triggerCount": 7,
-  "updatedAt": "2025-12-08T18:05:26.949Z",
-  "versionId": "7a14a4df-c169-4b87-b541-663dc3607f36"
+  "updatedAt": "2025-12-16T02:48:26.352Z",
+  "versionId": "1b4ac73e-2b0e-4a2f-983c-d4bb8ac679a0"
 }
