@@ -1,0 +1,35 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {},
+  "createdAt": "2025-12-20T09:59:41.674Z",
+  "id": "JOf7BrfFM8VR7y7C",
+  "isArchived": false,
+  "meta": null,
+  "name": "Music Idea Generator",
+  "nodes": [],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "MathPosey",
+    "name": "n8n-Workflow-Backups-"
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-20T09:59:41.674Z",
+      "createdAt": "2025-12-20T09:59:41.674Z",
+      "role": "workflow:owner",
+      "workflowId": "JOf7BrfFM8VR7y7C",
+      "projectId": "VFY7knhJH9Pt1e6U"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-20T09:59:41.674Z",
+  "versionId": "25735b72-4b01-4949-9f49-b6431baa4117"
+}
