@@ -16,7 +16,13 @@
     },
     "When chat message received": {
       "main": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "OpenAI Chat Model": {
@@ -128,6 +134,50 @@
           }
         ]
       ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Create a session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a session": {
+      "main": [
+        [
+          {
+            "node": "Create a window",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a window": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-12-20T09:59:41.674Z",
@@ -151,6 +201,7 @@
     },
     {
       "parameters": {
+        "public": true,
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
@@ -170,8 +221,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        96,
-        -80
+        80,
+        -64
       ],
       "id": "3634de3b-d31c-4c70-bf0f-5d3769a99c94",
       "name": "AI Agent"
@@ -202,7 +253,9 @@
       }
     },
     {
-      "parameters": {},
+      "parameters": {
+        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
+      },
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
@@ -270,8 +323,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        496,
-        -64
+        288,
+        -80
       ],
       "id": "982553d8-e173-4b03-88ee-5028720f4d3e",
       "name": "Append row in sheet",
@@ -337,7 +390,13 @@
         240
       ],
       "id": "9f8564c0-b2ba-4285-9084-f94a7573f384",
-      "name": "Type"
+      "name": "Type",
+      "credentials": {
+        "airtopApi": {
+          "id": "nX7zjoVDOyNeKcRP",
+          "name": "Airtop account"
+        }
+      }
     },
     {
       "parameters": {
@@ -363,7 +422,13 @@
         240
       ],
       "id": "08224817-8294-4a91-90b5-df4fa770d2f5",
-      "name": "Query"
+      "name": "Query",
+      "credentials": {
+        "airtopApi": {
+          "id": "nX7zjoVDOyNeKcRP",
+          "name": "Airtop account"
+        }
+      }
     },
     {
       "parameters": {
@@ -376,7 +441,13 @@
         240
       ],
       "id": "d3713bb9-720a-41ee-a40d-8fa0fde11df8",
-      "name": "Load url"
+      "name": "Load url",
+      "credentials": {
+        "airtopApi": {
+          "id": "nX7zjoVDOyNeKcRP",
+          "name": "Airtop account"
+        }
+      }
     },
     {
       "parameters": {
@@ -389,7 +460,139 @@
         240
       ],
       "id": "67698b39-af6e-486b-8bd2-47c88e0ddf26",
-      "name": "End session"
+      "name": "End session",
+      "credentials": {
+        "airtopApi": {
+          "id": "nX7zjoVDOyNeKcRP",
+          "name": "Airtop account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -288,
+        464
+      ],
+      "id": "0f2c99cc-29f6-4809-9e2f-8bab9e8add9e",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.airtop",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        464
+      ],
+      "id": "1d631bc5-ef36-4158-b15d-ad6452e91de5",
+      "name": "Create a session",
+      "credentials": {
+        "airtopApi": {
+          "id": "nX7zjoVDOyNeKcRP",
+          "name": "Airtop account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "window",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.airtop",
+      "typeVersion": 1,
+      "position": [
+        32,
+        464
+      ],
+      "id": "ef8a61e1-fd58-4cc4-949d-042ec4297c83",
+      "name": "Create a window",
+      "credentials": {
+        "airtopApi": {
+          "id": "nX7zjoVDOyNeKcRP",
+          "name": "Airtop account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1btCjVeLktTdksXb8QNSaEjmKO5HCvD3X9noYEOYIMlA",
+          "mode": "list",
+          "cachedResultName": "Browser Agent ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1btCjVeLktTdksXb8QNSaEjmKO5HCvD3X9noYEOYIMlA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1btCjVeLktTdksXb8QNSaEjmKO5HCvD3X9noYEOYIMlA/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "live view url",
+              "displayName": "live view url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date",
+              "displayName": "date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        192,
+        464
+      ],
+      "id": "b45efc8b-febe-41d6-91b8-cfed83511700",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        464
+      ],
+      "id": "ac1196fe-0db2-4100-b67f-690eb7023586",
+      "name": "Edit Fields"
     }
   ],
   "origin": "n8n",
@@ -413,6 +616,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-12-20T22:08:30.876Z",
-  "versionId": "e0f31afa-190c-492f-b80c-8c9209a68988"
+  "updatedAt": "2025-12-21T22:18:44.803Z",
+  "versionId": "c6613918-45eb-41a2-9bad-32d57d31c165"
 }
