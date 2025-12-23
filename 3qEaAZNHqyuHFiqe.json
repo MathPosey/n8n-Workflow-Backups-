@@ -2509,14 +2509,14 @@
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": [
-        354
+        356
       ]
     },
     "node:Website promotion": {
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2025-12-21T18:00:00.000Z"
+      "lastItemDate": "2025-12-22T18:00:00.000Z"
     },
     "node:mindMyBusinessNYC": {
       "lastItemDate": "2025-12-11T14:12:51.000Z"
