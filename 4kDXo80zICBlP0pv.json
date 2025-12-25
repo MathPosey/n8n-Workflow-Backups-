@@ -1258,6 +1258,33 @@
           "name": "SSH Password account"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/jobs/createTask",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"model\": \"sora-2-text-to-video\",\n  \"callBackUrl\": \"https://your-domain.com/api/callback\",\n  \"input\": {\n    \"prompt\": \"A professor stands at the front of a lively classroom, enthusiastically giving a lecture. On the blackboard behind him are colorful chalk diagrams. With an animated gesture, he declares to the students: “Sora 2 is now available on Kie AI, making it easier than ever to create stunning videos.” The students listen attentively, some smiling and taking notes.\",\n    \"aspect_ratio\": \"landscape\",\n    \"n_frames\": \"10\",\n    \"remove_watermark\": true\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a375abf9-cd4f-4763-910d-2e82d070b5d0",
+      "name": "Kie ai -> sora 2 ai ttv"
     }
   ],
   "origin": "n8n",
@@ -1287,6 +1314,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-12-24T10:20:01.661Z",
-  "versionId": "eebf2328-662f-45af-9455-5b9206ffc861"
+  "updatedAt": "2025-12-24T23:13:35.200Z",
+  "versionId": "0ae12f70-8172-44d5-b71a-f66852530cd6"
 }
