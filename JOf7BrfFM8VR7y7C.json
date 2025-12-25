@@ -18,7 +18,12 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Suno Lyrics",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Suno Style",
             "type": "main",
             "index": 0
           }
@@ -29,7 +34,7 @@
       "ai_languageModel": [
         [
           {
-            "node": "AI Agent",
+            "node": "Suno Lyrics",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -40,19 +45,8 @@
       "ai_tool": [
         [
           {
-            "node": "AI Agent",
+            "node": "Suno Lyrics",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Append row in sheet",
-            "type": "main",
             "index": 0
           }
         ]
@@ -60,104 +54,10 @@
     },
     "Get row(s) in sheet": {
       "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
-    "Open browser": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Type": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Click1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Query": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Load url": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "End session": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create a session": {
-      "main": [
-        [
-          {
-            "node": "Create a window",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create a window": {
-      "main": [
-        [
-          {
-            "node": "Append row in sheet1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Append row in sheet1": {
+    "Suno Lyrics": {
       "main": [
         [
           {
@@ -168,11 +68,66 @@
         ]
       ]
     },
-    "When Executed by Another Workflow": {
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Suno Style",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Suno Style",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Suno Style": {
       "main": [
         [
           {
-            "node": "Create a session",
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
             "type": "main",
             "index": 0
           }
@@ -193,8 +148,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -336,
-        -64
+        -720,
+        -80
       ],
       "id": "62aa79e7-8276-4b32-be02-e367da57e89c",
       "name": "When clicking ‘Execute workflow’"
@@ -216,19 +171,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        80,
-        -64
-      ],
-      "id": "3634de3b-d31c-4c70-bf0f-5d3769a99c94",
-      "name": "AI Agent"
-    },
-    {
-      "parameters": {
         "model": {
           "__rl": true,
           "mode": "list",
@@ -240,8 +182,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -256,
-        256
+        32,
+        160
       ],
       "id": "ab29bac9-84b9-4d2c-9759-0fbb7bac3fe0",
       "name": "OpenAI Chat Model",
@@ -259,8 +201,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        -128,
-        256
+        176,
+        160
       ],
       "id": "24305d05-33ec-41c8-bfad-b2f3ba658e79",
       "name": "Think"
@@ -284,7 +226,11 @@
         },
         "columns": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "Name": "Test",
+            "Style (1000 Words)": "={{ $json['Suno Style Output'] }}",
+            "Lyrics (100-120 Words)": "={{ $json['Suno Lyrics Output'] }}"
+          },
           "matchingColumns": [],
           "schema": [
             {
@@ -306,13 +252,14 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "Style (1000)",
-              "displayName": "Style (1000)",
+              "id": "Style (1000 Words)",
+              "displayName": "Style (1000 Words)",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -323,8 +270,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        464,
-        -64
+        1328,
+        64
       ],
       "id": "982553d8-e173-4b03-88ee-5028720f4d3e",
       "name": "Append row in sheet",
@@ -356,8 +303,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -128,
-        -64
+        -512,
+        -80
       ],
       "id": "4213c442-aff7-4ddc-be2a-8ba904b67d61",
       "name": "Get row(s) in sheet",
@@ -370,254 +317,134 @@
     },
     {
       "parameters": {
-        "description": "Start a new broswer session and window`",
-        "workflowId": {
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Primary job: Write only lyrics that teach 1 target word/phrase from a specific language and show how to use it in a sentence, formatted for Suno using bracketed section tags.\n\nInputs it requires\n\nLanguage (e.g., Spanish)\n\nTarget word/phrase (e.g., “¿Cómo estás?”)\n\nEnglish meaning (e.g., “How are you?”)\n\nExample sentence in target language + English translation (or permission to generate)\n\nAudience level (kids/adults, beginner/intermediate)\n\nOptional: tone (funny, heartfelt, hype), rhyme preference, song length\n\nOutputs it must produce\n\nLyrics with clear Suno structure tags placed at the start of each section:\n\nRequired tags: [Intro] [Verse] [Chorus] [Bridge] [Outro] (use what fits)\n\nTeaching content baked into the lyrics, in this order:\n\nIntroduce the word/phrase\n\nGive the English meaning\n\nRepeat for memory (hook)\n\nUse it in a sentence (target language)\n\nTranslate the sentence (English)\n\nShort “how/when to use it” note inside lyrics (simple)\n\nOptional advanced meta tags (only if you want control):\n\nExamples: [Tempo: Mid] [Mood: Playful] [Vocalist: Female] [Key: C minor]\n\nRule: keep these minimal and consistent; don’t overload.\n\nHard rules\n\nMust include section tags in brackets for structure.\n\nMust not write the “Style Prompt Field” content (that’s the other agent’s job).\n\nMust not use vague placeholders like “(add chorus here)”.\n\nLyric template (what it should aim to output)\n\n[Intro] quick tease of the phrase\n\n[Verse] meaning + context\n\n[Chorus] repetition + catchy mnemonic\n\n[Verse 2] sentence example + translation\n\n[Bridge] small usage tip / variation\n\n[Outro] final repetition"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        80,
+        -64
+      ],
+      "id": "3634de3b-d31c-4c70-bf0f-5d3769a99c94",
+      "name": "Suno Lyrics"
+    },
+    {
+      "parameters": {
+        "model": {
           "__rl": true,
-          "mode": "id",
-          "value": "JOf7BrfFM8VR7y7C"
+          "mode": "list",
+          "value": "gpt-4.1-mini"
         },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.2,
-      "position": [
-        0,
-        256
-      ],
-      "id": "3b3a82fd-6fc6-4a95-9a9c-9fbcb770d1f8",
-      "name": "Open browser"
-    },
-    {
-      "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.airtopTool",
-      "typeVersion": 1,
-      "position": [
-        240,
-        240
-      ],
-      "id": "9f8564c0-b2ba-4285-9084-f94a7573f384",
-      "name": "Type",
-      "credentials": {
-        "airtopApi": {
-          "id": "nX7zjoVDOyNeKcRP",
-          "name": "Airtop account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "https://suno.com/create",
+        "builtInTools": {},
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequestTool",
-      "typeVersion": 4.3,
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
       "position": [
-        128,
-        256
+        48,
+        592
       ],
-      "id": "5b42bc8c-fcf0-4c40-bc29-4021e6c3ed01",
-      "name": "Click1"
-    },
-    {
-      "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.airtopTool",
-      "typeVersion": 1,
-      "position": [
-        384,
-        240
-      ],
-      "id": "08224817-8294-4a91-90b5-df4fa770d2f5",
-      "name": "Query",
+      "id": "57eab987-ea38-41e7-8c54-858b9daad4f1",
+      "name": "OpenAI Chat Model1",
       "credentials": {
-        "airtopApi": {
-          "id": "nX7zjoVDOyNeKcRP",
-          "name": "Airtop account"
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
         }
       }
     },
     {
       "parameters": {
-        "additionalFields": {}
+        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
       },
-      "type": "n8n-nodes-base.airtopTool",
-      "typeVersion": 1,
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
       "position": [
-        560,
-        240
+        176,
+        608
       ],
-      "id": "d3713bb9-720a-41ee-a40d-8fa0fde11df8",
-      "name": "Load url",
-      "credentials": {
-        "airtopApi": {
-          "id": "nX7zjoVDOyNeKcRP",
-          "name": "Airtop account"
-        }
-      }
+      "id": "91a33933-6042-46de-b597-035c88f9d23a",
+      "name": "Think1"
     },
     {
       "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.airtopTool",
-      "typeVersion": 1,
-      "position": [
-        704,
-        240
-      ],
-      "id": "67698b39-af6e-486b-8bd2-47c88e0ddf26",
-      "name": "End session",
-      "credentials": {
-        "airtopApi": {
-          "id": "nX7zjoVDOyNeKcRP",
-          "name": "Airtop account"
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Primary job: Write only the Style Prompt Field (max ~200 characters), describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters, e.g.\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n"
         }
-      }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        64,
+        384
+      ],
+      "id": "f861a653-1116-4b13-88ac-034e29ea0a9e",
+      "name": "Suno Style"
     },
     {
       "parameters": {
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.airtop",
-      "typeVersion": 1,
-      "position": [
-        -128,
-        464
-      ],
-      "id": "1d631bc5-ef36-4158-b15d-ad6452e91de5",
-      "name": "Create a session",
-      "credentials": {
-        "airtopApi": {
-          "id": "nX7zjoVDOyNeKcRP",
-          "name": "Airtop account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resource": "window",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.airtop",
-      "typeVersion": 1,
-      "position": [
-        32,
-        464
-      ],
-      "id": "ef8a61e1-fd58-4cc4-949d-042ec4297c83",
-      "name": "Create a window",
-      "credentials": {
-        "airtopApi": {
-          "id": "nX7zjoVDOyNeKcRP",
-          "name": "Airtop account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "append",
-        "documentId": {
-          "__rl": true,
-          "value": "1btCjVeLktTdksXb8QNSaEjmKO5HCvD3X9noYEOYIMlA",
-          "mode": "list",
-          "cachedResultName": "Browser Agent ",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1btCjVeLktTdksXb8QNSaEjmKO5HCvD3X9noYEOYIMlA/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1btCjVeLktTdksXb8QNSaEjmKO5HCvD3X9noYEOYIMlA/edit#gid=0"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [
+        "assignments": {
+          "assignments": [
             {
-              "id": "live view url",
-              "displayName": "live view url",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "date",
-              "displayName": "date",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
+              "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
+              "name": "Suno Lyrics Output",
+              "value": "={{ $json.output }}",
+              "type": "string"
             }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
+          ]
         },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        192,
-        464
-      ],
-      "id": "b45efc8b-febe-41d6-91b8-cfed83511700",
-      "name": "Append row in sheet1",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "jMg3j3fkols2qHBL",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        400,
-        464
+        432,
+        -64
       ],
-      "id": "ac1196fe-0db2-4100-b67f-690eb7023586",
+      "id": "a2f3fa29-fc0a-4de1-83e2-2a745c4cdafd",
       "name": "Edit Fields"
     },
     {
       "parameters": {
-        "workflowInputs": {
-          "values": [
+        "assignments": {
+          "assignments": [
             {
-              "name": "url"
-            },
-            {
-              "name": "Profile_Name"
+              "id": "97bee6c4-b370-41c6-bdeb-faeeb38988cf",
+              "name": "Suno Style Output",
+              "value": "={{ $json.output }}",
+              "type": "string"
             }
           ]
-        }
+        },
+        "options": {}
       },
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        -464,
-        464
+        416,
+        384
       ],
-      "id": "d67da1a7-1a36-4e9d-991b-93412a81bbdc",
-      "name": "When Executed by Another Workflow"
+      "id": "73f8ac33-124f-4125-92d0-29610a8ad42f",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        960,
+        64
+      ],
+      "id": "a0c5b68e-8327-4e26-9069-a86716f193cb",
+      "name": "Merge"
     }
   ],
   "origin": "n8n",
@@ -641,6 +468,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-12-23T05:32:29.542Z",
-  "versionId": "8c22bbc8-fd28-4b00-801b-166fc012b38b"
+  "updatedAt": "2025-12-25T08:03:27.390Z",
+  "versionId": "b542fa00-fcfe-420c-a32d-65369081e038"
 }
