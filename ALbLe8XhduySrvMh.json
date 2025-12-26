@@ -372,7 +372,9 @@
   "createdAt": "2025-12-24T23:24:49.905Z",
   "id": "ALbLe8XhduySrvMh",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Create Anything with Sora 2",
   "nodes": [
     {
@@ -427,7 +429,13 @@
         112
       ],
       "id": "ceb9e1b3-8fc4-4cb2-b017-8273ce02787a",
-      "name": "Text to Video"
+      "name": "Text to Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -436,7 +444,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1152,
+        1264,
         112
       ],
       "id": "83db47c9-779e-47d6-a6d7-76cf09e279a5",
@@ -462,11 +470,17 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1296,
+        1408,
         112
       ],
       "id": "a6c80d20-7d97-46ef-aba7-f574e3bb66ad",
-      "name": "Get Video"
+      "name": "Get Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -496,7 +510,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1440,
+        1552,
         112
       ],
       "id": "760373fa-e579-4bbf-aaf3-47fc9f69ae84",
@@ -506,7 +520,7 @@
       "parameters": {
         "content": "## Text to Video",
         "height": 336,
-        "width": 1152,
+        "width": 1296,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -581,8 +595,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1600,
-        112
+        1744,
+        96
       ],
       "id": "9c3827c6-3e53-4013-8d6f-3eea48a51efa",
       "name": "Video URL"
@@ -675,18 +689,24 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1152,
+        1264,
         464
       ],
       "id": "c24ca407-2380-48ef-a5ec-862bac2c5644",
-      "name": "Image to Video"
+      "name": "Image to Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1296,
+        1408,
         464
       ],
       "id": "01aef811-ea1c-4b45-a1c8-1f59107e0491",
@@ -716,7 +736,13 @@
         464
       ],
       "id": "eb0bd4aa-cbaa-4c39-a1ce-0621d754313e",
-      "name": "Get Video1"
+      "name": "Get Video1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -785,8 +811,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        240,
-        112
+        640,
+        368
       ],
       "id": "de5c8e09-cbb3-4927-8f71-23d80c79a5d8",
       "name": "Sticky Note2"
@@ -850,7 +876,13 @@
         1168
       ],
       "id": "7d5eb340-7447-423d-b7cf-1ab9e4dc1d93",
-      "name": "Story Request"
+      "name": "Story Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -889,7 +921,13 @@
         1168
       ],
       "id": "1cd8eb15-ffaa-4d5c-bf64-09ac692b88d8",
-      "name": "Get Video2"
+      "name": "Get Video2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -952,7 +990,7 @@
       "parameters": {
         "content": "## Storyboard",
         "height": 336,
-        "width": 1168,
+        "width": 1280,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -1005,7 +1043,13 @@
         816
       ],
       "id": "6edeaff7-89c6-4884-b7a7-4195c667be34",
-      "name": "Text to Video1"
+      "name": "Text to Video1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -1044,7 +1088,13 @@
         816
       ],
       "id": "04fcf6f5-029e-4089-997f-deee7a6e69f2",
-      "name": "Get Video3"
+      "name": "Get Video3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -1106,7 +1156,7 @@
     {
       "parameters": {
         "content": "## Cameos",
-        "height": 336,
+        "height": 304,
         "width": 1168,
         "color": 5
       },
@@ -1114,7 +1164,7 @@
       "typeVersion": 1,
       "position": [
         640,
-        704
+        736
       ],
       "id": "9f9b8cc4-fa7c-42e8-b17d-9ef996b357d4",
       "name": "Sticky Note4"
@@ -1160,7 +1210,13 @@
         1520
       ],
       "id": "d41d7940-9411-4524-915e-23cea4fcad8e",
-      "name": "Text to Video2"
+      "name": "Text to Video2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -1199,7 +1255,13 @@
         1520
       ],
       "id": "7b1a2dfc-b346-4e9a-998b-35c28388f28d",
-      "name": "Get Video4"
+      "name": "Get Video4",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -1303,7 +1365,13 @@
         1632
       ],
       "id": "6bc0c156-2673-4180-8de6-01a1f1fe64db",
-      "name": "GPT-5-mini"
+      "name": "GPT-5-mini",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0vRxVJJyQAXk6sTN",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1342,6 +1410,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-12-24T23:26:32.937Z",
-  "versionId": "48855944-d9ef-4a56-adb0-0baa19ea20c7"
+  "updatedAt": "2025-12-25T21:31:04.610Z",
+  "versionId": "029c49ed-ec87-42d9-b155-9774424147a0"
 }
