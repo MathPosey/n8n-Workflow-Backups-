@@ -216,17 +216,6 @@
         ]
       ]
     },
-    "HTTP Request": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Limit": {
       "main": [
         [
@@ -288,6 +277,40 @@
       ]
     },
     "Kie ai - Suno - Text to Music1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Kie ai - Suno - Text to Music2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Log Songs",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Songs": {
       "main": [
         [
           {
@@ -806,8 +829,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        96,
-        -800
+        64,
+        -752
       ],
       "id": "c2a57579-9dc8-4a0f-8103-007dff2716d0",
       "name": "Suno Lyrics1"
@@ -830,7 +853,7 @@
       "typeVersion": 3.4,
       "position": [
         448,
-        -800
+        -752
       ],
       "id": "fa46b5a2-7f93-4776-be7c-f829ee44f8b6",
       "name": "edit output to name"
@@ -883,108 +906,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        928,
-        -768
-      ],
-      "id": "5fdc4c35-b322-4eaa-9523-fb54c9924e26",
-      "name": "AI Agent"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.kie.ai/api/v1/generate",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "prompt",
-              "value": "A calm and relaxing piano track with soft melodies"
-            },
-            {
-              "name": "customMode",
-              "value": "true"
-            },
-            {
-              "name": "instrumental",
-              "value": "true"
-            },
-            {
-              "name": "model",
-              "value": "V4"
-            },
-            {
-              "name": "callBackUrl",
-              "value": "https://api.example.com/callback"
-            },
-            {
-              "name": "style",
-              "value": "Classical"
-            },
-            {
-              "name": "title",
-              "value": "Peaceful Piano Meditation"
-            },
-            {
-              "name": "negativeTags",
-              "value": "Heavy Metal, Upbeat Drums"
-            },
-            {
-              "name": "vocalGender",
-              "value": "m"
-            },
-            {
-              "name": "styleWeight",
-              "value": "0.65"
-            },
-            {
-              "name": "weirdnessConstraint",
-              "value": "0.65"
-            },
-            {
-              "name": "audioWeight",
-              "value": "0.65"
-            },
-            {
-              "name": "personaId",
-              "value": "persona_123"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequestTool",
-      "typeVersion": 4.3,
-      "position": [
-        1088,
-        -560
-      ],
-      "id": "53329e99-10a8-4237-bef1-e6a9284f397f",
-      "name": "HTTP Request",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "qrSLdQAxyISpv7xA",
-          "name": "Kie ai -> sora 2 ai"
-        }
-      }
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "https://api.kie.ai/api/v1/generate",
         "authentication": "genericCredentialType",
@@ -1011,7 +932,7 @@
             },
             {
               "name": "instrumental",
-              "value": "true"
+              "value": "false"
             },
             {
               "name": "model",
@@ -1227,6 +1148,17 @@
     {
       "parameters": {
         "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            }
+          ]
+        },
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1245,7 +1177,13 @@
         -384
       ],
       "id": "7f2ad40f-5619-4ac2-9dd3-0ca065e5205e",
-      "name": "Kie ai - Suno - Text to Music1"
+      "name": "Kie ai - Suno - Text to Music1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     },
     {
       "parameters": {
@@ -1264,7 +1202,7 @@
     },
     {
       "parameters": {
-        "name": "={{ $json.data }}",
+        "name": "={{ $json.song_url }}",
         "driveId": {
           "__rl": true,
           "mode": "list",
@@ -1282,8 +1220,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        2384,
-        -384
+        2896,
+        -400
       ],
       "id": "1505f8fd-1efa-48e9-b3fa-e9a292f487b3",
       "name": "Upload file",
@@ -1293,18 +1231,297 @@
           "name": "Google Drive account"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ffmpeg-api.com/directory",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3280,
+        -320
+      ],
+      "id": "41be0b4c-84ae-490d-8c41-77513605728d",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "343cab6d-2440-480d-a740-5519e7e6d430"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "success"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b25191b7-6398-414a-b9dc-0317ac27edaa",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "(ING|_SUCCESS)",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "in progress"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        2384,
+        -384
+      ],
+      "id": "4accb8e6-b044-44eb-87e5-7c31d28d9cd9",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "content": "Trigger the google sheet document to begin prompting the system . ",
+        "height": 992,
+        "width": 752,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        -752
+      ],
+      "id": "f4ed62f1-901b-4ca9-a84a-8cb1c27ee2bd",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## AI generates the name, lyrics and style. This is where I can improve quality of songs. Also possibly make it all one agent\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/components/sticky-notes/)",
+        "height": 1152,
+        "width": 1344
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -848
+      ],
+      "id": "ffc2dff0-6263-4df9-b2ed-b38b73d226aa",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Kie Ai should cost only $0.06 cents to generate a song. The songs url are then gathered and logged.\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/components/sticky-notes/)",
+        "height": 1168,
+        "width": 1616,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        -848
+      ],
+      "id": "81b54a6b-09f3-4615-8fe3-4b58d153b04e",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1b1Kd5-aoTuGenIvR4SC7gg96gKT02OFTJGvEmqsHBUI",
+          "mode": "list",
+          "cachedResultName": "log songs",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1b1Kd5-aoTuGenIvR4SC7gg96gKT02OFTJGvEmqsHBUI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1b1Kd5-aoTuGenIvR4SC7gg96gKT02OFTJGvEmqsHBUI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "title": "={{ $json.data.response.sunoData[0].title }}",
+            "duration": "={{ $json.data.response.sunoData[0].duration }}",
+            "song_url": "={{ $json.data.response.sunoData[0].audioUrl }}",
+            "theme": "={{ $('Get row(s) in sheet').item.json.Category }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "theme",
+              "displayName": "theme",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "duration",
+              "displayName": "duration",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "song_url",
+              "displayName": "song_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2640,
+        -400
+      ],
+      "id": "f1d9aefb-7937-4adf-bc70-8f052cd1199a",
+      "name": "Log Songs",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -1312,
+        448
+      ],
+      "id": "8af3754a-7a29-4445-9e3f-f8e10edb3e60",
+      "name": "On form submission",
+      "webhookId": "04094bbc-0c62-46ca-a5da-79fb16c9bc3e"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "lowercaseHeaders": true,
+          "response": {
+            "response": {}
+          },
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {}
+                ]
+              }
+            }
+          },
+          "proxy": ""
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2992,
+        -768
+      ],
+      "id": "ffb4db00-9852-44f8-b0c9-7539d1245f29",
+      "name": "Kie ai - Suno - Text to Music2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     }
   ],
   "origin": "n8n",
   "pinData": {
-    "Wait": [
+    "Log Songs": [
       {
         "json": {
-          "code": 200,
-          "msg": "success",
-          "data": {
-            "taskId": "6a3aed0c5d78bb449f6db60627626851"
-          }
+          "title": "Test",
+          "duration": 116.56,
+          "song_url": "https://musicfile.kie.ai/ZWVhZDNlZjAtNDFmMy00OWUzLTlkZDMtZjBlZGE2ZjM5NDJl.mp3",
+          "theme": "Greetings"
         },
         "pairedItem": {
           "item": 0
@@ -1331,6 +1548,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-12-26T07:27:14.618Z",
-  "versionId": "a7c3466a-70ba-40e3-beba-b99637c2839f"
+  "updatedAt": "2025-12-27T11:05:15.345Z",
+  "versionId": "6769e5fc-33eb-4e11-90db-4df26b3fa555"
 }
