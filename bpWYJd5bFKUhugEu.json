@@ -189,7 +189,8 @@
     },
     "authors": "Matthew Posey",
     "name": "Version af9bc8ac",
-    "description": "First attempt, following Nate Herk youtube method on automation browser trigger. This should open up a browser window for airtop to navigate. "
+    "description": "First attempt, following Nate Herk youtube method on automation browser trigger. This should open up a browser window for airtop to navigate. ",
+    "autosaved": false
   },
   "activeVersionId": "af9bc8ac-7900-40fc-b7c3-23535a32227e",
   "connections": {
