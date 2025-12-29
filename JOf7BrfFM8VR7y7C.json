@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-28T02:59:34.840Z",
-    "createdAt": "2025-12-28T02:48:29.033Z",
-    "versionId": "e4d91601-51bf-4217-9a65-0fa087e097b0",
+    "updatedAt": "2025-12-29T01:11:59.272Z",
+    "createdAt": "2025-12-29T01:11:48.628Z",
+    "versionId": "bf8ce633-6ee8-4d64-8f29-019e8110f16e",
     "workflowId": "JOf7BrfFM8VR7y7C",
     "nodes": [
       {
@@ -444,17 +444,6 @@
         }
       },
       {
-        "parameters": {},
-        "type": "n8n-nodes-base.manualTrigger",
-        "typeVersion": 1,
-        "position": [
-          -1040,
-          -464
-        ],
-        "id": "0024740d-37cd-41d2-8364-ad784088224d",
-        "name": "When clicking ‘Execute workflow’"
-      },
-      {
         "parameters": {
           "model": {
             "__rl": true,
@@ -831,7 +820,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.2,
         "position": [
-          2368,
+          2320,
           -384
         ],
         "id": "7f2ad40f-5619-4ac2-9dd3-0ca065e5205e",
@@ -863,7 +852,7 @@
         "type": "n8n-nodes-base.googleDrive",
         "typeVersion": 3,
         "position": [
-          3776,
+          3504,
           -768
         ],
         "id": "1505f8fd-1efa-48e9-b3fa-e9a292f487b3",
@@ -934,7 +923,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          2592,
+          2672,
           -384
         ],
         "id": "4accb8e6-b044-44eb-87e5-7c31d28d9cd9",
@@ -950,8 +939,8 @@
         "type": "n8n-nodes-base.stickyNote",
         "typeVersion": 1,
         "position": [
-          -1120,
-          -752
+          -1104,
+          -768
         ],
         "id": "f4ed62f1-901b-4ca9-a84a-8cb1c27ee2bd",
         "name": "Sticky Note"
@@ -1060,7 +1049,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          2848,
+          3056,
           -400
         ],
         "id": "f1d9aefb-7937-4adf-bc70-8f052cd1199a",
@@ -1071,20 +1060,6 @@
             "name": "Google Sheets account"
           }
         }
-      },
-      {
-        "parameters": {
-          "options": {}
-        },
-        "type": "n8n-nodes-base.formTrigger",
-        "typeVersion": 2.3,
-        "position": [
-          -1312,
-          448
-        ],
-        "id": "8af3754a-7a29-4445-9e3f-f8e10edb3e60",
-        "name": "On form submission",
-        "webhookId": "04094bbc-0c62-46ca-a5da-79fb16c9bc3e"
       },
       {
         "parameters": {
@@ -1100,7 +1075,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          2864,
+          3072,
           -768
         ],
         "id": "d40398db-0ec7-42c1-a2df-359b84aaf5ad",
@@ -1116,8 +1091,8 @@
         "type": "n8n-nodes-base.stickyNote",
         "typeVersion": 1,
         "position": [
-          2528,
-          -1328
+          2848,
+          -1344
         ],
         "id": "4f82ac94-cd21-42a8-9600-e46fc28e981c",
         "name": "Sticky Note3"
@@ -1135,7 +1110,7 @@
         "name": "YouTube",
         "type": "n8n-nodes-base.youTube",
         "position": [
-          3520,
+          3936,
           0
         ],
         "typeVersion": 1,
@@ -1193,7 +1168,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          2640,
+          2848,
           0
         ],
         "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
@@ -1233,7 +1208,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          2848,
+          3392,
           0
         ],
         "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
@@ -1259,7 +1234,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          3200,
+          3616,
           0
         ],
         "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
@@ -1297,6 +1272,69 @@
         ],
         "id": "dfc553d5-fc04-4bf2-afac-f1bdbb103dc5",
         "name": "Sticky Note4"
+      },
+      {
+        "parameters": {
+          "content": "## Creates both a Suno AI music audio and video file. \n\nPublishes to youtube. It should also document all the files so I can make one big music video manually. \n\n-Need to remove limit so the whole thing can begin making songs in large batches. Currently 2 limites...\n-Manual creation of quality video.\n-Updated video prompts to create better outputs.\n-Ai Agents should be consolodated to a single agent, possibly with some kind of data parsing tool that seporates the outputs...\n-The first google sheet is a batch of language translation lessons, so I would need to create either new phrases or include more languages. ",
+          "height": 800,
+          "width": 688
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1840,
+          -752
+        ],
+        "id": "c68037d8-8fe8-47d6-92ec-64d5518fda85",
+        "name": "Sticky Note5"
+      },
+      {
+        "parameters": {
+          "unit": "minutes"
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          1968,
+          -384
+        ],
+        "id": "417c2181-6e8b-48c4-90b8-5d08d01f1979",
+        "name": "Wait",
+        "webhookId": "b8e0debc-c05d-4baa-84bf-3343f4f1130a"
+      },
+      {
+        "parameters": {
+          "unit": "minutes"
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          3056,
+          0
+        ],
+        "id": "35ef35ad-148f-40bf-b848-7eb9ea0cf9a1",
+        "name": "Wait1",
+        "webhookId": "ffec5001-88a9-4921-9eb9-a241923fe7f4"
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "hours",
+                "hoursInterval": 8
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          -1072,
+          -464
+        ],
+        "id": "68752e4e-3ad7-4e3e-87a0-b919c10f22bf",
+        "name": "Schedule Trigger"
       }
     ],
     "connections": {
@@ -1425,17 +1463,6 @@
           ]
         ]
       },
-      "When clicking ‘Execute workflow’": {
-        "main": [
-          [
-            {
-              "node": "Get row(s) in sheet",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "OpenAI Chat Model2": {
         "ai_languageModel": [
           [
@@ -1544,7 +1571,7 @@
         "main": [
           [
             {
-              "node": "Kie ai - Suno - Text to Music1",
+              "node": "Wait",
               "type": "main",
               "index": 0
             }
@@ -1556,11 +1583,6 @@
           [
             {
               "node": "Switch",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "HTTP Request",
               "type": "main",
               "index": 0
             },
@@ -1579,11 +1601,16 @@
               "node": "Log Songs",
               "type": "main",
               "index": 0
+            },
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
             }
           ],
           [
             {
-              "node": "Kie ai - Suno - Text to Music1",
+              "node": "Wait",
               "type": "main",
               "index": 0
             }
@@ -1610,7 +1637,7 @@
         "main": [
           [
             {
-              "node": "HTTP Request2",
+              "node": "Wait1",
               "type": "main",
               "index": 0
             }
@@ -1649,14 +1676,47 @@
             }
           ]
         ]
+      },
+      "Wait": {
+        "main": [
+          [
+            {
+              "node": "Kie ai - Suno - Text to Music1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait1": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "Get row(s) in sheet",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 1, sunoAi Youtube Automation",
-    "description": "Creates both a Suno AI music audio and video file. Publishes to youtube. It should also document all the files so I can make one big music video manually. \n\n-Need to remove limit so the whole thing can begin making songs in large batches. Currently 2 limites...\n-Manual creation of quality video.\n-Updated video prompts to create better outputs.\n-Ai Agents should be consolodated to a single agent, possibly with some kind of data parsing tool that seporates the outputs...\n-The first google sheet is a batch of language translation lessons, so I would need to create either new phrases or include more languages. ",
+    "name": "Version bf8ce633",
+    "description": "",
     "autosaved": false
   },
-  "activeVersionId": "e4d91601-51bf-4217-9a65-0fa087e097b0",
+  "activeVersionId": "bf8ce633-6ee8-4d64-8f29-019e8110f16e",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -3387,19 +3447,7 @@
     }
   ],
   "origin": "n8n",
-  "pinData": {
-    "HTTP Request1": [
-      {
-        "json": {
-          "code": 200,
-          "msg": "success",
-          "data": {
-            "taskId": "558f1291e24a050e2ec225451a83fe53"
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "repo": {
     "owner": "MathPosey",
     "name": "n8n-Workflow-Backups-"
@@ -3421,9 +3469,15 @@
       "projectId": "VFY7knhJH9Pt1e6U"
     }
   ],
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        0
+      ]
+    }
+  },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-12-28T03:15:12.984Z",
-  "versionId": "54667f83-c73b-4e5a-98af-383e5740642d"
+  "updatedAt": "2025-12-29T02:12:57.713Z",
+  "versionId": "daa32445-1c2e-47d0-84b5-1a111d785818"
 }
