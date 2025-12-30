@@ -1,0 +1,330 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Cron (Daily After Close)": {
+      "main": [
+        [
+          {
+            "node": "Set (Config)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP (Market Data: Daily Candles)": {
+      "main": [
+        [
+          {
+            "node": "Merge (Market + News)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP (News: Recent Articles)": {
+      "main": [
+        [
+          {
+            "node": "Merge (Market + News)",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "IF (Material Change?)": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Set (Final Output)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-30T06:49:06.502Z",
+  "id": "8VgdHhz3K93ZFOQs",
+  "isArchived": false,
+  "meta": null,
+  "name": "Analyst Agent (Prices + News -> Report + Alerts)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "ANALYST AGENT WORKFLOW PLAN (edit as needed)\n\nGoal: On a schedule, pull (1) market data + compute technical signals, (2) pull recent news, (3) generate a standardized report with a bullish/bearish score, and (4) alert only when something materially changes.\n\n1) CONFIG\n- Edit the Set node: WATCHLIST (tickers), thresholds, and API keys (prefer n8n credentials + env vars).\n\n2) INGEST\n- Market Data HTTP: Pull daily candles (OHLCV) for last ~220 trading days per ticker.\n- News HTTP: Pull latest headlines/articles per ticker (last 24-72h).\n\n3) FEATURES (Function)\n- Compute signals:\n  - SMA 20/50/200\n  - RSI(14)\n  - 20-day average volume vs last volume\n  - 52-week-ish high/low (from pulled range)\n- Produce a score (-100..100): trend + momentum + volume + basic risk.\n- Produce \"material_change\" boolean if: score regime changes, MA cross flips, RSI extreme, or large % move.\n\n4) LLM REPORT (OpenAI)\n- Input: structured JSON only (signals + recent news list + upcoming events if you add them).\n- Output: standardized markdown report:\n  - Regime: Bullish/Bearish/Neutral + confidence\n  - Key catalysts (news-driven)\n  - Risks\n  - Invalidation triggers\n  - Levels to watch (use MAs + recent highs/lows)\n\n5) ALERTING\n- IF material_change=true -> send Slack/Discord/Email.\n- ELSE -> (optional) log/store only.\n\n6) STORAGE (recommended)\n- Add a DB node (Postgres) to store each run: inputs + outputs. Use it to compare prior run signals.\n\nNotes:\n- Replace placeholder URLs with your chosen provider (Polygon/Finnhub/AlphaVantage/Tiingo).\n- Use n8n Credentials for API keys; avoid hardcoding.\n- Start simple with daily timeframe; intraday later.\n",
+        "height": 1008,
+        "width": 1296
+      },
+      "id": "e62c02b9-92e1-4fb8-bdf7-23995e4df0eb",
+      "name": "Sticky Note: Plan",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3216,
+        -32
+      ]
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 16,
+              "minute": 10
+            }
+          ]
+        }
+      },
+      "id": "9779acfb-53cf-4627-89a6-e2bdda2c8ad2",
+      "name": "Cron (Daily After Close)",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -2400,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "WATCHLIST",
+              "value": "AAPL,MSFT,NVDA,TSLA,AG,PAAS"
+            },
+            {
+              "name": "NEWS_LOOKBACK_HOURS",
+              "value": "72"
+            },
+            {
+              "name": "MARKET_DATA_PROVIDER",
+              "value": "FINNHUB"
+            },
+            {
+              "name": "NEWS_PROVIDER",
+              "value": "FINNHUB"
+            }
+          ],
+          "number": [
+            {
+              "name": "ALERT_SCORE_DELTA",
+              "value": 25
+            },
+            {
+              "name": "ALERT_PCT_MOVE",
+              "value": 6
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e5dea279-30bf-49c9-9f9d-49a2079fb581",
+      "name": "Set (Config)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -1840,
+        656
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "20db8a46-d72f-4d00-a6ee-99e1a8c2b930",
+      "name": "Function (Split Watchlist)",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [
+        -1600,
+        656
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{$json.providers.market === 'FINNHUB' ? `https://finnhub.io/api/v1/stock/candle?symbol=${$json.ticker}&resolution=D&from=${Math.floor((Date.now()-1000*60*60*24*365)/1000)}&to=${Math.floor(Date.now()/1000)}&token=${$env.FINNHUB_API_KEY}` : `https://example.com/market-data?symbol=${$json.ticker}`}}",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "279bb552-1455-4f67-a10e-cc0dad63425c",
+      "name": "HTTP (Market Data: Daily Candles)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        -1312,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{$json.providers.news === 'FINNHUB' ? `https://finnhub.io/api/v1/company-news?symbol=${$json.ticker}&from=${new Date(Date.now()-1000*60*60*$json.lookbackHours).toISOString().slice(0,10)}&to=${new Date().toISOString().slice(0,10)}&token=${$env.FINNHUB_API_KEY}` : `https://example.com/news?symbol=${$json.ticker}`}}",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "5a15d331-ce65-4f15-a2a7-a70d31702b0f",
+      "name": "HTTP (News: Recent Articles)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        -1312,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex",
+        "options": {}
+      },
+      "id": "a3e16fcb-a956-4da3-85de-121cd7e22171",
+      "name": "Merge (Market + News)",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        -1072,
+        656
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3b5b8f58-f35e-474a-8b4c-4502b0cfec42",
+      "name": "Function (Compute Signals + Score)",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [
+        -832,
+        656
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.materialChange}}",
+              "operation": "isTrue"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9d76cacc-08d3-413c-b251-36c244ceea4a",
+      "name": "IF (Material Change?)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -592,
+        656
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6d7e5911-f17c-4dc5-9f99-54e4f56e8814",
+      "name": "OpenAI (Generate Report)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 4,
+      "position": [
+        -352,
+        544
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "84f995fb-d283-4316-b2b6-54db1262b332",
+      "name": "Slack (Send Alert) [Replace]",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [
+        -112,
+        544
+      ],
+      "webhookId": "b984f41b-be15-4b1a-a149-d9bef590c2c2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{$env.DISCORD_WEBHOOK_URL}}",
+        "options": {}
+      },
+      "id": "fb11ab20-fad5-4cd7-8e61-458929641190",
+      "name": "Discord (Webhook Alert)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        -112,
+        704
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "ticker",
+              "value": "={{$json.ticker}}"
+            },
+            {
+              "name": "regime",
+              "value": "={{$json.regime}}"
+            },
+            {
+              "name": "report_markdown",
+              "value": "={{$json.output || $json.choices?.[0]?.message?.content || ''}}"
+            }
+          ],
+          "number": [
+            {
+              "name": "score",
+              "value": "={{$json.score}}"
+            },
+            {
+              "name": "pctMove1D",
+              "value": "={{$json.pctMove1D}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e20ffc0a-4587-4f0d-a930-b2f91b6a9998",
+      "name": "Set (Final Output)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -112,
+        384
+      ]
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "MathPosey",
+    "name": "n8n-Workflow-Backups-"
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-30T06:49:06.502Z",
+      "createdAt": "2025-12-30T06:49:06.502Z",
+      "role": "workflow:owner",
+      "workflowId": "8VgdHhz3K93ZFOQs",
+      "projectId": "VFY7knhJH9Pt1e6U"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-30T06:49:06.502Z",
+  "versionId": "012ec841-9a33-477c-815e-74333b0c4063"
+}
