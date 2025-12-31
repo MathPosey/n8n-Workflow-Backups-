@@ -549,7 +549,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1008,
+        880,
         464
       ],
       "id": "2f7f3d3d-4695-43bb-ab73-ded0687241c9",
@@ -572,7 +572,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        848,
+        736,
         464
       ],
       "id": "ff96b562-f6bc-411f-965c-0359e86b6e22",
@@ -689,7 +689,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1264,
+        1040,
         464
       ],
       "id": "c24ca407-2380-48ef-a5ec-862bac2c5644",
@@ -706,7 +706,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1408,
+        1248,
         464
       ],
       "id": "01aef811-ea1c-4b45-a1c8-1f59107e0491",
@@ -812,7 +812,7 @@
       "typeVersion": 1,
       "position": [
         640,
-        368
+        352
       ],
       "id": "de5c8e09-cbb3-4927-8f71-23d80c79a5d8",
       "name": "Sticky Note2"
@@ -1410,6 +1410,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-12-25T21:31:04.610Z",
-  "versionId": "029c49ed-ec87-42d9-b155-9774424147a0"
+  "updatedAt": "2025-12-31T08:56:09.755Z",
+  "versionId": "dde3e068-2aed-4446-ad3a-d75126452036"
 }
