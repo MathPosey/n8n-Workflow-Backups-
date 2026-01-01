@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-31T02:54:26.551Z",
-    "createdAt": "2025-12-31T02:54:22.854Z",
-    "versionId": "03ad75e9-193e-4da2-bc10-1ce63bee8763",
+    "updatedAt": "2026-01-01T03:29:34.998Z",
+    "createdAt": "2026-01-01T03:29:31.096Z",
+    "versionId": "e73cabf7-466c-438f-8590-657ab686cb8a",
     "workflowId": "JOf7BrfFM8VR7y7C",
     "nodes": [
       {
@@ -43,81 +43,6 @@
         ],
         "id": "24305d05-33ec-41c8-bfad-b2f3ba658e79",
         "name": "Think"
-      },
-      {
-        "parameters": {
-          "operation": "append",
-          "documentId": {
-            "__rl": true,
-            "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-            "mode": "list",
-            "cachedResultName": "SUNO AI Automstion",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": "gid=0",
-            "mode": "list",
-            "cachedResultName": "Sheet1",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-          },
-          "columns": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "Style (1000 Words)": "={{ $json['Suno Style Output'] }}",
-              "Lyrics (100-120 Words)": "={{ $json['Suno Lyrics Output'] }}",
-              "Name": "={{ $json['Suno song name'] }}"
-            },
-            "matchingColumns": [],
-            "schema": [
-              {
-                "id": "Name",
-                "displayName": "Name",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Lyrics (100-120 Words)",
-                "displayName": "Lyrics (100-120 Words)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Style (1000 Words)",
-                "displayName": "Style (1000 Words)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true,
-                "removed": false
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": false
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.7,
-        "position": [
-          1248,
-          -128
-        ],
-        "id": "982553d8-e173-4b03-88ee-5028720f4d3e",
-        "name": "Append row in sheet",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
       },
       {
         "parameters": {
@@ -181,7 +106,8 @@
           "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
           "hasOutputParser": true,
           "options": {
-            "systemMessage": "Primary job: Write only the Style Prompt Field (max ~200 characters), describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters, e.g.\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n"
+            "systemMessage": "Primary job: Write only the Style Prompt Field (<=195 characters), describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
+            "maxIterations": 3
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
@@ -191,7 +117,8 @@
           16
         ],
         "id": "f861a653-1116-4b13-88ac-034e29ea0a9e",
-        "name": "Suno Style"
+        "name": "Suno Style",
+        "retryOnFail": true
       },
       {
         "parameters": {
@@ -266,38 +193,12 @@
       },
       {
         "parameters": {
-          "model": {
-            "__rl": true,
-            "value": "o3-mini",
-            "mode": "list",
-            "cachedResultName": "o3-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          1408,
-          240
-        ],
-        "id": "89ba12ba-5890-49dc-8d6f-2cd3d13ec6bb",
-        "name": "OpenAI Chat Model2",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
           "assignments": {
             "assignments": [
               {
                 "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
                 "name": "Suno song name",
-                "value": "=Viet {{ $json['Meaning (English)'] }}",
+                "value": "=Viet: {{ $json['Meaning (English)'] }}",
                 "type": "string"
               }
             ]
@@ -358,323 +259,6 @@
         ],
         "id": "73f8ac33-124f-4125-92d0-29610a8ad42f",
         "name": "Edit output to Style"
-      },
-      {
-        "parameters": {
-          "method": "POST",
-          "url": "https://api.kie.ai/api/v1/generate",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "sendBody": true,
-          "bodyParameters": {
-            "parameters": [
-              {
-                "name": "prompt",
-                "value": "={{ $json['Suno Lyrics Output'] }}"
-              },
-              {
-                "name": "customMode",
-                "value": "true"
-              },
-              {
-                "name": "instrumental",
-                "value": "false"
-              },
-              {
-                "name": "model",
-                "value": "V4"
-              },
-              {
-                "name": "callBackUrl",
-                "value": "https://api.example.com/callback"
-              },
-              {
-                "name": "style",
-                "value": "={{ $json['Suno Style Output'] }}"
-              },
-              {
-                "name": "title",
-                "value": "={{ $json['Suno song name'] }}"
-              },
-              {
-                "name": "negativeTags",
-                "value": "Heavy Metal, Upbeat Drums"
-              },
-              {
-                "name": "vocalGender",
-                "value": "m"
-              },
-              {
-                "name": "styleWeight",
-                "value": "0.65"
-              },
-              {
-                "name": "weirdnessConstraint",
-                "value": "0.65"
-              },
-              {
-                "name": "audioWeight",
-                "value": "0.65"
-              },
-              {
-                "name": "personaId",
-                "value": "persona_123"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.2,
-        "position": [
-          2080,
-          -384
-        ],
-        "id": "427640bd-c6b0-45fa-a3f7-ecb1c12cd966",
-        "name": "Kie ai - Suno - Text to Music",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "documentId": {
-            "__rl": true,
-            "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-            "mode": "list",
-            "cachedResultName": "SUNO AI Automstion",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": "gid=0",
-            "mode": "list",
-            "cachedResultName": "Sheet1",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.7,
-        "position": [
-          1424,
-          -16
-        ],
-        "id": "d59f02db-c85b-4c09-bb16-b5fb6b7a0d81",
-        "name": "Get row(s) in sheet1",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {},
-        "type": "n8n-nodes-base.limit",
-        "typeVersion": 1,
-        "position": [
-          1632,
-          -16
-        ],
-        "id": "0aa0176a-1160-4c03-b21b-32da45349ccb",
-        "name": "Limit"
-      },
-      {
-        "parameters": {
-          "operation": "appendOrUpdate",
-          "documentId": {
-            "__rl": true,
-            "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-            "mode": "list",
-            "cachedResultName": "SUNO AI Automstion",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": "gid=0",
-            "mode": "list",
-            "cachedResultName": "Sheet1",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-          },
-          "columns": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "Lyrics (100-120 Words)": "={{ $json['Lyrics (100-120 Words)'] }}",
-              "Name": "={{ $('Suno name').item.json.output }}",
-              "Style (1000 Words)": "={{ $json['Style (1000 Words)'] }}"
-            },
-            "matchingColumns": [
-              "Lyrics (100-120 Words)"
-            ],
-            "schema": [
-              {
-                "id": "Name",
-                "displayName": "Name",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true,
-                "removed": false
-              },
-              {
-                "id": "Lyrics (100-120 Words)",
-                "displayName": "Lyrics (100-120 Words)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true,
-                "removed": false
-              },
-              {
-                "id": "Style (1000 Words)",
-                "displayName": "Style (1000 Words)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true,
-                "removed": false
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": false
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.6,
-        "position": [
-          1616,
-          208
-        ],
-        "id": "b2135617-9ea7-42cf-81fa-6f3f8944f1e6",
-        "name": "Append or update row in sheet1",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "operation": "delete",
-          "documentId": {
-            "__rl": true,
-            "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-            "mode": "list",
-            "cachedResultName": "SUNO AI Automstion",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": "gid=0",
-            "mode": "list",
-            "cachedResultName": "Sheet1",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-          }
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.6,
-        "position": [
-          1616,
-          448
-        ],
-        "id": "aa33d928-c3b0-47ca-a20d-8cd36cb89c87",
-        "name": "Delete rows or columns from sheet1",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "url": "https://api.kie.ai/api/v1/generate/record-info",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendQuery": true,
-          "queryParameters": {
-            "parameters": [
-              {
-                "name": "taskId",
-                "value": "={{ $json.data.taskId }}"
-              }
-            ]
-          },
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.2,
-        "position": [
-          2608,
-          -384
-        ],
-        "id": "7f2ad40f-5619-4ac2-9dd3-0ca065e5205e",
-        "name": "Kie ai - Suno - Text to Music1",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "name": "=",
-          "driveId": {
-            "__rl": true,
-            "mode": "list",
-            "value": "My Drive"
-          },
-          "folderId": {
-            "__rl": true,
-            "value": "1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t",
-            "mode": "list",
-            "cachedResultName": "SUNO Music AI",
-            "cachedResultUrl": "https://drive.google.com/drive/folders/1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleDrive",
-        "typeVersion": 3,
-        "position": [
-          3536,
-          -768
-        ],
-        "id": "1505f8fd-1efa-48e9-b3fa-e9a292f487b3",
-        "name": "Upload file",
-        "credentials": {
-          "googleDriveOAuth2Api": {
-            "id": "WM6RaS4XN5sMHcjI",
-            "name": "Google Drive account"
-          }
-        }
       },
       {
         "parameters": {
@@ -743,16 +327,16 @@
       },
       {
         "parameters": {
-          "content": "Trigger the google sheet document to begin prompting the system . ",
-          "height": 448,
-          "width": 150,
+          "content": "## Trigger the google sheet document to begin prompting the system . ",
+          "height": 96,
+          "width": 502,
           "color": 5
         },
         "type": "n8n-nodes-base.stickyNote",
         "typeVersion": 1,
         "position": [
-          -496,
-          -224
+          -800,
+          -560
         ],
         "id": "f4ed62f1-901b-4ca9-a84a-8cb1c27ee2bd",
         "name": "Sticky Note"
@@ -875,26 +459,6 @@
       },
       {
         "parameters": {
-          "url": "={{ $json.data.response.sunoData[0].audioUrl }}",
-          "options": {
-            "response": {
-              "response": {
-                "responseFormat": "file"
-              }
-            }
-          }
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          3104,
-          -768
-        ],
-        "id": "d40398db-0ec7-42c1-a2df-359b84aaf5ad",
-        "name": "HTTP Request"
-      },
-      {
-        "parameters": {
           "content": "## Quick notes summary (save this)\n\nHow to turn a URL into a binary file in n8n (MP3 / MP4):\n\nCreate a NEW HTTP Request node (do not reuse the generation node).\n\nSet:\n\nMethod: GET\n\nURL: {{$json.data.response.sunoData[0].audioUrl}} (or videoUrl for MP4)\n\nSend Body: OFF\n\nScroll to Options → Add option:\n\nResponse Format: File\n\nBinary Property Name: data\n\nExecute → check OUTPUT → Binary → data.\n\n(Optional) Use Write Binary File to save locally or pass to another node.\n\nKey rule: Never use “Send Body” or “n8n Binary File” when downloading.\nThose are for uploads.",
           "height": 768,
           "width": 560,
@@ -913,11 +477,14 @@
         "parameters": {
           "resource": "video",
           "operation": "upload",
-          "title": "={{ $json.Language }}:{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}",
+          "title": "={{ $('edit output to name').item.json['Suno song name'] }}",
           "regionCode": "US",
           "categoryId": "27",
           "binaryProperty": "=data",
-          "options": {}
+          "options": {
+            "description": "Foreign Language learning project with ai music generation automation",
+            "privacyStatus": "public"
+          }
         },
         "name": "YouTube",
         "type": "n8n-nodes-base.youTube",
@@ -937,132 +504,15 @@
       },
       {
         "parameters": {
-          "method": "POST",
-          "url": "https://api.kie.ai/api/v1/mp4/generate",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "sendBody": true,
-          "bodyParameters": {
-            "parameters": [
-              {
-                "name": "taskId",
-                "value": "={{ $json.data.taskId }}"
-              },
-              {
-                "name": "audioId",
-                "value": "={{ $json.data.response.sunoData[0].id }}"
-              },
-              {
-                "name": "callBackUrl",
-                "value": "https://api.example.com/callback"
-              },
-              {
-                "name": "author",
-                "value": "MJP"
-              },
-              {
-                "name": "domainName",
-                "value": "Suno AI"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          3216,
-          -128
-        ],
-        "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
-        "name": "HTTP Request1",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "url": "https://api.kie.ai/api/v1/mp4/record-info",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendQuery": true,
-          "queryParameters": {
-            "parameters": [
-              {
-                "name": "taskId",
-                "value": "={{ $json.data.taskId }}"
-              }
-            ]
-          },
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          3760,
-          -128
-        ],
-        "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
-        "name": "HTTP Request2",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "url": "={{ $json.data.response.videoUrl }}",
-          "options": {
-            "response": {
-              "response": {
-                "responseFormat": "file"
-              }
-            }
-          }
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          3984,
-          -128
-        ],
-        "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
-        "name": "HTTP Request3"
-      },
-      {
-        "parameters": {
           "content": "## Video creation automation. Need to update youtube credential\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/components/sticky-notes",
-          "height": 304,
+          "height": 96,
           "width": 1360
         },
         "type": "n8n-nodes-base.stickyNote",
         "typeVersion": 1,
         "position": [
-          3120,
-          -192
+          3152,
+          -240
         ],
         "id": "dfc553d5-fc04-4bf2-afac-f1bdbb103dc5",
         "name": "Sticky Note4"
@@ -1319,6 +769,379 @@
             "name": "Google Sheets account"
           }
         }
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
+            "mode": "list",
+            "cachedResultName": "SUNO AI Automstion",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Sheet1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Style (1000 Words)": "={{ $json['Suno Style Output'] }}",
+              "Lyrics (100-120 Words)": "={{ $json['Suno Lyrics Output'] }}",
+              "Name": "={{ $json['Suno song name'] }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "Name",
+                "displayName": "Name",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Lyrics (100-120 Words)",
+                "displayName": "Lyrics (100-120 Words)",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Style (1000 Words)",
+                "displayName": "Style (1000 Words)",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          1248,
+          -128
+        ],
+        "id": "982553d8-e173-4b03-88ee-5028720f4d3e",
+        "name": "Append row in SUNOAIAutomation",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "jMg3j3fkols2qHBL",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.kie.ai/api/v1/generate",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "prompt",
+                "value": "={{ $json['Suno Lyrics Output'] }}"
+              },
+              {
+                "name": "customMode",
+                "value": "true"
+              },
+              {
+                "name": "instrumental",
+                "value": "false"
+              },
+              {
+                "name": "model",
+                "value": "V4"
+              },
+              {
+                "name": "callBackUrl",
+                "value": "https://api.example.com/callback"
+              },
+              {
+                "name": "style",
+                "value": "={{ $json['Suno Style Output'] }}"
+              },
+              {
+                "name": "title",
+                "value": "={{ $json['Suno song name'] }}"
+              },
+              {
+                "name": "negativeTags",
+                "value": "Heavy Metal, Upbeat Drums"
+              },
+              {
+                "name": "vocalGender",
+                "value": "m"
+              },
+              {
+                "name": "styleWeight",
+                "value": "0.65"
+              },
+              {
+                "name": "weirdnessConstraint",
+                "value": "0.65"
+              },
+              {
+                "name": "audioWeight",
+                "value": "0.65"
+              },
+              {
+                "name": "personaId",
+                "value": "persona_123"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2080,
+          -384
+        ],
+        "id": "427640bd-c6b0-45fa-a3f7-ecb1c12cd966",
+        "name": "Post Kie ai - Suno - Text to Music",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "qrSLdQAxyISpv7xA",
+            "name": "Kie ai -> sora 2 ai"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "https://api.kie.ai/api/v1/generate/record-info",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "taskId",
+                "value": "={{ $json.data.taskId }}"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2608,
+          -384
+        ],
+        "id": "7f2ad40f-5619-4ac2-9dd3-0ca065e5205e",
+        "name": "Get Kie ai - Suno - Text to Music",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "qrSLdQAxyISpv7xA",
+            "name": "Kie ai -> sora 2 ai"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "name": "=",
+          "driveId": {
+            "__rl": true,
+            "mode": "list",
+            "value": "My Drive"
+          },
+          "folderId": {
+            "__rl": true,
+            "value": "1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t",
+            "mode": "list",
+            "cachedResultName": "SUNO Music AI",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          3536,
+          -768
+        ],
+        "id": "1505f8fd-1efa-48e9-b3fa-e9a292f487b3",
+        "name": "Upload Music Audio -> SUNO Music AI",
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "WM6RaS4XN5sMHcjI",
+            "name": "Google Drive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.kie.ai/api/v1/mp4/generate",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "taskId",
+                "value": "={{ $json.data.taskId }}"
+              },
+              {
+                "name": "audioId",
+                "value": "={{ $json.data.response.sunoData[0].id }}"
+              },
+              {
+                "name": "callBackUrl",
+                "value": "https://api.example.com/callback"
+              },
+              {
+                "name": "author",
+                "value": "MJP"
+              },
+              {
+                "name": "domainName",
+                "value": "Suno AI"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          3216,
+          -128
+        ],
+        "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
+        "name": "Post KieAi music Video",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "qrSLdQAxyISpv7xA",
+            "name": "Kie ai -> sora 2 ai"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "https://api.kie.ai/api/v1/mp4/record-info",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "taskId",
+                "value": "={{ $json.data.taskId }}"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          3760,
+          -128
+        ],
+        "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
+        "name": "Get KieAi music Video",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "qrSLdQAxyISpv7xA",
+            "name": "Kie ai -> sora 2 ai"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.data.response.videoUrl }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          3984,
+          -128
+        ],
+        "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
+        "name": "Get Video File data"
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.data.response.sunoData[0].audioUrl }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          3104,
+          -768
+        ],
+        "id": "d40398db-0ec7-42c1-a2df-359b84aaf5ad",
+        "name": "Get Audio File"
       }
     ],
     "connections": {
@@ -1392,12 +1215,12 @@
         "main": [
           [
             {
-              "node": "Append row in sheet",
+              "node": "Append row in SUNOAIAutomation",
               "type": "main",
               "index": 0
             },
             {
-              "node": "Kie ai - Suno - Text to Music",
+              "node": "Post Kie ai - Suno - Text to Music",
               "type": "main",
               "index": 0
             }
@@ -1441,11 +1264,6 @@
           ]
         ]
       },
-      "OpenAI Chat Model2": {
-        "ai_languageModel": [
-          []
-        ]
-      },
       "Edit output to Lyrics": {
         "main": [
           [
@@ -1479,66 +1297,6 @@
           ]
         ]
       },
-      "Append row in sheet": {
-        "main": [
-          []
-        ]
-      },
-      "Limit": {
-        "main": [
-          [
-            {
-              "node": "Append or update row in sheet1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Append or update row in sheet1": {
-        "main": [
-          [
-            {
-              "node": "Delete rows or columns from sheet1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Get row(s) in sheet1": {
-        "main": [
-          [
-            {
-              "node": "Limit",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Kie ai - Suno - Text to Music": {
-        "main": [
-          [
-            {
-              "node": "Wait",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Kie ai - Suno - Text to Music1": {
-        "main": [
-          [
-            {
-              "node": "Switch",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Switch": {
         "main": [
           [
@@ -1548,12 +1306,12 @@
               "index": 0
             },
             {
-              "node": "HTTP Request",
+              "node": "Get Audio File",
               "type": "main",
               "index": 0
             },
             {
-              "node": "HTTP Request1",
+              "node": "Post KieAi music Video",
               "type": "main",
               "index": 0
             }
@@ -1572,55 +1330,11 @@
           []
         ]
       },
-      "HTTP Request": {
-        "main": [
-          [
-            {
-              "node": "Upload file",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "HTTP Request1": {
-        "main": [
-          [
-            {
-              "node": "Wait1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "HTTP Request2": {
-        "main": [
-          [
-            {
-              "node": "HTTP Request3",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "HTTP Request3": {
-        "main": [
-          [
-            {
-              "node": "YouTube",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Wait": {
         "main": [
           [
             {
-              "node": "Kie ai - Suno - Text to Music1",
+              "node": "Get Kie ai - Suno - Text to Music",
               "type": "main",
               "index": 0
             }
@@ -1631,7 +1345,7 @@
         "main": [
           [
             {
-              "node": "HTTP Request2",
+              "node": "Get KieAi music Video",
               "type": "main",
               "index": 0
             }
@@ -1670,14 +1384,85 @@
             }
           ]
         ]
+      },
+      "Append row in SUNOAIAutomation": {
+        "main": [
+          []
+        ]
+      },
+      "Post Kie ai - Suno - Text to Music": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Kie ai - Suno - Text to Music": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Post KieAi music Video": {
+        "main": [
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get KieAi music Video": {
+        "main": [
+          [
+            {
+              "node": "Get Video File data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Video File data": {
+        "main": [
+          [
+            {
+              "node": "YouTube",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Audio File": {
+        "main": [
+          [
+            {
+              "node": "Upload Music Audio -> SUNO Music AI",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 03ad75e9",
+    "name": "Version e73cabf7",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "03ad75e9-193e-4da2-bc10-1ce63bee8763",
+  "activeVersionId": "e73cabf7-466c-438f-8590-657ab686cb8a",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -1749,12 +1534,12 @@
       "main": [
         [
           {
-            "node": "Append row in sheet",
+            "node": "Append row in SUNOAIAutomation",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Kie ai - Suno - Text to Music",
+            "node": "Post Kie ai - Suno - Text to Music",
             "type": "main",
             "index": 0
           }
@@ -1798,11 +1583,6 @@
         ]
       ]
     },
-    "OpenAI Chat Model2": {
-      "ai_languageModel": [
-        []
-      ]
-    },
     "Edit output to Lyrics": {
       "main": [
         [
@@ -1836,66 +1616,6 @@
         ]
       ]
     },
-    "Append row in sheet": {
-      "main": [
-        []
-      ]
-    },
-    "Limit": {
-      "main": [
-        [
-          {
-            "node": "Append or update row in sheet1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Append or update row in sheet1": {
-      "main": [
-        [
-          {
-            "node": "Delete rows or columns from sheet1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get row(s) in sheet1": {
-      "main": [
-        [
-          {
-            "node": "Limit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Kie ai - Suno - Text to Music": {
-      "main": [
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Kie ai - Suno - Text to Music1": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Switch": {
       "main": [
         [
@@ -1905,12 +1625,12 @@
             "index": 0
           },
           {
-            "node": "HTTP Request",
+            "node": "Get Audio File",
             "type": "main",
             "index": 0
           },
           {
-            "node": "HTTP Request1",
+            "node": "Post KieAi music Video",
             "type": "main",
             "index": 0
           }
@@ -1929,55 +1649,11 @@
         []
       ]
     },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Upload file",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request1": {
-      "main": [
-        [
-          {
-            "node": "Wait1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request2": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request3": {
-      "main": [
-        [
-          {
-            "node": "YouTube",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Wait": {
       "main": [
         [
           {
-            "node": "Kie ai - Suno - Text to Music1",
+            "node": "Get Kie ai - Suno - Text to Music",
             "type": "main",
             "index": 0
           }
@@ -1988,7 +1664,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request2",
+            "node": "Get KieAi music Video",
             "type": "main",
             "index": 0
           }
@@ -2027,6 +1703,77 @@
           }
         ]
       ]
+    },
+    "Append row in SUNOAIAutomation": {
+      "main": [
+        []
+      ]
+    },
+    "Post Kie ai - Suno - Text to Music": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Kie ai - Suno - Text to Music": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post KieAi music Video": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get KieAi music Video": {
+      "main": [
+        [
+          {
+            "node": "Get Video File data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Video File data": {
+      "main": [
+        [
+          {
+            "node": "YouTube",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Audio File": {
+      "main": [
+        [
+          {
+            "node": "Upload Music Audio -> SUNO Music AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-12-20T09:59:41.674Z",
@@ -2035,7 +1782,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Analyst Agent (Prices + News -> Report + Alerts)",
+  "name": "Project ear-worm learning",
   "nodes": [
     {
       "parameters": {
@@ -2074,81 +1821,6 @@
       ],
       "id": "24305d05-33ec-41c8-bfad-b2f3ba658e79",
       "name": "Think"
-    },
-    {
-      "parameters": {
-        "operation": "append",
-        "documentId": {
-          "__rl": true,
-          "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-          "mode": "list",
-          "cachedResultName": "SUNO AI Automstion",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Style (1000 Words)": "={{ $json['Suno Style Output'] }}",
-            "Lyrics (100-120 Words)": "={{ $json['Suno Lyrics Output'] }}",
-            "Name": "={{ $json['Suno song name'] }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Lyrics (100-120 Words)",
-              "displayName": "Lyrics (100-120 Words)",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Style (1000 Words)",
-              "displayName": "Style (1000 Words)",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        1248,
-        -128
-      ],
-      "id": "982553d8-e173-4b03-88ee-5028720f4d3e",
-      "name": "Append row in sheet",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "jMg3j3fkols2qHBL",
-          "name": "Google Sheets account"
-        }
-      }
     },
     {
       "parameters": {
@@ -2212,7 +1884,8 @@
         "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "Primary job: Write only the Style Prompt Field (max ~200 characters), describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters, e.g.\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n"
+          "systemMessage": "Primary job: Write only the Style Prompt Field (<=195 characters), describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
+          "maxIterations": 3
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -2222,7 +1895,8 @@
         16
       ],
       "id": "f861a653-1116-4b13-88ac-034e29ea0a9e",
-      "name": "Suno Style"
+      "name": "Suno Style",
+      "retryOnFail": true
     },
     {
       "parameters": {
@@ -2297,38 +1971,12 @@
     },
     {
       "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "o3-mini",
-          "mode": "list",
-          "cachedResultName": "o3-mini"
-        },
-        "builtInTools": {},
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        1408,
-        240
-      ],
-      "id": "89ba12ba-5890-49dc-8d6f-2cd3d13ec6bb",
-      "name": "OpenAI Chat Model2",
-      "credentials": {
-        "openAiApi": {
-          "id": "FCgioqL0Ukq0AAAo",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
               "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
               "name": "Suno song name",
-              "value": "=Viet {{ $json['Meaning (English)'] }}",
+              "value": "=Viet: {{ $json['Meaning (English)'] }}",
               "type": "string"
             }
           ]
@@ -2389,323 +2037,6 @@
       ],
       "id": "73f8ac33-124f-4125-92d0-29610a8ad42f",
       "name": "Edit output to Style"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.kie.ai/api/v1/generate",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "prompt",
-              "value": "={{ $json['Suno Lyrics Output'] }}"
-            },
-            {
-              "name": "customMode",
-              "value": "true"
-            },
-            {
-              "name": "instrumental",
-              "value": "false"
-            },
-            {
-              "name": "model",
-              "value": "V4"
-            },
-            {
-              "name": "callBackUrl",
-              "value": "https://api.example.com/callback"
-            },
-            {
-              "name": "style",
-              "value": "={{ $json['Suno Style Output'] }}"
-            },
-            {
-              "name": "title",
-              "value": "={{ $json['Suno song name'] }}"
-            },
-            {
-              "name": "negativeTags",
-              "value": "Heavy Metal, Upbeat Drums"
-            },
-            {
-              "name": "vocalGender",
-              "value": "m"
-            },
-            {
-              "name": "styleWeight",
-              "value": "0.65"
-            },
-            {
-              "name": "weirdnessConstraint",
-              "value": "0.65"
-            },
-            {
-              "name": "audioWeight",
-              "value": "0.65"
-            },
-            {
-              "name": "personaId",
-              "value": "persona_123"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2080,
-        -384
-      ],
-      "id": "427640bd-c6b0-45fa-a3f7-ecb1c12cd966",
-      "name": "Kie ai - Suno - Text to Music",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "qrSLdQAxyISpv7xA",
-          "name": "Kie ai -> sora 2 ai"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-          "mode": "list",
-          "cachedResultName": "SUNO AI Automstion",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        1424,
-        -16
-      ],
-      "id": "d59f02db-c85b-4c09-bb16-b5fb6b7a0d81",
-      "name": "Get row(s) in sheet1",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "jMg3j3fkols2qHBL",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.limit",
-      "typeVersion": 1,
-      "position": [
-        1632,
-        -16
-      ],
-      "id": "0aa0176a-1160-4c03-b21b-32da45349ccb",
-      "name": "Limit"
-    },
-    {
-      "parameters": {
-        "operation": "appendOrUpdate",
-        "documentId": {
-          "__rl": true,
-          "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-          "mode": "list",
-          "cachedResultName": "SUNO AI Automstion",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Lyrics (100-120 Words)": "={{ $json['Lyrics (100-120 Words)'] }}",
-            "Name": "={{ $('Suno name').item.json.output }}",
-            "Style (1000 Words)": "={{ $json['Style (1000 Words)'] }}"
-          },
-          "matchingColumns": [
-            "Lyrics (100-120 Words)"
-          ],
-          "schema": [
-            {
-              "id": "Name",
-              "displayName": "Name",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Lyrics (100-120 Words)",
-              "displayName": "Lyrics (100-120 Words)",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Style (1000 Words)",
-              "displayName": "Style (1000 Words)",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.6,
-      "position": [
-        1616,
-        208
-      ],
-      "id": "b2135617-9ea7-42cf-81fa-6f3f8944f1e6",
-      "name": "Append or update row in sheet1",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "jMg3j3fkols2qHBL",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "documentId": {
-          "__rl": true,
-          "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-          "mode": "list",
-          "cachedResultName": "SUNO AI Automstion",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-        }
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.6,
-      "position": [
-        1616,
-        448
-      ],
-      "id": "aa33d928-c3b0-47ca-a20d-8cd36cb89c87",
-      "name": "Delete rows or columns from sheet1",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "jMg3j3fkols2qHBL",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "https://api.kie.ai/api/v1/generate/record-info",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "taskId",
-              "value": "={{ $json.data.taskId }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2608,
-        -384
-      ],
-      "id": "7f2ad40f-5619-4ac2-9dd3-0ca065e5205e",
-      "name": "Kie ai - Suno - Text to Music1",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "qrSLdQAxyISpv7xA",
-          "name": "Kie ai -> sora 2 ai"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "name": "=",
-        "driveId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "My Drive"
-        },
-        "folderId": {
-          "__rl": true,
-          "value": "1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t",
-          "mode": "list",
-          "cachedResultName": "SUNO Music AI",
-          "cachedResultUrl": "https://drive.google.com/drive/folders/1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        3536,
-        -768
-      ],
-      "id": "1505f8fd-1efa-48e9-b3fa-e9a292f487b3",
-      "name": "Upload file",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "WM6RaS4XN5sMHcjI",
-          "name": "Google Drive account"
-        }
-      }
     },
     {
       "parameters": {
@@ -2774,16 +2105,16 @@
     },
     {
       "parameters": {
-        "content": "Trigger the google sheet document to begin prompting the system . ",
-        "height": 448,
-        "width": 150,
+        "content": "## Trigger the google sheet document to begin prompting the system . ",
+        "height": 96,
+        "width": 502,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -496,
-        -224
+        -800,
+        -560
       ],
       "id": "f4ed62f1-901b-4ca9-a84a-8cb1c27ee2bd",
       "name": "Sticky Note"
@@ -2906,26 +2237,6 @@
     },
     {
       "parameters": {
-        "url": "={{ $json.data.response.sunoData[0].audioUrl }}",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "file"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        3104,
-        -768
-      ],
-      "id": "d40398db-0ec7-42c1-a2df-359b84aaf5ad",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {
         "content": "## Quick notes summary (save this)\n\nHow to turn a URL into a binary file in n8n (MP3 / MP4):\n\nCreate a NEW HTTP Request node (do not reuse the generation node).\n\nSet:\n\nMethod: GET\n\nURL: {{$json.data.response.sunoData[0].audioUrl}} (or videoUrl for MP4)\n\nSend Body: OFF\n\nScroll to Options → Add option:\n\nResponse Format: File\n\nBinary Property Name: data\n\nExecute → check OUTPUT → Binary → data.\n\n(Optional) Use Write Binary File to save locally or pass to another node.\n\nKey rule: Never use “Send Body” or “n8n Binary File” when downloading.\nThose are for uploads.",
         "height": 768,
         "width": 560,
@@ -2944,11 +2255,14 @@
       "parameters": {
         "resource": "video",
         "operation": "upload",
-        "title": "={{ $json.Language }}:{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}",
+        "title": "={{ $('edit output to name').item.json['Suno song name'] }}",
         "regionCode": "US",
         "categoryId": "27",
         "binaryProperty": "=data",
-        "options": {}
+        "options": {
+          "description": "Foreign Language learning project with ai music generation automation",
+          "privacyStatus": "public"
+        }
       },
       "name": "YouTube",
       "type": "n8n-nodes-base.youTube",
@@ -2968,132 +2282,15 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.kie.ai/api/v1/mp4/generate",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "taskId",
-              "value": "={{ $json.data.taskId }}"
-            },
-            {
-              "name": "audioId",
-              "value": "={{ $json.data.response.sunoData[0].id }}"
-            },
-            {
-              "name": "callBackUrl",
-              "value": "https://api.example.com/callback"
-            },
-            {
-              "name": "author",
-              "value": "MJP"
-            },
-            {
-              "name": "domainName",
-              "value": "Suno AI"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        3216,
-        -128
-      ],
-      "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
-      "name": "HTTP Request1",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "qrSLdQAxyISpv7xA",
-          "name": "Kie ai -> sora 2 ai"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "https://api.kie.ai/api/v1/mp4/record-info",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "taskId",
-              "value": "={{ $json.data.taskId }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        3760,
-        -128
-      ],
-      "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
-      "name": "HTTP Request2",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "qrSLdQAxyISpv7xA",
-          "name": "Kie ai -> sora 2 ai"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "={{ $json.data.response.videoUrl }}",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "file"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        3984,
-        -128
-      ],
-      "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
-      "name": "HTTP Request3"
-    },
-    {
-      "parameters": {
         "content": "## Video creation automation. Need to update youtube credential\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/components/sticky-notes",
-        "height": 304,
+        "height": 96,
         "width": 1360
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3120,
-        -192
+        3152,
+        -240
       ],
       "id": "dfc553d5-fc04-4bf2-afac-f1bdbb103dc5",
       "name": "Sticky Note4"
@@ -3350,6 +2547,379 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
+          "mode": "list",
+          "cachedResultName": "SUNO AI Automstion",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Style (1000 Words)": "={{ $json['Suno Style Output'] }}",
+            "Lyrics (100-120 Words)": "={{ $json['Suno Lyrics Output'] }}",
+            "Name": "={{ $json['Suno song name'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lyrics (100-120 Words)",
+              "displayName": "Lyrics (100-120 Words)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Style (1000 Words)",
+              "displayName": "Style (1000 Words)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1248,
+        -128
+      ],
+      "id": "982553d8-e173-4b03-88ee-5028720f4d3e",
+      "name": "Append row in SUNOAIAutomation",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jMg3j3fkols2qHBL",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "prompt",
+              "value": "={{ $json['Suno Lyrics Output'] }}"
+            },
+            {
+              "name": "customMode",
+              "value": "true"
+            },
+            {
+              "name": "instrumental",
+              "value": "false"
+            },
+            {
+              "name": "model",
+              "value": "V4"
+            },
+            {
+              "name": "callBackUrl",
+              "value": "https://api.example.com/callback"
+            },
+            {
+              "name": "style",
+              "value": "={{ $json['Suno Style Output'] }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $json['Suno song name'] }}"
+            },
+            {
+              "name": "negativeTags",
+              "value": "Heavy Metal, Upbeat Drums"
+            },
+            {
+              "name": "vocalGender",
+              "value": "m"
+            },
+            {
+              "name": "styleWeight",
+              "value": "0.65"
+            },
+            {
+              "name": "weirdnessConstraint",
+              "value": "0.65"
+            },
+            {
+              "name": "audioWeight",
+              "value": "0.65"
+            },
+            {
+              "name": "personaId",
+              "value": "persona_123"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2080,
+        -384
+      ],
+      "id": "427640bd-c6b0-45fa-a3f7-ecb1c12cd966",
+      "name": "Post Kie ai - Suno - Text to Music",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2608,
+        -384
+      ],
+      "id": "7f2ad40f-5619-4ac2-9dd3-0ca065e5205e",
+      "name": "Get Kie ai - Suno - Text to Music",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "=",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t",
+          "mode": "list",
+          "cachedResultName": "SUNO Music AI",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3536,
+        -768
+      ],
+      "id": "1505f8fd-1efa-48e9-b3fa-e9a292f487b3",
+      "name": "Upload Music Audio -> SUNO Music AI",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "WM6RaS4XN5sMHcjI",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/mp4/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            },
+            {
+              "name": "audioId",
+              "value": "={{ $json.data.response.sunoData[0].id }}"
+            },
+            {
+              "name": "callBackUrl",
+              "value": "https://api.example.com/callback"
+            },
+            {
+              "name": "author",
+              "value": "MJP"
+            },
+            {
+              "name": "domainName",
+              "value": "Suno AI"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3216,
+        -128
+      ],
+      "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
+      "name": "Post KieAi music Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/mp4/record-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $json.data.taskId }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3760,
+        -128
+      ],
+      "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
+      "name": "Get KieAi music Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.videoUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3984,
+        -128
+      ],
+      "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
+      "name": "Get Video File data"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.response.sunoData[0].audioUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3104,
+        -768
+      ],
+      "id": "d40398db-0ec7-42c1-a2df-359b84aaf5ad",
+      "name": "Get Audio File"
     }
   ],
   "origin": "n8n",
@@ -3384,6 +2954,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-12-31T02:54:22.852Z",
-  "versionId": "03ad75e9-193e-4da2-bc10-1ce63bee8763"
+  "updatedAt": "2026-01-01T08:06:28.991Z",
+  "versionId": "e73cabf7-466c-438f-8590-657ab686cb8a"
 }
