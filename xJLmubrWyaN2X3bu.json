@@ -50,23 +50,23 @@
         ]
       ]
     },
-    "Start": {
-      "main": [
-        [
-          {
-            "node": "Google Sheets",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model": {
       "ai_languageModel": [
         [
           {
             "node": "AI Agent",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
             "index": 0
           }
         ]
@@ -88,8 +88,8 @@
       "name": "Workflow Explanation",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        192,
-        -176
+        -192,
+        -720
       ],
       "id": "generated-8bfaa277-231a-4bd3-82c5-bdb9af0acf6e"
     },
@@ -128,26 +128,16 @@
     {
       "parameters": {
         "content": "## Enhanced AI Job Search Agent 🚀\\n\\nThis workflow now includes the capability for the AI Agent to make outbound calls using **Twilio** and log the conversation details to **Google Sheets**.\\n\\n### Setup Steps:\\n1.  **Google Sheets (Read)**: Replace \\\"YOUR\\_GOOGLE\\_SHEET\\_ID\\\" with your actual Google Sheet ID and confirm the sheet name.\\n2.  **Twilio**: You need to configure your Twilio credentials. Set the 'From' number to your Twilio phone number.\\n3.  **AI Agent**: The agent is prompted to act as a recruiter. It will use the Twilio tool to make calls and gather information.\\n4.  **Google Sheets (Log)**: This node will log the call details and the AI agent's responses. Ensure you replace \\\"YOUR\\_GOOGLE\\_SHEET\\_ID\\\" with the ID of your log sheet.\\n\\n**Important**: For actual calling functionality, you will need to link your Twilio account to n8n and ensure you have sufficient balance and appropriate numbers configured for making calls. The `message` parameter in the Twilio node will be the text the AI agent converts to speech.",
-        "height": 450,
-        "width": 550
+        "height": 834,
+        "width": 614
       },
       "position": [
-        992,
-        -224
+        512,
+        -736
       ],
       "type": "n8n-nodes-base.stickyNote",
       "name": "Sticky Note",
       "id": "generated-137b402e-784c-45fe-aeb0-9523f282d060"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.start",
-      "name": "Start",
-      "position": [
-        -176,
-        384
-      ],
-      "id": "generated-ca356399-8794-46b3-8875-aa23fff8635d"
     },
     {
       "parameters": {
@@ -266,6 +256,31 @@
           "name": "OpenAi account"
         }
       }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        400
+      ],
+      "id": "40a49d63-e4e7-4913-8c3b-6946188890fb",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "content": "## Agent predicts stock market. \n\n## 1. How do professionals do it? They observe a companies value,  determine if it's under valued at its market price. \n** Api call stock exchanges that gather stock prices,  feed these into maybe a rag system to compile the best opinion of what is going on for a stock price? \n\n## 2. News. The news will always say a stocks poor when it's a buy and great when it's a sell. You buy and sell the news. \n** Node scraping stocks news, comparing public opinion. **\n\n## 3. Insider trading,  i have no connections but there are services for politician trades.  They aren't the best because they post like 30 days late,  but still good for comparison in the rag? \n\n## 4. There is some way to predict the market that either isn't known or isn't talked about. People are making MONEY. \n\n## 5 PERCEPTION of the market. \n\n",
+        "height": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -384,
+        240
+      ],
+      "id": "e14e7d3e-54f4-485c-bf9b-a21bf878e27b",
+      "name": "Sticky Note1"
     }
   ],
   "origin": "n8n",
@@ -289,6 +304,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-07T05:56:53.264Z",
-  "versionId": "c9f63e35-ba42-4177-b1bd-42e26dbb4878"
+  "updatedAt": "2026-01-01T08:17:09.286Z",
+  "versionId": "bad60de7-6221-4b0e-bf34-72ff299e2425"
 }
