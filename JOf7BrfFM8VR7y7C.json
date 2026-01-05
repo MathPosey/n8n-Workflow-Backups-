@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-01T03:29:34.998Z",
-    "createdAt": "2026-01-01T03:29:31.096Z",
-    "versionId": "e73cabf7-466c-438f-8590-657ab686cb8a",
+    "updatedAt": "2026-01-05T07:06:35.974Z",
+    "createdAt": "2026-01-05T07:06:30.272Z",
+    "versionId": "a98651a3-9cba-4493-bc6e-ec6c33d73269",
     "workflowId": "JOf7BrfFM8VR7y7C",
     "nodes": [
       {
@@ -106,7 +106,7 @@
           "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
           "hasOutputParser": true,
           "options": {
-            "systemMessage": "Primary job: Write only the Style Prompt Field (<=195 characters), describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
+            "systemMessage": "MANDATORY RULE TO FOLLOW, NO MORE THAN 15 WORDS\n\nPrimary job: Write only the Style Prompt Field describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\n\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
             "maxIterations": 3
           }
         },
@@ -1458,11 +1458,11 @@
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version e73cabf7",
+    "name": "Version a98651a3",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "e73cabf7-466c-438f-8590-657ab686cb8a",
+  "activeVersionId": "a98651a3-9cba-4493-bc6e-ec6c33d73269",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -1884,7 +1884,7 @@
         "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "Primary job: Write only the Style Prompt Field (<=195 characters), describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
+          "systemMessage": "MANDATORY RULE TO FOLLOW, NO MORE THAN 15 WORDS\n\nPrimary job: Write only the Style Prompt Field describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\n\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
           "maxIterations": 3
         }
       },
@@ -2934,7 +2934,9 @@
     "timezone": "America/Los_Angeles",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
-    "timeSavedPerExecution": 100
+    "timeSavedPerExecution": 100,
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false
   },
   "shared": [
     {
@@ -2954,6 +2956,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-01T08:06:28.991Z",
-  "versionId": "e73cabf7-466c-438f-8590-657ab686cb8a"
+  "updatedAt": "2026-01-05T07:10:11.503Z",
+  "versionId": "a98651a3-9cba-4493-bc6e-ec6c33d73269"
 }
