@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-11-30T01:02:17.462Z",
-    "createdAt": "2025-11-30T01:02:17.462Z",
-    "versionId": "97172626-df98-43c3-ae6e-0d2e79e630ba",
+    "updatedAt": "2026-01-05T07:10:54.955Z",
+    "createdAt": "2025-12-24T23:13:35.203Z",
+    "versionId": "0ae12f70-8172-44d5-b71a-f66852530cd6",
     "workflowId": "4kDXo80zICBlP0pv",
     "nodes": [
       {
@@ -368,7 +368,8 @@
           "rule": {
             "interval": [
               {
-                "triggerAtHour": 6
+                "field": "weeks",
+                "triggerAtHour": 12
               }
             ]
           }
@@ -452,6 +453,33 @@
             "name": "SSH Password account"
           }
         }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.kie.ai/api/v1/jobs/createTask",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "{\n  \"model\": \"sora-2-text-to-video\",\n  \"callBackUrl\": \"https://your-domain.com/api/callback\",\n  \"input\": {\n    \"prompt\": \"A professor stands at the front of a lively classroom, enthusiastically giving a lecture. On the blackboard behind him are colorful chalk diagrams. With an animated gesture, he declares to the students: “Sora 2 is now available on Kie AI, making it easier than ever to create stunning videos.” The students listen attentively, some smiling and taking notes.\",\n    \"aspect_ratio\": \"landscape\",\n    \"n_frames\": \"10\",\n    \"remove_watermark\": true\n  }\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          0,
+          0
+        ],
+        "id": "a375abf9-cd4f-4763-910d-2e82d070b5d0",
+        "name": "Kie ai -> sora 2 ai ttv"
       }
     ],
     "connections": {
@@ -626,12 +654,12 @@
         ]
       }
     },
-    "authors": "system migration",
-    "name": null,
-    "description": null,
+    "authors": "Matthew Posey",
+    "name": "Version 0ae12f70",
+    "description": "",
     "autosaved": false
   },
-  "activeVersionId": "97172626-df98-43c3-ae6e-0d2e79e630ba",
+  "activeVersionId": "0ae12f70-8172-44d5-b71a-f66852530cd6",
   "connections": {
     "HeyGenerate Video": {
       "main": [
@@ -1295,7 +1323,12 @@
     "name": "n8n-Workflow-Backups-"
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -1315,6 +1348,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-12-24T23:13:35.200Z",
+  "updatedAt": "2026-01-05T07:11:32.789Z",
   "versionId": "0ae12f70-8172-44d5-b71a-f66852530cd6"
 }
