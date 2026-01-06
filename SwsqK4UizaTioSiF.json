@@ -2312,7 +2312,12 @@
     "name": "n8n-Workflow-Backups-"
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -2330,6 +2335,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-27T21:59:19.823Z",
+  "updatedAt": "2026-01-05T23:53:32.873Z",
   "versionId": "9f639f73-15c2-4fac-a729-5158789bc6c2"
 }
