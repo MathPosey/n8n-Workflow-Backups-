@@ -2475,7 +2475,12 @@
     "name": "n8n-Workflow-Backups-"
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -2497,7 +2502,7 @@
       "lastItemDate": "2025-11-26T20:35:37.000Z"
     },
     "node:Youtube video": {
-      "lastItemDate": "2026-01-03T16:11:30.000Z"
+      "lastItemDate": "2026-01-06T00:04:53.000Z"
     },
     "node:RSS Feed Trigger1": {
       "lastItemDate": "2025-10-12T20:00:00.000Z"
@@ -2510,14 +2515,14 @@
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": [
-        3
+        5
       ]
     },
     "node:Website promotion": {
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2026-01-04T18:40:12.000Z"
+      "lastItemDate": "2026-01-05T23:17:48.000Z"
     },
     "node:mindMyBusinessNYC": {
       "lastItemDate": "2026-01-02T12:11:35.000Z"
@@ -2525,6 +2530,6 @@
   },
   "tags": [],
   "triggerCount": 7,
-  "updatedAt": "2025-12-16T02:48:26.352Z",
+  "updatedAt": "2026-01-06T00:21:30.925Z",
   "versionId": "1b4ac73e-2b0e-4a2f-983c-d4bb8ac679a0"
 }
