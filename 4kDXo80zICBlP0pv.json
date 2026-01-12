@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-05T07:10:54.955Z",
-    "createdAt": "2025-12-24T23:13:35.203Z",
-    "versionId": "0ae12f70-8172-44d5-b71a-f66852530cd6",
+    "updatedAt": "2026-01-11T19:34:27.578Z",
+    "createdAt": "2026-01-11T18:25:39.699Z",
+    "versionId": "ce2bbf6d-8035-4455-a927-efc9c7bd2f65",
     "workflowId": "4kDXo80zICBlP0pv",
     "nodes": [
       {
@@ -189,8 +189,7 @@
       },
       {
         "parameters": {
-          "amount": 6,
-          "unit": "minutes"
+          "amount": 10
         },
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
@@ -330,7 +329,7 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.2,
         "position": [
-          1296,
+          1424,
           704
         ],
         "id": "a13d0034-0054-4797-aa02-7774e54a8f88",
@@ -480,6 +479,71 @@
         ],
         "id": "a375abf9-cd4f-4763-910d-2e82d070b5d0",
         "name": "Kie ai -> sora 2 ai ttv"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.data.status }}",
+                      "rightValue": "SUCCESS",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "6d1c2d3b-162a-45ae-90c8-5865ff066a6a"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "success"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "da03b8cd-7e10-4497-91d7-01016d6d9ded",
+                      "leftValue": "={{ $json.data.status }}",
+                      "rightValue": "(ING|_SUCCESS)",
+                      "operator": {
+                        "type": "string",
+                        "operation": "regex"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "processing"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          1168,
+          960
+        ],
+        "id": "9e090f84-052c-4df1-85c2-e1182a1c6cfc",
+        "name": "Switch"
       }
     ],
     "connections": {
@@ -542,7 +606,7 @@
         "main": [
           [
             {
-              "node": "downloadfile",
+              "node": "Switch",
               "type": "main",
               "index": 0
             }
@@ -652,14 +716,32 @@
             }
           ]
         ]
+      },
+      "Switch": {
+        "main": [
+          [
+            {
+              "node": "downloadfile",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 0ae12f70",
+    "name": "Version ce2bbf6d",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "0ae12f70-8172-44d5-b71a-f66852530cd6",
+  "activeVersionId": "ce2bbf6d-8035-4455-a927-efc9c7bd2f65",
   "connections": {
     "HeyGenerate Video": {
       "main": [
@@ -720,7 +802,7 @@
       "main": [
         [
           {
-            "node": "downloadfile",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -826,6 +908,24 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "downloadfile",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
             "index": 0
           }
         ]
@@ -1023,8 +1123,7 @@
     },
     {
       "parameters": {
-        "amount": 6,
-        "unit": "minutes"
+        "amount": 10
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
@@ -1164,7 +1263,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1296,
+        1424,
         704
       ],
       "id": "a13d0034-0054-4797-aa02-7774e54a8f88",
@@ -1314,6 +1413,71 @@
       ],
       "id": "a375abf9-cd4f-4763-910d-2e82d070b5d0",
       "name": "Kie ai -> sora 2 ai ttv"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "6d1c2d3b-162a-45ae-90c8-5865ff066a6a"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "success"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "da03b8cd-7e10-4497-91d7-01016d6d9ded",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "(ING|_SUCCESS)",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "processing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1168,
+        960
+      ],
+      "id": "9e090f84-052c-4df1-85c2-e1182a1c6cfc",
+      "name": "Switch"
     }
   ],
   "origin": "n8n",
@@ -1348,6 +1512,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-01-05T07:11:32.789Z",
-  "versionId": "0ae12f70-8172-44d5-b71a-f66852530cd6"
+  "updatedAt": "2026-01-11T19:34:24.948Z",
+  "versionId": "ce2bbf6d-8035-4455-a927-efc9c7bd2f65"
 }
