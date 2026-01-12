@@ -2502,7 +2502,7 @@
       "lastItemDate": "2025-11-26T20:35:37.000Z"
     },
     "node:Youtube video": {
-      "lastItemDate": "2026-01-10T16:05:31.000Z"
+      "lastItemDate": "2026-01-11T16:04:03.000Z"
     },
     "node:RSS Feed Trigger1": {
       "lastItemDate": "2025-10-12T20:00:00.000Z"
@@ -2515,14 +2515,14 @@
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": [
-        9
+        11
       ]
     },
     "node:Website promotion": {
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2026-01-11T00:00:59.000Z"
+      "lastItemDate": "2026-01-11T18:00:00.000Z"
     },
     "node:mindMyBusinessNYC": {
       "lastItemDate": "2026-01-03T10:40:18.000Z"
