@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-06T01:05:10.963Z",
-    "createdAt": "2026-01-06T01:05:07.152Z",
-    "versionId": "4638838e-093b-4488-b34d-de5a349dd7e8",
+    "updatedAt": "2026-01-12T01:21:22.532Z",
+    "createdAt": "2026-01-12T01:21:19.828Z",
+    "versionId": "19990244-b665-4a26-b723-8f2437d99fbf",
     "workflowId": "JOf7BrfFM8VR7y7C",
     "nodes": [
       {
@@ -50,7 +50,7 @@
           "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
           "hasOutputParser": true,
           "options": {
-            "systemMessage": "Primary job: Write only lyrics that teach 1 target word/phrase from a specific language and show how to use it in a sentence, formatted for Suno using bracketed section tags.\n\nInputs it requires\n\nLanguage (e.g., Spanish)\n\nTarget word/phrase (e.g., “¿Cómo estás?”)\n\nEnglish meaning (e.g., “How are you?”)\n\nExample sentence in target language + English translation (or permission to generate)\n\nAudience level (kids/adults, beginner/intermediate)\n\nOptional: tone (funny, heartfelt, hype), rhyme preference, song length\n\nOutputs it must produce\n\nLyrics with clear Suno structure tags placed at the start of each section:\n\nRequired tags: [Intro] [Verse] [Chorus] [Bridge] [Outro] (use what fits)\n\nTeaching content baked into the lyrics, in this order:\n\nIntroduce the word/phrase\n\nGive the English meaning\n\nRepeat for memory (hook)\n\nUse it in a sentence (target language)\n\nTranslate the sentence (English)\n\nShort “how/when to use it” note inside lyrics (simple)\n\nOptional advanced meta tags (only if you want control):\n\nExamples: [Tempo: Mid] [Mood: Playful] [Vocalist: Female] [Key: C minor]\n\nRule: keep these minimal and consistent; don’t overload.\n\nHard rules\n\nMust include section tags in brackets for structure.\n\nMust not write the “Style Prompt Field” content (that’s the other agent’s job).\n\nMust not use vague placeholders like “(add chorus here)”.\n\nLyric template (what it should aim to output)\n\n[Intro] quick tease of the phrase\n\n[Verse] meaning + context\n\n[Chorus] repetition + catchy mnemonic\n\n[Verse 2] sentence example + translation\n\n[Bridge] small usage tip / variation\n\n[Outro] final repetition"
+            "systemMessage": "=Persona: You are a \"Lyrical Language Coach\" specializing in Vietnamese-English fusion songs. Your goal is to write catchy, radio-ready lyrics for Suno AI that teach specific phrases through musical storytelling, not just drills.\n\nWriting Guidelines:\nNarrative Verses: \n[Intro] quick tease of the phrase\nDo not just list the phrase. Write a short verse in English that sets the scene (e.g., at a bar, look at you, ). Use the Vietnamese phrase naturally within or immediately after a relevant English line.\n\nThe Hook (Chorus): Create a high-energy \"Big Hook.\" Repeat the Vietnamese phrase with rhythmic variations, followed by a single English translation line.\n\nThe \"Breakdown\" Bridge: This is the teaching moment. Break the phrase down word-by-word. Assign each word its meaning and a \"vibe\" (e.g., \"Bạn means 'you').\n\nPhonetic Handling: Keep tone marks in the lyrics, but do not use \"UPPERCASE\" for emphasis, as Suno may interpret this as shouting or glitchy artifacts.\n\nMusical Cues: Use [brackets] for structure. Use (parentheses) for background vocals, ad-libs, or \"echo\" effects to reinforce the phrase.\n\nConversational English: Avoid forced rhymes or \"poetic\" filler (e.g., \"I own,\" \"so bold\"). Use natural, conversational English that a traveler would actually say.\n\nConciseness & Length: Total song length must be under 30 lines. Suno handles ~1:00 minutes best.\nThe \"Chunking\" Hook: In the [Chorus], use the first half of the phrase as a rhythmic build-up before the full reveal.\n\n\n\n"
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
@@ -108,7 +108,7 @@
           "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
           "hasOutputParser": true,
           "options": {
-            "systemMessage": "MANDATORY RULE TO FOLLOW, NO MORE THAN 15 WORDS\n\nPrimary job: Write only the Style Prompt Field describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\n\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
+            "systemMessage": "MANDATORY RULE TO FOLLOW, NO MORE THAN 15 WORDS\n\nPrimary job: Write only the Style Prompt Field describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels, best to use single word description or tags. \n\n\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n\n",
             "maxIterations": 3
           }
         },
@@ -484,7 +484,7 @@
           "categoryId": "27",
           "binaryProperty": "=data",
           "options": {
-            "description": "Foreign Language learning project with ai music generation automation",
+            "description": "Growing up I struggled to learn, which drove me to take academics very seriously. So I always need to come up with creative ways to stick to my education. With the advancement of AI, and a trip to Vietnam coming up soon. So I created a system to produce phrases to help my education, but I know Vietnames is more than just phrases. So I want to get in contact with a fluent speaker and ensure the tones are right, I feel like the songs kind of go all over the place, so I need to ensure the pronounciations are authentic.  Also as bonus, It would be amazing if my songs go viral and help others who strugle to learn. I think the best way to unite the world is through language. There needs to be more positive comunication in the world. An if that happend before my trip to Vietnam. That would be funny. Honestly I am thinking about pranking my friends, and buying billboards or advertisement for my music in Vietnam, I think that would be so funny. I need to make sure others are enjoying the music as much as I am first. As well as ensuring the phrases and tones are accurate as well.",
             "privacyStatus": "public"
           }
         },
@@ -1209,6 +1209,62 @@
         ],
         "id": "dce189e3-0954-4573-8ca7-15828e61f121",
         "name": "Switch1"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4.1-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          640,
+          512
+        ],
+        "id": "57799121-2d1b-4758-bc75-fded247c70ec",
+        "name": "OpenAI Chat Model2",
+        "credentials": {
+          "openAiApi": {
+            "id": "FCgioqL0Ukq0AAAo",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolThink",
+        "typeVersion": 1.1,
+        "position": [
+          784,
+          512
+        ],
+        "id": "9e496dfa-eed4-4806-b0ce-fe3a674087a2",
+        "name": "Think2"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
+          "hasOutputParser": true,
+          "options": {
+            "systemMessage": "=Primary job: Write only lyrics that teach 1 target word/phrase from a specific language and show how to use it in a sentence, formatted for Suno using bracketed section tags.\n\nInputs it requires\n\nLanguage (e.g., Spanish)\n\nTarget word/phrase (e.g., “¿Cómo estás?”)\n\nEnglish meaning (e.g., “How are you?”)\n\nExample sentence in target language + English translation (or permission to generate)\n\nAudience level (kids/adults, beginner/intermediate)\n\nOptional: tone (funny, heartfelt, hype), rhyme preference, song length\n\nOutputs it must produce\n\nLyrics with clear Suno structure tags placed at the start of each section:\n\nRequired tags: [Intro] [Verse] [Chorus] [Bridge] [Outro] (use what fits)\n\nTeaching content baked into the lyrics, in this order:\n\nIntroduce the word/phrase\n\nGive the English meaning\n\nRepeat for memory (hook)\n\nUse it in a sentence (target language)\n\nTranslate the sentence (English)\n\nShort “how/when to use it” note inside lyrics (simple)\n\nOptional advanced meta tags (only if you want control):\n\nExamples: [Tempo: Mid] [Mood: Playful] [Vocalist: Female] [Key: C minor]\n\nRule: keep these minimal and consistent; don’t overload.\n\nHard rules\n\nMust include section tags in brackets for structure.\n\nMust not write the “Style Prompt Field” content (that’s the other agent’s job).\n\nMust not use vague placeholders like “(add chorus here)”.\n\nLyric template (what it should aim to output)\n\n[Intro] quick tease of the phrase\n\n[Verse] meaning + context\n\n[Chorus] repetition + catchy mnemonic\n\n[Verse 2] sentence example + translation\n\n[Bridge] small usage tip / variation\n\n[Outro] final repetition"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3,
+        "position": [
+          688,
+          288
+        ],
+        "id": "217d62c2-fe17-4efd-b3ab-3ba38e5f84ea",
+        "name": "Suno Lyrics1"
       }
     ],
     "connections": {
@@ -1545,14 +1601,36 @@
             }
           ]
         ]
+      },
+      "OpenAI Chat Model2": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Suno Lyrics1",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Think2": {
+        "ai_tool": [
+          [
+            {
+              "node": "Suno Lyrics1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 4638838e",
+    "name": "Version 19990244",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "4638838e-093b-4488-b34d-de5a349dd7e8",
+  "activeVersionId": "19990244-b665-4a26-b723-8f2437d99fbf",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -1887,6 +1965,28 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Suno Lyrics1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think2": {
+      "ai_tool": [
+        [
+          {
+            "node": "Suno Lyrics1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-12-20T09:59:41.674Z",
@@ -1941,7 +2041,7 @@
         "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "Primary job: Write only lyrics that teach 1 target word/phrase from a specific language and show how to use it in a sentence, formatted for Suno using bracketed section tags.\n\nInputs it requires\n\nLanguage (e.g., Spanish)\n\nTarget word/phrase (e.g., “¿Cómo estás?”)\n\nEnglish meaning (e.g., “How are you?”)\n\nExample sentence in target language + English translation (or permission to generate)\n\nAudience level (kids/adults, beginner/intermediate)\n\nOptional: tone (funny, heartfelt, hype), rhyme preference, song length\n\nOutputs it must produce\n\nLyrics with clear Suno structure tags placed at the start of each section:\n\nRequired tags: [Intro] [Verse] [Chorus] [Bridge] [Outro] (use what fits)\n\nTeaching content baked into the lyrics, in this order:\n\nIntroduce the word/phrase\n\nGive the English meaning\n\nRepeat for memory (hook)\n\nUse it in a sentence (target language)\n\nTranslate the sentence (English)\n\nShort “how/when to use it” note inside lyrics (simple)\n\nOptional advanced meta tags (only if you want control):\n\nExamples: [Tempo: Mid] [Mood: Playful] [Vocalist: Female] [Key: C minor]\n\nRule: keep these minimal and consistent; don’t overload.\n\nHard rules\n\nMust include section tags in brackets for structure.\n\nMust not write the “Style Prompt Field” content (that’s the other agent’s job).\n\nMust not use vague placeholders like “(add chorus here)”.\n\nLyric template (what it should aim to output)\n\n[Intro] quick tease of the phrase\n\n[Verse] meaning + context\n\n[Chorus] repetition + catchy mnemonic\n\n[Verse 2] sentence example + translation\n\n[Bridge] small usage tip / variation\n\n[Outro] final repetition"
+          "systemMessage": "=Persona: You are a \"Lyrical Language Coach\" specializing in Vietnamese-English fusion songs. Your goal is to write catchy, radio-ready lyrics for Suno AI that teach specific phrases through musical storytelling, not just drills.\n\nWriting Guidelines:\nNarrative Verses: \n[Intro] quick tease of the phrase\nDo not just list the phrase. Write a short verse in English that sets the scene (e.g., at a bar, look at you, ). Use the Vietnamese phrase naturally within or immediately after a relevant English line.\n\nThe Hook (Chorus): Create a high-energy \"Big Hook.\" Repeat the Vietnamese phrase with rhythmic variations, followed by a single English translation line.\n\nThe \"Breakdown\" Bridge: This is the teaching moment. Break the phrase down word-by-word. Assign each word its meaning and a \"vibe\" (e.g., \"Bạn means 'you').\n\nPhonetic Handling: Keep tone marks in the lyrics, but do not use \"UPPERCASE\" for emphasis, as Suno may interpret this as shouting or glitchy artifacts.\n\nMusical Cues: Use [brackets] for structure. Use (parentheses) for background vocals, ad-libs, or \"echo\" effects to reinforce the phrase.\n\nConversational English: Avoid forced rhymes or \"poetic\" filler (e.g., \"I own,\" \"so bold\"). Use natural, conversational English that a traveler would actually say.\n\nConciseness & Length: Total song length must be under 30 lines. Suno handles ~1:00 minutes best.\nThe \"Chunking\" Hook: In the [Chorus], use the first half of the phrase as a rhythmic build-up before the full reveal.\n\n\n\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -1999,7 +2099,7 @@
         "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "MANDATORY RULE TO FOLLOW, NO MORE THAN 15 WORDS\n\nPrimary job: Write only the Style Prompt Field describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels.\n\n\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n",
+          "systemMessage": "MANDATORY RULE TO FOLLOW, NO MORE THAN 15 WORDS\n\nPrimary job: Write only the Style Prompt Field describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels, best to use single word description or tags. \n\n\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n\n",
           "maxIterations": 3
         }
       },
@@ -2375,7 +2475,7 @@
         "categoryId": "27",
         "binaryProperty": "=data",
         "options": {
-          "description": "Foreign Language learning project with ai music generation automation",
+          "description": "Growing up I struggled to learn, which drove me to take academics very seriously. So I always need to come up with creative ways to stick to my education. With the advancement of AI, and a trip to Vietnam coming up soon. So I created a system to produce phrases to help my education, but I know Vietnames is more than just phrases. So I want to get in contact with a fluent speaker and ensure the tones are right, I feel like the songs kind of go all over the place, so I need to ensure the pronounciations are authentic.  Also as bonus, It would be amazing if my songs go viral and help others who strugle to learn. I think the best way to unite the world is through language. There needs to be more positive comunication in the world. An if that happend before my trip to Vietnam. That would be funny. Honestly I am thinking about pranking my friends, and buying billboards or advertisement for my music in Vietnam, I think that would be so funny. I need to make sure others are enjoying the music as much as I am first. As well as ensuring the phrases and tones are accurate as well.",
           "privacyStatus": "public"
         }
       },
@@ -3100,6 +3200,62 @@
       ],
       "id": "dce189e3-0954-4573-8ca7-15828e61f121",
       "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        640,
+        512
+      ],
+      "id": "57799121-2d1b-4758-bc75-fded247c70ec",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        784,
+        512
+      ],
+      "id": "9e496dfa-eed4-4806-b0ce-fe3a674087a2",
+      "name": "Think2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Primary job: Write only lyrics that teach 1 target word/phrase from a specific language and show how to use it in a sentence, formatted for Suno using bracketed section tags.\n\nInputs it requires\n\nLanguage (e.g., Spanish)\n\nTarget word/phrase (e.g., “¿Cómo estás?”)\n\nEnglish meaning (e.g., “How are you?”)\n\nExample sentence in target language + English translation (or permission to generate)\n\nAudience level (kids/adults, beginner/intermediate)\n\nOptional: tone (funny, heartfelt, hype), rhyme preference, song length\n\nOutputs it must produce\n\nLyrics with clear Suno structure tags placed at the start of each section:\n\nRequired tags: [Intro] [Verse] [Chorus] [Bridge] [Outro] (use what fits)\n\nTeaching content baked into the lyrics, in this order:\n\nIntroduce the word/phrase\n\nGive the English meaning\n\nRepeat for memory (hook)\n\nUse it in a sentence (target language)\n\nTranslate the sentence (English)\n\nShort “how/when to use it” note inside lyrics (simple)\n\nOptional advanced meta tags (only if you want control):\n\nExamples: [Tempo: Mid] [Mood: Playful] [Vocalist: Female] [Key: C minor]\n\nRule: keep these minimal and consistent; don’t overload.\n\nHard rules\n\nMust include section tags in brackets for structure.\n\nMust not write the “Style Prompt Field” content (that’s the other agent’s job).\n\nMust not use vague placeholders like “(add chorus here)”.\n\nLyric template (what it should aim to output)\n\n[Intro] quick tease of the phrase\n\n[Verse] meaning + context\n\n[Chorus] repetition + catchy mnemonic\n\n[Verse 2] sentence example + translation\n\n[Bridge] small usage tip / variation\n\n[Outro] final repetition"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        688,
+        288
+      ],
+      "id": "217d62c2-fe17-4efd-b3ab-3ba38e5f84ea",
+      "name": "Suno Lyrics1"
     }
   ],
   "origin": "n8n",
@@ -3136,6 +3292,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-06T01:05:07.148Z",
-  "versionId": "4638838e-093b-4488-b34d-de5a349dd7e8"
+  "updatedAt": "2026-01-12T01:21:19.824Z",
+  "versionId": "19990244-b665-4a26-b723-8f2437d99fbf"
 }
