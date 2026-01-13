@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-16T02:48:26.354Z",
-    "createdAt": "2025-12-16T02:48:26.354Z",
-    "versionId": "1b4ac73e-2b0e-4a2f-983c-d4bb8ac679a0",
+    "updatedAt": "2026-01-12T21:46:31.038Z",
+    "createdAt": "2026-01-12T21:46:25.914Z",
+    "versionId": "e6d86b46-a444-48a3-b1d6-f8248d3e6a21",
     "workflowId": "3qEaAZNHqyuHFiqe",
     "nodes": [
       {
@@ -198,14 +198,14 @@
           "text": "={{ $json.author }}\n{{ $json.title }} \n{{ $json.link }}",
           "hasOutputParser": true,
           "options": {
-            "systemMessage": "Just promoting my youtube content. The title may give a hint about what the video is about.\n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (under 200 characters)\n\n"
+            "systemMessage": "Just promoting my youtube content. The title may give a hint about what the video is about. A significant portion of my content is about translation phrases. Be creative with the responses. \n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (under 200 characters)\n\n"
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 1.8,
         "position": [
           -944,
-          -304
+          -368
         ],
         "id": "32e148e5-fb57-43cf-a89d-8133be66d14d",
         "name": "AI Agent2"
@@ -214,9 +214,9 @@
         "parameters": {
           "model": {
             "__rl": true,
-            "value": "gpt-4o-mini",
+            "value": "gpt-4.1-mini",
             "mode": "list",
-            "cachedResultName": "gpt-4o-mini"
+            "cachedResultName": "gpt-4.1-mini"
           },
           "options": {}
         },
@@ -825,31 +825,6 @@
       },
       {
         "parameters": {
-          "formTitle": "SUNO",
-          "formDescription": "Create Your Music",
-          "formFields": {
-            "values": [
-              {
-                "fieldLabel": "Theme",
-                "placeholder": "Type short theme title here",
-                "requiredField": true
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.formTrigger",
-        "typeVersion": 2.3,
-        "position": [
-          0,
-          0
-        ],
-        "id": "94d01324-cc10-427e-97e3-cb4b251a67fa",
-        "name": "On form submission1",
-        "webhookId": "c1aad1c2-030d-48bb-b137-438eac93b03b"
-      },
-      {
-        "parameters": {
           "person": "=86l697voblk6j0",
           "additionalFields": {}
         },
@@ -867,6 +842,17 @@
             "name": "LinkedIn account"
           }
         }
+      },
+      {
+        "parameters": {},
+        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+        "typeVersion": 1.3,
+        "position": [
+          -832,
+          -128
+        ],
+        "id": "af6f2bbd-fc5d-4a64-93a2-ac47626005d3",
+        "name": "Simple Memory"
       }
     ],
     "connections": {
@@ -1219,14 +1205,25 @@
             }
           ]
         ]
+      },
+      "Simple Memory": {
+        "ai_memory": [
+          [
+            {
+              "node": "AI Agent2",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Matthew Posey",
-    "name": null,
-    "description": null,
+    "name": "Version e6d86b46",
+    "description": "",
     "autosaved": false
   },
-  "activeVersionId": "1b4ac73e-2b0e-4a2f-983c-d4bb8ac679a0",
+  "activeVersionId": "e6d86b46-a444-48a3-b1d6-f8248d3e6a21",
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -1577,6 +1574,17 @@
           }
         ]
       ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-07-24T06:03:01.674Z",
@@ -1779,14 +1787,14 @@
         "text": "={{ $json.author }}\n{{ $json.title }} \n{{ $json.link }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "Just promoting my youtube content. The title may give a hint about what the video is about.\n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (under 200 characters)\n\n"
+          "systemMessage": "Just promoting my youtube content. The title may give a hint about what the video is about. A significant portion of my content is about translation phrases. Be creative with the responses. \n\nImportant formatting requirements:\n- text output no code, keep it raw.\n- Ensure the text is properly escaped for JSON\n- Do not use double quote (\"\") in response or any special character\n- Do not put asterisk\n- Keep the overall length appropriate for LinkedIn (under 200 characters)\n\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
         -944,
-        -304
+        -368
       ],
       "id": "32e148e5-fb57-43cf-a89d-8133be66d14d",
       "name": "AI Agent2"
@@ -1795,9 +1803,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4o-mini",
+          "value": "gpt-4.1-mini",
           "mode": "list",
-          "cachedResultName": "gpt-4o-mini"
+          "cachedResultName": "gpt-4.1-mini"
         },
         "options": {}
       },
@@ -2406,31 +2414,6 @@
     },
     {
       "parameters": {
-        "formTitle": "SUNO",
-        "formDescription": "Create Your Music",
-        "formFields": {
-          "values": [
-            {
-              "fieldLabel": "Theme",
-              "placeholder": "Type short theme title here",
-              "requiredField": true
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.formTrigger",
-      "typeVersion": 2.3,
-      "position": [
-        0,
-        0
-      ],
-      "id": "94d01324-cc10-427e-97e3-cb4b251a67fa",
-      "name": "On form submission1",
-      "webhookId": "c1aad1c2-030d-48bb-b137-438eac93b03b"
-    },
-    {
-      "parameters": {
         "person": "=86l697voblk6j0",
         "additionalFields": {}
       },
@@ -2448,17 +2431,21 @@
           "name": "LinkedIn account"
         }
       }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -832,
+        -128
+      ],
+      "id": "af6f2bbd-fc5d-4a64-93a2-ac47626005d3",
+      "name": "Simple Memory"
     }
   ],
   "origin": "n8n",
   "pinData": {
-    "Code1": [
-      {
-        "json": {
-          "output": "Unlock your potential with every test. Each challenge is a stepping stone to growth. Embrace the process, learn from the journey, and let success follow. #growthmindset #resilience"
-        }
-      }
-    ],
     "AI Agent1": [
       {
         "json": {
@@ -2502,7 +2489,7 @@
       "lastItemDate": "2025-11-26T20:35:37.000Z"
     },
     "node:Youtube video": {
-      "lastItemDate": "2026-01-11T16:04:03.000Z"
+      "lastItemDate": "2026-01-12T16:03:08.000Z"
     },
     "node:RSS Feed Trigger1": {
       "lastItemDate": "2025-10-12T20:00:00.000Z"
@@ -2522,14 +2509,14 @@
       "recurrenceRules": []
     },
     "node:PCmag": {
-      "lastItemDate": "2026-01-11T18:00:00.000Z"
+      "lastItemDate": "2026-01-12T21:07:22.000Z"
     },
     "node:mindMyBusinessNYC": {
       "lastItemDate": "2026-01-03T10:40:18.000Z"
     }
   },
   "tags": [],
-  "triggerCount": 7,
-  "updatedAt": "2026-01-06T00:21:30.925Z",
-  "versionId": "1b4ac73e-2b0e-4a2f-983c-d4bb8ac679a0"
+  "triggerCount": 6,
+  "updatedAt": "2026-01-12T21:46:25.911Z",
+  "versionId": "e6d86b46-a444-48a3-b1d6-f8248d3e6a21"
 }
