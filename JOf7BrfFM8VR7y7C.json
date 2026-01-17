@@ -1,1755 +1,7 @@
 {
-  "active": true,
-  "activeVersion": {
-    "updatedAt": "2026-01-16T05:36:43.710Z",
-    "createdAt": "2026-01-16T05:36:39.897Z",
-    "versionId": "7e186a21-c044-46c9-bc70-dc046213ccce",
-    "workflowId": "JOf7BrfFM8VR7y7C",
-    "nodes": [
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "mode": "list",
-            "value": "gpt-4.1-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          224,
-          -224
-        ],
-        "id": "ab29bac9-84b9-4d2c-9759-0fbb7bac3fe0",
-        "name": "OpenAI Chat Model",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
-          "hasOutputParser": true,
-          "options": {
-            "systemMessage": "=Persona: You are a \"Lyrical Language Coach\" specializing in Vietnamese-English fusion songs. Your goal is to write catchy, radio-ready lyrics for Suno AI that teach specific phrases through musical storytelling, not just drills. Take the time to consider the instructions before writing the lyrics.\n\nWriting Guidelines:\nFor clarification, there is only one tatarget phrase that should be in vietnamese, and that phrase is {{ $json['Target Phrase (Vietnamese)'] }} all other words should be in english.\n\nNarrative Verses: \n[Intro] quick tease of the phrase\nDo not just list the phrase. Write a short verse in English that sets the scene (e.g., at a bar, look at you, ). Use the Vietnamese phrase naturally within or immediately after a relevant English line.\n\nThe Hook (Chorus): Create a high-energy \"Big Hook.\" Repeat the Vietnamese phrase with rhythmic variations, followed by a single English translation line.\n\nThe \"Breakdown\" Bridge: This is the teaching moment. Break the phrase down word-by-word. Assign each word its meaning and a \"vibe\" (e.g., \"Bạn means 'you').\n\nPhonetic Handling: Keep tone marks in the lyrics, but do not use \"UPPERCASE\" for emphasis, as Suno may interpret this as shouting or glitchy artifacts.\n\nMusical Cues: Use [brackets] for structure. Use (parentheses) for background vocals, ad-libs, or \"echo\" effects to reinforce the phrase.\n\nConversational English: Avoid forced rhymes or \"poetic\" filler (e.g., \"I own,\" \"so bold\"). Use natural, conversational English that a traveler would actually say.\n\nConciseness & Length: Total song length must be under 30 lines. Suno handles ~1:00 minutes best.\nThe \"Chunking\" Hook: In the [Chorus], use the first half of the phrase as a rhythmic build-up before the full reveal.\n\n\n\n"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3,
-        "position": [
-          240,
-          -432
-        ],
-        "id": "3634de3b-d31c-4c70-bf0f-5d3769a99c94",
-        "name": "Suno Lyrics"
-      },
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "mode": "list",
-            "value": "gpt-4.1-mini"
-          },
-          "builtInTools": {},
-          "options": {
-            "maxTokens": 350
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          32,
-          224
-        ],
-        "id": "57eab987-ea38-41e7-8c54-858b9daad4f1",
-        "name": "OpenAI Chat Model1",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-        },
-        "type": "@n8n/n8n-nodes-langchain.toolThink",
-        "typeVersion": 1.1,
-        "position": [
-          160,
-          240
-        ],
-        "id": "91a33933-6042-46de-b597-035c88f9d23a",
-        "name": "Think1"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
-          "hasOutputParser": true,
-          "options": {
-            "systemMessage": "MANDATORY RULE TO FOLLOW, NO MORE THAN 15 WORDS\n\nPrimary job: Write only the Style Prompt Field describing genre, mood, instruments, tempo/energy, and vocal style—without any lyric lines or section labels, best to use single word description or tags. \n\n\n\nInputs it requires\n\nDesired genre/subgenre (1–2 max)\n\nMood (concrete adjective)\n\nTempo/energy (slow/mid/fast; chilled/hype)\n\nInstrumentation (specific: 808s, nylon guitar, strings, boom bap drums, etc.)\n\nVocal style (female/male, choir, layered, rap/sung, airy, aggressive, etc.)\n\nOptional: era reference (e.g., “90s R&B”), mix cues (“wide stereo chorus”)\n\nOutputs it must produce\n\nA single style prompt string under ~200 characters!\n\n“Uplifting gospel trap, 808s + claps, bright synth stabs, big cinematic chorus, female layered vocals, mid-tempo.”\n\nHard rules\n\nDo NOT include lyrics or section tags like [Verse].\n\nBe specific: genre + mood + instruments + vocal style.\n\nLimit genre mixing to 1–2 main genres.\n\nAvoid vague words like “cool” or “awesome”; replace with concrete mood (uplifting, dreamy, somber, defiant).\n\n\n\n",
-            "maxIterations": 3
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3,
-        "position": [
-          48,
-          16
-        ],
-        "id": "f861a653-1116-4b13-88ac-034e29ea0a9e",
-        "name": "Suno Style",
-        "retryOnFail": true
-      },
-      {
-        "parameters": {
-          "mode": "combine",
-          "combineBy": "combineByPosition",
-          "numberInputs": 3,
-          "options": {}
-        },
-        "type": "n8n-nodes-base.merge",
-        "typeVersion": 3.2,
-        "position": [
-          1376,
-          -400
-        ],
-        "id": "a0c5b68e-8327-4e26-9069-a86716f193cb",
-        "name": "Merge"
-      },
-      {
-        "parameters": {},
-        "type": "n8n-nodes-base.limit",
-        "typeVersion": 1,
-        "position": [
-          -528,
-          -464
-        ],
-        "id": "b818a0af-44e0-49c8-b64e-e044142e660d",
-        "name": "Limit2"
-      },
-      {
-        "parameters": {
-          "operation": "delete",
-          "documentId": {
-            "__rl": true,
-            "value": "1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y",
-            "mode": "list",
-            "cachedResultName": "Vietnamese_GoogleSheets_Suno_List",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": 277369955,
-            "mode": "list",
-            "cachedResultName": "Vietnamese",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y/edit#gid=277369955"
-          }
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.6,
-        "position": [
-          -544,
-          0
-        ],
-        "id": "94c0f71c-909f-4553-8104-4c1eb45b021c",
-        "name": "Delete rows or columns from sheet",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {},
-        "type": "n8n-nodes-base.manualTrigger",
-        "typeVersion": 1,
-        "position": [
-          -1040,
-          -464
-        ],
-        "id": "0024740d-37cd-41d2-8364-ad784088224d",
-        "name": "When clicking ‘Execute workflow’"
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
-                "name": "Suno song name",
-                "value": "=Viet: {{ $json['Meaning (English)'] }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          592,
-          -704
-        ],
-        "id": "fa46b5a2-7f93-4776-be7c-f829ee44f8b6",
-        "name": "edit output to name"
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
-                "name": "Suno Lyrics Output",
-                "value": "={{ $json.output }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          960,
-          -432
-        ],
-        "id": "a2f3fa29-fc0a-4de1-83e2-2a745c4cdafd",
-        "name": "Edit output to Lyrics"
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "97bee6c4-b370-41c6-bdeb-faeeb38988cf",
-                "name": "Suno Style Output",
-                "value": "={{ $json.output }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          608,
-          -80
-        ],
-        "id": "73f8ac33-124f-4125-92d0-29610a8ad42f",
-        "name": "Edit output to Style"
-      },
-      {
-        "parameters": {
-          "rules": {
-            "values": [
-              {
-                "conditions": {
-                  "options": {
-                    "caseSensitive": true,
-                    "leftValue": "",
-                    "typeValidation": "strict",
-                    "version": 3
-                  },
-                  "conditions": [
-                    {
-                      "leftValue": "={{ $json.data.status }}",
-                      "rightValue": "SUCCESS",
-                      "operator": {
-                        "type": "string",
-                        "operation": "equals"
-                      },
-                      "id": "343cab6d-2440-480d-a740-5519e7e6d430"
-                    }
-                  ],
-                  "combinator": "and"
-                },
-                "renameOutput": true,
-                "outputKey": "success"
-              },
-              {
-                "conditions": {
-                  "options": {
-                    "caseSensitive": true,
-                    "leftValue": "",
-                    "typeValidation": "strict",
-                    "version": 3
-                  },
-                  "conditions": [
-                    {
-                      "id": "b25191b7-6398-414a-b9dc-0317ac27edaa",
-                      "leftValue": "={{ $json.data.status }}",
-                      "rightValue": "(ING|_SUCCESS)",
-                      "operator": {
-                        "type": "string",
-                        "operation": "regex"
-                      }
-                    }
-                  ],
-                  "combinator": "and"
-                },
-                "renameOutput": true,
-                "outputKey": "in progress"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.switch",
-        "typeVersion": 3.4,
-        "position": [
-          3200,
-          -384
-        ],
-        "id": "4accb8e6-b044-44eb-87e5-7c31d28d9cd9",
-        "name": "Switch"
-      },
-      {
-        "parameters": {
-          "content": "## Trigger the google sheet document to begin prompting the system . ",
-          "height": 96,
-          "width": 502,
-          "color": 5
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          -800,
-          -560
-        ],
-        "id": "f4ed62f1-901b-4ca9-a84a-8cb1c27ee2bd",
-        "name": "Sticky Note"
-      },
-      {
-        "parameters": {
-          "content": "## AI generates the name, lyrics and style. This is where I can improve quality of songs. Also possibly make it all one agent..\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/components/sticky-notes/). Makeitmor conversational? use mor sentances, havea dialog, us he phrase in a sntance. ",
-          "height": 80,
-          "width": 1344
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          -256,
-          -928
-        ],
-        "id": "ffc2dff0-6263-4df9-b2ed-b38b73d226aa",
-        "name": "Sticky Note1"
-      },
-      {
-        "parameters": {
-          "content": "## Kie Ai should cost only $0.06 cents to generate a song. The songs url are then gathered and logged.\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/components/sticky-notes/)",
-          "height": 400,
-          "width": 1360,
-          "color": 3
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          1504,
-          -848
-        ],
-        "id": "81b54a6b-09f3-4615-8fe3-4b58d153b04e",
-        "name": "Sticky Note2"
-      },
-      {
-        "parameters": {
-          "operation": "append",
-          "documentId": {
-            "__rl": true,
-            "value": "1b1Kd5-aoTuGenIvR4SC7gg96gKT02OFTJGvEmqsHBUI",
-            "mode": "list",
-            "cachedResultName": "log songs",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1b1Kd5-aoTuGenIvR4SC7gg96gKT02OFTJGvEmqsHBUI/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": "gid=0",
-            "mode": "list",
-            "cachedResultName": "Sheet1",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1b1Kd5-aoTuGenIvR4SC7gg96gKT02OFTJGvEmqsHBUI/edit#gid=0"
-          },
-          "columns": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "title": "={{ $json.data.response.sunoData[0].title }}",
-              "duration": "={{ $json.data.response.sunoData[0].duration }}",
-              "song_url": "={{ $json.data.response.sunoData[0].audioUrl }}{{ $json.data.response.videoUrl }}",
-              "theme": "={{ $('Vietnamese Google sheet').item.json.Category }}"
-            },
-            "matchingColumns": [],
-            "schema": [
-              {
-                "id": "theme",
-                "displayName": "theme",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "title",
-                "displayName": "title",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "duration",
-                "displayName": "duration",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "song_url",
-                "displayName": "song_url",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true,
-                "removed": false
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": false
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.7,
-        "position": [
-          4320,
-          -400
-        ],
-        "id": "f1d9aefb-7937-4adf-bc70-8f052cd1199a",
-        "name": "Log Songs",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "content": "## Quick notes summary (save this)\n\nHow to turn a URL into a binary file in n8n (MP3 / MP4):\n\nCreate a NEW HTTP Request node (do not reuse the generation node).\n\nSet:\n\nMethod: GET\n\nURL: {{$json.data.response.sunoData[0].audioUrl}} (or videoUrl for MP4)\n\nSend Body: OFF\n\nScroll to Options → Add option:\n\nResponse Format: File\n\nBinary Property Name: data\n\nExecute → check OUTPUT → Binary → data.\n\n(Optional) Use Write Binary File to save locally or pass to another node.\n\nKey rule: Never use “Send Body” or “n8n Binary File” when downloading.\nThose are for uploads.",
-          "height": 768,
-          "width": 560,
-          "color": 3
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          3248,
-          -1344
-        ],
-        "id": "4f82ac94-cd21-42a8-9600-e46fc28e981c",
-        "name": "Sticky Note3"
-      },
-      {
-        "parameters": {
-          "resource": "video",
-          "operation": "upload",
-          "title": "={{ $('edit output to name').item.json['Suno song name'] }}",
-          "regionCode": "US",
-          "categoryId": "27",
-          "binaryProperty": "=data",
-          "options": {
-            "description": "Growing up I struggled to learn, which drove me to take academics very seriously. So I always need to come up with creative ways to stick to my education. With the advancement of AI, and a trip to Vietnam coming up soon. So I created a system to produce phrases to help my education, but I know Vietnames is more than just phrases. So I want to get in contact with a fluent speaker and ensure the tones are right, I feel like the songs kind of go all over the place, so I need to ensure the pronounciations are authentic.  Also as bonus, It would be amazing if my songs go viral and help others who strugle to learn. I think the best way to unite the world is through language. There needs to be more positive comunication in the world. An if that happend before my trip to Vietnam. That would be funny. Honestly I am thinking about pranking my friends, and buying billboards or advertisement for my music in Vietnam, I think that would be so funny. I need to make sure others are enjoying the music as much as I am first. As well as ensuring the phrases and tones are accurate as well.",
-            "privacyStatus": "public"
-          }
-        },
-        "name": "YouTube",
-        "type": "n8n-nodes-base.youTube",
-        "position": [
-          4672,
-          -128
-        ],
-        "typeVersion": 1,
-        "id": "577462d3-d874-422d-9494-71d219c2b3a8",
-        "retryOnFail": true,
-        "credentials": {
-          "youTubeOAuth2Api": {
-            "id": "McQ9Hyczvsg3SnQ9",
-            "name": "YouTube account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "content": "## Video creation automation. Need to update youtube credential\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/components/sticky-notes",
-          "height": 96,
-          "width": 1360
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          3520,
-          -240
-        ],
-        "id": "dfc553d5-fc04-4bf2-afac-f1bdbb103dc5",
-        "name": "Sticky Note4"
-      },
-      {
-        "parameters": {
-          "content": "## Creates both a Suno AI music audio and video file. \n\nPublishes to youtube. It should also document all the files so I can make one big music video manually. \n\n-Need to remove limit so the whole thing can begin making songs in large batches. Currently 2 limites...\n-Manual creation of quality video.\n-Updated video prompts to create better outputs.\n-Ai Agents should be consolodated to a single agent, possibly with some kind of data parsing tool that seporates the outputs...\n-The first google sheet is a batch of language translation lessons, so I would need to create either new phrases or include more languages. ",
-          "height": 800,
-          "width": 304
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "typeVersion": 1,
-        "position": [
-          -1456,
-          -752
-        ],
-        "id": "c68037d8-8fe8-47d6-92ec-64d5518fda85",
-        "name": "Sticky Note5"
-      },
-      {
-        "parameters": {
-          "amount": 30
-        },
-        "type": "n8n-nodes-base.wait",
-        "typeVersion": 1.1,
-        "position": [
-          2656,
-          -384
-        ],
-        "id": "417c2181-6e8b-48c4-90b8-5d08d01f1979",
-        "name": "Wait",
-        "webhookId": "b8e0debc-c05d-4baa-84bf-3343f4f1130a"
-      },
-      {
-        "parameters": {
-          "amount": 30
-        },
-        "type": "n8n-nodes-base.wait",
-        "typeVersion": 1.1,
-        "position": [
-          3792,
-          -128
-        ],
-        "id": "35ef35ad-148f-40bf-b848-7eb9ea0cf9a1",
-        "name": "Wait1",
-        "webhookId": "ffec5001-88a9-4921-9eb9-a241923fe7f4"
-      },
-      {
-        "parameters": {
-          "rule": {
-            "interval": [
-              {
-                "field": "hours",
-                "hoursInterval": 8
-              }
-            ]
-          }
-        },
-        "type": "n8n-nodes-base.scheduleTrigger",
-        "typeVersion": 1.3,
-        "position": [
-          -1056,
-          -640
-        ],
-        "id": "68752e4e-3ad7-4e3e-87a0-b919c10f22bf",
-        "name": "Schedule Trigger"
-      },
-      {
-        "parameters": {
-          "documentId": {
-            "__rl": true,
-            "value": "1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y",
-            "mode": "list",
-            "cachedResultName": "Vietnamese_GoogleSheets_Suno_List",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": 277369955,
-            "mode": "list",
-            "cachedResultName": "Vietnamese",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y/edit#gid=277369955"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.7,
-        "position": [
-          -784,
-          -464
-        ],
-        "id": "4213c442-aff7-4ddc-be2a-8ba904b67d61",
-        "name": "Vietnamese Google sheet",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "operation": "append",
-          "documentId": {
-            "__rl": true,
-            "value": "1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y",
-            "mode": "list",
-            "cachedResultName": "Vietnamese_GoogleSheets_Suno_List",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": 277369955,
-            "mode": "list",
-            "cachedResultName": "Vietnamese",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UizJEadd7C8ie3yuyfFAmkZAZck1TcVZhrNygML4H_Y/edit#gid=277369955"
-          },
-          "columns": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "Language": "={{ $('Vietnamese Google sheet').item.json.Language }}",
-              "Category": "={{ $('Vietnamese Google sheet').item.json.Category }}",
-              "Meaning (English)": "={{ $('Vietnamese Google sheet').item.json['Meaning (English)'] }}",
-              "Target Phrase (Vietnamese)": "={{ $('Vietnamese Google sheet').item.json['Target Phrase (Vietnamese)'] }}",
-              "Phonetic (auto approx)": "={{ $('Vietnamese Google sheet').item.json['Phonetic (auto approx)'] }}",
-              "Tone breakdown (per word)": "={{ $('Vietnamese Google sheet').item.json['Tone breakdown (per word)'] }}",
-              "Usage premise (sentence-ready)": "={{ $('Vietnamese Google sheet').item.json['Usage premise (sentence-ready)'] }}",
-              "Example sentence (Vietnamese)": "={{ $('Vietnamese Google sheet').item.json['Example sentence (Vietnamese)'] }}",
-              "Example sentence (English)": "={{ $('Vietnamese Google sheet').item.json['Example sentence (English)'] }}",
-              "Song hook idea": "={{ $('Vietnamese Google sheet').item.json['Song hook idea'] }}",
-              "Genera": "={{ $('Vietnamese Google sheet').item.json.Genera }}"
-            },
-            "matchingColumns": [
-              "Usage premise (sentence-ready)"
-            ],
-            "schema": [
-              {
-                "id": "Language",
-                "displayName": "Language",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Category",
-                "displayName": "Category",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Meaning (English)",
-                "displayName": "Meaning (English)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Target Phrase (Vietnamese)",
-                "displayName": "Target Phrase (Vietnamese)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Phonetic (auto approx)",
-                "displayName": "Phonetic (auto approx)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Tone breakdown (per word)",
-                "displayName": "Tone breakdown (per word)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Usage premise (sentence-ready)",
-                "displayName": "Usage premise (sentence-ready)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true,
-                "removed": false
-              },
-              {
-                "id": "Example sentence (Vietnamese)",
-                "displayName": "Example sentence (Vietnamese)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Example sentence (English)",
-                "displayName": "Example sentence (English)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Song hook idea",
-                "displayName": "Song hook idea",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Genera",
-                "displayName": "Genera",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": false
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.6,
-        "position": [
-          -544,
-          -240
-        ],
-        "id": "8895b961-40fd-46c0-9947-8afbfdb6e7d6",
-        "name": "Append row in sheet1",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "operation": "append",
-          "documentId": {
-            "__rl": true,
-            "value": "1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE",
-            "mode": "list",
-            "cachedResultName": "SUNO AI Automstion",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit?usp=drivesdk"
-          },
-          "sheetName": {
-            "__rl": true,
-            "value": "gid=0",
-            "mode": "list",
-            "cachedResultName": "Sheet1",
-            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L2dcSLXcOm8M1Vu70IaMHgU1F4qVUSbtxiUud-ndUcE/edit#gid=0"
-          },
-          "columns": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "Style (1000 Words)": "={{ $json['Suno Style Output'] }}",
-              "Lyrics (100-120 Words)": "={{ $json['Suno Lyrics Output'] }}",
-              "Name": "={{ $json['Suno song name'] }}"
-            },
-            "matchingColumns": [],
-            "schema": [
-              {
-                "id": "Name",
-                "displayName": "Name",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Lyrics (100-120 Words)",
-                "displayName": "Lyrics (100-120 Words)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true
-              },
-              {
-                "id": "Style (1000 Words)",
-                "displayName": "Style (1000 Words)",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "canBeUsedToMatch": true,
-                "removed": false
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": false
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleSheets",
-        "typeVersion": 4.7,
-        "position": [
-          1616,
-          -128
-        ],
-        "id": "982553d8-e173-4b03-88ee-5028720f4d3e",
-        "name": "Append row in SUNOAIAutomation",
-        "credentials": {
-          "googleSheetsOAuth2Api": {
-            "id": "jMg3j3fkols2qHBL",
-            "name": "Google Sheets account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "method": "POST",
-          "url": "https://api.kie.ai/api/v1/generate",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "sendBody": true,
-          "bodyParameters": {
-            "parameters": [
-              {
-                "name": "prompt",
-                "value": "={{ $json['Suno Lyrics Output'] }}"
-              },
-              {
-                "name": "customMode",
-                "value": "true"
-              },
-              {
-                "name": "instrumental",
-                "value": "false"
-              },
-              {
-                "name": "model",
-                "value": "V4"
-              },
-              {
-                "name": "callBackUrl",
-                "value": "https://api.example.com/callback"
-              },
-              {
-                "name": "style",
-                "value": "={{ $json['Suno Style Output'] }}"
-              },
-              {
-                "name": "title",
-                "value": "={{ $json['Suno song name'] }}"
-              },
-              {
-                "name": "negativeTags",
-                "value": "Heavy Metal, Upbeat Drums"
-              },
-              {
-                "name": "vocalGender",
-                "value": "m"
-              },
-              {
-                "name": "styleWeight",
-                "value": "0.65"
-              },
-              {
-                "name": "weirdnessConstraint",
-                "value": "0.65"
-              },
-              {
-                "name": "audioWeight",
-                "value": "0.65"
-              },
-              {
-                "name": "personaId",
-                "value": "persona_123"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.2,
-        "position": [
-          2448,
-          -384
-        ],
-        "id": "427640bd-c6b0-45fa-a3f7-ecb1c12cd966",
-        "name": "Post Kie ai - Suno - Text to Music",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "url": "https://api.kie.ai/api/v1/generate/record-info",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendQuery": true,
-          "queryParameters": {
-            "parameters": [
-              {
-                "name": "taskId",
-                "value": "={{ $json.data.taskId }}"
-              }
-            ]
-          },
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.2,
-        "position": [
-          2976,
-          -384
-        ],
-        "id": "7f2ad40f-5619-4ac2-9dd3-0ca065e5205e",
-        "name": "Get Kie ai - Suno - Text to Music",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "name": "=",
-          "driveId": {
-            "__rl": true,
-            "mode": "list",
-            "value": "My Drive"
-          },
-          "folderId": {
-            "__rl": true,
-            "value": "1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t",
-            "mode": "list",
-            "cachedResultName": "SUNO Music AI",
-            "cachedResultUrl": "https://drive.google.com/drive/folders/1eOD5RXpFlVqrNYxNWrKFLaymTgFcMz7t"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.googleDrive",
-        "typeVersion": 3,
-        "position": [
-          3904,
-          -768
-        ],
-        "id": "1505f8fd-1efa-48e9-b3fa-e9a292f487b3",
-        "name": "Upload Music Audio -> SUNO Music AI",
-        "credentials": {
-          "googleDriveOAuth2Api": {
-            "id": "WM6RaS4XN5sMHcjI",
-            "name": "Google Drive account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "method": "POST",
-          "url": "https://api.kie.ai/api/v1/mp4/generate",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "sendBody": true,
-          "bodyParameters": {
-            "parameters": [
-              {
-                "name": "taskId",
-                "value": "={{ $json.data.taskId }}"
-              },
-              {
-                "name": "audioId",
-                "value": "={{ $json.data.response.sunoData[0].id }}"
-              },
-              {
-                "name": "callBackUrl",
-                "value": "https://api.example.com/callback"
-              },
-              {
-                "name": "author",
-                "value": "MJP"
-              },
-              {
-                "name": "domainName",
-                "value": "Suno AI"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          3584,
-          -128
-        ],
-        "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
-        "name": "Post KieAi music Video",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "url": "https://api.kie.ai/api/v1/mp4/record-info",
-          "authentication": "genericCredentialType",
-          "genericAuthType": "httpHeaderAuth",
-          "sendQuery": true,
-          "queryParameters": {
-            "parameters": [
-              {
-                "name": "taskId",
-                "value": "={{ $json.data.taskId }}"
-              }
-            ]
-          },
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          4000,
-          -96
-        ],
-        "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
-        "name": "Get KieAi music Video",
-        "credentials": {
-          "httpHeaderAuth": {
-            "id": "qrSLdQAxyISpv7xA",
-            "name": "Kie ai -> sora 2 ai"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "url": "={{ $json.data.response.videoUrl }}",
-          "options": {
-            "response": {
-              "response": {
-                "responseFormat": "file"
-              }
-            }
-          }
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          4480,
-          -112
-        ],
-        "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
-        "name": "Get Video File data"
-      },
-      {
-        "parameters": {
-          "url": "={{ $json.data.response.sunoData[0].audioUrl }}",
-          "options": {
-            "response": {
-              "response": {
-                "responseFormat": "file"
-              }
-            }
-          }
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          3472,
-          -768
-        ],
-        "id": "d40398db-0ec7-42c1-a2df-359b84aaf5ad",
-        "name": "Get Audio File"
-      },
-      {
-        "parameters": {
-          "rules": {
-            "values": [
-              {
-                "conditions": {
-                  "options": {
-                    "caseSensitive": true,
-                    "leftValue": "",
-                    "typeValidation": "strict",
-                    "version": 3
-                  },
-                  "conditions": [
-                    {
-                      "leftValue": "={{ $json.data.successFlag }}",
-                      "rightValue": "SUCCESS",
-                      "operator": {
-                        "type": "string",
-                        "operation": "equals"
-                      },
-                      "id": "343cab6d-2440-480d-a740-5519e7e6d430"
-                    }
-                  ],
-                  "combinator": "and"
-                },
-                "renameOutput": true,
-                "outputKey": "success"
-              },
-              {
-                "conditions": {
-                  "options": {
-                    "caseSensitive": true,
-                    "leftValue": "",
-                    "typeValidation": "strict",
-                    "version": 3
-                  },
-                  "conditions": [
-                    {
-                      "id": "b25191b7-6398-414a-b9dc-0317ac27edaa",
-                      "leftValue": "={{ $json.data.successFlag }}",
-                      "rightValue": "(ING|_SUCCESS)",
-                      "operator": {
-                        "type": "string",
-                        "operation": "regex"
-                      }
-                    }
-                  ],
-                  "combinator": "and"
-                },
-                "renameOutput": true,
-                "outputKey": "in progress"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.switch",
-        "typeVersion": 3.4,
-        "position": [
-          4192,
-          -96
-        ],
-        "id": "dce189e3-0954-4573-8ca7-15828e61f121",
-        "name": "Switch1"
-      },
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "mode": "list",
-            "value": "gpt-4.1-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          640,
-          512
-        ],
-        "id": "57799121-2d1b-4758-bc75-fded247c70ec",
-        "name": "OpenAI Chat Model2",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-        },
-        "type": "@n8n/n8n-nodes-langchain.toolThink",
-        "typeVersion": 1.1,
-        "position": [
-          784,
-          512
-        ],
-        "id": "9e496dfa-eed4-4806-b0ce-fe3a674087a2",
-        "name": "Think2"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
-          "hasOutputParser": true,
-          "options": {
-            "systemMessage": "=Primary job: Write only lyrics that teach 1 target word/phrase from a specific language and show how to use it in a sentence, formatted for Suno using bracketed section tags.\n\nInputs it requires\n\nLanguage (e.g., Spanish)\n\nTarget word/phrase (e.g., “¿Cómo estás?”)\n\nEnglish meaning (e.g., “How are you?”)\n\nExample sentence in target language + English translation (or permission to generate)\n\nAudience level (kids/adults, beginner/intermediate)\n\nOptional: tone (funny, heartfelt, hype), rhyme preference, song length\n\nOutputs it must produce\n\nLyrics with clear Suno structure tags placed at the start of each section:\n\nRequired tags: [Intro] [Verse] [Chorus] [Bridge] [Outro] (use what fits)\n\nTeaching content baked into the lyrics, in this order:\n\nIntroduce the word/phrase\n\nGive the English meaning\n\nRepeat for memory (hook)\n\nUse it in a sentence (target language)\n\nTranslate the sentence (English)\n\nShort “how/when to use it” note inside lyrics (simple)\n\nOptional advanced meta tags (only if you want control):\n\nExamples: [Tempo: Mid] [Mood: Playful] [Vocalist: Female] [Key: C minor]\n\nRule: keep these minimal and consistent; don’t overload.\n\nHard rules\n\nMust include section tags in brackets for structure.\n\nMust not write the “Style Prompt Field” content (that’s the other agent’s job).\n\nMust not use vague placeholders like “(add chorus here)”.\n\nLyric template (what it should aim to output)\n\n[Intro] quick tease of the phrase\n\n[Verse] meaning + context\n\n[Chorus] repetition + catchy mnemonic\n\n[Verse 2] sentence example + translation\n\n[Bridge] small usage tip / variation\n\n[Outro] final repetition"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3,
-        "position": [
-          688,
-          288
-        ],
-        "id": "217d62c2-fe17-4efd-b3ab-3ba38e5f84ea",
-        "name": "Suno Lyrics1"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "={{ $json['Suno Lyrics Output'] }}",
-          "hasOutputParser": true,
-          "options": {
-            "systemMessage": "=## AI Agent Role: Language-Lyric Quality Auditor (Critical)\n\nYou are a **strict bilingual language expert + songwriting editor**. Your job is to review song lyrics generated by another AI that are intended to teach **one specific target phrase** in a chosen language. You must be skeptical, precise, and willing to reject weak outputs.\n\n### Core Objective\n\nEnsure the lyrics:\n\n1. **Teach exactly one obvious target phrase** (the lesson is unmistakable and the bridge should break down the phrase into indavidual translated words based on the phrase).\n2. Use **accurate translation + natural pronunciation guidance** (no misleading phonetics).\n3. Sound like a **real song** a human would write (clear flow, not robotic).\n4. Avoid **AI-generated filler** and unnecessary extra foreign-language content.\n\n### Hard Rules (Fail Conditions)\n\nFlag as **FAIL** if any of the following occur:\n\n* The lyrics teach **multiple phrases**, multiple lesson goals, or drift into extra vocabulary.\n* The song contains **AI filler or cringe coaching** like:\n\n  * “say it smooth / say it right / so strong / like a native”\n  * “this is how you say ___” in either language\n  * meta narration that breaks immersion (“Now repeat after me…” unless specifically requested)\n* The target language includes **extra sentences** not required to teach the target phrase.\n* The English and target language at the bridge should be a vietnamese word followed by what that word is in english, its one of the most important lines in every song.\n\n\n### Pass Criteria (What “Good” Looks Like)\n\n* The target phrase is presented early, repeated else where in the song, and reinforced naturally in context.\n* Any pronunciation help is brief, consistent, and does not dominate the song.\n* English support shouldn't be cheesy, we want cool songs, bangers, something that people will want to sing along to, even if it needs to break some rules to sound cool... is minimal and purposeful (never verbose).\n* The lyric reads like a real song with a coherent mood and cadence.\n\n---\n\n## Output Format (Always use this structure)\n\n### 1) Verdict\n\n* PASS / NEEDS REVISION / FAIL\n  One sentence explaining why.\n\n### 2) Target Phrase Check\n\n* Target phrase detected: “…”\n* Additional phrases detected: \"...\" &-> meaning in english\n* Is it the single clear lesson focus? Yes/No\n* Repetition score (0–10): ___\n* Clarity score (0–10): ___\n8 Banger/viral quality song score (0-10): ___\n\n### 3) Language Accuracy Check\n\n* Translation accuracy: OK / Minor issues / Major issues\n* Explain the issues.\n* Register/tone: natural / too formal / too slang / inconsistent. Explain\n* Any unnecessary extra foreign language? Yes/No (list lines)\n\n### 4) “AI-ness” & Weirdness Report\n\nList lines that feel AI-generated, corny, or meta.\nFor each, label:\n\n* Problem type: filler / awkward phrasing / unnatural instruction / rhythm issue / forced rhyme\n* Fix: specific rewrite suggestion\n\n### 5) Song Quality Notes\n\n* Hook strength (0–10): ___\n* Flow/cadence (0–10): ___\n* Memorability (0–10): ___\n* Structure issues: (bullet list)\n\n### 6) Concrete Improvements\n\nGive 5–10 actionable edits (not vague advice). Example:\n\n* “Replace line X with Y”\n* “Move phrase repetition into chorus”\n* “Cut these 2 lines”\n* “Shorten English explanation to 1 line”\n\n### 7) Revised Version (When Needed)\n\nIf verdict is NEEDS REVISION or FAIL:\nProvide a revised lyric that:\n\n* keeps the same target phrase\n* Imagine a creative solution or lyrically interesting way to rewrite the song.\n* removes filler/meta lines\n* increases repetition in chorus\n* keeps foreign-language content minimal and relevant\n\nYOU HAVE AN EMAIL TOOL, SEND OUTPUT TO THE EMAIL PROVIDED.\n"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3,
-        "position": [
-          2080,
-          -128
-        ],
-        "id": "6cad7ee6-9a33-4008-b6e4-5195b5923dda",
-        "name": "Suno Lyrics2"
-      },
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "mode": "list",
-            "value": "gpt-4.1-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          1936,
-          80
-        ],
-        "id": "091cfc41-c1fa-4b83-891f-e4c7e421c3c9",
-        "name": "OpenAI Chat Model3",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "fromEmail": "Mattjposey@gmail.com",
-          "toEmail": "Mattjposey@gmail.com",
-          "subject": "=Report about : {{ $('Merge').item.json['Suno song name'] }}",
-          "emailFormat": "text",
-          "text": "={{ $json.output }}",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.emailSend",
-        "typeVersion": 2.1,
-        "position": [
-          2432,
-          -128
-        ],
-        "id": "c08e42e9-ed4e-43f1-9352-d86907502287",
-        "name": "Send email",
-        "webhookId": "d8863888-4db2-4811-8ea6-bf0d7446619b",
-        "credentials": {
-          "smtp": {
-            "id": "LpnGUQ4PDgiMVycW",
-            "name": "SMTP account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "jsCode": "for (const item of $input.all()) {\n  item.json.output = item.json.output\n    .replace(/\\n/g, ' ')\n    .replace(/{/g, '')\n    .replace(/}/g, '')\n    .replace(/\\s\\s+/g, ' ')\n    .replace(/\"post:\"/g, '')\n    .replace(/\"/g, '')\n    .replace(/:/g, '')\n    .trim();\n}\nreturn $input.all();\n"
-        },
-        "type": "n8n-nodes-base.code",
-        "typeVersion": 2,
-        "position": [
-          400,
-          16
-        ],
-        "id": "b6cf36e8-188e-4a09-bb86-36457d2eb394",
-        "name": "Code in JavaScript"
-      },
-      {
-        "parameters": {
-          "jsCode": "for (const item of $input.all()) {\n  item.json.output = item.json.output\n    .replace(/\\n/g, ' ')\n    .replace(/{/g, '')\n    .replace(/}/g, '')\n    .replace(/\\s\\s+/g, ' ')\n    .replace(/\"post:\"/g, '')\n    .replace(/\"/g, '')\n    .replace(/:/g, '')\n    .trim();\n}\nreturn $input.all();\n"
-        },
-        "type": "n8n-nodes-base.code",
-        "typeVersion": 2,
-        "position": [
-          720,
-          -432
-        ],
-        "id": "c4982da7-1d63-45ee-ac34-7e4ffb456d56",
-        "name": "Code in JavaScript1"
-      }
-    ],
-    "connections": {
-      "OpenAI Chat Model": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Suno Lyrics",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Suno Lyrics": {
-        "main": [
-          [
-            {
-              "node": "Code in JavaScript1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "OpenAI Chat Model1": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Suno Style",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Think1": {
-        "ai_tool": [
-          [
-            {
-              "node": "Suno Style",
-              "type": "ai_tool",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Suno Style": {
-        "main": [
-          [
-            {
-              "node": "Code in JavaScript",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Merge": {
-        "main": [
-          [
-            {
-              "node": "Append row in SUNOAIAutomation",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Suno Lyrics2",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Post Kie ai - Suno - Text to Music",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Limit2": {
-        "main": [
-          [
-            {
-              "node": "Append row in sheet1",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Suno Lyrics",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Suno Style",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "edit output to name",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "When clicking ‘Execute workflow’": {
-        "main": [
-          [
-            {
-              "node": "Vietnamese Google sheet",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Edit output to Lyrics": {
-        "main": [
-          [
-            {
-              "node": "Merge",
-              "type": "main",
-              "index": 1
-            }
-          ]
-        ]
-      },
-      "Edit output to Style": {
-        "main": [
-          [
-            {
-              "node": "Merge",
-              "type": "main",
-              "index": 2
-            }
-          ]
-        ]
-      },
-      "edit output to name": {
-        "main": [
-          [
-            {
-              "node": "Merge",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Switch": {
-        "main": [
-          [
-            {
-              "node": "Log Songs",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Get Audio File",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Post KieAi music Video",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "Wait",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Log Songs": {
-        "main": [
-          []
-        ]
-      },
-      "Wait": {
-        "main": [
-          [
-            {
-              "node": "Get Kie ai - Suno - Text to Music",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Wait1": {
-        "main": [
-          [
-            {
-              "node": "Get KieAi music Video",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Schedule Trigger": {
-        "main": [
-          [
-            {
-              "node": "Vietnamese Google sheet",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Vietnamese Google sheet": {
-        "main": [
-          [
-            {
-              "node": "Limit2",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Append row in sheet1": {
-        "main": [
-          [
-            {
-              "node": "Delete rows or columns from sheet",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Append row in SUNOAIAutomation": {
-        "main": [
-          []
-        ]
-      },
-      "Post Kie ai - Suno - Text to Music": {
-        "main": [
-          [
-            {
-              "node": "Wait",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Get Kie ai - Suno - Text to Music": {
-        "main": [
-          [
-            {
-              "node": "Switch",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Post KieAi music Video": {
-        "main": [
-          [
-            {
-              "node": "Wait1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Get KieAi music Video": {
-        "main": [
-          [
-            {
-              "node": "Switch1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Get Video File data": {
-        "main": [
-          [
-            {
-              "node": "YouTube",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Get Audio File": {
-        "main": [
-          [
-            {
-              "node": "Upload Music Audio -> SUNO Music AI",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Switch1": {
-        "main": [
-          [
-            {
-              "node": "Get Video File data",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Log Songs",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "Wait1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "OpenAI Chat Model2": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Suno Lyrics1",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Think2": {
-        "ai_tool": [
-          [
-            {
-              "node": "Suno Lyrics1",
-              "type": "ai_tool",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "OpenAI Chat Model3": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Suno Lyrics2",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Suno Lyrics2": {
-        "main": [
-          [
-            {
-              "node": "Send email",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Code in JavaScript": {
-        "main": [
-          [
-            {
-              "node": "Edit output to Style",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Code in JavaScript1": {
-        "main": [
-          [
-            {
-              "node": "Edit output to Lyrics",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      }
-    },
-    "authors": "Matthew Posey",
-    "name": "Version 7e186a21",
-    "description": "",
-    "autosaved": false
-  },
-  "activeVersionId": "7e186a21-c044-46c9-bc70-dc046213ccce",
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -1762,11 +14,27 @@
         ]
       ]
     },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "Suno Lyrics",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Suno Lyrics": {
       "main": [
         [
           {
-            "node": "Code in JavaScript1",
+            "node": "Quality control",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "edit output to name2",
             "type": "main",
             "index": 0
           }
@@ -1799,7 +67,7 @@
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Edit output to Style",
             "type": "main",
             "index": 0
           }
@@ -1808,33 +76,12 @@
     },
     "Merge": {
       "main": [
-        [
-          {
-            "node": "Append row in SUNOAIAutomation",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Suno Lyrics2",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Post Kie ai - Suno - Text to Music",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Limit2": {
       "main": [
         [
-          {
-            "node": "Append row in sheet1",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "Suno Lyrics",
             "type": "main",
@@ -1847,6 +94,11 @@
           },
           {
             "node": "edit output to name",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
             "type": "main",
             "index": 0
           }
@@ -2123,24 +375,79 @@
         ]
       ]
     },
-    "Code in JavaScript": {
-      "main": [
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
         [
           {
-            "node": "Edit output to Style",
-            "type": "main",
+            "node": "Quality control",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
       ]
     },
-    "Code in JavaScript1": {
+    "AI Agent1": {
       "main": [
         [
           {
             "node": "Edit output to Lyrics",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "edit output to name1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Quality control": {
+      "main": [
+        [
+          {
+            "node": "edit output to name1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "edit output to name2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -2167,8 +474,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        224,
-        -224
+        -144,
+        -240
       ],
       "id": "ab29bac9-84b9-4d2c-9759-0fbb7bac3fe0",
       "name": "OpenAI Chat Model",
@@ -2181,18 +488,31 @@
     },
     {
       "parameters": {
+        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        -240
+      ],
+      "id": "24305d05-33ec-41c8-bfad-b2f3ba658e79",
+      "name": "Think"
+    },
+    {
+      "parameters": {
         "promptType": "define",
-        "text": "={{ $json.Language }}{{ $json.Category }}{{ $json['Meaning (English)'] }}{{ $json['Target Phrase (Vietnamese)'] }}{{ $json['Phonetic (auto approx)'] }}{{ $json['Tone breakdown (per word)'] }}{{ $json['Usage premise (sentence-ready)'] }}{{ $json['Example sentence (Vietnamese)'] }}{{ $json['Example sentence (English)'] }}{{ $json['Song hook idea'] }}{{ $json.Genera }}",
+        "text": "={{ $json.Language }} \n{{ $json['Target Phrase (Vietnamese)'] }}\n{{ $json['Usage premise (sentence-ready)'] }}\n{{ $json['Tone breakdown (per word)'] }}\n{{ $json['Song hook idea'] }}\n{{ $json.Genera }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=Persona: You are a \"Lyrical Language Coach\" specializing in Vietnamese-English fusion songs. Your goal is to write catchy, radio-ready lyrics for Suno AI that teach specific phrases through musical storytelling, not just drills. Take the time to consider the instructions before writing the lyrics.\n\nWriting Guidelines:\nFor clarification, there is only one tatarget phrase that should be in vietnamese, and that phrase is {{ $json['Target Phrase (Vietnamese)'] }} all other words should be in english.\n\nNarrative Verses: \n[Intro] quick tease of the phrase\nDo not just list the phrase. Write a short verse in English that sets the scene (e.g., at a bar, look at you, ). Use the Vietnamese phrase naturally within or immediately after a relevant English line.\n\nThe Hook (Chorus): Create a high-energy \"Big Hook.\" Repeat the Vietnamese phrase with rhythmic variations, followed by a single English translation line.\n\nThe \"Breakdown\" Bridge: This is the teaching moment. Break the phrase down word-by-word. Assign each word its meaning and a \"vibe\" (e.g., \"Bạn means 'you').\n\nPhonetic Handling: Keep tone marks in the lyrics, but do not use \"UPPERCASE\" for emphasis, as Suno may interpret this as shouting or glitchy artifacts.\n\nMusical Cues: Use [brackets] for structure. Use (parentheses) for background vocals, ad-libs, or \"echo\" effects to reinforce the phrase.\n\nConversational English: Avoid forced rhymes or \"poetic\" filler (e.g., \"I own,\" \"so bold\"). Use natural, conversational English that a traveler would actually say.\n\nConciseness & Length: Total song length must be under 30 lines. Suno handles ~1:00 minutes best.\nThe \"Chunking\" Hook: In the [Chorus], use the first half of the phrase as a rhythmic build-up before the full reveal.\n\n\n\n"
+          "systemMessage": "=Persona: You are a Ghost writer who focuses on short songs with  {{ $json.Genera }} music. Directions in the song are given inside [], \nUse ONLY these section tags:\n[Intro]\n[Verse]\n[Chorus]\n[Bridge]\n[Final Chorus]\n[Outro]\n[Echoing Vocals]\n[Chant]\n[Harmonized Chorus]\n\n\nNEVER output anything other than the lyrics to the song. NO \"Certianly!... or This song\" only output the song. They are looking to keep it under 2 minutes.\n\nThe only requirment for the song is the include the phrase {{ $json['Target Phrase (Vietnamese)'] }}\nand no other vietnamese words or twice in the song. At some point break it down while focusing on the quality of the music into chucks like {{ $json['Tone breakdown (per word)'] }}. Only once in the song.\n\nTarget audience for the song is:\nmiddle-income individuals, families, adventure seekers, and culture enthusiasts drawn by Vietnam's affordable luxury, rich history, diverse landscapes (beaches, mountains), amazing food, and unique cultural heritage, with many combining trips with neighboring Southeast Asian countries for extended travel, seeking authentic experiences beyond typical tourist traps. This is a song for english speakers who like to party.\n\nGuidlines:\nNEVER CHANGE THE OR INCLUDE VIETNAMESE OUTSIDE OF THE TARGET PHRASE, OR WHAT IT MEANS IN ENGLISH, NO SIMILIES OR CREATIVE WRITING TOOLS CAN BE APPLIED TO THE TARGET PHRASE... \nA scene has been provided in the prompt,and you need to use creative writing skills full of imagination, emotion, meaning, possibly even metaphorical, or hide another meaning. Always keep the scenes going, moving, don't let the lyrics keep the song trapped in one scene, let the creative writing skills lead the song.\n\n0. Global Constraints (Before Sections Exist)\nKey principles governing the whole song:\n\nSingle tonal center (no adventurous modulation)\n\nMid-tempo pop pulse (~100 BPM feel)\n\nPredictable 4–8 bar phrasing\n\nMelody-driven repetition, not harmonic complexity\n\nEnergy shaped by density, not chord changes\n\n\n\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        240,
-        -432
+        -80,
+        -448
       ],
       "id": "3634de3b-d31c-4c70-bf0f-5d3769a99c94",
       "name": "Suno Lyrics"
@@ -2267,8 +587,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1376,
-        -400
+        1392,
+        -384
       ],
       "id": "a0c5b68e-8327-4e26-9069-a86716f193cb",
       "name": "Merge"
@@ -2345,8 +665,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        592,
-        -704
+        448,
+        -752
       ],
       "id": "fa46b5a2-7f93-4776-be7c-f829ee44f8b6",
       "name": "edit output to name"
@@ -2368,8 +688,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        960,
-        -432
+        1168,
+        -384
       ],
       "id": "a2f3fa29-fc0a-4de1-83e2-2a745c4cdafd",
       "name": "Edit output to Lyrics"
@@ -2391,8 +711,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        608,
-        -80
+        704,
+        32
       ],
       "id": "73f8ac33-124f-4125-92d0-29610a8ad42f",
       "name": "Edit output to Style"
@@ -3407,7 +1727,7 @@
         "text": "={{ $json['Suno Lyrics Output'] }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=## AI Agent Role: Language-Lyric Quality Auditor (Critical)\n\nYou are a **strict bilingual language expert + songwriting editor**. Your job is to review song lyrics generated by another AI that are intended to teach **one specific target phrase** in a chosen language. You must be skeptical, precise, and willing to reject weak outputs.\n\n### Core Objective\n\nEnsure the lyrics:\n\n1. **Teach exactly one obvious target phrase** (the lesson is unmistakable and the bridge should break down the phrase into indavidual translated words based on the phrase).\n2. Use **accurate translation + natural pronunciation guidance** (no misleading phonetics).\n3. Sound like a **real song** a human would write (clear flow, not robotic).\n4. Avoid **AI-generated filler** and unnecessary extra foreign-language content.\n\n### Hard Rules (Fail Conditions)\n\nFlag as **FAIL** if any of the following occur:\n\n* The lyrics teach **multiple phrases**, multiple lesson goals, or drift into extra vocabulary.\n* The song contains **AI filler or cringe coaching** like:\n\n  * “say it smooth / say it right / so strong / like a native”\n  * “this is how you say ___” in either language\n  * meta narration that breaks immersion (“Now repeat after me…” unless specifically requested)\n* The target language includes **extra sentences** not required to teach the target phrase.\n* The English and target language at the bridge should be a vietnamese word followed by what that word is in english, its one of the most important lines in every song.\n\n\n### Pass Criteria (What “Good” Looks Like)\n\n* The target phrase is presented early, repeated else where in the song, and reinforced naturally in context.\n* Any pronunciation help is brief, consistent, and does not dominate the song.\n* English support shouldn't be cheesy, we want cool songs, bangers, something that people will want to sing along to, even if it needs to break some rules to sound cool... is minimal and purposeful (never verbose).\n* The lyric reads like a real song with a coherent mood and cadence.\n\n---\n\n## Output Format (Always use this structure)\n\n### 1) Verdict\n\n* PASS / NEEDS REVISION / FAIL\n  One sentence explaining why.\n\n### 2) Target Phrase Check\n\n* Target phrase detected: “…”\n* Additional phrases detected: \"...\" &-> meaning in english\n* Is it the single clear lesson focus? Yes/No\n* Repetition score (0–10): ___\n* Clarity score (0–10): ___\n8 Banger/viral quality song score (0-10): ___\n\n### 3) Language Accuracy Check\n\n* Translation accuracy: OK / Minor issues / Major issues\n* Explain the issues.\n* Register/tone: natural / too formal / too slang / inconsistent. Explain\n* Any unnecessary extra foreign language? Yes/No (list lines)\n\n### 4) “AI-ness” & Weirdness Report\n\nList lines that feel AI-generated, corny, or meta.\nFor each, label:\n\n* Problem type: filler / awkward phrasing / unnatural instruction / rhythm issue / forced rhyme\n* Fix: specific rewrite suggestion\n\n### 5) Song Quality Notes\n\n* Hook strength (0–10): ___\n* Flow/cadence (0–10): ___\n* Memorability (0–10): ___\n* Structure issues: (bullet list)\n\n### 6) Concrete Improvements\n\nGive 5–10 actionable edits (not vague advice). Example:\n\n* “Replace line X with Y”\n* “Move phrase repetition into chorus”\n* “Cut these 2 lines”\n* “Shorten English explanation to 1 line”\n\n### 7) Revised Version (When Needed)\n\nIf verdict is NEEDS REVISION or FAIL:\nProvide a revised lyric that:\n\n* keeps the same target phrase\n* Imagine a creative solution or lyrically interesting way to rewrite the song.\n* removes filler/meta lines\n* increases repetition in chorus\n* keeps foreign-language content minimal and relevant\n\nYOU HAVE AN EMAIL TOOL, SEND OUTPUT TO THE EMAIL PROVIDED.\n"
+          "systemMessage": "=## AI Agent Role: Language-Lyric Quality Auditor (Critical)\n\nYou are a **strict bilingual language expert + songwriting editor**. Your job is to review song lyrics generated by another AI that are intended to teach **one specific target phrase** in a chosen language. You must be skeptical, precise, and willing to reject weak outputs.\n\n### Core Objective\n\nEnsure the lyrics:\n\n1. **Teach exactly one obvious target phrase** (the lesson is unmistakable).\n2. Use **accurate translation + natural pronunciation guidance** (no misleading phonetics).\n3. Sound like a **real song** a human would write (clear flow, not robotic).\n4. Avoid **AI-generated filler** and unnecessary extra foreign-language content.\n\n### Hard Rules (Fail Conditions)\n\nFlag as **FAIL** if any of the following occur:\n\n* The lyrics teach **multiple phrases**, multiple lesson goals, or drift into extra vocabulary.\n* The song contains **AI filler or cringe coaching** like:\n\n  * “say it smooth / say it right / so strong / like a native”\n  * “this is how you say ___” in either language\n  * meta narration that breaks immersion (“Now repeat after me…” unless specifically requested)\n* The target language includes **extra sentences** not required to teach the target phrase.\n* The English and target language at the bridge should be a vietnamese word followed by what that word is in english, its one of the most important lines in every song.\n\n\n### Pass Criteria (What “Good” Looks Like)\n\n* The target phrase is presented early, repeated else where in the song, and reinforced naturally in context.\n* Any pronunciation help is brief, consistent, and does not dominate the song.\n* English support shouldn't be cheesy, we want cool songs, bangers, something that people will want to sing along to, even if it needs to break some rules to sound cool... is minimal and purposeful (never verbose).\n* The lyric reads like a real song with a coherent mood and cadence.\n\n---\n\n## Output Format (Always use this structure)\n\n### 1) Verdict\n\n* PASS / NEEDS REVISION / FAIL\n  One sentence explaining why.\n\n### 2) Target Phrase Check\n\n* Target phrase detected: “…”\n* Additional phrases detected: \"...\" &-> meaning in english\n* Is it the single clear lesson focus? Yes/No\n* Repetition score (0–10): ___\n* Clarity score (0–10): ___\n8 Banger/viral quality song score (0-10): ___\n\n### 3) Language Accuracy Check\n\n* Translation accuracy: OK / Minor issues / Major issues\n* Explain the issues.\n* Register/tone: natural / too formal / too slang / inconsistent. Explain\n* Any unnecessary extra foreign language? Yes/No (list lines)\n\n### 4) “AI-ness” & Weirdness Report\n\nList lines that feel AI-generated, corny, or meta.\nFor each, label:\n\n* Problem type: filler / awkward phrasing / unnatural instruction / rhythm issue / forced rhyme\n* Fix: specific rewrite suggestion\n\n### 5) Song Quality Notes\n\n* Hook strength (0–10): ___\n* Flow/cadence (0–10): ___\n* Memorability (0–10): ___\n* Structure issues: (bullet list)\n\n### 6) Concrete Improvements\n\nGive 5–10 actionable edits (not vague advice). Example:\n\n* “Replace line X with Y”\n* “Move phrase repetition into chorus”\n* “Cut these 2 lines”\n* “Shorten English explanation to 1 line”\n\n### 7) Revised Version (When Needed)\n\nIf verdict is NEEDS REVISION or FAIL:\nProvide a revised lyric that:\n\n* keeps the same target phrase\n* Imagine a creative solution or lyrically interesting way to rewrite the song.\n* removes filler/meta lines\n* increases repetition in chorus\n* keeps foreign-language content minimal and relevant\n\nYOU HAVE AN EMAIL TOOL, SEND OUTPUT TO THE EMAIL PROVIDED.\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -3471,29 +1791,149 @@
     },
     {
       "parameters": {
-        "jsCode": "for (const item of $input.all()) {\n  item.json.output = item.json.output\n    .replace(/\\n/g, ' ')\n    .replace(/{/g, '')\n    .replace(/}/g, '')\n    .replace(/\\s\\s+/g, ' ')\n    .replace(/\"post:\"/g, '')\n    .replace(/\"/g, '')\n    .replace(/:/g, '')\n    .trim();\n}\nreturn $input.all();\n"
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
       },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
       "position": [
-        400,
-        16
+        240,
+        -80
       ],
-      "id": "b6cf36e8-188e-4a09-bb86-36457d2eb394",
-      "name": "Code in JavaScript"
+      "id": "8c0d5ab0-3e4c-4a53-b11d-1f37d37a9e95",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
-        "jsCode": "for (const item of $input.all()) {\n  item.json.output = item.json.output\n    .replace(/\\n/g, ' ')\n    .replace(/{/g, '')\n    .replace(/}/g, '')\n    .replace(/\\s\\s+/g, ' ')\n    .replace(/\"post:\"/g, '')\n    .replace(/\"/g, '')\n    .replace(/:/g, '')\n    .trim();\n}\nreturn $input.all();\n"
+        "promptType": "define",
+        "text": "=Target phrase:\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\n\nOriginal lyrics:\n{{ $json['Origional Lyrics'] }}\n\nCritic Fix Plan:\n{{ $json['Quality Control'] }}\n\nRewrite the song to satisfy all fixes.\n",
+        "options": {
+          "systemMessage": "=NEVER output anything other than the lyrics to the song. Plane text/lyrics only. \n\nYou are a song writer determined to make top of the charts. Consider only using the target phrase twice in the whole song, and just once time incorpate '  {{ $json['Tone breakdown (per word)'] }} ' into the song. You have the lyrics and suggested edits, so consider adding meta tags and improvements when writing the song. \n- There is a “Breakdown” section where chunks are mapped to English meaning.\n- English is conversational and scene-based.\n- Hook section is catchy: short lines, repeatable rhythm, minimal filler.\n\nOnly output the improved version of the song.\n\n\nMeta-Tags for Structure & Style Sections: [Intro], [Verse], [Chorus], [Bridge], [Guitar Solo], [Outro], [Instrumental Interlude]. Instrumentation: [Electric Guitar (Distorted)], [Synth Pads], [Acoustic Guitar], [808]. Vocals/Voice: [Male Singer], [Female Singer], [Whispers], [Harmonized Chorus]. Effects/Mood: [Chant], [Echoing Vocals], [Shout], [Melancholy]. Chord Notation: [Chords: |Am|-|F|-|G|-|Am|].\nLyric & Vocal Delivery Hacks !!!: Power/shout delivery (e.g., \"I WON'T BREAK!!!\"). Italics/Extra Letters: Stretched phrasing, falsetto (e.g., softly, sooooo soft). (parentheses): Whispers, echoes, background vocals (e.g., (let go...)). - (Hyphens): Sharp, percussive syllables (e.g., \"I-can-not-stop\"). ... (Ellipses): Natural pauses. [brackets] (without words): Forces instrumental focus."
+        }
       },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        880,
+        -400
+      ],
+      "id": "85920d0c-374a-40d3-a3ec-5b805a0b2e45",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        896,
+        -224
+      ],
+      "id": "06fb56b0-205b-4e7c-a293-088e389be3d2",
+      "name": "OpenAI Chat Model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 3,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
       "position": [
         720,
-        -432
+        -416
       ],
-      "id": "c4982da7-1d63-45ee-ac34-7e4ffb456d56",
-      "name": "Code in JavaScript1"
+      "id": "b66fa3c3-02da-4857-b998-0ec986cd8820",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
+              "name": "Quality Control",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        528,
+        -240
+      ],
+      "id": "21567f44-b405-4cbc-883e-50d248262985",
+      "name": "edit output to name1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.output }}",
+        "options": {
+          "systemMessage": "Quality control. best song under 1 minute\n\nTARGET PHRASE (immutable surface string):\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\n\nKEY DEFINITIONS\n- “Allowed Vietnamese” = exact target phrase OR exact substrings copied from it (chunks).\n- “Forbidden Vietnamese” = any Vietnamese not appearing verbatim in the target phrase.\n\nHARD FAIL CONDITIONS\nFAIL if any are true:\n1) Any forbidden Vietnamese appears (including synonyms, alternate word order, “also said as,” etc.).\n2) The target phrase is altered (missing tone marks, missing words, changed punctuation that changes tokens).\n3) The song introduces alternate versions or variations of the phrase.\n4) The lyrics become a lecture (e.g., “repeat after me,” “this is how you say,” “say it like a native”).\n5) The lyrics exceed 30 lines or ignore section tags.\n\nPASS/REVISION GUIDELINES\n- The phrase appears at most twice total across the whole song.\n  - Full phrase (1–2x if long)\n  - Substring chunks 1 time in the song.\n- There is a “Breakdown” section where chunks are mapped to English meaning.\n- English is conversational and scene-based.\n- Hook section is catchy: short lines, repeatable rhythm, minimal filler.\n\nOUTPUT FORMAT\n1) Verdict: PASS / NEEDS REVISION / FAIL + one-sentence reason\n2) Vietnamese Compliance:\n   - Full phrase occurrences: #\n   - Chunk occurrences: #\n   - Forbidden Vietnamese detected: Yes/No (quote lines)\n3) Teaching Clarity:\n   - Is it clearly one lesson phrase? Yes/No\n   - Breakdown present and correct? Yes/No\n   - Clarity score (0–10)\n4) Song Quality:\n   - Hook strength (0–10)\n   - Flow/cadence (0–10)\n   - Banger score (0–10)\n   - List 3–7 specific “weak lines” with replacement suggestions\n5) If NEEDS REVISION or FAIL:\n   Provide “Fix Plan” bullet points only (do NOT rewrite the whole song).\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        240,
+        -240
+      ],
+      "id": "71918e3e-4ac2-4ec9-966a-597482eb1c40",
+      "name": "Quality control"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
+              "name": "Origional Lyrics",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        512,
+        -576
+      ],
+      "id": "7266193c-f2dd-4661-8cc5-ae4248c762e8",
+      "name": "edit output to name2"
     }
   ],
   "origin": "n8n",
@@ -3530,6 +1970,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-16T05:36:39.895Z",
-  "versionId": "7e186a21-c044-46c9-bc70-dc046213ccce"
+  "updatedAt": "2026-01-17T08:18:35.053Z",
+  "versionId": "c4a93890-070d-4d86-8201-6a5565e7efa9"
 }
