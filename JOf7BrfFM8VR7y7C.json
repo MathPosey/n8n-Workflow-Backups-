@@ -1,49 +1,11 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-20T05:22:32.434Z",
-    "createdAt": "2026-01-20T05:22:13.295Z",
-    "versionId": "5c4d8b36-eeeb-4335-8d1f-462bf2acfa11",
+    "updatedAt": "2026-01-20T17:03:17.827Z",
+    "createdAt": "2026-01-20T17:03:13.416Z",
+    "versionId": "9c5be2cb-7328-40f5-b0f8-3ecc4f65f950",
     "workflowId": "JOf7BrfFM8VR7y7C",
     "nodes": [
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "mode": "list",
-            "value": "gpt-4.1-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          -1104,
-          768
-        ],
-        "id": "ab29bac9-84b9-4d2c-9759-0fbb7bac3fe0",
-        "name": "OpenAI Chat Model",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-        },
-        "type": "@n8n/n8n-nodes-langchain.toolThink",
-        "typeVersion": 1.1,
-        "position": [
-          -960,
-          768
-        ],
-        "id": "24305d05-33ec-41c8-bfad-b2f3ba658e79",
-        "name": "Think"
-      },
       {
         "parameters": {
           "model": {
@@ -59,8 +21,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          32,
-          224
+          288,
+          -32
         ],
         "id": "57eab987-ea38-41e7-8c54-858b9daad4f1",
         "name": "OpenAI Chat Model1",
@@ -70,19 +32,6 @@
             "name": "OpenAi account"
           }
         }
-      },
-      {
-        "parameters": {
-          "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-        },
-        "type": "@n8n/n8n-nodes-langchain.toolThink",
-        "typeVersion": 1.1,
-        "position": [
-          160,
-          240
-        ],
-        "id": "91a33933-6042-46de-b597-035c88f9d23a",
-        "name": "Think1"
       },
       {
         "parameters": {
@@ -97,8 +46,8 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3,
         "position": [
-          48,
-          16
+          288,
+          -192
         ],
         "id": "f861a653-1116-4b13-88ac-034e29ea0a9e",
         "name": "Suno Style",
@@ -194,8 +143,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          448,
-          -752
+          864,
+          -608
         ],
         "id": "fa46b5a2-7f93-4776-be7c-f829ee44f8b6",
         "name": "edit output to name"
@@ -217,8 +166,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1072,
-          -336
+          880,
+          -400
         ],
         "id": "a2f3fa29-fc0a-4de1-83e2-2a745c4cdafd",
         "name": "Edit output to Lyrics"
@@ -240,8 +189,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1072,
-          -96
+          880,
+          -192
         ],
         "id": "73f8ac33-124f-4125-92d0-29610a8ad42f",
         "name": "Edit output to Style"
@@ -475,8 +424,8 @@
         "name": "YouTube",
         "type": "n8n-nodes-base.youTube",
         "position": [
-          4784,
-          112
+          5392,
+          -16
         ],
         "typeVersion": 1,
         "id": "577462d3-d874-422d-9494-71d219c2b3a8",
@@ -539,8 +488,8 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          3040,
-          32
+          3952,
+          -80
         ],
         "id": "35ef35ad-148f-40bf-b848-7eb9ea0cf9a1",
         "name": "Wait1",
@@ -1038,8 +987,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          2832,
-          32
+          3744,
+          -80
         ],
         "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
         "name": "Post KieAi music Video",
@@ -1078,8 +1027,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          3232,
-          32
+          4144,
+          -80
         ],
         "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
         "name": "Get KieAi music Video",
@@ -1104,8 +1053,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          4096,
-          384
+          4848,
+          256
         ],
         "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
         "name": "Get Video File data"
@@ -1189,8 +1138,8 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          3456,
-          32
+          4368,
+          -80
         ],
         "id": "dce189e3-0954-4573-8ca7-15828e61f121",
         "name": "Switch1"
@@ -1257,14 +1206,14 @@
           "text": "={{ $json['Lyrics (100-120 Words)'] }}",
           "hasOutputParser": true,
           "options": {
-            "systemMessage": "=## AI Agent Role: Language-Lyric Quality Auditor (Critical)\n\nYou are a **strict bilingual language expert + songwriting editor**. Your job is to review song lyrics generated by another AI that are intended to teach **one specific target phrase and a breakdown of that one target phrase** in a chosen language. You must be detail oriented, precise, and willing to reject weak outputs.\n\n### Core Objective\n\nEnsure the lyrics:\n\n1. **Teach exactly one obvious target phrase and its direct break down of the phrase, with no additional vietnamese characters or changes** (the lesson is unmistakable).\n2. Use **accurate translation + natural pronunciation guidance** (no misleading phonetics).\n3. Sound like a **real song** a human would write (clear flow, not robotic, even make comparisons to other songs).\n4. Avoid **AI-generated filler** and unnecessary extra foreign-language content.\n\n### Hard Rules (Fail Conditions)\n\nFlag as **FAIL** if any of the following occur:\n\n* The lyrics teach **multiple phrases that are not directly related to the target phrase**, multiple lesson goals, or drift into extra vocabulary.\n* The song contains **AI filler or cringe coaching** like:\n\n  * “say it smooth / say it right / so strong / like a native / it means”\n  * “this is how you say ___” in either language\n  * meta narration that breaks immersion (“Now repeat after me…” unless specifically flows naturally in the song some how)\n* The target language includes **extra sentences** not required to teach the target phrase.\n* The English and target language at the bridge should be a vietnamese word followed by what that word is in english, its one of the most important lines in every song.\n\n\n### Pass Criteria (What “Good” Looks Like)\n\n* The target phrase is presented early, repeated else where in the song, and reinforced naturally in context.\n* Any pronunciation help is brief, consistent, and does not dominate the song.\n* English support shouldn't be cheesy, we want cool songs, bangers, something that people will want to sing along to, even if it needs to break some rules to sound cool... is minimal and purposeful (never verbose).\n* The lyric reads like a real song with a coherent mood and cadence.\n\n---\n\n## Output Format (Always use this structure)\n\n### 1) Verdict\n\n* PASS / NEEDS REVISION / FAIL\n  One sentence explaining why.\n\n### 2) Target Phrase Check\n\n* Target phrase detected: “…”\n* Additional phrases detected: \"...\" &-> meaning in english\n* Is it the single clear lesson focus? Yes/No\n* Repetition score (0–10): ___\n* Clarity score (0–10): ___\n8 Banger/viral quality song score (0-10): ___\n\n### 3) Language Accuracy Check\n\n* Translation accuracy: OK / Minor issues / Major issues\n* Explain the issues.\n* Register/tone: natural / too formal / too slang / inconsistent. Explain\n* Any unnecessary extra foreign language? Yes/No (list lines)\n\n### 4) “AI-ness” & Weirdness Report\n\nList lines that feel AI-generated, corny, or meta.\nFor each, label:\n\n* Problem type: filler / awkward phrasing / unnatural instruction / rhythm issue / forced rhyme\n* Fix: specific rewrite suggestion\n\n### 5) Song Quality Notes\n\n* Hook strength (0–10): ___\n* Flow/cadence (0–10): ___\n* Memorability (0–10): ___\n* Structure issues: (bullet list)\n\n### 6) Concrete Improvements\n\nGive 5–10 actionable edits (not vague advice). Example:\n\n* “Replace line X with Y”\n* “Move phrase repetition into chorus”\n* “Cut these 2 lines”\n* “Shorten English explanation to 1 line”\n\n### 7) Revised Version (When Needed)\n\nIf verdict is NEEDS REVISION or FAIL:\nProvide a revised lyric that:\n\n* keeps the same target phrase\n* Imagine a creative solution or lyrically interesting way to rewrite the song.\n* removes filler/meta lines\n* increases repetition in chorus\n* keeps foreign-language content minimal and relevant\n\nYOU HAVE AN EMAIL TOOL, SEND OUTPUT TO THE EMAIL PROVIDED.\n"
+            "systemMessage": "=## AI Agent Role: Language-Lyric Quality Auditor (Critical)\n\nYou are a **strict bilingual language expert + songwriting editor**. Your job is to review song lyrics generated by another AI that are intended to teach **one specific target phrase and a breakdown of that one target phrase** in a chosen language. You must be detail oriented, precise, and willing to reject weak outputs.\n\n### Core Objective\n\nEnsure the lyrics:\n\n1. **Uses the one obvious target phrase and its direct break down of the phrase into indavisdual words, with no additional vietnamese characters or changes that are not directly found in the target phrase** \n\n2. Use **accurate translation + natural pronunciation guidance** (no misleading phonetics).\n3. Sound like a **real song** a human would write (clear flow, not robotic, even make comparisons to other songs).\n4. Avoid **AI-generated filler** and unnecessary extra foreign-language content.\n\n### Hard Rules (Fail Conditions)\n\nFlag as **FAIL** if any of the following occur:\n\n* The lyrics teach **multiple phrases that are not directly related to the target phrase**, multiple lesson goals, or drift into extra vocabulary.\n* The song contains **AI filler or cringe coaching** like:\n\n  * “say it smooth / say it right / so strong / like a native / it means”\n  * “this is how you say ___” in either language\n  * meta narration that breaks immersion (“Now repeat after me…” unless specifically flows naturally in the song some how)\n* The target language includes **extra sentences** not required to teach the target phrase.\n* The English and target language at the bridge should be a vietnamese word followed by what that word is in english, its one of the most important lines in every song.\n\n\n### Pass Criteria (What “Good” Looks Like)\n\n* The target phrase is presented early, repeated else where in the song, and reinforced naturally in context.\n* Any pronunciation help is brief, consistent, and does not dominate the song.\n* English support shouldn't be cheesy, we want cool songs, bangers, something that people will want to sing along to, even if it needs to break some rules to sound cool... is minimal and purposeful (never verbose).\n* The lyric reads like a real song with a coherent mood and cadence.\n\n\nYOU HAVE AN EMAIL TOOL, SEND OUTPUT TO THE EMAIL PROVIDED.\n"
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3,
         "position": [
-          2080,
-          -128
+          1552,
+          96
         ],
         "id": "6cad7ee6-9a33-4008-b6e4-5195b5923dda",
         "name": "Suno Lyrics2"
@@ -1282,8 +1231,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          2096,
-          112
+          1392,
+          208
         ],
         "id": "091cfc41-c1fa-4b83-891f-e4c7e421c3c9",
         "name": "OpenAI Chat Model3",
@@ -1306,8 +1255,8 @@
         "type": "n8n-nodes-base.emailSend",
         "typeVersion": 2.1,
         "position": [
-          2432,
-          -128
+          1632,
+          320
         ],
         "id": "c08e42e9-ed4e-43f1-9352-d86907502287",
         "name": "Send email",
@@ -1316,31 +1265,6 @@
           "smtp": {
             "id": "LpnGUQ4PDgiMVycW",
             "name": "SMTP account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "mode": "list",
-            "value": "gpt-4.1-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          128,
-          752
-        ],
-        "id": "8c0d5ab0-3e4c-4a53-b11d-1f37d37a9e95",
-        "name": "OpenAI Chat Model4",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
           }
         }
       },
@@ -1355,8 +1279,8 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3.1,
         "position": [
-          240,
-          -448
+          272,
+          -400
         ],
         "id": "85920d0c-374a-40d3-a3ec-5b805a0b2e45",
         "name": "AI Agent1"
@@ -1375,7 +1299,7 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          256,
+          272,
           -272
         ],
         "id": "06fb56b0-205b-4e7c-a293-088e389be3d2",
@@ -1386,69 +1310,6 @@
             "name": "OpenAi account"
           }
         }
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
-                "name": "Quality Control",
-                "value": "={{ $json.output }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          416,
-          592
-        ],
-        "id": "21567f44-b405-4cbc-883e-50d248262985",
-        "name": "edit output to name1"
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
-                "name": "Origional Lyrics",
-                "value": "={{ $json.output }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          128,
-          448
-        ],
-        "id": "7266193c-f2dd-4661-8cc5-ae4248c762e8",
-        "name": "edit output to name2"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "={{ $json.output }}",
-          "options": {
-            "systemMessage": "Quality control. best song under 1 minute\n\nTARGET PHRASE (immutable surface string):\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\n\nKEY DEFINITIONS\n- “Allowed Vietnamese” = exact target phrase OR exact substrings copied from it (chunks).\n- “Forbidden Vietnamese” = any Vietnamese not appearing verbatim in the target phrase.\n\nHARD FAIL CONDITIONS\nFAIL if any are true:\n1) Any forbidden Vietnamese appears (including synonyms, alternate word order, “also said as,” etc.).\n2) The target phrase is altered (missing tone marks, missing words, changed punctuation that changes tokens).\n3) The song introduces alternate versions or variations of the phrase.\n4) The lyrics become a lecture (e.g., “repeat after me,” “this is how you say,” “say it like a native”).\n5) The lyrics exceed 30 lines or ignore section tags.\n\nPASS/REVISION GUIDELINES\n- The phrase appears at most twice total across the whole song.\n  - Full phrase (1–2x if long)\n  - Substring chunks 1 time in the song.\n- There is a “Breakdown” section where chunks are mapped to English meaning.\n- English is conversational and scene-based.\n- Hook section is catchy: short lines, repeatable rhythm, minimal filler.\n\nOUTPUT FORMAT\n1) Verdict: PASS / NEEDS REVISION / FAIL + one-sentence reason\n2) Vietnamese Compliance:\n   - Full phrase occurrences: #\n   - Chunk occurrences: #\n   - Forbidden Vietnamese detected: Yes/No (quote lines)\n3) Teaching Clarity:\n   - Is it clearly one lesson phrase? Yes/No\n   - Breakdown present and correct? Yes/No\n   - Clarity score (0–10)\n4) Song Quality:\n   - Hook strength (0–10)\n   - Flow/cadence (0–10)\n   - Banger score (0–10)\n   - List 3–7 specific “weak lines” with replacement suggestions\n5) If NEEDS REVISION or FAIL:\n   Provide “Fix Plan” bullet points only (do NOT rewrite the whole song).\n"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3.1,
-        "position": [
-          128,
-          592
-        ],
-        "id": "71918e3e-4ac2-4ec9-966a-597482eb1c40",
-        "name": "Quality control"
       },
       {
         "parameters": {
@@ -1469,8 +1330,8 @@
         "type": "n8n-nodes-base.googleDrive",
         "typeVersion": 3,
         "position": [
-          4784,
-          384
+          5392,
+          256
         ],
         "id": "849c6266-423f-42d6-93fc-9e26643bbc9c",
         "name": "Upload file",
@@ -1499,8 +1360,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          4576,
-          384
+          5184,
+          256
         ],
         "id": "aa9c2889-d9be-4abe-8aec-bbcd528abdb9",
         "name": "Edit Fields"
@@ -1514,129 +1375,11 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          3712,
-          368
+          4624,
+          256
         ],
         "id": "e083edf7-47ad-4794-a2a7-c34bb82d2cbd",
         "name": "Merge2"
-      },
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "value": "gpt-4.1-mini",
-            "mode": "list",
-            "cachedResultName": "gpt-4.1-mini"
-          },
-          "responsesApiEnabled": false,
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          -272,
-          608
-        ],
-        "id": "bd16bff6-a423-4d66-8815-88e4b219695a",
-        "name": "OpenAI Chat Model6",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "=Target phrase meaning (English):\n{{ $json['Meaning (English)'] }}\n\n\nSong hook suggestion:\n{{ $json['Song hook idea'] }}\n\n\nGenre:\n{{ $json['Genera '] }}\n",
-          "hasOutputParser": true,
-          "options": {
-            "systemMessage": "=You are an English chant-style lyric writer.\n\nYour task is to write a short, loopable earworm song using ONLY English. These lyrics will later be passed to another agent that inserts foreign-language teaching phrases.\n\nAudience & tone:\nAdults who enjoy travel and learning phrases in new places.\nSimple, rhythmic, chant-like (Baby Shark energy), but adult and situational.\nThe song should feel tied to a real travel moment, not a generic nursery rhyme.\n\nSTRUCTURE (use exactly this order):\n\nBreakdown section:\n\n[Intro - Breakdown]\n\nIn this section:\n\nBreak the Vietnamese phrase into chunks.\n\nList EACH chunk ONCE as:\nVietnamese chunk — English meaning\n\nUse ONLY chunks that come directly from the phrase.\n\nNo extra commentary.\n\nOptional rhythmic enhancement (sparingly):\n[Hook]\n[Hook]\n[Bridge]\n[Hook]\n[Outro]\n\nCore rules:\nLines must be short and chantable (2–6 words).\nRepetition is required.\nFun comes from rhythm and emotional delivery, not new meaning.\nThe same intention repeats with different emotional cues.\nAllowed emotions only: curious, playful, urgent, confident, calm.\n\nPhrase usage:\nYou receive ONE English target phrase (the meaning of a foreign phrase).\nUse ONLY that exact target phrase when stating the phrase.\nDo NOT paraphrase or restate it.\nAny other words must only support rhythm, emotion, or anticipation.\n\nStory constraint:\nThe song has a story ONLY in the sense of situational context.\nEach repetition implies the phrase being used in a different real-world moment.\nNo plot, no actions, no escalation, no consequences.\nThe story advances only through emotion and presence, not events.\n\nSpecificity constraint:\nThe lyrics must feel specific to a travel situation without naming places, people, or objects.\nDo NOT describe locations or actions.\nSpecificity comes from emotional context, not descriptive detail.\nIf the lyrics could apply equally to a nursery rhyme, they are too generic.\n\nFormatting:\nInclude emotional cues in brackets, e.g. [curious], [urgent].\nOutput ONLY the lyrics in plain text.\n"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3,
-        "position": [
-          -256,
-          416
-        ],
-        "id": "df29e9b4-2bae-44d1-bd7e-4dab631b9abe",
-        "name": "Chatgpt system prompt Suno Lyrics3"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "=Target phrase:\n{{ $json['Meaning (English)'] }}\nSong hook suggestion:\n{{ $json['Song hook idea'] }}\nGenera of music:\n{{ $json.Genera }}",
-          "hasOutputParser": true,
-          "options": {
-            "systemMessage": "=You are a pop songwriter writing a complete duet in English.\n\nABSOLUTE OUTPUT RULE\n- Output ONLY song lyrics in plain text\n- NO explanations, notes, or questions\n\nCHARACTERS (not labeled in output)\n- Voice A: traveler (outsider, uncertain)\n- Voice B: local (grounded, confident)\n\nSTRUCTURE (use exact tags)\n[Intro] [Verse 1] [Chorus] [Verse 2] [Chorus] [Bridge] [Final Chorus] [Outro]\n\nOptional: [Pre-Chorus] only if it adds momentum\n\nSONG ARC (NON-NEGOTIABLE)\nIntro: Physical proximity, charged silence\nVerse 1: Establish setting, situation, unspoken want (4-6 lines max)\nChorus: Express the want using THIS PHRASE → {{ $json[\"Meaning (English)\"] }}\n  - Repeat the phrase 2-3 times in the chorus\n  - Do NOT paraphrase or add similar phrases\nVerse 2: Stakes rise; show what's lost if nothing happens (4-6 lines)\nChorus: Same phrase, more certainty\nBridge: Vulnerable truth + physical action (door opens, hand extended, etc.)\n  - Can break phrase into shorter repeated fragments\nFinal Chorus: Declarative (no questions). Phrase becomes a statement.\nOutro: Show emotional result (closeness, calm, consequence)\n\nDUET DYNAMICS\n- Verses: alternate or share lines naturally\n- Chorus: sing together OR in call-response\n- Bridge: one vulnerable, other responds\n\nTONE ADAPTATION\n- Romantic phrases → chemistry, attraction\n- Practical/urgent phrases → vulnerability, trust, relief\n- Duet can be romantic OR platonic\n\nSTYLE\n- Conversational, modern, singable English\n- Specific details over vague metaphors\n- Minimal verses, big repetitive chorus\n\nAVOID\n- \"Let me teach you\" / meta-commentary (unless phrase is about teaching)\n- Overusing \"Oh/Yeah\" \n- Lazy rhymes: fire/desire, night/light, tonight\n\nDELIVERY (sparingly)\n- (parentheses) for asides\n- ... for pauses\n- NO ALL CAPS or !!!\n\nOUTPUT: Lyrics only. No commentary."
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3,
-        "position": [
-          -1088,
-          656
-        ],
-        "id": "3634de3b-d31c-4c70-bf0f-5d3769a99c94",
-        "name": "Google Gemini Suno Lyrics"
-      },
-      {
-        "parameters": {
-          "model": {
-            "__rl": true,
-            "mode": "list",
-            "value": "gpt-4.1-mini"
-          },
-          "builtInTools": {},
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-        "typeVersion": 1.3,
-        "position": [
-          -672,
-          752
-        ],
-        "id": "d6804ee1-eb90-44e8-a8d6-67dc9fb488de",
-        "name": "OpenAI Chat Model7",
-        "credentials": {
-          "openAiApi": {
-            "id": "FCgioqL0Ukq0AAAo",
-            "name": "OpenAi account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-        },
-        "type": "@n8n/n8n-nodes-langchain.toolThink",
-        "typeVersion": 1.1,
-        "position": [
-          -528,
-          752
-        ],
-        "id": "51b35185-7b51-459b-b507-23aba8afb27a",
-        "name": "Think4"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "=Target phrase:\n{{ $json['Meaning (English)'] }}\nSong hook suggestion:\n{{ $json['Song hook idea'] }}\nGenera of music:\n{{ $json.Genera }}",
-          "hasOutputParser": true,
-          "options": {
-            "systemMessage": "=You are a pop songwriter. Your job is to write a complete, catchy,\nradio-ready English song that sounds like a real human wrote it.\n\nThis song is ALWAYS written as a duet.\n\nABSOLUTE OUTPUT RULE\n- Output ONLY the song lyrics in plain text.\n- Do NOT include explanations, notes, summaries, or commentary.\n- Do NOT ask questions.\n\nCHARACTERS (IMPLICIT, NOT LABELED)\n- Voice A: a traveler (outsider, curious, slightly unsure)\n- Voice B: a local (confident, grounded, aware of what’s at stake)\n\nDo NOT label speakers explicitly.\n\nSTRUCTURE (use these tags exactly)\n[Intro]\n[Verse 1]\n[Pre-Chorus]\n[Chorus]\n[Verse 2]\n[Pre-Chorus]\n[Chorus]\n[Bridge]\n[Final Chorus]\n[Outro]\n\nCORE SONG ARC (NON-NEGOTIABLE)\n[Intro]\nEstablish a heavy atmosphere through sensory specifics (e.g., a ticking clock, a humming fridge, rain on a windshield).\nThe two voices are physically inches apart but emotionally miles away. Focus on the silence between breaths.\n[Verse 1]\nGround the scene: mention a specific physical object (a half-empty glass, a damp coat, a cracked phone screen).\nVoice A (Traveler) uses hesitant, observational language. Voice B (Local) responds with short, grounded sentences.\nConstraint: Use slant rhymes (e.g., phone/home, rain/wait) rather than perfect rhymes to keep it modern.\n[Pre-Chorus]\nRhythmic build-up: short, punchy lines that mimic a rising heart rate.\nFocus on physical tension—a hand twitching, a glance held too long, or shifting weight.\n[Chorus]\nThe Hook: A simple, repeatable phrase. Keep lines between 7-9 syllables for melodic consistency.\nExpress the want through \"testing\" language: use \"maybe,\" \"if,\" or \"almost.\"\nThe melody should feel open-ended and searching.\n[Verse 2]\nThe Stakes: Introduce a ticking clock (a train leaving, a porch light flickering, a phone hitting 1%).\nAnswer the \"What if?\": Explicitly show the loss. If no action is taken now, the moment becomes a \"ghost\" or a \"could-have-been.\"\nConstraint: Zero \"AI-isms.\" Avoid words like neon, soul, destiny, rhythm, heartbeat, or horizon.\n[Pre-Chorus]\nMirror the rhythm of the first Pre-Chorus exactly, but swap hesitant words for urgent ones.\n[Chorus]\nRepeat the hook CORE idea. Voice A and Voice B should now overlap or harmonize.\nShift the energy from \"asking\" to \"expecting.\"\n[Bridge]\nThe Shift: Break the rhythm. Change the line lengths significantly to signal a change in mood.\nThe Threshold: A physical action must occur—a key turns, a hand is pulled, a step is taken across a doorway.\nTotal vulnerability: A specific secret is dropped or a mask is removed.\n[Final Chorus]\nResolution: Convert every \"if\" or \"maybe\" into \"I will\" or \"We are.\"\nConstraint: Use only declarative statements. No question marks. No \"could I\" or \"can we.\"\nThe language must be final and committed.\n[Outro]\nThe Fallout: The music strips back. Return to a sensory detail from the Intro, but show how it has changed (e.g., the rain stopped, the coffee is cold).\nEnd on a note of calm, quiet certainty or consequence. No new questions.\n\nDESIRE & STAKES RULE (CRITICAL)\n- The central action must feel like a threshold.\n- Verse 2 MUST answer: “What happens if this doesn’t happen?”\n- Desire is shown through proximity, timing, silence, and consequence (not explicit detail).\n\nSTYLE GOALS\n- Conversational English, modern, intimate, singable.\n- Specific details over vague metaphors.\n- Avoid “AI teacher” lines or meta commentary.\n\nMETA TAGS (optional, max 2 lines at the top)\nChoose at most TWO:\n[Mood: ___]\n[Vocal: Male/Female duet]\n[Tempo: ~100 BPM]\n[Style: modern pop / chill pop / pop-rock / lo-fi pop]\n\nDELIVERY MARKUP (allowed)\n- (parentheses) for quiet asides/overlaps sparingly\n- ... for pauses sparingly\n- Do NOT use ALL CAPS or !!!.\n\nINPUT\nYou will receive the English meaning of a travel phrase:\n{{ $json[\"Meaning (English)\"] }}\n\nWrite the song entirely in English.\nThe song must naturally build toward needing to say that phrase,\nbut do NOT include the phrase itself.\n\nReturn ONLY the lyrics.\n"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3,
-        "position": [
-          -656,
-          640
-        ],
-        "id": "8b64af09-1668-4c3c-97a5-891dfe991ffa",
-        "name": "Google Gemini Suno Lyrics1"
       },
       {
         "parameters": {
@@ -2206,53 +1949,20 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          448,
-          16
+          720,
+          -192
         ],
         "id": "707db5fa-0bc2-44b8-bee0-2f207ce66cb7",
         "name": "Code in JavaScript1"
       }
     ],
     "connections": {
-      "OpenAI Chat Model": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Google Gemini Suno Lyrics",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Think": {
-        "ai_tool": [
-          [
-            {
-              "node": "Google Gemini Suno Lyrics",
-              "type": "ai_tool",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "OpenAI Chat Model1": {
         "ai_languageModel": [
           [
             {
               "node": "Suno Style",
               "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Think1": {
-        "ai_tool": [
-          [
-            {
-              "node": "Suno Style",
-              "type": "ai_tool",
               "index": 0
             }
           ]
@@ -2278,14 +1988,14 @@
               "index": 0
             },
             {
-              "node": "Append row in SUNOAIAutomation",
-              "type": "main",
-              "index": 0
-            },
-            {
               "node": "Merge2",
               "type": "main",
               "index": 1
+            },
+            {
+              "node": "Append row in SUNOAIAutomation",
+              "type": "main",
+              "index": 0
             }
           ]
         ]
@@ -2592,17 +2302,6 @@
           ]
         ]
       },
-      "OpenAI Chat Model4": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Quality control",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "AI Agent1": {
         "main": [
           [
@@ -2625,27 +2324,6 @@
           ]
         ]
       },
-      "edit output to name1": {
-        "main": [
-          []
-        ]
-      },
-      "edit output to name2": {
-        "main": [
-          []
-        ]
-      },
-      "Quality control": {
-        "main": [
-          [
-            {
-              "node": "edit output to name1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Edit Fields": {
         "main": [
           [
@@ -2662,55 +2340,6 @@
           [
             {
               "node": "Get Video File data",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "OpenAI Chat Model6": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Chatgpt system prompt Suno Lyrics3",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Google Gemini Suno Lyrics": {
-        "main": [
-          []
-        ]
-      },
-      "OpenAI Chat Model7": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Google Gemini Suno Lyrics1",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Think4": {
-        "ai_tool": [
-          [
-            {
-              "node": "Google Gemini Suno Lyrics1",
-              "type": "ai_tool",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Chatgpt system prompt Suno Lyrics3": {
-        "main": [
-          [
-            {
-              "node": "edit output to name2",
               "type": "main",
               "index": 0
             }
@@ -2852,51 +2481,18 @@
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 5c4d8b36",
+    "name": "Version 9c5be2cb",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "5c4d8b36-eeeb-4335-8d1f-462bf2acfa11",
+  "activeVersionId": "9c5be2cb-7328-40f5-b0f8-3ecc4f65f950",
   "connections": {
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Google Gemini Suno Lyrics",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Think": {
-      "ai_tool": [
-        [
-          {
-            "node": "Google Gemini Suno Lyrics",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model1": {
       "ai_languageModel": [
         [
           {
             "node": "Suno Style",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Think1": {
-      "ai_tool": [
-        [
-          {
-            "node": "Suno Style",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -2922,14 +2518,14 @@
             "index": 0
           },
           {
-            "node": "Append row in SUNOAIAutomation",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Merge2",
             "type": "main",
             "index": 1
+          },
+          {
+            "node": "Append row in SUNOAIAutomation",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -3236,17 +2832,6 @@
         ]
       ]
     },
-    "OpenAI Chat Model4": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Quality control",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent1": {
       "main": [
         [
@@ -3269,27 +2854,6 @@
         ]
       ]
     },
-    "edit output to name1": {
-      "main": [
-        []
-      ]
-    },
-    "edit output to name2": {
-      "main": [
-        []
-      ]
-    },
-    "Quality control": {
-      "main": [
-        [
-          {
-            "node": "edit output to name1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Edit Fields": {
       "main": [
         [
@@ -3306,55 +2870,6 @@
         [
           {
             "node": "Get Video File data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model6": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Chatgpt system prompt Suno Lyrics3",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Suno Lyrics": {
-      "main": [
-        []
-      ]
-    },
-    "OpenAI Chat Model7": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Google Gemini Suno Lyrics1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Think4": {
-      "ai_tool": [
-        [
-          {
-            "node": "Google Gemini Suno Lyrics1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Chatgpt system prompt Suno Lyrics3": {
-      "main": [
-        [
-          {
-            "node": "edit output to name2",
             "type": "main",
             "index": 0
           }
@@ -3511,44 +3026,6 @@
           "value": "gpt-4.1-mini"
         },
         "builtInTools": {},
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        -1104,
-        768
-      ],
-      "id": "ab29bac9-84b9-4d2c-9759-0fbb7bac3fe0",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "FCgioqL0Ukq0AAAo",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolThink",
-      "typeVersion": 1.1,
-      "position": [
-        -960,
-        768
-      ],
-      "id": "24305d05-33ec-41c8-bfad-b2f3ba658e79",
-      "name": "Think"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "builtInTools": {},
         "options": {
           "maxTokens": 350
         }
@@ -3556,8 +3033,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        32,
-        224
+        288,
+        -32
       ],
       "id": "57eab987-ea38-41e7-8c54-858b9daad4f1",
       "name": "OpenAI Chat Model1",
@@ -3567,19 +3044,6 @@
           "name": "OpenAi account"
         }
       }
-    },
-    {
-      "parameters": {
-        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolThink",
-      "typeVersion": 1.1,
-      "position": [
-        160,
-        240
-      ],
-      "id": "91a33933-6042-46de-b597-035c88f9d23a",
-      "name": "Think1"
     },
     {
       "parameters": {
@@ -3594,8 +3058,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        48,
-        16
+        288,
+        -192
       ],
       "id": "f861a653-1116-4b13-88ac-034e29ea0a9e",
       "name": "Suno Style",
@@ -3691,8 +3155,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        448,
-        -752
+        864,
+        -608
       ],
       "id": "fa46b5a2-7f93-4776-be7c-f829ee44f8b6",
       "name": "edit output to name"
@@ -3714,8 +3178,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1072,
-        -336
+        880,
+        -400
       ],
       "id": "a2f3fa29-fc0a-4de1-83e2-2a745c4cdafd",
       "name": "Edit output to Lyrics"
@@ -3737,8 +3201,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1072,
-        -96
+        880,
+        -192
       ],
       "id": "73f8ac33-124f-4125-92d0-29610a8ad42f",
       "name": "Edit output to Style"
@@ -3972,8 +3436,8 @@
       "name": "YouTube",
       "type": "n8n-nodes-base.youTube",
       "position": [
-        4784,
-        112
+        5392,
+        -16
       ],
       "typeVersion": 1,
       "id": "577462d3-d874-422d-9494-71d219c2b3a8",
@@ -4036,8 +3500,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3040,
-        32
+        3952,
+        -80
       ],
       "id": "35ef35ad-148f-40bf-b848-7eb9ea0cf9a1",
       "name": "Wait1",
@@ -4535,8 +3999,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2832,
-        32
+        3744,
+        -80
       ],
       "id": "65baeb0f-3b8b-46c0-a7d3-05be8a124bac",
       "name": "Post KieAi music Video",
@@ -4575,8 +4039,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        3232,
-        32
+        4144,
+        -80
       ],
       "id": "b501a87d-2e8a-4a4e-b94f-e9b4ae0de67d",
       "name": "Get KieAi music Video",
@@ -4601,8 +4065,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4096,
-        384
+        4848,
+        256
       ],
       "id": "3e45ac57-0285-42ec-8712-234e7754dce9",
       "name": "Get Video File data"
@@ -4686,8 +4150,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        3456,
-        32
+        4368,
+        -80
       ],
       "id": "dce189e3-0954-4573-8ca7-15828e61f121",
       "name": "Switch1"
@@ -4754,14 +4218,14 @@
         "text": "={{ $json['Lyrics (100-120 Words)'] }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=## AI Agent Role: Language-Lyric Quality Auditor (Critical)\n\nYou are a **strict bilingual language expert + songwriting editor**. Your job is to review song lyrics generated by another AI that are intended to teach **one specific target phrase and a breakdown of that one target phrase** in a chosen language. You must be detail oriented, precise, and willing to reject weak outputs.\n\n### Core Objective\n\nEnsure the lyrics:\n\n1. **Teach exactly one obvious target phrase and its direct break down of the phrase, with no additional vietnamese characters or changes** (the lesson is unmistakable).\n2. Use **accurate translation + natural pronunciation guidance** (no misleading phonetics).\n3. Sound like a **real song** a human would write (clear flow, not robotic, even make comparisons to other songs).\n4. Avoid **AI-generated filler** and unnecessary extra foreign-language content.\n\n### Hard Rules (Fail Conditions)\n\nFlag as **FAIL** if any of the following occur:\n\n* The lyrics teach **multiple phrases that are not directly related to the target phrase**, multiple lesson goals, or drift into extra vocabulary.\n* The song contains **AI filler or cringe coaching** like:\n\n  * “say it smooth / say it right / so strong / like a native / it means”\n  * “this is how you say ___” in either language\n  * meta narration that breaks immersion (“Now repeat after me…” unless specifically flows naturally in the song some how)\n* The target language includes **extra sentences** not required to teach the target phrase.\n* The English and target language at the bridge should be a vietnamese word followed by what that word is in english, its one of the most important lines in every song.\n\n\n### Pass Criteria (What “Good” Looks Like)\n\n* The target phrase is presented early, repeated else where in the song, and reinforced naturally in context.\n* Any pronunciation help is brief, consistent, and does not dominate the song.\n* English support shouldn't be cheesy, we want cool songs, bangers, something that people will want to sing along to, even if it needs to break some rules to sound cool... is minimal and purposeful (never verbose).\n* The lyric reads like a real song with a coherent mood and cadence.\n\n---\n\n## Output Format (Always use this structure)\n\n### 1) Verdict\n\n* PASS / NEEDS REVISION / FAIL\n  One sentence explaining why.\n\n### 2) Target Phrase Check\n\n* Target phrase detected: “…”\n* Additional phrases detected: \"...\" &-> meaning in english\n* Is it the single clear lesson focus? Yes/No\n* Repetition score (0–10): ___\n* Clarity score (0–10): ___\n8 Banger/viral quality song score (0-10): ___\n\n### 3) Language Accuracy Check\n\n* Translation accuracy: OK / Minor issues / Major issues\n* Explain the issues.\n* Register/tone: natural / too formal / too slang / inconsistent. Explain\n* Any unnecessary extra foreign language? Yes/No (list lines)\n\n### 4) “AI-ness” & Weirdness Report\n\nList lines that feel AI-generated, corny, or meta.\nFor each, label:\n\n* Problem type: filler / awkward phrasing / unnatural instruction / rhythm issue / forced rhyme\n* Fix: specific rewrite suggestion\n\n### 5) Song Quality Notes\n\n* Hook strength (0–10): ___\n* Flow/cadence (0–10): ___\n* Memorability (0–10): ___\n* Structure issues: (bullet list)\n\n### 6) Concrete Improvements\n\nGive 5–10 actionable edits (not vague advice). Example:\n\n* “Replace line X with Y”\n* “Move phrase repetition into chorus”\n* “Cut these 2 lines”\n* “Shorten English explanation to 1 line”\n\n### 7) Revised Version (When Needed)\n\nIf verdict is NEEDS REVISION or FAIL:\nProvide a revised lyric that:\n\n* keeps the same target phrase\n* Imagine a creative solution or lyrically interesting way to rewrite the song.\n* removes filler/meta lines\n* increases repetition in chorus\n* keeps foreign-language content minimal and relevant\n\nYOU HAVE AN EMAIL TOOL, SEND OUTPUT TO THE EMAIL PROVIDED.\n"
+          "systemMessage": "=## AI Agent Role: Language-Lyric Quality Auditor (Critical)\n\nYou are a **strict bilingual language expert + songwriting editor**. Your job is to review song lyrics generated by another AI that are intended to teach **one specific target phrase and a breakdown of that one target phrase** in a chosen language. You must be detail oriented, precise, and willing to reject weak outputs.\n\n### Core Objective\n\nEnsure the lyrics:\n\n1. **Uses the one obvious target phrase and its direct break down of the phrase into indavisdual words, with no additional vietnamese characters or changes that are not directly found in the target phrase** \n\n2. Use **accurate translation + natural pronunciation guidance** (no misleading phonetics).\n3. Sound like a **real song** a human would write (clear flow, not robotic, even make comparisons to other songs).\n4. Avoid **AI-generated filler** and unnecessary extra foreign-language content.\n\n### Hard Rules (Fail Conditions)\n\nFlag as **FAIL** if any of the following occur:\n\n* The lyrics teach **multiple phrases that are not directly related to the target phrase**, multiple lesson goals, or drift into extra vocabulary.\n* The song contains **AI filler or cringe coaching** like:\n\n  * “say it smooth / say it right / so strong / like a native / it means”\n  * “this is how you say ___” in either language\n  * meta narration that breaks immersion (“Now repeat after me…” unless specifically flows naturally in the song some how)\n* The target language includes **extra sentences** not required to teach the target phrase.\n* The English and target language at the bridge should be a vietnamese word followed by what that word is in english, its one of the most important lines in every song.\n\n\n### Pass Criteria (What “Good” Looks Like)\n\n* The target phrase is presented early, repeated else where in the song, and reinforced naturally in context.\n* Any pronunciation help is brief, consistent, and does not dominate the song.\n* English support shouldn't be cheesy, we want cool songs, bangers, something that people will want to sing along to, even if it needs to break some rules to sound cool... is minimal and purposeful (never verbose).\n* The lyric reads like a real song with a coherent mood and cadence.\n\n\nYOU HAVE AN EMAIL TOOL, SEND OUTPUT TO THE EMAIL PROVIDED.\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        2080,
-        -128
+        1552,
+        96
       ],
       "id": "6cad7ee6-9a33-4008-b6e4-5195b5923dda",
       "name": "Suno Lyrics2"
@@ -4779,8 +4243,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        2096,
-        112
+        1392,
+        208
       ],
       "id": "091cfc41-c1fa-4b83-891f-e4c7e421c3c9",
       "name": "OpenAI Chat Model3",
@@ -4803,8 +4267,8 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        2432,
-        -128
+        1632,
+        320
       ],
       "id": "c08e42e9-ed4e-43f1-9352-d86907502287",
       "name": "Send email",
@@ -4813,31 +4277,6 @@
         "smtp": {
           "id": "LpnGUQ4PDgiMVycW",
           "name": "SMTP account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "builtInTools": {},
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        128,
-        752
-      ],
-      "id": "8c0d5ab0-3e4c-4a53-b11d-1f37d37a9e95",
-      "name": "OpenAI Chat Model4",
-      "credentials": {
-        "openAiApi": {
-          "id": "FCgioqL0Ukq0AAAo",
-          "name": "OpenAi account"
         }
       }
     },
@@ -4852,8 +4291,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        240,
-        -448
+        272,
+        -400
       ],
       "id": "85920d0c-374a-40d3-a3ec-5b805a0b2e45",
       "name": "AI Agent1"
@@ -4872,7 +4311,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        256,
+        272,
         -272
       ],
       "id": "06fb56b0-205b-4e7c-a293-088e389be3d2",
@@ -4883,69 +4322,6 @@
           "name": "OpenAi account"
         }
       }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
-              "name": "Quality Control",
-              "value": "={{ $json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        416,
-        592
-      ],
-      "id": "21567f44-b405-4cbc-883e-50d248262985",
-      "name": "edit output to name1"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "d7658768-69d9-45a0-ba9b-c3c08440f8d5",
-              "name": "Origional Lyrics",
-              "value": "={{ $json.output }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        128,
-        448
-      ],
-      "id": "7266193c-f2dd-4661-8cc5-ae4248c762e8",
-      "name": "edit output to name2"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.output }}",
-        "options": {
-          "systemMessage": "Quality control. best song under 1 minute\n\nTARGET PHRASE (immutable surface string):\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\n\nKEY DEFINITIONS\n- “Allowed Vietnamese” = exact target phrase OR exact substrings copied from it (chunks).\n- “Forbidden Vietnamese” = any Vietnamese not appearing verbatim in the target phrase.\n\nHARD FAIL CONDITIONS\nFAIL if any are true:\n1) Any forbidden Vietnamese appears (including synonyms, alternate word order, “also said as,” etc.).\n2) The target phrase is altered (missing tone marks, missing words, changed punctuation that changes tokens).\n3) The song introduces alternate versions or variations of the phrase.\n4) The lyrics become a lecture (e.g., “repeat after me,” “this is how you say,” “say it like a native”).\n5) The lyrics exceed 30 lines or ignore section tags.\n\nPASS/REVISION GUIDELINES\n- The phrase appears at most twice total across the whole song.\n  - Full phrase (1–2x if long)\n  - Substring chunks 1 time in the song.\n- There is a “Breakdown” section where chunks are mapped to English meaning.\n- English is conversational and scene-based.\n- Hook section is catchy: short lines, repeatable rhythm, minimal filler.\n\nOUTPUT FORMAT\n1) Verdict: PASS / NEEDS REVISION / FAIL + one-sentence reason\n2) Vietnamese Compliance:\n   - Full phrase occurrences: #\n   - Chunk occurrences: #\n   - Forbidden Vietnamese detected: Yes/No (quote lines)\n3) Teaching Clarity:\n   - Is it clearly one lesson phrase? Yes/No\n   - Breakdown present and correct? Yes/No\n   - Clarity score (0–10)\n4) Song Quality:\n   - Hook strength (0–10)\n   - Flow/cadence (0–10)\n   - Banger score (0–10)\n   - List 3–7 specific “weak lines” with replacement suggestions\n5) If NEEDS REVISION or FAIL:\n   Provide “Fix Plan” bullet points only (do NOT rewrite the whole song).\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3.1,
-      "position": [
-        128,
-        592
-      ],
-      "id": "71918e3e-4ac2-4ec9-966a-597482eb1c40",
-      "name": "Quality control"
     },
     {
       "parameters": {
@@ -4966,8 +4342,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        4784,
-        384
+        5392,
+        256
       ],
       "id": "849c6266-423f-42d6-93fc-9e26643bbc9c",
       "name": "Upload file",
@@ -4996,8 +4372,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4576,
-        384
+        5184,
+        256
       ],
       "id": "aa9c2889-d9be-4abe-8aec-bbcd528abdb9",
       "name": "Edit Fields"
@@ -5011,129 +4387,11 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        3712,
-        368
+        4624,
+        256
       ],
       "id": "e083edf7-47ad-4794-a2a7-c34bb82d2cbd",
       "name": "Merge2"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4.1-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-4.1-mini"
-        },
-        "responsesApiEnabled": false,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        -272,
-        608
-      ],
-      "id": "bd16bff6-a423-4d66-8815-88e4b219695a",
-      "name": "OpenAI Chat Model6",
-      "credentials": {
-        "openAiApi": {
-          "id": "FCgioqL0Ukq0AAAo",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Target phrase meaning (English):\n{{ $json['Meaning (English)'] }}\n\n\nSong hook suggestion:\n{{ $json['Song hook idea'] }}\n\n\nGenre:\n{{ $json['Genera '] }}\n",
-        "hasOutputParser": true,
-        "options": {
-          "systemMessage": "=You are an English chant-style lyric writer.\n\nYour task is to write a short, loopable earworm song using ONLY English. These lyrics will later be passed to another agent that inserts foreign-language teaching phrases.\n\nAudience & tone:\nAdults who enjoy travel and learning phrases in new places.\nSimple, rhythmic, chant-like (Baby Shark energy), but adult and situational.\nThe song should feel tied to a real travel moment, not a generic nursery rhyme.\n\nSTRUCTURE (use exactly this order):\n\nBreakdown section:\n\n[Intro - Breakdown]\n\nIn this section:\n\nBreak the Vietnamese phrase into chunks.\n\nList EACH chunk ONCE as:\nVietnamese chunk — English meaning\n\nUse ONLY chunks that come directly from the phrase.\n\nNo extra commentary.\n\nOptional rhythmic enhancement (sparingly):\n[Hook]\n[Hook]\n[Bridge]\n[Hook]\n[Outro]\n\nCore rules:\nLines must be short and chantable (2–6 words).\nRepetition is required.\nFun comes from rhythm and emotional delivery, not new meaning.\nThe same intention repeats with different emotional cues.\nAllowed emotions only: curious, playful, urgent, confident, calm.\n\nPhrase usage:\nYou receive ONE English target phrase (the meaning of a foreign phrase).\nUse ONLY that exact target phrase when stating the phrase.\nDo NOT paraphrase or restate it.\nAny other words must only support rhythm, emotion, or anticipation.\n\nStory constraint:\nThe song has a story ONLY in the sense of situational context.\nEach repetition implies the phrase being used in a different real-world moment.\nNo plot, no actions, no escalation, no consequences.\nThe story advances only through emotion and presence, not events.\n\nSpecificity constraint:\nThe lyrics must feel specific to a travel situation without naming places, people, or objects.\nDo NOT describe locations or actions.\nSpecificity comes from emotional context, not descriptive detail.\nIf the lyrics could apply equally to a nursery rhyme, they are too generic.\n\nFormatting:\nInclude emotional cues in brackets, e.g. [curious], [urgent].\nOutput ONLY the lyrics in plain text.\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -256,
-        416
-      ],
-      "id": "df29e9b4-2bae-44d1-bd7e-4dab631b9abe",
-      "name": "Chatgpt system prompt Suno Lyrics3"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Target phrase:\n{{ $json['Meaning (English)'] }}\nSong hook suggestion:\n{{ $json['Song hook idea'] }}\nGenera of music:\n{{ $json.Genera }}",
-        "hasOutputParser": true,
-        "options": {
-          "systemMessage": "=You are a pop songwriter writing a complete duet in English.\n\nABSOLUTE OUTPUT RULE\n- Output ONLY song lyrics in plain text\n- NO explanations, notes, or questions\n\nCHARACTERS (not labeled in output)\n- Voice A: traveler (outsider, uncertain)\n- Voice B: local (grounded, confident)\n\nSTRUCTURE (use exact tags)\n[Intro] [Verse 1] [Chorus] [Verse 2] [Chorus] [Bridge] [Final Chorus] [Outro]\n\nOptional: [Pre-Chorus] only if it adds momentum\n\nSONG ARC (NON-NEGOTIABLE)\nIntro: Physical proximity, charged silence\nVerse 1: Establish setting, situation, unspoken want (4-6 lines max)\nChorus: Express the want using THIS PHRASE → {{ $json[\"Meaning (English)\"] }}\n  - Repeat the phrase 2-3 times in the chorus\n  - Do NOT paraphrase or add similar phrases\nVerse 2: Stakes rise; show what's lost if nothing happens (4-6 lines)\nChorus: Same phrase, more certainty\nBridge: Vulnerable truth + physical action (door opens, hand extended, etc.)\n  - Can break phrase into shorter repeated fragments\nFinal Chorus: Declarative (no questions). Phrase becomes a statement.\nOutro: Show emotional result (closeness, calm, consequence)\n\nDUET DYNAMICS\n- Verses: alternate or share lines naturally\n- Chorus: sing together OR in call-response\n- Bridge: one vulnerable, other responds\n\nTONE ADAPTATION\n- Romantic phrases → chemistry, attraction\n- Practical/urgent phrases → vulnerability, trust, relief\n- Duet can be romantic OR platonic\n\nSTYLE\n- Conversational, modern, singable English\n- Specific details over vague metaphors\n- Minimal verses, big repetitive chorus\n\nAVOID\n- \"Let me teach you\" / meta-commentary (unless phrase is about teaching)\n- Overusing \"Oh/Yeah\" \n- Lazy rhymes: fire/desire, night/light, tonight\n\nDELIVERY (sparingly)\n- (parentheses) for asides\n- ... for pauses\n- NO ALL CAPS or !!!\n\nOUTPUT: Lyrics only. No commentary."
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -1088,
-        656
-      ],
-      "id": "3634de3b-d31c-4c70-bf0f-5d3769a99c94",
-      "name": "Google Gemini Suno Lyrics"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "builtInTools": {},
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        -672,
-        752
-      ],
-      "id": "d6804ee1-eb90-44e8-a8d6-67dc9fb488de",
-      "name": "OpenAI Chat Model7",
-      "credentials": {
-        "openAiApi": {
-          "id": "FCgioqL0Ukq0AAAo",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "description": "=Use the tool to think about something. It will not obtain new information or change the database, but just append the thought to the log. Use it when complex reasoning or some cache memory is needed."
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolThink",
-      "typeVersion": 1.1,
-      "position": [
-        -528,
-        752
-      ],
-      "id": "51b35185-7b51-459b-b507-23aba8afb27a",
-      "name": "Think4"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Target phrase:\n{{ $json['Meaning (English)'] }}\nSong hook suggestion:\n{{ $json['Song hook idea'] }}\nGenera of music:\n{{ $json.Genera }}",
-        "hasOutputParser": true,
-        "options": {
-          "systemMessage": "=You are a pop songwriter. Your job is to write a complete, catchy,\nradio-ready English song that sounds like a real human wrote it.\n\nThis song is ALWAYS written as a duet.\n\nABSOLUTE OUTPUT RULE\n- Output ONLY the song lyrics in plain text.\n- Do NOT include explanations, notes, summaries, or commentary.\n- Do NOT ask questions.\n\nCHARACTERS (IMPLICIT, NOT LABELED)\n- Voice A: a traveler (outsider, curious, slightly unsure)\n- Voice B: a local (confident, grounded, aware of what’s at stake)\n\nDo NOT label speakers explicitly.\n\nSTRUCTURE (use these tags exactly)\n[Intro]\n[Verse 1]\n[Pre-Chorus]\n[Chorus]\n[Verse 2]\n[Pre-Chorus]\n[Chorus]\n[Bridge]\n[Final Chorus]\n[Outro]\n\nCORE SONG ARC (NON-NEGOTIABLE)\n[Intro]\nEstablish a heavy atmosphere through sensory specifics (e.g., a ticking clock, a humming fridge, rain on a windshield).\nThe two voices are physically inches apart but emotionally miles away. Focus on the silence between breaths.\n[Verse 1]\nGround the scene: mention a specific physical object (a half-empty glass, a damp coat, a cracked phone screen).\nVoice A (Traveler) uses hesitant, observational language. Voice B (Local) responds with short, grounded sentences.\nConstraint: Use slant rhymes (e.g., phone/home, rain/wait) rather than perfect rhymes to keep it modern.\n[Pre-Chorus]\nRhythmic build-up: short, punchy lines that mimic a rising heart rate.\nFocus on physical tension—a hand twitching, a glance held too long, or shifting weight.\n[Chorus]\nThe Hook: A simple, repeatable phrase. Keep lines between 7-9 syllables for melodic consistency.\nExpress the want through \"testing\" language: use \"maybe,\" \"if,\" or \"almost.\"\nThe melody should feel open-ended and searching.\n[Verse 2]\nThe Stakes: Introduce a ticking clock (a train leaving, a porch light flickering, a phone hitting 1%).\nAnswer the \"What if?\": Explicitly show the loss. If no action is taken now, the moment becomes a \"ghost\" or a \"could-have-been.\"\nConstraint: Zero \"AI-isms.\" Avoid words like neon, soul, destiny, rhythm, heartbeat, or horizon.\n[Pre-Chorus]\nMirror the rhythm of the first Pre-Chorus exactly, but swap hesitant words for urgent ones.\n[Chorus]\nRepeat the hook CORE idea. Voice A and Voice B should now overlap or harmonize.\nShift the energy from \"asking\" to \"expecting.\"\n[Bridge]\nThe Shift: Break the rhythm. Change the line lengths significantly to signal a change in mood.\nThe Threshold: A physical action must occur—a key turns, a hand is pulled, a step is taken across a doorway.\nTotal vulnerability: A specific secret is dropped or a mask is removed.\n[Final Chorus]\nResolution: Convert every \"if\" or \"maybe\" into \"I will\" or \"We are.\"\nConstraint: Use only declarative statements. No question marks. No \"could I\" or \"can we.\"\nThe language must be final and committed.\n[Outro]\nThe Fallout: The music strips back. Return to a sensory detail from the Intro, but show how it has changed (e.g., the rain stopped, the coffee is cold).\nEnd on a note of calm, quiet certainty or consequence. No new questions.\n\nDESIRE & STAKES RULE (CRITICAL)\n- The central action must feel like a threshold.\n- Verse 2 MUST answer: “What happens if this doesn’t happen?”\n- Desire is shown through proximity, timing, silence, and consequence (not explicit detail).\n\nSTYLE GOALS\n- Conversational English, modern, intimate, singable.\n- Specific details over vague metaphors.\n- Avoid “AI teacher” lines or meta commentary.\n\nMETA TAGS (optional, max 2 lines at the top)\nChoose at most TWO:\n[Mood: ___]\n[Vocal: Male/Female duet]\n[Tempo: ~100 BPM]\n[Style: modern pop / chill pop / pop-rock / lo-fi pop]\n\nDELIVERY MARKUP (allowed)\n- (parentheses) for quiet asides/overlaps sparingly\n- ... for pauses sparingly\n- Do NOT use ALL CAPS or !!!.\n\nINPUT\nYou will receive the English meaning of a travel phrase:\n{{ $json[\"Meaning (English)\"] }}\n\nWrite the song entirely in English.\nThe song must naturally build toward needing to say that phrase,\nbut do NOT include the phrase itself.\n\nReturn ONLY the lyrics.\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -656,
-        640
-      ],
-      "id": "8b64af09-1668-4c3c-97a5-891dfe991ffa",
-      "name": "Google Gemini Suno Lyrics1"
     },
     {
       "parameters": {
@@ -5703,8 +4961,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        448,
-        16
+        720,
+        -192
       ],
       "id": "707db5fa-0bc2-44b8-bee0-2f207ce66cb7",
       "name": "Code in JavaScript1"
@@ -5750,6 +5008,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T05:22:13.292Z",
-  "versionId": "5c4d8b36-eeeb-4335-8d1f-462bf2acfa11"
+  "updatedAt": "2026-01-20T17:03:13.413Z",
+  "versionId": "9c5be2cb-7328-40f5-b0f8-3ecc4f65f950"
 }
