@@ -2560,7 +2560,7 @@
       "main": [
         [
           {
-            "node": "Vietnamese Google sheet",
+            "node": "Get KieAi music Video1",
             "type": "main",
             "index": 0
           }
@@ -3132,8 +3132,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1024,
-        -400
+        3168,
+        496
       ],
       "id": "0024740d-37cd-41d2-8364-ad784088224d",
       "name": "When clicking ‘Execute workflow’"
@@ -4966,6 +4966,46 @@
       ],
       "id": "707db5fa-0bc2-44b8-bee0-2f207ce66cb7",
       "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/mp4/record-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "=93ab1c3850f3bd4eea9262804ffcca11"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3392,
+        496
+      ],
+      "id": "6cd5bdad-93f3-4945-a8b3-e45e374a3e38",
+      "name": "Get KieAi music Video1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qrSLdQAxyISpv7xA",
+          "name": "Kie ai -> sora 2 ai"
+        }
+      }
     }
   ],
   "origin": "n8n",
@@ -4981,7 +5021,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
     "timeSavedPerExecution": 100,
-    "saveDataSuccessExecution": "all",
+    "saveDataSuccessExecution": "none",
     "saveManualExecutions": true
   },
   "shared": [
@@ -5008,6 +5048,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T17:03:13.413Z",
-  "versionId": "9c5be2cb-7328-40f5-b0f8-3ecc4f65f950"
+  "updatedAt": "2026-01-23T03:19:27.195Z",
+  "versionId": "58cbe964-15dd-4de8-91f6-a628dd2d006f"
 }
