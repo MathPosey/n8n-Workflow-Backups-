@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-20T17:03:17.827Z",
-    "createdAt": "2026-01-20T17:03:13.416Z",
-    "versionId": "9c5be2cb-7328-40f5-b0f8-3ecc4f65f950",
+    "updatedAt": "2026-01-24T03:27:40.627Z",
+    "createdAt": "2026-01-24T03:27:37.882Z",
+    "versionId": "c2add69e-788d-4a84-a4ca-1613bffaadc1",
     "workflowId": "JOf7BrfFM8VR7y7C",
     "nodes": [
       {
@@ -120,8 +120,8 @@
         "type": "n8n-nodes-base.manualTrigger",
         "typeVersion": 1,
         "position": [
-          -1024,
-          -400
+          3168,
+          496
         ],
         "id": "0024740d-37cd-41d2-8364-ad784088224d",
         "name": "When clicking ‘Execute workflow’"
@@ -500,8 +500,7 @@
           "rule": {
             "interval": [
               {
-                "field": "hours",
-                "hoursInterval": 8
+                "triggerAtHour": 7
               }
             ]
           }
@@ -1954,6 +1953,46 @@
         ],
         "id": "707db5fa-0bc2-44b8-bee0-2f207ce66cb7",
         "name": "Code in JavaScript1"
+      },
+      {
+        "parameters": {
+          "url": "https://api.kie.ai/api/v1/mp4/record-info",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "taskId",
+                "value": "=93ab1c3850f3bd4eea9262804ffcca11"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer 8a09ed7a3b4bc127bcc818f93bea5783"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          3392,
+          496
+        ],
+        "id": "6cd5bdad-93f3-4945-a8b3-e45e374a3e38",
+        "name": "Get KieAi music Video1",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "qrSLdQAxyISpv7xA",
+            "name": "Kie ai -> sora 2 ai"
+          }
+        }
       }
     ],
     "connections": {
@@ -2030,7 +2069,7 @@
         "main": [
           [
             {
-              "node": "Vietnamese Google sheet",
+              "node": "Get KieAi music Video1",
               "type": "main",
               "index": 0
             }
@@ -2481,11 +2520,11 @@
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 9c5be2cb",
+    "name": "Version c2add69e",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "9c5be2cb-7328-40f5-b0f8-3ecc4f65f950",
+  "activeVersionId": "c2add69e-788d-4a84-a4ca-1613bffaadc1",
   "connections": {
     "OpenAI Chat Model1": {
       "ai_languageModel": [
@@ -3512,8 +3551,7 @@
         "rule": {
           "interval": [
             {
-              "field": "hours",
-              "hoursInterval": 8
+              "triggerAtHour": 7
             }
           ]
         }
@@ -5036,7 +5074,7 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrenceRules": [
-        0
+        16
       ]
     },
     "node:Google Sheets Trigger": {
@@ -5048,6 +5086,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-23T03:19:27.195Z",
-  "versionId": "58cbe964-15dd-4de8-91f6-a628dd2d006f"
+  "updatedAt": "2026-01-24T03:27:37.880Z",
+  "versionId": "c2add69e-788d-4a84-a4ca-1613bffaadc1"
 }
