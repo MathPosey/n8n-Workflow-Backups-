@@ -1,0 +1,1222 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-01-27T03:16:15.574Z",
+    "createdAt": "2026-01-27T03:12:46.933Z",
+    "versionId": "5bef893e-3f8e-4af3-84fb-3b1c3456a7b1",
+    "workflowId": "xG7fjWmYP7xHDsTgXwZvg",
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "triggerAtHour": 7
+              }
+            ]
+          }
+        },
+        "name": "Schedule",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1,
+        "position": [
+          -368,
+          992
+        ],
+        "id": "02a7aff3-ccb2-42fc-8eee-bcc229f5046d"
+      },
+      {
+        "parameters": {
+          "values": {
+            "string": [
+              {
+                "name": "CANVAS_BASE_URL",
+                "value": "https://csum.instructure.com"
+              },
+              {
+                "name": "CANVAS_TOKEN",
+                "value": "22632~QLxanZatMmnme2WYKGMFGzU66rRUeMAnGXyRfXxARuGEVxRJL3hvL6tazKCGtxaE"
+              },
+              {
+                "name": "USER_EMAIL",
+                "value": "mattjposey@gmail.com"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Configuration",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          -160,
+          992
+        ],
+        "id": "d70bbe14-cde1-410a-be39-2e484cd52a1f"
+      },
+      {
+        "parameters": {
+          "url": "={{ $('Configuration').first().json[\"CANVAS_BASE_URL\"] }}/api/v1/courses?enrollment_state=active",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {}
+        },
+        "name": "Get Active Courses",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 3,
+        "position": [
+          48,
+          992
+        ],
+        "id": "69c7af7d-631d-485c-abdd-4a82ed4a8e05",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "3Ehfg6DgGQjIbsFp",
+            "name": "Canva-AssignmentExtracter"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "={{ $('Configuration').first().json[\"CANVAS_BASE_URL\"] }}/api/v1/courses/{{ $json.id }}/assignments?bucket=upcoming&order_by=created_at",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {}
+        },
+        "name": "Get Assignments",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 3,
+        "position": [
+          240,
+          880
+        ],
+        "id": "a12d6813-b9e4-440b-8a48-ce5f793a2f23",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "3Ehfg6DgGQjIbsFp",
+            "name": "Canva-AssignmentExtracter"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "dateTime": [
+              {
+                "value1": "={{ $json.created_at }}",
+                "value2": "={{ $now.minus({days: 7}) }}"
+              }
+            ]
+          }
+        },
+        "name": "Filter New Assignments",
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 1,
+        "position": [
+          448,
+          880
+        ],
+        "id": "57460af6-eff8-4f5e-abb6-eb8c409f175d"
+      },
+      {
+        "parameters": {
+          "model": "o4-mini",
+          "prompt": "=You are a helpful student assistant. Please create a rough draft or detailed outline for the following assignment:\n\nTitle: {{ $json.name }}\nDescription: {{ $json.description }}\n\nProvide a structured response that I can use as a starting point. If the description is empty, provide a generic template based on the title.",
+          "options": {},
+          "requestOptions": {}
+        },
+        "name": "AI Agent (Draft)",
+        "type": "n8n-nodes-base.openAi",
+        "typeVersion": 1,
+        "position": [
+          640,
+          880
+        ],
+        "id": "2cc66f8d-5a14-46ec-81e2-204c8b579ebb",
+        "credentials": {
+          "openAiApi": {
+            "id": "FCgioqL0Ukq0AAAo",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fromEmail": "mattjposey@gmail.com",
+          "toEmail": "={{ $('Configuration').first().json[\"USER_EMAIL\"] }}",
+          "subject": "=New Assignment Draft: {{ $json.name }}",
+          "text": "={{ $json.message.content }}",
+          "options": {}
+        },
+        "name": "Email Draft",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 1,
+        "position": [
+          848,
+          880
+        ],
+        "id": "e3f142c2-0e21-4e2b-8e5f-d1cdcaefa4f6",
+        "credentials": {
+          "smtp": {
+            "id": "LpnGUQ4PDgiMVycW",
+            "name": "SMTP account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "={{ $('Configuration').first().json[\"CANVAS_BASE_URL\"] }}/api/v1/courses/{{ $json.id }}/modules?include[]=items&include[]=content_details",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {}
+        },
+        "name": "Get Modules",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 3,
+        "position": [
+          240,
+          1184
+        ],
+        "id": "11b1af55-6b6f-4306-97fc-7609cca7b787",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "3Ehfg6DgGQjIbsFp",
+            "name": "Canva-AssignmentExtracter"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "items",
+          "options": {}
+        },
+        "name": "Split Module Items",
+        "type": "n8n-nodes-base.itemLists",
+        "typeVersion": 1,
+        "position": [
+          448,
+          1184
+        ],
+        "id": "a3ab03cd-c2eb-4158-b96b-6b81aa6efd39"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $json.type }}",
+                "value2": "File"
+              },
+              {
+                "value1": "={{ $json.title }}",
+                "operation": "notContains",
+                "value2": "Syllabus"
+              }
+            ]
+          }
+        },
+        "name": "Filter Files Only",
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 1,
+        "position": [
+          640,
+          1184
+        ],
+        "id": "14d8e10e-84d2-4488-a981-299c22a043eb"
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.url }}",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {}
+        },
+        "name": "Get File Details",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 3,
+        "position": [
+          848,
+          1184
+        ],
+        "id": "d07df83f-f7a0-4a32-bbf0-6a8b5e1b7085",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "3Ehfg6DgGQjIbsFp",
+            "name": "Canva-AssignmentExtracter"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "dateTime": [
+              {
+                "value1": "={{ $json.created_at }}",
+                "value2": "={{ $now.minus({days: 7}) }}"
+              }
+            ],
+            "string": [
+              {
+                "value1": "={{ $json['content-type'] }}",
+                "operation": "notContains",
+                "value2": "video"
+              },
+              {
+                "value1": "={{ $json['content-type'] }}",
+                "operation": "contains",
+                "value2": "application/pdf"
+              }
+            ]
+          }
+        },
+        "name": "Filter Metadata",
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 1,
+        "position": [
+          992,
+          1184
+        ],
+        "id": "8376bed2-6ca5-4e8f-89bc-b3c84d4a3f52"
+      },
+      {
+        "parameters": {
+          "options": {
+            "reset": false
+          }
+        },
+        "name": "Split Batches",
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          1376,
+          1184
+        ],
+        "id": "407847d7-d8ed-42da-bb8f-449bc4bc53b0"
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.url }}",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "options": {
+            "redirect": {
+              "redirect": {
+                "followRedirects": true
+              }
+            },
+            "timeout": 300000
+          }
+        },
+        "name": "Download File",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 3,
+        "position": [
+          1696,
+          1200
+        ],
+        "id": "682bb740-af67-41e4-bfd2-4f3ec5f04add",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "3Ehfg6DgGQjIbsFp",
+            "name": "Canva-AssignmentExtracter"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fromEmail": "mattjposey@gmail.com",
+          "toEmail": "={{ $('Configuration').first().json[\"USER_EMAIL\"] }}",
+          "subject": "={{ $('Split Batches').item.json.filename }}",
+          "text": "={{ $json.output }}{{ $('Split Batches').item.json.url }}",
+          "attachments": "=",
+          "options": {}
+        },
+        "name": "Email Analysis",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 1,
+        "position": [
+          2592,
+          1200
+        ],
+        "id": "4d2d78df-93c4-48df-9ec9-9c888a08f300",
+        "credentials": {
+          "smtp": {
+            "id": "LpnGUQ4PDgiMVycW",
+            "name": "SMTP account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "pdf",
+          "options": {}
+        },
+        "id": "096a5623-8b20-46de-87ee-598c1661fe4f",
+        "name": "Extract from File",
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1,
+        "position": [
+          2000,
+          1200
+        ]
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=You are my assistant, I want plane text no ai chat outputs or questions. Taking the information provided below, summerise the information. Highlighting inportant information that may be beneficial for Q/A style study cards. \n\n{{ $node[\"Extract from File\"].json[\"text\"] }}",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3.1,
+        "position": [
+          2208,
+          1200
+        ],
+        "id": "bc8fd44d-5321-400c-9b31-1c44f2fe6685",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4.1-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          2224,
+          1696
+        ],
+        "id": "05b581a6-7a2b-41f7-b624-a9e895625b04",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "FCgioqL0Ukq0AAAo",
+            "name": "OpenAi account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Schedule": {
+        "main": [
+          [
+            {
+              "node": "Configuration",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Configuration": {
+        "main": [
+          [
+            {
+              "node": "Get Active Courses",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Active Courses": {
+        "main": [
+          [
+            {
+              "node": "Get Modules",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Assignments": {
+        "main": [
+          [
+            {
+              "node": "Filter New Assignments",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Filter New Assignments": {
+        "main": [
+          [
+            {
+              "node": "AI Agent (Draft)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent (Draft)": {
+        "main": [
+          [
+            {
+              "node": "Email Draft",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Modules": {
+        "main": [
+          [
+            {
+              "node": "Split Module Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Module Items": {
+        "main": [
+          [
+            {
+              "node": "Filter Files Only",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Filter Files Only": {
+        "main": [
+          [
+            {
+              "node": "Get File Details",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get File Details": {
+        "main": [
+          [
+            {
+              "node": "Filter Metadata",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Filter Metadata": {
+        "main": [
+          [
+            {
+              "node": "Split Batches",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Batches": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Download File",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Download File": {
+        "main": [
+          [
+            {
+              "node": "Extract from File",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Email Analysis": {
+        "main": [
+          [
+            {
+              "node": "Split Batches",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract from File": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Email Analysis",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Matthew Posey",
+    "name": "Version 5bef893e",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "5bef893e-3f8e-4af3-84fb-3b1c3456a7b1",
+  "connections": {
+    "Schedule": {
+      "main": [
+        [
+          {
+            "node": "Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configuration": {
+      "main": [
+        [
+          {
+            "node": "Get Active Courses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Active Courses": {
+      "main": [
+        [
+          {
+            "node": "Get Modules",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Assignments": {
+      "main": [
+        [
+          {
+            "node": "Filter New Assignments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter New Assignments": {
+      "main": [
+        [
+          {
+            "node": "AI Agent (Draft)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent (Draft)": {
+      "main": [
+        [
+          {
+            "node": "Email Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Modules": {
+      "main": [
+        [
+          {
+            "node": "Split Module Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Module Items": {
+      "main": [
+        [
+          {
+            "node": "Filter Files Only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Files Only": {
+      "main": [
+        [
+          {
+            "node": "Get File Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File Details": {
+      "main": [
+        [
+          {
+            "node": "Filter Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Metadata": {
+      "main": [
+        [
+          {
+            "node": "Split Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Batches": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download File": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Analysis": {
+      "main": [
+        [
+          {
+            "node": "Split Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Email Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-26T20:29:58.408Z",
+  "id": "xG7fjWmYP7xHDsTgXwZvg",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Canvas LMS AI Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "name": "Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        992
+      ],
+      "id": "02a7aff3-ccb2-42fc-8eee-bcc229f5046d"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "CANVAS_BASE_URL",
+              "value": "https://csum.instructure.com"
+            },
+            {
+              "name": "CANVAS_TOKEN",
+              "value": "22632~QLxanZatMmnme2WYKGMFGzU66rRUeMAnGXyRfXxARuGEVxRJL3hvL6tazKCGtxaE"
+            },
+            {
+              "name": "USER_EMAIL",
+              "value": "mattjposey@gmail.com"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        992
+      ],
+      "id": "d70bbe14-cde1-410a-be39-2e484cd52a1f"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Configuration').first().json[\"CANVAS_BASE_URL\"] }}/api/v1/courses?enrollment_state=active",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "name": "Get Active Courses",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        48,
+        992
+      ],
+      "id": "69c7af7d-631d-485c-abdd-4a82ed4a8e05",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3Ehfg6DgGQjIbsFp",
+          "name": "Canva-AssignmentExtracter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Configuration').first().json[\"CANVAS_BASE_URL\"] }}/api/v1/courses/{{ $json.id }}/assignments?bucket=upcoming&order_by=created_at",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "name": "Get Assignments",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        240,
+        880
+      ],
+      "id": "a12d6813-b9e4-440b-8a48-ce5f793a2f23",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3Ehfg6DgGQjIbsFp",
+          "name": "Canva-AssignmentExtracter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{ $json.created_at }}",
+              "value2": "={{ $now.minus({days: 7}) }}"
+            }
+          ]
+        }
+      },
+      "name": "Filter New Assignments",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        448,
+        880
+      ],
+      "id": "57460af6-eff8-4f5e-abb6-eb8c409f175d"
+    },
+    {
+      "parameters": {
+        "model": "o4-mini",
+        "prompt": "=You are a helpful student assistant. Please create a rough draft or detailed outline for the following assignment:\n\nTitle: {{ $json.name }}\nDescription: {{ $json.description }}\n\nProvide a structured response that I can use as a starting point. If the description is empty, provide a generic template based on the title.",
+        "options": {},
+        "requestOptions": {}
+      },
+      "name": "AI Agent (Draft)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        640,
+        880
+      ],
+      "id": "2cc66f8d-5a14-46ec-81e2-204c8b579ebb",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "mattjposey@gmail.com",
+        "toEmail": "={{ $('Configuration').first().json[\"USER_EMAIL\"] }}",
+        "subject": "=New Assignment Draft: {{ $json.name }}",
+        "text": "={{ $json.message.content }}",
+        "options": {}
+      },
+      "name": "Email Draft",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        848,
+        880
+      ],
+      "id": "e3f142c2-0e21-4e2b-8e5f-d1cdcaefa4f6",
+      "credentials": {
+        "smtp": {
+          "id": "LpnGUQ4PDgiMVycW",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Configuration').first().json[\"CANVAS_BASE_URL\"] }}/api/v1/courses/{{ $json.id }}/modules?include[]=items&include[]=content_details",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "name": "Get Modules",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        240,
+        1184
+      ],
+      "id": "11b1af55-6b6f-4306-97fc-7609cca7b787",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3Ehfg6DgGQjIbsFp",
+          "name": "Canva-AssignmentExtracter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "name": "Split Module Items",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        448,
+        1184
+      ],
+      "id": "a3ab03cd-c2eb-4158-b96b-6b81aa6efd39"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.type }}",
+              "value2": "File"
+            },
+            {
+              "value1": "={{ $json.title }}",
+              "operation": "notContains",
+              "value2": "Syllabus"
+            }
+          ]
+        }
+      },
+      "name": "Filter Files Only",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1184
+      ],
+      "id": "14d8e10e-84d2-4488-a981-299c22a043eb"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "name": "Get File Details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        848,
+        1184
+      ],
+      "id": "d07df83f-f7a0-4a32-bbf0-6a8b5e1b7085",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3Ehfg6DgGQjIbsFp",
+          "name": "Canva-AssignmentExtracter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{ $json.created_at }}",
+              "value2": "={{ $now.minus({days: 7}) }}"
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{ $json['content-type'] }}",
+              "operation": "notContains",
+              "value2": "video"
+            },
+            {
+              "value1": "={{ $json['content-type'] }}",
+              "operation": "contains",
+              "value2": "application/pdf"
+            }
+          ]
+        }
+      },
+      "name": "Filter Metadata",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        992,
+        1184
+      ],
+      "id": "8376bed2-6ca5-4e8f-89bc-b3c84d4a3f52"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "name": "Split Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1376,
+        1184
+      ],
+      "id": "407847d7-d8ed-42da-bb8f-449bc4bc53b0"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          },
+          "timeout": 300000
+        }
+      },
+      "name": "Download File",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1696,
+        1200
+      ],
+      "id": "682bb740-af67-41e4-bfd2-4f3ec5f04add",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3Ehfg6DgGQjIbsFp",
+          "name": "Canva-AssignmentExtracter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "mattjposey@gmail.com",
+        "toEmail": "={{ $('Configuration').first().json[\"USER_EMAIL\"] }}",
+        "subject": "={{ $('Split Batches').item.json.filename }}",
+        "text": "={{ $json.output }}{{ $('Split Batches').item.json.url }}",
+        "attachments": "=",
+        "options": {}
+      },
+      "name": "Email Analysis",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        2592,
+        1200
+      ],
+      "id": "4d2d78df-93c4-48df-9ec9-9c888a08f300",
+      "credentials": {
+        "smtp": {
+          "id": "LpnGUQ4PDgiMVycW",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "id": "096a5623-8b20-46de-87ee-598c1661fe4f",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are my assistant, I want plane text no ai chat outputs or questions. Taking the information provided below, summerise the information. Highlighting inportant information that may be beneficial for Q/A style study cards. \n\n{{ $node[\"Extract from File\"].json[\"text\"] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        2208,
+        1200
+      ],
+      "id": "bc8fd44d-5321-400c-9b31-1c44f2fe6685",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        2224,
+        1696
+      ],
+      "id": "05b581a6-7a2b-41f7-b624-a9e895625b04",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "MathPosey",
+    "name": "n8n-Workflow-Backups-"
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "DSjbhm8exCfO-30PXxACc",
+    "saveDataSuccessExecution": "none",
+    "timeSavedPerExecution": 180
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-26T20:29:58.408Z",
+      "createdAt": "2026-01-26T20:29:58.408Z",
+      "role": "workflow:owner",
+      "workflowId": "xG7fjWmYP7xHDsTgXwZvg",
+      "projectId": "VFY7knhJH9Pt1e6U"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-01-27T03:12:46.932Z",
+  "versionId": "5bef893e-3f8e-4af3-84fb-3b1c3456a7b1"
+}
