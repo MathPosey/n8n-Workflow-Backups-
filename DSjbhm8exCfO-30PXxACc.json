@@ -1,0 +1,207 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-01-26T21:37:32.239Z",
+    "createdAt": "2026-01-26T21:29:29.784Z",
+    "versionId": "cdb391af-0850-42f6-9618-e72950a8d18b",
+    "workflowId": "DSjbhm8exCfO-30PXxACc",
+    "nodes": [
+      {
+        "parameters": {},
+        "name": "Error Trigger",
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1,
+        "position": [
+          -32,
+          16
+        ],
+        "id": "6b6441a1-8066-4ee7-a889-b7dae5d8b601"
+      },
+      {
+        "parameters": {
+          "model": "chatgpt-4o-latest",
+          "prompt": "=You are an expert n8n workflow debugger. \n\nAnalyze the following error that occurred in an n8n workflow:\n\nNode Name: {{ $json.execution.lastNodeExecuted }}\nError Message: {{ $json.execution.error.message }}\nError Details: {{ $json.execution.error.description }}\n\nExplain what likely went wrong and provide step-by-step instructions on how the user can fix it. Be specific and concise.",
+          "options": {},
+          "requestOptions": {}
+        },
+        "name": "AI Error Analyst",
+        "type": "n8n-nodes-base.openAi",
+        "typeVersion": 1,
+        "position": [
+          160,
+          16
+        ],
+        "id": "3f082fdf-11cc-4787-b168-dcf0cb81672b",
+        "credentials": {
+          "openAiApi": {
+            "id": "FCgioqL0Ukq0AAAo",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fromEmail": "Mattjposey@gmail.com",
+          "toEmail": "={{ $('Configuration2').first().json[\"USER_EMAIL\"] }}",
+          "subject": "=[Alert] Workflow Error: {{ $json.execution.lastNodeExecuted }}",
+          "text": "={{ $json.message.content }}\n\n---\nRaw Error:\n{{ $json.execution.error.message }}",
+          "options": {}
+        },
+        "name": "Email Error Report",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 1,
+        "position": [
+          368,
+          16
+        ],
+        "id": "754447f1-2d51-4b7b-8ad2-60a777694acc",
+        "credentials": {
+          "smtp": {
+            "id": "LpnGUQ4PDgiMVycW",
+            "name": "SMTP account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Error Trigger": {
+        "main": [
+          [
+            {
+              "node": "AI Error Analyst",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Error Analyst": {
+        "main": [
+          [
+            {
+              "node": "Email Error Report",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Matthew Posey",
+    "name": "Version cdb391af",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "cdb391af-0850-42f6-9618-e72950a8d18b",
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Error Analyst",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Error Analyst": {
+      "main": [
+        [
+          {
+            "node": "Email Error Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-26T21:29:15.937Z",
+  "id": "DSjbhm8exCfO-30PXxACc",
+  "isArchived": false,
+  "meta": null,
+  "name": "Error Handling",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        16
+      ],
+      "id": "6b6441a1-8066-4ee7-a889-b7dae5d8b601"
+    },
+    {
+      "parameters": {
+        "model": "chatgpt-4o-latest",
+        "prompt": "=You are an expert n8n workflow debugger. \n\nAnalyze the following error that occurred in an n8n workflow:\n\nNode Name: {{ $json.execution.lastNodeExecuted }}\nError Message: {{ $json.execution.error.message }}\nError Details: {{ $json.execution.error.description }}\n\nExplain what likely went wrong and provide step-by-step instructions on how the user can fix it. Be specific and concise.",
+        "options": {},
+        "requestOptions": {}
+      },
+      "name": "AI Error Analyst",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        160,
+        16
+      ],
+      "id": "3f082fdf-11cc-4787-b168-dcf0cb81672b",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "Mattjposey@gmail.com",
+        "toEmail": "={{ $('Configuration2').first().json[\"USER_EMAIL\"] }}",
+        "subject": "=[Alert] Workflow Error: {{ $json.execution.lastNodeExecuted }}",
+        "text": "={{ $json.message.content }}\n\n---\nRaw Error:\n{{ $json.execution.error.message }}",
+        "options": {}
+      },
+      "name": "Email Error Report",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        368,
+        16
+      ],
+      "id": "754447f1-2d51-4b7b-8ad2-60a777694acc",
+      "credentials": {
+        "smtp": {
+          "id": "LpnGUQ4PDgiMVycW",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "MathPosey",
+    "name": "n8n-Workflow-Backups-"
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-26T21:29:15.937Z",
+      "createdAt": "2026-01-26T21:29:15.937Z",
+      "role": "workflow:owner",
+      "workflowId": "DSjbhm8exCfO-30PXxACc",
+      "projectId": "VFY7knhJH9Pt1e6U"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-26T21:30:13.594Z",
+  "versionId": "cdb391af-0850-42f6-9618-e72950a8d18b"
+}
