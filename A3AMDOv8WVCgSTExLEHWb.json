@@ -1,0 +1,333 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Morning Cron": {
+      "main": [
+        [
+          {
+            "node": "Send Morning SMS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Event Ended Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Event Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Event Details": {
+      "main": [
+        [
+          {
+            "node": "Check If Task Done",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check If Task Done": {
+      "main": [
+        [
+          {
+            "node": "Send Congratulation SMS",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5 Minutes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Refetch Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Refetch Event": {
+      "main": [
+        [
+          {
+            "node": "Check If Task Done Again",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check If Task Done Again": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Call With Voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call With Voice": {
+      "main": [
+        [
+          {
+            "node": "Follow-up SMS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-28T02:40:58.837Z",
+  "id": "A3AMDOv8WVCgSTExLEHWb",
+  "isArchived": false,
+  "meta": null,
+  "name": "Digital Accountability Partner",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 8
+            }
+          ]
+        }
+      },
+      "id": "1682b529-611f-4259-9b73-cc87abd8da04",
+      "name": "Morning Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "options": {}
+      },
+      "id": "574bfe4e-aadd-4671-ad57-cc55d096c4ff",
+      "name": "Send Morning SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "calendarId": "={{ $env.TASK_CALENDAR_ID }}",
+        "triggerOn": "eventEnded",
+        "options": {}
+      },
+      "id": "a5b64c9f-9e72-4823-85df-d409181dae04",
+      "name": "Event Ended Trigger",
+      "type": "n8n-nodes-base.googleCalendarTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "eventId": "={{ $json.id }}",
+        "options": {}
+      },
+      "id": "3d2ba1ae-f972-4b05-9064-f18576cd23ff",
+      "name": "Get Event Details",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        208,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.summary || '' }}",
+              "operation": "contains",
+              "value2": "DONE",
+              "caseSensitive": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9e4d6909-965f-4f17-bff0-4a54a5b86352",
+      "name": "Check If Task Done",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        400,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "options": {}
+      },
+      "id": "ab5c7a96-617d-4122-9f8b-95f60a5c7a73",
+      "name": "Send Congratulation SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        608,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "minutes"
+      },
+      "id": "451323d3-6ac8-4e86-9393-6428cf0b7970",
+      "name": "Wait 5 Minutes",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        608,
+        336
+      ],
+      "webhookId": "8b655385-75bc-4186-a20a-e634b260ea48"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "eventId": "={{ $json.id }}",
+        "options": {}
+      },
+      "id": "96b5ec38-75bf-48c1-abce-8a522beb7b8b",
+      "name": "Refetch Event",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        816,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.summary || '' }}",
+              "operation": "contains",
+              "value2": "DONE",
+              "caseSensitive": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7fad3131-e4b8-478f-8f66-64f1e660c043",
+      "name": "Check If Task Done Again",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1024,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "call",
+        "operation": "create",
+        "options": {}
+      },
+      "id": "fad62063-5937-412d-b571-5abdf31891bf",
+      "name": "Call With Voice",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "options": {}
+      },
+      "id": "6fb98f4a-6dbb-4a32-8254-92adfd1fe5a1",
+      "name": "Follow-up SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        336
+      ]
+    }
+  ],
+  "origin": "n8n",
+  "pinData": {},
+  "repo": {
+    "owner": "MathPosey",
+    "name": "n8n-Workflow-Backups-"
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-28T02:40:58.837Z",
+      "createdAt": "2026-01-28T02:40:58.837Z",
+      "role": "workflow:owner",
+      "workflowId": "A3AMDOv8WVCgSTExLEHWb",
+      "projectId": "VFY7knhJH9Pt1e6U"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-28T02:41:24.986Z",
+  "versionId": "ab33ceb8-047e-4202-99d3-a1878d5535c4"
+}
