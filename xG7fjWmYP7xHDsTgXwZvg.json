@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-27T03:16:15.574Z",
-    "createdAt": "2026-01-27T03:12:46.933Z",
-    "versionId": "5bef893e-3f8e-4af3-84fb-3b1c3456a7b1",
+    "updatedAt": "2026-01-28T18:13:15.888Z",
+    "createdAt": "2026-01-28T18:12:50.239Z",
+    "versionId": "d692eb34-36ab-4a2a-8788-5170c54a0def",
     "workflowId": "xG7fjWmYP7xHDsTgXwZvg",
     "nodes": [
       {
@@ -11,7 +11,11 @@
           "rule": {
             "interval": [
               {
-                "triggerAtHour": 7
+                "field": "weeks",
+                "triggerAtDay": [
+                  4
+                ],
+                "triggerAtHour": 17
               }
             ]
           }
@@ -252,7 +256,7 @@
             "dateTime": [
               {
                 "value1": "={{ $json.created_at }}",
-                "value2": "={{ $now.minus({days: 7}) }}"
+                "value2": "={{ $now.minus({days: 4}) }}"
               }
             ],
             "string": [
@@ -592,11 +596,11 @@
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 5bef893e",
+    "name": "Version d692eb34",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "5bef893e-3f8e-4af3-84fb-3b1c3456a7b1",
+  "activeVersionId": "d692eb34-36ab-4a2a-8788-5170c54a0def",
   "connections": {
     "Schedule": {
       "main": [
@@ -800,7 +804,11 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 7
+              "field": "weeks",
+              "triggerAtDay": [
+                4
+              ],
+              "triggerAtHour": 17
             }
           ]
         }
@@ -1041,7 +1049,7 @@
           "dateTime": [
             {
               "value1": "={{ $json.created_at }}",
-              "value2": "={{ $now.minus({days: 7}) }}"
+              "value2": "={{ $now.minus({days: 4}) }}"
             }
           ],
           "string": [
@@ -1217,6 +1225,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-27T03:12:46.932Z",
-  "versionId": "5bef893e-3f8e-4af3-84fb-3b1c3456a7b1"
+  "updatedAt": "2026-01-28T18:12:50.237Z",
+  "versionId": "d692eb34-36ab-4a2a-8788-5170c54a0def"
 }
