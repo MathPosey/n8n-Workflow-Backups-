@@ -5060,7 +5060,8 @@
     "availableInMCP": false,
     "timeSavedPerExecution": 100,
     "saveDataSuccessExecution": "none",
-    "saveManualExecutions": true
+    "saveManualExecutions": true,
+    "errorWorkflow": "DSjbhm8exCfO-30PXxACc"
   },
   "shared": [
     {
@@ -5086,6 +5087,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-25T19:09:54.695Z",
+  "updatedAt": "2026-01-28T21:28:17.878Z",
   "versionId": "da870add-1418-442c-bddb-2233071c7d8a"
 }
