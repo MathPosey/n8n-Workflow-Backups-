@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-28T18:13:15.888Z",
-    "createdAt": "2026-01-28T18:12:50.239Z",
-    "versionId": "d692eb34-36ab-4a2a-8788-5170c54a0def",
+    "updatedAt": "2026-01-31T05:21:47.985Z",
+    "createdAt": "2026-01-31T05:21:23.441Z",
+    "versionId": "c2fecfe2-147b-443d-812f-166a6ecc9d4a",
     "workflowId": "xG7fjWmYP7xHDsTgXwZvg",
     "nodes": [
       {
@@ -13,9 +13,9 @@
               {
                 "field": "weeks",
                 "triggerAtDay": [
-                  4
+                  6
                 ],
-                "triggerAtHour": 17
+                "triggerAtHour": 2
               }
             ]
           }
@@ -596,11 +596,11 @@
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version d692eb34",
+    "name": "Version c2fecfe2",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "d692eb34-36ab-4a2a-8788-5170c54a0def",
+  "activeVersionId": "c2fecfe2-147b-443d-812f-166a6ecc9d4a",
   "connections": {
     "Schedule": {
       "main": [
@@ -806,9 +806,9 @@
             {
               "field": "weeks",
               "triggerAtDay": [
-                4
+                6
               ],
-              "triggerAtHour": 17
+              "triggerAtHour": 2
             }
           ]
         }
@@ -1211,7 +1211,8 @@
     "callerPolicy": "workflowsFromSameOwner",
     "errorWorkflow": "DSjbhm8exCfO-30PXxACc",
     "saveDataSuccessExecution": "none",
-    "timeSavedPerExecution": 180
+    "timeSavedPerExecution": 180,
+    "timezone": "America/Los_Angeles"
   },
   "shared": [
     {
@@ -1225,6 +1226,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-28T18:12:50.237Z",
-  "versionId": "d692eb34-36ab-4a2a-8788-5170c54a0def"
+  "updatedAt": "2026-01-31T05:21:43.605Z",
+  "versionId": "c2fecfe2-147b-443d-812f-166a6ecc9d4a"
 }
