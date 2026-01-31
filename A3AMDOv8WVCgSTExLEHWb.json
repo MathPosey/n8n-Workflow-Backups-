@@ -3,97 +3,188 @@
   "activeVersion": null,
   "activeVersionId": null,
   "connections": {
-    "Morning Cron": {
+    "Telegram Trigger": {
       "main": [
         [
           {
-            "node": "Send Morning SMS",
+            "node": "AI Agent1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Event Ended Trigger": {
+    "Define Agent Persona": {
       "main": [
         [
           {
-            "node": "Get Event Details",
+            "node": "AI Brain (Parse Intent)",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get Event Details": {
+    "AI Brain (Parse Intent)": {
       "main": [
-        [
-          {
-            "node": "Check If Task Done",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
-    "Check If Task Done": {
+    "Intent Router": {
       "main": [
         [
           {
-            "node": "Send Congratulation SMS",
+            "node": "Tool: Reschedule Event",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Wait 5 Minutes",
+            "node": "Tool: Mark Done",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Tool: Reschedule Event": {
+      "main": [
+        []
+      ]
+    },
+    "Tool: Mark Done": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send Reply",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Wait 5 Minutes": {
+    "Create an event in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events in Google Calendar": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
       "main": [
         [
           {
-            "node": "Refetch Event",
+            "node": "Create event",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete event",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Refetch Event": {
+    "Create event": {
       "main": [
         [
           {
-            "node": "Check If Task Done Again",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Check If Task Done Again": {
+    "Get many events": {
       "main": [
-        [],
         [
           {
-            "node": "Call With Voice",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Call With Voice": {
+    "Delete event": {
       "main": [
         [
           {
-            "node": "Follow-up SMS",
+            "node": "AI Agent",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -103,207 +194,431 @@
   "createdAt": "2026-01-28T02:40:58.837Z",
   "id": "A3AMDOv8WVCgSTExLEHWb",
   "isArchived": false,
-  "meta": null,
-  "name": "Digital Accountability Partner",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Digital Accountability Partner (AI Agent)",
   "nodes": [
     {
       "parameters": {
-        "triggerTimes": {
-          "item": [
-            {
-              "hour": 8
-            }
-          ]
-        }
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
       },
-      "id": "1682b529-611f-4259-9b73-cc87abd8da04",
-      "name": "Morning Cron",
-      "type": "n8n-nodes-base.cron",
+      "id": "554d8c18-2e11-45c7-8d55-25104eaa920c",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1,
       "position": [
-        0,
-        0
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "message",
-        "options": {}
-      },
-      "id": "574bfe4e-aadd-4671-ad57-cc55d096c4ff",
-      "name": "Send Morning SMS",
-      "type": "n8n-nodes-base.twilio",
-      "typeVersion": 1,
-      "position": [
-        208,
-        0
-      ]
-    },
-    {
-      "parameters": {
-        "pollTimes": {
-          "item": [
-            {
-              "mode": "everyMinute"
-            }
-          ]
-        },
-        "calendarId": "={{ $env.TASK_CALENDAR_ID }}",
-        "triggerOn": "eventEnded",
-        "options": {}
-      },
-      "id": "a5b64c9f-9e72-4823-85df-d409181dae04",
-      "name": "Event Ended Trigger",
-      "type": "n8n-nodes-base.googleCalendarTrigger",
-      "typeVersion": 1,
-      "position": [
-        0,
-        208
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "calendar": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "eventId": "={{ $json.id }}",
-        "options": {}
-      },
-      "id": "3d2ba1ae-f972-4b05-9064-f18576cd23ff",
-      "name": "Get Event Details",
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1,
-      "position": [
-        208,
-        208
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "string": [
-            {
-              "value1": "={{ $json.summary || '' }}",
-              "operation": "contains",
-              "value2": "DONE",
-              "caseSensitive": false
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "9e4d6909-965f-4f17-bff0-4a54a5b86352",
-      "name": "Check If Task Done",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        400,
-        208
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "message",
-        "options": {}
-      },
-      "id": "ab5c7a96-617d-4122-9f8b-95f60a5c7a73",
-      "name": "Send Congratulation SMS",
-      "type": "n8n-nodes-base.twilio",
-      "typeVersion": 1,
-      "position": [
-        608,
-        160
-      ]
-    },
-    {
-      "parameters": {
-        "amount": 5,
-        "unit": "minutes"
-      },
-      "id": "451323d3-6ac8-4e86-9393-6428cf0b7970",
-      "name": "Wait 5 Minutes",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1,
-      "position": [
-        608,
-        336
+        -144,
+        -592
       ],
-      "webhookId": "8b655385-75bc-4186-a20a-e634b260ea48"
+      "webhookId": "af387ed5-2796-48c6-b043-bbee24984661",
+      "credentials": {
+        "telegramApi": {
+          "id": "BFX7YcBiNaPwybg7",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
-        "operation": "get",
-        "calendar": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "eventId": "={{ $json.id }}",
-        "options": {}
-      },
-      "id": "96b5ec38-75bf-48c1-abce-8a522beb7b8b",
-      "name": "Refetch Event",
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1,
-      "position": [
-        816,
-        336
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
+        "values": {
           "string": [
             {
-              "value1": "={{ $json.summary || '' }}",
-              "operation": "contains",
-              "value2": "DONE",
-              "caseSensitive": false
+              "name": "system_prompt",
+              "value": "You are a helpful and intelligent Accountability Agent. \nThe user is messaging you regarding their schedule. \nYour goal is to parse their intent and return a JSON object.\n\nPossible Intents:\n1. 'RESCHEDULE': If they want to move a task. Extract 'new_time' if possible.\n2. 'DONE': If they finished a task.\n3. 'CHAT': If they are just asking a question or greeting.\n\nOutput Format (JSON only):\n{\n  \"intent\": \"RESCHEDULE\" | \"DONE\" | \"CHAT\",\n  \"task_name\": \"string (fuzzy match from user text)\",\n  \"new_time\": \"ISO-8601 string (if rescheduling)\",\n  \"reply_message\": \"A short, friendly text reply to the user confirming the action.\"\n}"
             }
           ]
         },
         "options": {}
       },
-      "id": "7fad3131-e4b8-478f-8f66-64f1e660c043",
-      "name": "Check If Task Done Again",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
+      "id": "ccbcc209-34da-42a2-8d4f-d321e6973ea5",
+      "name": "Define Agent Persona",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        832,
+        -880
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "d98757af-33c6-47df-a528-7a291a7f9070",
+      "name": "AI Brain (Parse Intent)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
       "position": [
         1024,
-        336
+        -896
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "dataType": "json"
+      },
+      "id": "3010dddd-cd1d-4793-97d9-ee3c079ae4a9",
+      "name": "Intent Router",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        1232,
+        -928
       ]
     },
     {
       "parameters": {
-        "resource": "call",
-        "operation": "create",
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "mattjposey@gmail.com",
+          "mode": "list",
+          "cachedResultName": "mattjposey@gmail.com"
+        },
+        "eventId": "={{ $json.task_name }}",
+        "updateFields": {}
+      },
+      "id": "4fef81a9-a325-47f9-9697-ab1a55d65b6a",
+      "name": "Tool: Reschedule Event",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        -1040
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "mattjposey@gmail.com",
+          "mode": "list",
+          "cachedResultName": "mattjposey@gmail.com"
+        },
+        "eventId": "={{ $json.task_name }}",
+        "updateFields": {}
+      },
+      "id": "e4803a8f-b27d-40a3-bba5-c236001e2a7d",
+      "name": "Tool: Mark Done",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        -832
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "={{ $json.reply_message }}",
+        "additionalFields": {}
+      },
+      "id": "4232f7b1-448f-4c84-b82c-d4e08a8019e9",
+      "name": "Send Reply",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1808,
+        -624
+      ],
+      "webhookId": "5230906e-1bff-4f6b-b0c1-c57e2c272653",
+      "credentials": {
+        "telegramApi": {
+          "id": "BFX7YcBiNaPwybg7",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "hasOutputParser": true,
         "options": {}
       },
-      "id": "fad62063-5937-412d-b571-5abdf31891bf",
-      "name": "Call With Voice",
-      "type": "n8n-nodes-base.twilio",
-      "typeVersion": 1,
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        864,
+        -608
+      ],
+      "id": "c0a42760-6a51-4065-a4c5-097cf803df16",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        864,
+        -368
+      ],
+      "id": "f8ce2a57-a277-46f4-a4b8-fcc3c2408fbf",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "mattjposey@gmail.com",
+          "mode": "list",
+          "cachedResultName": "mattjposey@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
       "position": [
         1216,
-        336
-      ]
+        -352
+      ],
+      "id": "d6ab542d-55e5-4915-bc87-9638b27e56ca",
+      "name": "Create an event in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
     },
     {
       "parameters": {
-        "resource": "message",
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "mattjposey@gmail.com",
+          "mode": "list",
+          "cachedResultName": "mattjposey@gmail.com"
+        },
         "options": {}
       },
-      "id": "6fb98f4a-6dbb-4a32-8254-92adfd1fe5a1",
-      "name": "Follow-up SMS",
-      "type": "n8n-nodes-base.twilio",
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1040,
+        -352
+      ],
+      "id": "eb2db76a-20bc-4935-99b7-1a495aba3abc",
+      "name": "Delete an event in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "mode": "list",
+          "value": "primary"
+        },
+        "limit": 25,
+        "options": {}
+      },
+      "id": "b025c7c7-9d28-44d4-a9fd-669cdba4bcd3",
+      "name": "Get many events",
+      "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1,
       "position": [
-        1424,
-        336
-      ]
+        592,
+        -544
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "mode": "list",
+          "value": "primary"
+        },
+        "start": "={{$json.start}}",
+        "end": "={{$json.end}}",
+        "additionalFields": {}
+      },
+      "id": "b335e8e2-d0ad-462a-9ef0-10c590458549",
+      "name": "Create event",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        592,
+        -720
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "mode": "list",
+          "value": "primary"
+        },
+        "eventId": "={{$json.id}}",
+        "options": {}
+      },
+      "id": "2a27b8cd-9dc8-4785-b078-4e902aa69511",
+      "name": "Delete event",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        608,
+        -352
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{$json.message.chat.id}}",
+        "text": "={{$json.text || 'Done.'}}",
+        "additionalFields": {}
+      },
+      "id": "b980daed-2ad7-4338-95c6-f4517457383c",
+      "name": "Send Reply1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        384,
+        -1184
+      ],
+      "webhookId": "ca36870d-9e71-4ba6-b041-f65ecc613408"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "mattjposey@gmail.com",
+          "mode": "list",
+          "cachedResultName": "mattjposey@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1376,
+        -368
+      ],
+      "id": "437d8eb9-42c0-4dd4-b9b9-2589dc4de595",
+      "name": "Get many events in Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "HqrhcZLvlHCo4rwF",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        96,
+        -608
+      ],
+      "id": "fecae5d2-46fc-4653-80f9-a9434f387f14",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "prompt": "Instructions:\n--------------\n{instructions}\n--------------\nCompletion:\n--------------\n{completion}\n--------------\n\nAbove, the Completion did not satisfy the constraints given in the Instructions.\nError:\n--------------\n{error}\n--------------\n\nPlease try again. Please only respond with an answer that satisfies the constraints laid out in the Instructions:"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        176,
+        -352
+      ],
+      "id": "33e618ec-90c5-4955-bcc4-a0e7bda876cb",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -48,
+        -400
+      ],
+      "id": "31aeb6ca-3988-4fd9-8ada-19863ea1123e",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "FCgioqL0Ukq0AAAo",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "origin": "n8n",
@@ -328,6 +643,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-28T18:14:43.434Z",
-  "versionId": "a054548c-2dd7-4f9d-88d6-b6a4e75461dc"
+  "updatedAt": "2026-01-31T05:45:23.116Z",
+  "versionId": "9accc2fe-85db-4baa-ba63-5b43f332b6dd"
 }
