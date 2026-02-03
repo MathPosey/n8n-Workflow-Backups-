@@ -2234,7 +2234,7 @@
       "lastItemDate": "2025-11-26T20:35:37.000Z"
     },
     "node:Youtube video": {
-      "lastItemDate": "2026-02-01T15:08:54.000Z"
+      "lastItemDate": "2026-02-02T15:05:55.000Z"
     },
     "node:RSS Feed Trigger1": {
       "lastItemDate": "2025-10-12T20:00:00.000Z"
@@ -2247,7 +2247,7 @@
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": [
-        31
+        33
       ]
     },
     "node:Website promotion": {
