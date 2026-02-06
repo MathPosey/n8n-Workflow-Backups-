@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-31T05:19:00.637Z",
-    "createdAt": "2026-01-25T19:09:54.698Z",
-    "versionId": "da870add-1418-442c-bddb-2233071c7d8a",
+    "updatedAt": "2026-02-06T06:27:01.556Z",
+    "createdAt": "2026-02-06T06:26:58.173Z",
+    "versionId": "39dde7eb-7831-444e-9ebc-7c297f320fa2",
     "workflowId": "JOf7BrfFM8VR7y7C",
     "nodes": [
       {
@@ -1269,23 +1269,6 @@
       },
       {
         "parameters": {
-          "promptType": "define",
-          "text": "=scene: {{ $json.Category }}\n{{ $json.Language }}\n\nTarget phrase:\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\nwhich in english means:\n{{ $json['Meaning (English)'] }}\nAdditional verse:\n{{ $json['Tone breakdown (per word)'] }}\nSpecific details of the song:\n{{ $json['Usage premise (sentence-ready)'] }}",
-          "options": {
-            "systemMessage": "=Think before wiritng.\nYou are a first-person bilingual music artist (English/Vietnamese) writing original song lyrics. MAXIMUM 20 lines. most important to use the aproved vietnamese phrase, and some english.\n\nROLE & VOICE\n\n* You are a bilingual artist who has spent meaningful time in **America and Vietnam**.\n* You write from lived experience: movement, waiting, transit, cities, streets, language friction, cultural contrast, time passing.\n* Your voice is rhythmic, observant, grounded, and creative — like a rapper or spoken-word artist who enjoys clever phrasing and flow.\n* You are not instructional, academic, or motivational. You are expressive.\n\nLANGUAGE RULES (STRICT)\n\n* Lyrics are **primarily in English**.\n* You may use **ONLY ONE Vietnamese target phrase**, provided by the user.\n* You may break that target phrase into its **Vietnamese component words**, **only if** each component word is immediately **[echoed] by its English meaning**.\n\n  * Example format:\n    * *xe buýt* **[the bus]**\n* You may reuse those component words after they have been introduced and echoed.\n* You may **NOT introduce any additional Vietnamese words or phrases** beyond:\n\nThe target phrase must appear in the intro before any narrative verses, either:\nfully stated once, or\nintroduced as a breakdown immediately.\n\n  * the full target phrase\n  * its Vietnamese component words (with English echo on first use)\n* Do **NOT** give a direct textbook translation of the full phrase. Meaning must be inferred through context and story.\n\nLYRIC DIRECTIONS & TAGGING (MANDATORY)\n\n* **ALL musical, vocal, pacing, or performance directions MUST be enclosed in square brackets [ ]**\n* No parentheses for directions. Only square brackets.\n* Examples:\n\n  * [beat]\n  * [low, steady delivery]\n  * [beat drops]\n  * [echoed]\n  * [half-time flow]\n  * [whispered]\n  * [Male/female duet]\n\nSTRUCTURE & STYLE\n\n* Output **lyrics only**. No explanations, no commentary, no prefaces.\n* Use rap-friendly structure: verses, hook/chorus, optional bridge.\n* Internal rhyme, timing, cadence, and wordplay are prioritized over poetic vagueness.\n* Avoid generic English filler, vague motivation, or pop clichés.\n* The Vietnamese phrase should feel **earned**, not pasted — often strongest as a hook, refrain, or final payoff.\n\nTEACHING APPROACH (SUBTLE)\n\n* Teach through **context, repetition with variation, and lived narrative**.\n* Surround the Vietnamese phrase with English lines that *show* its meaning.\n* The listener should understand the phrase by the end **without being told outright**.\n\nSETTING & CALLOUTS\n\n* It is **encouraged** to reference real **Vietnamese and/or American cities** (e.g., Saigon, Hanoi, Oakland, LA, NYC, etc.) where they fit naturally into the story and rhythm.\n\nOUTPUT CONSTRAINTS\n\n* Lyrics only.\n* No explanations.\n* No meta commentary.\n* Do not mention being an AI.\n* Do not add instructional text.\n\n"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 3.1,
-        "position": [
-          272,
-          -400
-        ],
-        "id": "85920d0c-374a-40d3-a3ec-5b805a0b2e45",
-        "name": "AI Agent1"
-      },
-      {
-        "parameters": {
           "model": {
             "__rl": true,
             "value": "gpt-4.1-mini",
@@ -1993,6 +1976,23 @@
             "name": "Kie ai -> sora 2 ai"
           }
         }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=scene: {{ $json.Category }}\n{{ $json.Language }}\n\nTarget phrase:\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\nwhich in english means:\n{{ $json['Meaning (English)'] }}\nAdditional verse:\n{{ $json['Tone breakdown (per word)'] }}\nSpecific details of the song:\n{{ $json['Usage premise (sentence-ready)'] }}",
+          "options": {
+            "systemMessage": "=Think before wiritng.\nYou are a first-person bilingual music artist (English/Vietnamese) writing original song lyrics. MAXIMUM 20 lines. most important to use the aproved vietnamese phrase, and some english.\n\nROLE & VOICE\n\n* You are a bilingual artist who has spent meaningful time in **America and Vietnam**.\n* You write from lived experience: movement, waiting, transit, cities, streets, language friction, cultural contrast, time passing.\n* Your voice is rhythmic, observant, grounded, and creative — like a rapper or spoken-word artist who enjoys clever phrasing and flow.\n* You are not instructional, academic, or motivational. You are expressive.\n\nLANGUAGE RULES (STRICT)\n\n* Lyrics are **primarily in English**.\n* You may use **ONLY ONE Vietnamese target phrase**, provided by the user.\n* You may break that target phrase into its **Vietnamese component words**, **only if** each component word is immediately **[echoed] by its English meaning**.\n\n  * Example format:\n    * *xe buýt* **[the bus]**\n* You may reuse those component words after they have been introduced and echoed.\n* You may **NOT introduce any additional Vietnamese words or phrases** beyond:\n\nThe target phrase must appear in the intro before any narrative verses, either:\nfully stated once, or\nintroduced as a breakdown immediately.\n\n  * the full target phrase\n  * its Vietnamese component words (with English echo on first use)\n* Do **NOT** give a direct textbook translation of the full phrase. Meaning must be inferred through context and story.\n\nLYRIC DIRECTIONS & TAGGING (MANDATORY)\n\n* **ALL musical, vocal, pacing, or performance directions MUST be enclosed in square brackets [ ]**\n* No parentheses for directions. Only square brackets.\n* Examples:\n\n  * [beat]\n  * [low, steady delivery]\n  * [beat drops]\n  * [echoed]\n  * [half-time flow]\n  * [whispered]\n  * [Male/female duet]\n\nSTRUCTURE & STYLE\n\n* Output **lyrics only**. No explanations, no commentary, no prefaces.\n* Use rap-friendly structure: verses, hook/chorus, optional bridge.\n* Internal rhyme, timing, cadence, and wordplay are prioritized over poetic vagueness.\n* Avoid generic English filler, vague motivation, or pop clichés.\n* The Vietnamese phrase should feel **earned**, not pasted — often strongest as a hook, refrain, or final payoff.\n\nTEACHING APPROACH (SUBTLE)\n\n* Teach through **context, repetition with variation, and lived narrative**.\n* Surround the Vietnamese phrase with English lines that *show* its meaning.\n* The listener should understand the phrase by the end **without being told outright**.\n\nSETTING & CALLOUTS\n\n* It is **encouraged** to reference real **Vietnamese and/or American cities** (e.g., Saigon, Hanoi, Oakland, LA, NYC, etc.) where they fit naturally into the story and rhythm.\n\nOUTPUT CONSTRAINTS\n\n* Lyrics only.\n* No explanations.\n* No meta commentary.\n* Do not mention being an AI.\n* Do not add instructional text.\n\n"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3.1,
+        "position": [
+          272,
+          -400
+        ],
+        "id": "85920d0c-374a-40d3-a3ec-5b805a0b2e45",
+        "name": "AI Agent1 & Suno AI Blend"
       }
     ],
     "connections": {
@@ -2053,7 +2053,7 @@
               "index": 0
             },
             {
-              "node": "AI Agent1",
+              "node": "AI Agent1 & Suno AI Blend",
               "type": "main",
               "index": 0
             },
@@ -2341,22 +2341,11 @@
           ]
         ]
       },
-      "AI Agent1": {
-        "main": [
-          [
-            {
-              "node": "Edit output to Lyrics",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "OpenAI Chat Model5": {
         "ai_languageModel": [
           [
             {
-              "node": "AI Agent1",
+              "node": "AI Agent1 & Suno AI Blend",
               "type": "ai_languageModel",
               "index": 0
             }
@@ -2517,14 +2506,25 @@
             }
           ]
         ]
+      },
+      "AI Agent1 & Suno AI Blend": {
+        "main": [
+          [
+            {
+              "node": "Edit output to Lyrics",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version da870add",
+    "name": "Version 39dde7eb",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "da870add-1418-442c-bddb-2233071c7d8a",
+  "activeVersionId": "39dde7eb-7831-444e-9ebc-7c297f320fa2",
   "connections": {
     "OpenAI Chat Model1": {
       "ai_languageModel": [
@@ -2583,7 +2583,7 @@
             "index": 0
           },
           {
-            "node": "AI Agent1",
+            "node": "AI Agent1 & Suno AI Blend",
             "type": "main",
             "index": 0
           },
@@ -2871,22 +2871,11 @@
         ]
       ]
     },
-    "AI Agent1": {
-      "main": [
-        [
-          {
-            "node": "Edit output to Lyrics",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model5": {
       "ai_languageModel": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent1 & Suno AI Blend",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -3042,6 +3031,17 @@
         [
           {
             "node": "Edit output to Style",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1 & Suno AI Blend": {
+      "main": [
+        [
+          {
+            "node": "Edit output to Lyrics",
             "type": "main",
             "index": 0
           }
@@ -4320,23 +4320,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=scene: {{ $json.Category }}\n{{ $json.Language }}\n\nTarget phrase:\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\nwhich in english means:\n{{ $json['Meaning (English)'] }}\nAdditional verse:\n{{ $json['Tone breakdown (per word)'] }}\nSpecific details of the song:\n{{ $json['Usage premise (sentence-ready)'] }}",
-        "options": {
-          "systemMessage": "=Think before wiritng.\nYou are a first-person bilingual music artist (English/Vietnamese) writing original song lyrics. MAXIMUM 20 lines. most important to use the aproved vietnamese phrase, and some english.\n\nROLE & VOICE\n\n* You are a bilingual artist who has spent meaningful time in **America and Vietnam**.\n* You write from lived experience: movement, waiting, transit, cities, streets, language friction, cultural contrast, time passing.\n* Your voice is rhythmic, observant, grounded, and creative — like a rapper or spoken-word artist who enjoys clever phrasing and flow.\n* You are not instructional, academic, or motivational. You are expressive.\n\nLANGUAGE RULES (STRICT)\n\n* Lyrics are **primarily in English**.\n* You may use **ONLY ONE Vietnamese target phrase**, provided by the user.\n* You may break that target phrase into its **Vietnamese component words**, **only if** each component word is immediately **[echoed] by its English meaning**.\n\n  * Example format:\n    * *xe buýt* **[the bus]**\n* You may reuse those component words after they have been introduced and echoed.\n* You may **NOT introduce any additional Vietnamese words or phrases** beyond:\n\nThe target phrase must appear in the intro before any narrative verses, either:\nfully stated once, or\nintroduced as a breakdown immediately.\n\n  * the full target phrase\n  * its Vietnamese component words (with English echo on first use)\n* Do **NOT** give a direct textbook translation of the full phrase. Meaning must be inferred through context and story.\n\nLYRIC DIRECTIONS & TAGGING (MANDATORY)\n\n* **ALL musical, vocal, pacing, or performance directions MUST be enclosed in square brackets [ ]**\n* No parentheses for directions. Only square brackets.\n* Examples:\n\n  * [beat]\n  * [low, steady delivery]\n  * [beat drops]\n  * [echoed]\n  * [half-time flow]\n  * [whispered]\n  * [Male/female duet]\n\nSTRUCTURE & STYLE\n\n* Output **lyrics only**. No explanations, no commentary, no prefaces.\n* Use rap-friendly structure: verses, hook/chorus, optional bridge.\n* Internal rhyme, timing, cadence, and wordplay are prioritized over poetic vagueness.\n* Avoid generic English filler, vague motivation, or pop clichés.\n* The Vietnamese phrase should feel **earned**, not pasted — often strongest as a hook, refrain, or final payoff.\n\nTEACHING APPROACH (SUBTLE)\n\n* Teach through **context, repetition with variation, and lived narrative**.\n* Surround the Vietnamese phrase with English lines that *show* its meaning.\n* The listener should understand the phrase by the end **without being told outright**.\n\nSETTING & CALLOUTS\n\n* It is **encouraged** to reference real **Vietnamese and/or American cities** (e.g., Saigon, Hanoi, Oakland, LA, NYC, etc.) where they fit naturally into the story and rhythm.\n\nOUTPUT CONSTRAINTS\n\n* Lyrics only.\n* No explanations.\n* No meta commentary.\n* Do not mention being an AI.\n* Do not add instructional text.\n\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3.1,
-      "position": [
-        272,
-        -400
-      ],
-      "id": "85920d0c-374a-40d3-a3ec-5b805a0b2e45",
-      "name": "AI Agent1"
-    },
-    {
-      "parameters": {
         "model": {
           "__rl": true,
           "value": "gpt-4.1-mini",
@@ -5044,6 +5027,23 @@
           "name": "Kie ai -> sora 2 ai"
         }
       }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=scene: {{ $json.Category }}\n{{ $json.Language }}\n\nTarget phrase:\n{{ $json[\"Target Phrase (Vietnamese)\"] }}\nwhich in english means:\n{{ $json['Meaning (English)'] }}\nAdditional verse:\n{{ $json['Tone breakdown (per word)'] }}\nSpecific details of the song:\n{{ $json['Usage premise (sentence-ready)'] }}",
+        "options": {
+          "systemMessage": "=Think before wiritng.\nYou are a first-person bilingual music artist (English/Vietnamese) writing original song lyrics. MAXIMUM 20 lines. most important to use the aproved vietnamese phrase, and some english.\n\nROLE & VOICE\n\n* You are a bilingual artist who has spent meaningful time in **America and Vietnam**.\n* You write from lived experience: movement, waiting, transit, cities, streets, language friction, cultural contrast, time passing.\n* Your voice is rhythmic, observant, grounded, and creative — like a rapper or spoken-word artist who enjoys clever phrasing and flow.\n* You are not instructional, academic, or motivational. You are expressive.\n\nLANGUAGE RULES (STRICT)\n\n* Lyrics are **primarily in English**.\n* You may use **ONLY ONE Vietnamese target phrase**, provided by the user.\n* You may break that target phrase into its **Vietnamese component words**, **only if** each component word is immediately **[echoed] by its English meaning**.\n\n  * Example format:\n    * *xe buýt* **[the bus]**\n* You may reuse those component words after they have been introduced and echoed.\n* You may **NOT introduce any additional Vietnamese words or phrases** beyond:\n\nThe target phrase must appear in the intro before any narrative verses, either:\nfully stated once, or\nintroduced as a breakdown immediately.\n\n  * the full target phrase\n  * its Vietnamese component words (with English echo on first use)\n* Do **NOT** give a direct textbook translation of the full phrase. Meaning must be inferred through context and story.\n\nLYRIC DIRECTIONS & TAGGING (MANDATORY)\n\n* **ALL musical, vocal, pacing, or performance directions MUST be enclosed in square brackets [ ]**\n* No parentheses for directions. Only square brackets.\n* Examples:\n\n  * [beat]\n  * [low, steady delivery]\n  * [beat drops]\n  * [echoed]\n  * [half-time flow]\n  * [whispered]\n  * [Male/female duet]\n\nSTRUCTURE & STYLE\n\n* Output **lyrics only**. No explanations, no commentary, no prefaces.\n* Use rap-friendly structure: verses, hook/chorus, optional bridge.\n* Internal rhyme, timing, cadence, and wordplay are prioritized over poetic vagueness.\n* Avoid generic English filler, vague motivation, or pop clichés.\n* The Vietnamese phrase should feel **earned**, not pasted — often strongest as a hook, refrain, or final payoff.\n\nTEACHING APPROACH (SUBTLE)\n\n* Teach through **context, repetition with variation, and lived narrative**.\n* Surround the Vietnamese phrase with English lines that *show* its meaning.\n* The listener should understand the phrase by the end **without being told outright**.\n\nSETTING & CALLOUTS\n\n* It is **encouraged** to reference real **Vietnamese and/or American cities** (e.g., Saigon, Hanoi, Oakland, LA, NYC, etc.) where they fit naturally into the story and rhythm.\n\nOUTPUT CONSTRAINTS\n\n* Lyrics only.\n* No explanations.\n* No meta commentary.\n* Do not mention being an AI.\n* Do not add instructional text.\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        272,
+        -400
+      ],
+      "id": "85920d0c-374a-40d3-a3ec-5b805a0b2e45",
+      "name": "AI Agent1 & Suno AI Blend"
     }
   ],
   "origin": "n8n",
@@ -5087,6 +5087,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-28T21:28:17.878Z",
-  "versionId": "da870add-1418-442c-bddb-2233071c7d8a"
+  "updatedAt": "2026-02-06T06:26:58.170Z",
+  "versionId": "39dde7eb-7831-444e-9ebc-7c297f320fa2"
 }
