@@ -1467,7 +1467,7 @@
     },
     {
       "parameters": {
-        "jsCode": "for (const item of $input.all()) {\n  item.json.output = item.json.output\n    .replace(/\\n/g, ' ')\n    .replace(/{/g, '')\n    .replace(/}/g, '')\n    .replace(/\\s\\s+/g, ' ')\n    .replace(/\"post:\"/g, '')\n    .replace(/\"/g, '')\n    .replace(/:/g, '')\n    .trim();\n}\nreturn $input.all();\n"
+        "jsCode": "for (const item of $input.all()) {\n  let text = item.json.output;\n\n  // 1. Extract and protect URLs\n  const urls = [];\n  text = text.replace(\n    /(https?:\\/\\/[^\\s]+)/g,\n    (match) => {\n      urls.push(match);\n      return `__URL_${urls.length - 1}__`;\n    }\n  );\n\n  // 2. Clean AI artifacts (SAFE)\n  text = text\n    .replace(/\\n|\\\\n|\\/n/g, ' ')\n    .replace(/[{}\"]/g, '')\n    .replace(/\"post:\"/g, '')\n    .replace(/\\s\\s+/g, ' ')\n    .trim();\n\n  // 3. Restore URLs\n  text = text.replace(/__URL_(\\d+)__/g, (_, i) => urls[i]);\n\n  item.json.output = text;\n}\n\nreturn $input.all();\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -2234,7 +2234,7 @@
       "lastItemDate": "2025-11-26T20:35:37.000Z"
     },
     "node:Youtube video": {
-      "lastItemDate": "2026-02-04T15:06:26.000Z"
+      "lastItemDate": "2026-02-06T06:32:27.000Z"
     },
     "node:RSS Feed Trigger1": {
       "lastItemDate": "2025-10-12T20:00:00.000Z"
@@ -2247,7 +2247,7 @@
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": [
-        35
+        37
       ]
     },
     "node:Website promotion": {
@@ -2262,6 +2262,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2026-01-14T19:04:13.945Z",
-  "versionId": "bd2e7f64-450d-4370-a458-c7a705cd1965"
+  "updatedAt": "2026-02-06T22:09:12.449Z",
+  "versionId": "701d7a4b-4fe2-41b2-bef8-5805466f1267"
 }
