@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-28T21:52:56.626Z",
-    "createdAt": "2026-01-28T21:52:46.108Z",
-    "versionId": "337a54da-5d00-47c4-b9d5-a6fb5b6047de",
+    "updatedAt": "2026-02-06T22:00:59.098Z",
+    "createdAt": "2026-02-06T22:00:42.795Z",
+    "versionId": "920813b9-17a2-4cd2-b0ea-7535a0dd0e23",
     "workflowId": "DSjbhm8exCfO-30PXxACc",
     "nodes": [
       {
@@ -20,9 +20,9 @@
       {
         "parameters": {
           "fromEmail": "Mattjposey@gmail.com",
-          "toEmail": "={{ $('Configuration2').first().json[\"USER_EMAIL\"] }}",
-          "subject": "=[Alert] Workflow Error: {{ $json.execution.lastNodeExecuted }}",
-          "text": "={{ $json.message.content }}\n\n---\nRaw Error:\n{{ $json.execution.error.message }}",
+          "toEmail": "=Mattjposey@gmail.com",
+          "subject": "=[Alert] Workflow Error: {{ $('Error Trigger').item.json.workflow.name }}",
+          "text": "={{ $json.output }}\n---\nRaw Error:\n{{ $('Error Trigger').item.json.execution.lastNodeExecuted }}",
           "options": {}
         },
         "name": "Email Error Report",
@@ -119,11 +119,11 @@
       }
     },
     "authors": "Matthew Posey",
-    "name": "Version 337a54da",
+    "name": "Version 920813b9",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "337a54da-5d00-47c4-b9d5-a6fb5b6047de",
+  "activeVersionId": "920813b9-17a2-4cd2-b0ea-7535a0dd0e23",
   "connections": {
     "Error Trigger": {
       "main": [
@@ -181,9 +181,9 @@
     {
       "parameters": {
         "fromEmail": "Mattjposey@gmail.com",
-        "toEmail": "={{ $('Configuration2').first().json[\"USER_EMAIL\"] }}",
-        "subject": "=[Alert] Workflow Error: {{ $json.execution.lastNodeExecuted }}",
-        "text": "={{ $json.message.content }}\n\n---\nRaw Error:\n{{ $json.execution.error.message }}",
+        "toEmail": "=Mattjposey@gmail.com",
+        "subject": "=[Alert] Workflow Error: {{ $('Error Trigger').item.json.workflow.name }}",
+        "text": "={{ $json.output }}\n---\nRaw Error:\n{{ $('Error Trigger').item.json.execution.lastNodeExecuted }}",
         "options": {}
       },
       "name": "Email Error Report",
@@ -269,6 +269,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-28T21:52:46.106Z",
-  "versionId": "337a54da-5d00-47c4-b9d5-a6fb5b6047de"
+  "updatedAt": "2026-02-06T22:00:42.793Z",
+  "versionId": "920813b9-17a2-4cd2-b0ea-7535a0dd0e23"
 }
